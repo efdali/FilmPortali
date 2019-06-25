@@ -11,7 +11,7 @@
         @foreach (var slider in Model.slider)
         {
             <div>
-                <a href="@slider.Films.FName">
+                <a href="/detay/@slider.Films.FName">
                     <img src="@slider.Films.FPoster" class="film-poster" alt="@slider.Films.FName"/>
                 </a>
             </div>
@@ -26,7 +26,7 @@
         @foreach (var films in Model.film)
         {
             <div class="film-box">
-                <a href="@films.FName">
+                <a href="/detay/@films.FName">
                     <img src="@films.FPoster" class="film-poster" alt="@films.FName"/>
                 </a>
             </div>

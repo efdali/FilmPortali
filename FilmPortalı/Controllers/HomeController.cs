@@ -28,5 +28,23 @@ namespace FilmPortalı.Controllers
             return View(films);
         }
 
+        // GET 2019
+        [Route("2019")]
+        public ActionResult Year()
+        {
+            List<Films> films = db.Films.Where(f => f.FYear.Value.Year == 2019)
+                .OrderBy(f=>f.FImdb).Skip(0).Take(40).ToList();
+            ViewBag.Header = "2019 Yılı Filmleri";
+            return View("Tur",films);
+        }
+        // GET En çok izlenen filmler
+        [Route("en-cok-izlenenler")]
+        public ActionResult MostWatchedFilms()
+        {
+            List<Films> films = db.Films.OrderBy(f => f.FImdb).Skip(0).Take(40).ToList();
+            ViewBag.Header = "En Çok İzlenen Filmler";
+            return View("Tur", films);
+        }
+
     }
 }

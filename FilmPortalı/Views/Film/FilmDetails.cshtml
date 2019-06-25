@@ -1,0 +1,99 @@
+﻿@model FilmPortalı.Models.Films
+@{
+    ViewBag.Title = Model.FName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Film Info Start -->
+<div class="container">
+    <h1>Fight Club</h1>
+    <div class="wrapper info-wrapper">
+        <img src="@Model.FPoster" alt="@Model.FName" class="film-poster">
+        <div class="film-info">
+            <h4><span>Yönetmen:</span>Mahsun Kırmızıgül</h4>
+            <h4><span>Ülke:</span>ADB,Türkiye</h4>
+            <h4><span>Yapım Yılı:</span>@Model.FYear</h4>
+            <h4><span>IMDB Puanı:</span>@Model.FImdb</h4>
+            <h4><span>Tür:</span>Aksiyon,Dram</h4>
+
+            <p class="film-summary">@Model.FSummary</p>
+        </div>
+        <ul class="list-container">
+            <li><i class="far fa-clock"></i> <a href="#">Fragman İzle</a></li>
+            <li id="watch">
+                <i class="fas fa-play"></i> <a href="#">Filmi İzle</a>
+                <ul class="list-container" style="position: relative;display: none;" id="source">
+                    <li><a href="#video-modal" rel="modal:open">OpenLoad</a></li>
+                    <li>Yandex</li>
+                    <li>ok.ru</li>
+                    <li>Rapid</li>
+                </ul>
+            </li>
+            <li><i class="fas fa-check"></i> <a href="#">İzledim</a></li>
+            <li><i class="far fa-clock"></i> <a href="#">Daha Sonra İzle</a></li>
+            <li><i class="far fa-heart"></i> <a href="#">Beğendim</a></li>
+            <li><i class="far fa-thumbs-down"></i> <a href="#">Beğenmedim</a></li>
+        </ul>
+    </div>
+</div>
+<!-- Film Info End -->
+<!-- Film Crew Start -->
+
+<div class="container">
+    <h1>Oyuncular</h1>
+    <div class="wrapper">
+        <a href="#"><img src="img/bradpitt.jpg" alt="Brad Pitt" class="crew-poster"></a>
+        <a href="#"><img src="img/bradpitt.jpg" alt="Brad Pitt" class="crew-poster"></a>
+        <a href="#"><img src="img/bradpitt.jpg" alt="Brad Pitt" class="crew-poster"></a>
+        <a href="#"><img src="img/bradpitt.jpg" alt="Brad Pitt" class="crew-poster"></a>
+        <a href="#"><img src="img/bradpitt.jpg" alt="Brad Pitt" class="crew-poster"></a>
+    </div>
+</div>
+
+<!-- Film Crew End -->
+<!-- Film Comment Start -->
+
+<div class="container">
+    <h1>Yorumlar</h1>
+    <div class="yorum-input" style="">
+        <textarea rows="5" style="width: 90%;resize: none;" placeholder="yorum yaz..." class="textarea"></textarea>
+        <a href="#" style="margin: auto;"><i class="fas fa-share" style="font-size: 25px"></i></a>
+    </div>
+    <div class="yorum-container">
+        <div class="user">
+            <img src="img/bradpitt.jpg" alt="user" class="user-image">
+            <span>Arwald</span>
+        </div>
+        <div class="yorum">
+            <span class="blur-text"><i class="far fa-clock"></i> 5 saat önce</span>
+            <p style="margin: 0">New York'ta 5 Minare, temelde İslamofobi eleştirisine dayanan bir yapım. Kırmızı bültenle aranan ve ismi geniş kitleler nezdinde bir fenomen gibi algılanan köktendinci bir teşkilatın lideri, cemaat önderi "Deccal" kod adlı suçlunun Amerika'da kıskıvrak yakalandığı bilgisi gelir. Teşkilatın en başarılı iki polisi Amerika'ya suçluyu teslim almaya giderler. Bundan sonrası kolay gibi görünür ama hiçbir şey göründüğü gibi değildir. İstanbul, New York, Bitlis üçgeninde geçen hikaye, yakın dönemin Türkiye'sini sorgularken, 11 Eylül sonrası Amerika ve dünyanın İslam ile olan paranoyasının altını çizecektir.</p>
+            <div class="yorum-container">
+                <div class="user">
+                    <img src="img/bradpitt.jpg" alt="user" class="user-image">
+                    <span>Efdali</span>
+                </div>
+                <!-- Alt Yorum -->
+                <div class="yorum">
+                    <span class="blur-text"><i class="far fa-clock"></i> 5 saat önce</span>
+                    <p style="margin: 0">Vay bee</p>
+                </div>
+            </div>
+        </div>
+        <a href="#" style="margin: auto;"><i class="fas fa-share" style="font-size: 25px"></i></a>
+    </div>
+</div>
+
+
+<!-- Film Comment End-->
+<!-- Film Video Modal Start -->
+
+
+<div class="video-container modal" id="video-modal">
+
+    Video
+
+
+</div>
+
+
+<!-- Film Video Modal End -->

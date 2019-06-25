@@ -1841,6 +1841,7 @@
     <Content Include="Views\Home\Tur.cshtml" />
     <Content Include="Views\Partial\Header.cshtml" />
     <Content Include="Views\Partial\Footer.cshtml" />
+    <Content Include="Views\Film\FilmDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

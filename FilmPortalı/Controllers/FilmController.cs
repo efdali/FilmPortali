@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FilmPortalı.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,14 @@ namespace FilmPortalı.Controllers
 {
     public class FilmController : Controller
     {
-        // GET: Film
-        public ActionResult Index()
+        FilmPortaliEntities db = new FilmPortaliEntities();
+        // GET Film Detay
+        [Route("detay/{filmName}")]
+        public ActionResult FilmDetails(string filmName)
         {
-            return View();
+            Films film = db.Films.Include("FilmCategory")
+                .Where(f => f.FName == filmName).FirstOrDefault();
+            return View(film);
         }
     }
 }
