@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FilmPortalı.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,12 @@ namespace FilmPortalı.Controllers
 {
     public class ProfileController : Controller
     {
+        FilmPortaliEntities db = new FilmPortaliEntities();
         // GET: Profile
         public ActionResult Index()
         {
-            return View();
+            Users user = db.Users.Where(u => u.UId == (int)Session["kullaniciId"]).FirstOrDefault();
+            return View(user);
         }
     }
 }

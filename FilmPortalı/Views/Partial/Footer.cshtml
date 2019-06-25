@@ -1,0 +1,45 @@
+﻿@model FilmPortalı.Models.Users
+
+<!-- Footer Start -->
+<footer>
+    Tüm Hakları Saklıdır.
+</footer>
+<!-- Footer End -->
+<!-- Signin Modal -->
+<div id="giris-modal" class="modal">
+    <a href="#" class="site-logo">SITEADI.COM</a><br><br>
+    @using (Ajax.BeginForm("Sign", "Security", new AjaxOptions { HttpMethod = "POST" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.TextBoxFor(m => m.UNick, new { @class = "input-item", placeholder = "kullanıcı adı" })<br><br>
+        @Html.ValidationMessageFor(m => m.UNick)
+        @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item", placeholder = "parola", type = "password" })<br><br>
+        @Html.ValidationMessageFor(m => m.UPasswd)
+        <button class="btn btn-sign">GİRİŞ YAP</button><br>
+    }
+    <a href="#" class="forgot-password">şifremi unuttum</a>
+</div>
+
+<!-- Login Modal -->
+<div id="kayit-modal" class="modal">
+    <a href="#" class="site-logo">SITEADI.COM</a><br><br>
+    @using (Ajax.BeginForm("Login", "Security", new AjaxOptions { HttpMethod = "POST" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.TextBoxFor(m => m.UNick, new { @class = "input-item", placeholder = "kullanıcı adı" })<br><br>
+        @Html.ValidationMessageFor(m => m.UNick)
+        @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item", placeholder = "parola", type = "password" })<br><br>
+        @Html.ValidationMessageFor(m => m.UPasswd)
+        @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item", placeholder = "parola tekrar", type = "password" })<br><br>
+        @Html.ValidationMessageFor(m => m.UPasswd)
+        @Html.TextBoxFor(m => m.UMail, new { @class = "input-item", placeholder = "e-posta" })<br><br>
+        @Html.ValidationMessageFor(m => m.UMail)
+        <button class="btn btn-sign" type="submit">KAYIT OL</button><br>
+    }
+</div>
+
+
+
+
+
+

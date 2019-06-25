@@ -8,46 +8,14 @@
 <div class="container">
     <h1>Editörün Seçtikleri</h1>
     <div class="owl-carousel">
-        <div>
-            <a href="#">
-                <img src="~/Content/img/amelia.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div>
-            <a href="#">
-                <img src="~/Content/img/esaretin-bedeli.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div>
-            <a href="#">
-                <img src="~/Content/img/fight_club.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div>
-            <a href="#">
-                <img src="~/Content/img/leon.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div>
-            <a href="#">
-                <img src="~/Content/img/life.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div>
-            <a href="#">
-                <img src="~/Content/img/patron-mutlu-son-istiyor.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div>
-            <a href="#">
-                <img src="~/Content/img/salt.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div>
-            <a href="#">
-                <img src="~/Content/img/yol-arkadasim.jpg" class="film-poster" />
-            </a>
-        </div>
+        @foreach (var slider in Model.slider)
+        {
+            <div>
+                <a href="@slider.Films.FName">
+                    <img src="@slider.Films.FPoster" class="film-poster" alt="@slider.Films.FName"/>
+                </a>
+            </div>
+        }
     </div>
 </div>
 <!-- Slider End -->
@@ -55,96 +23,14 @@
 <div class="container">
     <h1>Son Eklenen Filmler</h1>
     <div class="film-wrapper">
-        <div class="film-box">
-            <a href="#">
-                <img src="~/Content/img/yol-arkadasim.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div class="film-box">
-            <a href="#">
-                <img src="~/Content/img/esaretin-bedeli.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div class="film-box">
-            <a href="#">
-                <img src="~/Content/img/fight_club.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div class="film-box">
-            <a href="#">
-                <img src="~/Content/img/life.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div class="film-box">
-            <a href="#">
-                <img src="~/Content/img/leon.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div class="film-box">
-            <a href="#">
-                <img src="~/Content/img/salt.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div class="film-box">
-            <a href="#">
-                <img src="~/Content/img/amelia.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div class="film-box">
-            <a href="#">
-                <img src="~/Content/img/yol-arkadasim.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div class="film-box">
-            <a href="#">
-                <img src="~/Content/img/esaretin-bedeli.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div class="film-box">
-            <a href="#">
-                <img src="~/Content/img/fight_club.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div class="film-box">
-            <a href="#">
-                <img src="~/Content/img/life.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div class="film-box">
-            <a href="#">
-                <img src="~/Content/img/leon.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div class="film-box">
-            <a href="#">
-                <img src="~/Content/img/salt.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div class="film-box">
-            <a href="#">
-                <img src="~/Content/img/amelia.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div class="film-box">
-            <a href="#">
-                <img src="~/Content/img/yol-arkadasim.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div class="film-box">
-            <a href="#">
-                <img src="~/Content/img/esaretin-bedeli.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div class="film-box">
-            <a href="#">
-                <img src="~/Content/img/fight_club.jpg" class="film-poster" />
-            </a>
-        </div>
-        <div class="film-box">
-            <a href="#">
-                <img src="~/Content/img/life.jpg" class="film-poster" />
-            </a>
-        </div>
+        @foreach (var films in Model.film)
+        {
+            <div class="film-box">
+                <a href="@films.FName">
+                    <img src="@films.FPoster" class="film-poster" alt="@films.FName"/>
+                </a>
+            </div>
+        }
     </div>
     <button class="btn btn-more">Daha Fazla Film</button>
 </div>
