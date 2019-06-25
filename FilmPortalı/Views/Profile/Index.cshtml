@@ -1,0 +1,292 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="text-align: right;margin-bottom: 0">
+    <button class="btn btn-save">Kaydet</button>
+</div>
+
+<div class="container tabs" style="margin-top: 5px">
+    <div class="sidebar">
+        <img src="img/bradpitt.jpg" alt="Brad" width="50" height="50">
+        <h4 style="margin:0">Arwald</h4>
+
+        <ul class="profile-btns">
+            <li><a class="active" href="#profile">Profil Bilgileri</a></li>
+            <li><a href="#account">Hesap Ayarları</a></li>
+            <li><a href="#comments">Yorumlar</a></li>
+            <li><a href="#list">Listelerim</a></li>
+        </ul>
+    </div>
+
+
+    <div class="profile-wrapper" id="profile" style="display: block">
+
+        <div class="form-group">
+            <label for="ad">Ad</label>
+            <input type="text" class="input-item profile-input" placeholder="ad" id="ad">
+        </div>
+        <div class="form-group">
+            <label for="soyad">Soyad</label>
+            <input type="text" class="input-item profile-input" placeholder="soyad" id="soyad"><br><br>
+        </div>
+        <div class="form-group w25">
+            <label for="date">Doğum Tarihi</label>
+            <input type="date" class="input-item profile-input" id="date"></input:d>
+        </div>
+        <div class="form-group w25">
+            <label for="gender">Cinsiyet</label>
+            <select name="gender" id="gender" class="input-item profile-input select-input" id="gender">
+                <option value="0">Erkek</option>
+                <option value="1">Kız</option>
+            </select>
+        </div>
+        <div class="form-group w25">
+            <label for="twitter">Twitter k. adı</label>
+            <input type="text" class="input-item profile-input" placeholder="twitter" id="twitter">
+        </div>
+        <div class="form-group w25">
+            <label for="instagram">İnstagram k. adı</label>
+            <input type="text" class="input-item profile-input" placeholder="instagram" id="instagram">
+        </div>
+        <div class="form-group w100">
+            <label for="hakkımda">Hakkımda</label>
+            <textarea class="textarea info-input" rows="8" placeholder="hakkımda" id="hakkımda"></textarea>
+        </div>
+
+    </div>
+
+    <div class="profile-wrapper" id="account">
+
+        <div class="form-group">
+            <label for="img">Profil Resmi</label>
+            <input type="file" class="input-item profile-input" placeholder="ad" id="img">
+        </div>
+        <div class="form-group">
+            <label for="url">Resim URL'si</label>
+            <input type="text" class="input-item profile-input" placeholder="url" id="url"><br><br>
+        </div>
+        <h3>Şifre Değiştir</h3>
+        <div class="form-group">
+            <label for="passwd">Yeni Şifre</label>
+            <input type="password" class="input-item profile-input" placeholder="yeni şifre" id="passwd"></input:d>
+        </div>
+        <div class="form-group">
+            <label for="npasswd">Yeni Şifre Tekrar</label>
+            <input type="password" class="input-item profile-input" placeholder="yeni şifre tekrar" id="npasswd">
+            </input:d>
+        </div>
+        <h3>E-Posta Değiştir</h3>
+        <div class="form-group">
+            <label for="e-posta">Yeni e-posta</label>
+            <input type="text" class="input-item profile-input" placeholder="yeni e-posta" id="e-posta">
+        </div>
+        <div class="form-group">
+            <label for="ne-posta">Yeni e-posta tekrar</label>
+            <input type="text" class="input-item profile-input" placeholder="yeni e-posta tekrar" id="ne-posta">
+        </div>
+        <div class="form-group w100">
+            <input type="checkbox" id="mail">
+            <label for="mail">Yeni eklenen filmlerden haberdar olmak istiyorum.</label>
+            <br>
+            <input type="checkbox" id="status">
+            <label for="status">Kullanıcılar profilimi görüntüleyebilsin.</label>
+        </div>
+
+    </div>
+
+    <div class="profile-wrapper" id="comments">
+
+        <div class="container">
+            <div style="display: flex;align-items: center">
+                <b class="active">Kahpe Bizans / yorum:</b>
+                <div class="edit" style="margin-left: auto"><i class="fas fa-edit"></i> Düzenle &nbsp;</div>
+                <div class="edit"> <i class="fas fa-trash "></i> Sil</div>
+            </div>
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet, nibh quis viverra
+                pellentesque, velit odio viverra dolor, ac posuere arcu leo quis tellus. Sed non imperdiet
+                neque.
+                Cras venenatis diam euismod faucibus venenatis. Integer a fringilla turpis. Cras lacinia
+                quam
+                molestie, vestibulum tortor eu, bibendum ligula. Donec nec turpis pellentesque, fermentum
+                leo id,
+                porta lorem. Curabitur posuere iaculis felis ut pharetra. Interdum et malesuada fames ac
+                ante ipsum
+                primis in faucibus.
+            </p>
+
+
+        </div>
+        <div class="container">
+            <div style="display: flex;align-items: center">
+                <b class="active">Kahpe Bizans / yorum:</b>
+                <div class="edit" style="margin-left: auto"><i class="fas fa-edit"></i> Düzenle &nbsp;</div>
+                <div class="edit"> <i class="fas fa-trash "></i> Sil</div>
+            </div>
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet, nibh quis viverra
+                pellentesque, velit odio viverra dolor, ac posuere arcu leo quis tellus. Sed non imperdiet
+                neque.
+                Cras venenatis diam euismod faucibus venenatis. Integer a fringilla turpis. Cras lacinia
+                quam
+                molestie, vestibulum tortor eu, bibendum ligula. Donec nec turpis pellentesque, fermentum
+                leo id,
+                porta lorem. Curabitur posuere iaculis felis ut pharetra. Interdum et malesuada fames ac
+                ante ipsum
+                primis in faucibus.
+            </p>
+
+
+        </div>
+        <div class="container">
+            <div style="display: flex;align-items: center">
+                <b class="active">Kahpe Bizans / yorum:</b>
+                <div class="edit" style="margin-left: auto"><i class="fas fa-edit"></i> Düzenle &nbsp;</div>
+                <div class="edit"> <i class="fas fa-trash "></i> Sil</div>
+            </div>
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet, nibh quis viverra
+                pellentesque, velit odio viverra dolor, ac posuere arcu leo quis tellus. Sed non imperdiet
+                neque.
+                Cras venenatis diam euismod faucibus venenatis. Integer a fringilla turpis. Cras lacinia
+                quam
+                molestie, vestibulum tortor eu, bibendum ligula. Donec nec turpis pellentesque, fermentum
+                leo id,
+                porta lorem. Curabitur posuere iaculis felis ut pharetra. Interdum et malesuada fames ac
+                ante ipsum
+                primis in faucibus.
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+    <div class="profile-wrapper" id="list">
+
+
+        <div>
+            <h1>Favorilerim</h1>
+            <div class="film-wrapper">
+                <div class="film-box">
+                    <a href="#">
+                        <img src="img/yol-arkadasim.jpg" class="film-poster" />
+                    </a>
+                </div>
+                <div class="film-box">
+                    <a href="#">
+                        <img src="img/esaretin-bedeli.jpg" class="film-poster" />
+                    </a>
+                </div>
+                <div class="film-box">
+                    <a href="#">
+                        <img src="img/fight_club.jpg" class="film-poster" />
+                    </a>
+                </div>
+                <div class="film-box">
+                    <a href="#">
+                        <img src="img/life.jpg" class="film-poster" />
+                    </a>
+                </div>
+                <div class="film-box">
+                    <a href="#">
+                        <img src="img/fight_club.jpg" class="film-poster" />
+                    </a>
+                </div>
+                <div class="film-box">
+                    <a href="#">
+                        <img src="img/life.jpg" class="film-poster" />
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h1>İzlediklerim</h1>
+            <div class="film-wrapper">
+                <div class="film-box">
+                    <a href="#">
+                        <img src="img/yol-arkadasim.jpg" class="film-poster" />
+                    </a>
+                </div>
+                <div class="film-box">
+                    <a href="#">
+                        <img src="img/esaretin-bedeli.jpg" class="film-poster" />
+                    </a>
+                </div>
+                <div class="film-box">
+                    <a href="#">
+                        <img src="img/fight_club.jpg" class="film-poster" />
+                    </a>
+                </div>
+                <div class="film-box">
+                    <a href="#">
+                        <img src="img/life.jpg" class="film-poster" />
+                    </a>
+                </div>
+                <div class="film-box">
+                    <a href="#">
+                        <img src="img/fight_club.jpg" class="film-poster" />
+                    </a>
+                </div>
+                <div class="film-box">
+                    <a href="#">
+                        <img src="img/life.jpg" class="film-poster" />
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h1>İzleyeceklerim</h1>
+            <div class="film-wrapper">
+                <div class="film-box">
+                    <a href="#">
+                        <img src="img/yol-arkadasim.jpg" class="film-poster" />
+                    </a>
+                </div>
+                <div class="film-box">
+                    <a href="#">
+                        <img src="img/esaretin-bedeli.jpg" class="film-poster" />
+                    </a>
+                </div>
+                <div class="film-box">
+                    <a href="#">
+                        <img src="img/fight_club.jpg" class="film-poster" />
+                    </a>
+                </div>
+                <div class="film-box">
+                    <a href="#">
+                        <img src="img/life.jpg" class="film-poster" />
+                    </a>
+                </div>
+                <div class="film-box">
+                    <a href="#">
+                        <img src="img/fight_club.jpg" class="film-poster" />
+                    </a>
+                </div>
+                <div class="film-box">
+                    <a href="#">
+                        <img src="img/life.jpg" class="film-poster" />
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+</div>
+
+<div class="clearfix"></div>
+

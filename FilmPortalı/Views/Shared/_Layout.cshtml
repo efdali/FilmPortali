@@ -1,0 +1,272 @@
+﻿@model FilmPortalı.Models.Users
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewBag.Title</title>
+
+    <!-- Normalize Css -->
+    <link rel="stylesheet" href="~/Content/css/normalize.css" />
+
+    <!-- Main Css-->
+    <link rel="stylesheet" href="~/Content/css/main.css" />
+
+    <!-- Carousel -->
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css" />
+
+    <!-- Jquery Modal -->
+    <link rel="stylesheet" href="~/Content/css/jquery.modal.min.css" />
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="~/Fonts/IndieFlower.ttf" />
+    <link rel="stylesheet" href="~/Fonts/HindGuntur-Regular.ttf" />
+    <link rel="stylesheet" href="~/Fonts/SourceSansPro-Light.ttf" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Content/fontawesome/css/all.min.css" />
+
+</head>
+<body>
+
+    <!-- Header Start-->
+    <header>
+        <div class="brand"><a href="index.html" class="site-logo">SITEADI.COM</a></div>
+        <div class="navbar-right">
+            <div class="navbar-top">
+                <div class="search-input">
+                    <input type="text" placeholder="film ara..." class="search" />
+                    <i class="fas fa-search"></i>
+                    <div class="search-film-list" style="display: none">
+                        <a href="#">
+                            <img src="~/Content/img/amelia.jpg" width="20%;" />
+                            <span>Amelia(2015)</span>
+                        </a>
+                        <a href="#">
+                            <img src="~/Content/img/fight_club.jpg" width="20%;" />
+                            <span>Fight Club(2014)</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-social">
+                    <div class="contact">
+                        <i class="fas fa-envelope"></i>
+                        <a href="#" class="navbar-link">
+                            İletişim
+                        </a>
+                    </div>
+                    <div class="twitter">
+                        <i class="fab fa-twitter"></i>
+                        <a href="#" class="navbar-link">
+                            Twitter
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="navbar-bottom">
+
+                <div class="navbar-categories">
+                    <a href="#" class="navbar-link" id="kinds">Türler</a>
+                    <a href="#" class="navbar-link">IMDB 250</a>
+                    <a href="#" class="navbar-link">En Çok İzlenen</a>
+                    <a href="#" class="navbar-link">2019</a>
+                    <a href="#" class="navbar-link">Rastgele</a>
+                    <a href="#" class="navbar-link">Diğer</a>
+                </div>
+
+                <div class="sign">
+                    @if (HttpContext.Current.User.Identity.Name.IsEmpty())
+                    {
+                        <div class="signin">
+                            <i class="fas fa-sign-in-alt"></i>
+                            <a href="#giris-modal" rel="modal:open" class="navbar-link">Giriş</a>
+                        </div>
+                        <div class="signup">
+                            <i class="fas fa-user-plus"></i>
+                            <a href="#kayit-modal" rel="modal:open" class="navbar-link">Kayıt</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="profile">
+                            <img src='@Session["kullaniciResim"]' alt="Bradd" class="profile-img" width="30px" height="30px">
+                            <i class="fas fa-caret-down show-profile-list" id=""></i>
+                            <ul class="list-container profile-list" id="">
+                                <li>Profil</li>
+                                <li>İzlediklerim</li>
+                                <li>İzleyeceklerim</li>
+                                <li>Beğendiklerim</li>
+                                <li>Beğenmediklerim</li>
+                                <li>@Html.ActionLink("Çıkış Yap", "LogOut", "Security")</li>
+                            </ul>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="kind-container" id="kind-container">
+        <a href="#" class="kind-link active">Aile</a>
+        <a href="#" class="kind-link">Aksiyon</a>
+        <a href="#" class="kind-link">Animasyon</a>
+        <a href="#" class="kind-link">Belgesel</a>
+        <a href="#" class="kind-link">Bilim Kurgu</a>
+        <a href="#" class="kind-link">Dram</a>
+        <a href="#" class="kind-link">Fantastik</a>
+        <a href="#" class="kind-link">Gerilim</a>
+        <a href="#" class="kind-link">Gizem</a>
+        <a href="#" class="kind-link">Komedi</a>
+        <a href="#" class="kind-link">Korku</a>
+        <a href="#" class="kind-link">Müzik</a>
+        <a href="#" class="kind-link">Macera</a>
+        <a href="#" class="kind-link">Romantik</a>
+        <a href="#" class="kind-link">Savaş</a>
+        <a href="#" class="kind-link">Spor</a>
+        <a href="#" class="kind-link">Suç</a>
+        <a href="#" class="kind-link">Tarihi</a>
+        <a href="#" class="kind-link">Western</a>
+    </div>
+    <!-- Header End-->
+    <!-- Mobil Header Start -->
+    <div class="mobile">
+        <div class="mobile-header">
+            <a href="index.html" class="site-logo">SITEADI.COM</a>
+            <div class="search-input" style="display: none;" id="mobile-search-container">
+                <input type="text" placeholder="film ara..." class="search" id="mobile-search-input" />
+                <div class="search-film-list" style="display: none">
+                    <a href="#">
+                        <img src="img/amelia.jpg" width="20%;" />
+                        <span>Amelia(2015)</span>
+                    </a>
+                    <a href="#">
+                        <img src="img/fight_club.jpg" width="20%;" />
+                        <span>Fight Club(2014)</span>
+                    </a>
+                </div>
+            </div>
+            <i class="fas fa-search mobile-search-icon"></i>
+            <i class="fas fa-bars" id="open-header"></i>
+        </div>
+        <div class="header-container">
+            @if (HttpContext.Current.User.Identity.Name.IsEmpty())
+            {
+                <div class="sign-group">
+                    <a href="#giris-modal" rel="modal:open" class="btn btn-sign"><i class="fas fa-sign-in-alt"></i>Giriş</a>
+                    <a href="#kayit-modal" rel="modal:open" class="btn btn-sign"><i class="fas fa-user-plus"></i>Kayıt</a>
+                </div>
+            }
+            else
+            {
+
+                <div class="profile">
+                    <img src='@Session["kullaniciResim"]' alt="Bradd" class="profile-img" width="30px" height="30px">
+                    <i class="fas fa-caret-down show-profile-list" id=""></i>
+                    <ul class="list-container profile-list" id="">
+                        <li>Profil</li>
+                        <li>İzlediklerim</li>
+                        <li>İzleyeceklerim</li>
+                        <li>Beğendiklerim</li>
+                        <li>Beğenmediklerim</li>
+                        <li>@Html.ActionLink("Çıkış Yap", "LogOut", "Security")</li>
+                    </ul>
+                </div>
+            }
+
+            <div style="text-align: center;margin:30px 0;">
+                <a href="#" class="navbar-link" id="mobile-kinds">
+                    Türler <i class="fas fa-caret-down"></i>
+                </a>
+            </div>
+            <div class="kind-container" style="display: flex" id="mobile-kind-container">
+                <a href="#" class="kind-link active">Aile</a>
+                <a href="#" class="kind-link">Aksiyon</a>
+                <a href="#" class="kind-link">Animasyon</a>
+                <a href="#" class="kind-link">Belgesel</a>
+                <a href="#" class="kind-link">Bilim Kurgu</a>
+                <a href="#" class="kind-link">Dram</a>
+                <a href="#" class="kind-link">Fantastik</a>
+                <a href="#" class="kind-link">Gerilim</a>
+                <a href="#" class="kind-link">Gizem</a>
+                <a href="#" class="kind-link">Komedi</a>
+                <a href="#" class="kind-link">Korku</a>
+                <a href="#" class="kind-link">Müzik</a>
+                <a href="#" class="kind-link">Macera</a>
+                <a href="#" class="kind-link">Romantik</a>
+                <a href="#" class="kind-link">Savaş</a>
+                <a href="#" class="kind-link">Spor</a>
+                <a href="#" class="kind-link">Suç</a>
+                <a href="#" class="kind-link">Tarihi</a>
+                <a href="#" class="kind-link">Western</a>
+            </div>
+            <div class="navbar-categories">
+                <a href="#" class="navbar-link">IMDB 250</a>
+                <a href="#" class="navbar-link">En Çok İzlenen</a>
+                <a href="#" class="navbar-link">2019</a>
+                <a href="#" class="navbar-link">Rastgele</a>
+                <a href="#" class="navbar-link">Diğer</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobil Header End -->
+
+
+    @RenderBody()
+
+
+    <!-- Footer Start -->
+    <footer>
+        Tüm Hakları Saklıdır.
+    </footer>
+    <!-- Footer End -->
+    <!-- Signin Modal -->
+    <div id="giris-modal" class="modal">
+        <a href="#" class="site-logo">SITEADI.COM</a><br><br>
+        @using (Ajax.BeginForm("Sign", "Security", new AjaxOptions { HttpMethod = "POST" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.TextBoxFor(m => m.UNick, new { @class = "input-item", placeholder = "kullanıcı adı" })<br><br>
+            @Html.ValidationMessageFor(m => m.UNick)
+            @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item", placeholder = "parola", type = "password" })<br><br>
+            @Html.ValidationMessageFor(m => m.UPasswd)
+            <button class="btn btn-sign">GİRİŞ YAP</button><br>
+        }
+        <a href="#" class="forgot-password">şifremi unuttum</a>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="kayit-modal" class="modal">
+        <a href="#" class="site-logo">SITEADI.COM</a><br><br>
+        @using (Ajax.BeginForm("Login", "Security", new AjaxOptions { HttpMethod = "POST" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.TextBoxFor(m => m.UNick, new { @class = "input-item", placeholder = "kullanıcı adı" })<br><br>
+            @Html.ValidationMessageFor(m => m.UNick)
+            @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item", placeholder = "parola", type = "password" })<br><br>
+            @Html.ValidationMessageFor(m => m.UPasswd)
+            @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item", placeholder = "parola tekrar", type = "password" })<br><br>
+            @Html.ValidationMessageFor(m => m.UPasswd)
+            @Html.TextBoxFor(m => m.UMail, new { @class = "input-item", placeholder = "e-posta" })<br><br>
+            @Html.ValidationMessageFor(m => m.UMail)
+            <button class="btn btn-sign" type="submit">KAYIT OL</button><br>
+        }
+    </div>
+
+
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.modal.min.js"></script>
+    <script src="~/Scripts/owl.carousel.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/main.js"></script>
+</body>
+</html>
+
+

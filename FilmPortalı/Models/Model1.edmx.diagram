@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e80d18bfea4040c0b6ac998226173aea" Name="Diagram1">
+        <EntityTypeShape EntityType="FilmPortaliModel.Categories" Width="1.5" PointX="3.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmPortaliModel.Comments" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmPortaliModel.Crews" Width="1.5" PointX="3.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmPortaliModel.FilmCategory" Width="1.5" PointX="6" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmPortaliModel.FilmCrew" Width="1.5" PointX="6" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmPortaliModel.Films" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmPortaliModel.FilmSource" Width="1.5" PointX="6" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmPortaliModel.Sources" Width="1.5" PointX="3.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmPortaliModel.SubComments" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmPortaliModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmPortaliModel.Users" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <AssociationConnector Association="FilmPortaliModel.FK_FilmCategory_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="FilmPortaliModel.FK_Comments_Films" ManuallyRouted="false" />
+        <AssociationConnector Association="FilmPortaliModel.FK_Comments_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="FilmPortaliModel.FK_SubComments_Comments" ManuallyRouted="false" />
+        <AssociationConnector Association="FilmPortaliModel.FK_FilmCrew_Crews" ManuallyRouted="false" />
+        <AssociationConnector Association="FilmPortaliModel.FK_FilmCategory_Films" ManuallyRouted="false" />
+        <AssociationConnector Association="FilmPortaliModel.FK_FilmCrew_Films" ManuallyRouted="false" />
+        <AssociationConnector Association="FilmPortaliModel.FK_FilmSource_Films" ManuallyRouted="false" />
+        <AssociationConnector Association="FilmPortaliModel.FK_FilmSource_Sources" ManuallyRouted="false" />
+        <AssociationConnector Association="FilmPortaliModel.FK_SubComments_Users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FilmPortaliModel.Slider" Width="1.5" PointX="0.75" PointY="9.75" />
+        <AssociationConnector Association="FilmPortaliModel.FK_Slider_Films" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
