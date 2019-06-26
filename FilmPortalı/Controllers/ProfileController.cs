@@ -7,13 +7,14 @@ using System.Web.Mvc;
 
 namespace FilmPortalı.Controllers
 {
+    [Authorize()]
     public class ProfileController : Controller
     {
         FilmPortaliEntities db = new FilmPortaliEntities();
         // GET: Profile
         public ActionResult Index()
         {
-            Users user = db.Users.Where(u => u.UId == (int)Session["kullaniciId"]).FirstOrDefault();
+            var user = db.Users.Where(u => u.UId == (int)Session["kullaniciId"]).FirstOrDefault();
             return View(user);
         }
     }

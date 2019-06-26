@@ -14,7 +14,7 @@ namespace FilmPortalı.Controllers
         [Route("detay/{filmName}")]
         public ActionResult FilmDetails(string filmName)
         {
-            Films film = db.Films.Include("FilmCategory")
+            Films film =db.Films
                 .Where(f => f.FName == filmName).FirstOrDefault();
             return View(film);
         }
