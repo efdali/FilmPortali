@@ -2,91 +2,135 @@ window.addEventListener('DOMContentLoaded', (event) => {
     $(".kind-container").hide();
 });
 
-$("#kinds").click(function(){
+$("#kinds").click(function () {
     $("#kind-container").toggle();
-}); 
-$("#mobile-kinds").click(function(){
-    var i=$("#mobile-kinds i");
+});
+$("#mobile-kinds").click(function () {
+    var i = $("#mobile-kinds i");
     $("#mobile-kind-container").toggle();
-    changeClass(i,"fas fa-caret-up","fas fa-caret-down",$("#mobile-kind-container").is(":visible"))
-}); 
+    changeClass(i, "fas fa-caret-up", "fas fa-caret-down", $("#mobile-kind-container").is(":visible"))
+});
 /* Profile */
-$(".show-profile-list").click(function(){
+$(".show-profile-list").click(function () {
     $(".profile-list").toggle();
-    changeClass($(this),"fas fa-caret-up","fas fa-caret-down",$(".profile-list").is(":visible"));
+    changeClass($(this), "fas fa-caret-up", "fas fa-caret-down", $(".profile-list").is(":visible"));
 });
 
 $('.owl-carousel').owlCarousel({
-    loop:true,
-    margin:15,
-    dots:true,
-    autoplay:true,
-    autoplayTimeout:3000,
-    autoplayHoverPause:true,
-    responsiveClass:true,
-    responsive:{
-        0:{
-            items:1,
-            nav:true
+    loop: true,
+    margin: 15,
+    dots: true,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    autoplayHoverPause: true,
+    responsiveClass: true,
+    responsive: {
+        0: {
+            items: 1,
+            nav: true
         },
-        600:{
-            items:3,
-            nav:true
+        600: {
+            items: 3,
+            nav: true
         },
-        1000:{
-            items:6,
-            nav:true,
-            loop:true
+        1000: {
+            items: 6,
+            nav: true,
+            loop: true
         }
     }
 });
 
-$(".search").focus(function(){
-    $(".search-film-list").css("display","block");
+$(".search").focus(function () {
+    $(".search-film-list").css("display", "block");
 });
-$(".search").blur(function(){
-    $(".search-film-list").css("display","none");
+$(".search").blur(function () {
+    $(".search-film-list").css("display", "none");
 });
 
 /* Mobile Search */
-$(".mobile-search-icon").click(function(){
+$(".mobile-search-icon").click(function () {
     $("#mobile-search-container").show();
     $(this).hide();
     $("#mobile-search-input").focus();
 });
 
-$("#mobile-search-input").blur(function(){
+$("#mobile-search-input").blur(function () {
     $("#mobile-search-container").hide();
     $(".mobile-search-icon").show();
 });
 /* Mobile Search */
-$("#watch").click(function(){
+$("#watch").click(function () {
     $("#source").toggle();
 });
 
-$("#open-header").click(function(){
+$("#open-header").click(function () {
     $(".header-container").toggle();
-    changeClass($(this),"fas fa-times","fas fa-bars",$(".header-container").is(":visible"));
+    changeClass($(this), "fas fa-times", "fas fa-bars", $(".header-container").is(":visible"));
 });
 
 
-$(".profile-btns a").click(function(event){
+$(".profile-btns a").click(function (event) {
     event.preventDefault();
     $(this).parent().children().addClass("active");
     $(this).parent().siblings().children().removeClass("active");
-    var tab=$(this).attr("href");
-    $(".profile-wrapper").not(tab).css("display","none");
+    var tab = $(this).attr("href");
+    $(".profile-wrapper").not(tab).css("display", "none");
     $(tab).fadeIn();
 });
 
 
 
-function changeClass(view,c1,c2,status){
+function changeClass(view, c1, c2, status) {
     view.removeClass();
-    if(status){
+    if (status) {
         view.addClass(c1);
-    }else{
+    } else {
         view.addClass(c2);
     }
 
 }
+
+
+
+$("#profile-save").click(function (event) {
+
+    var first_visible_tab_index = $(".profile-wrapper").index($(".profile-wrapper:visible:eq(0)"));
+    if (first_visible_tab_index == 0) {
+        var form = $("#profile-form");
+
+        $.ajax({
+            url: "/Profile/UpdateInfo",
+            data: form.serialize(),
+            type: "POST",
+            success: function () {
+                alert("Bilgileriniz Güncellendi.");
+            },
+            error: function () {
+                alert("Bilgileriniz Güncellenirken Bir Hata Oluþtu.\nLütfen Daha Sonra Tekrar Deneyin.");
+            }
+        });
+
+
+    } else if (first_visible_tab_index == 1) {
+
+        var form = document.getElementById("account-form");
+        let formData = new FormData(form);
+        formData.append("image", $("#image"));
+        $.ajax({
+            url: "/Profile/UpdateAccount",
+            data: formData,
+            type: "POST",
+            processData: false,
+            contentType: false,
+            success: function () {
+                alert("Bilgileriniz Güncellendi.");
+            },
+            error: function (data) {
+                alert("Bilgileriniz Güncellenirken Bir Hata Oluþtu.\nLütfen Daha Sonra Tekrar Deneyin."+data);
+            }
+        });
+
+    }
+
+});

@@ -21,9 +21,9 @@ namespace FilmPortalı.Models
         }
     
         public int CId { get; set; }
-        public Nullable<int> CUser { get; set; }
+        public Nullable<int> CUId { get; set; }
         public string CText { get; set; }
-        public Nullable<int> CFilm { get; set; }
+        public Nullable<int> CFId { get; set; }
         public Nullable<System.DateTime> CDate { get; set; }
         public Nullable<bool> CStatus { get; set; }
     

@@ -17,11 +17,11 @@ namespace FilmPortalı.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Films()
         {
-            this.Comments = new HashSet<Comments>();
             this.FilmCategory = new HashSet<FilmCategory>();
             this.FilmCrew = new HashSet<FilmCrew>();
             this.FilmSource = new HashSet<FilmSource>();
             this.Slider = new HashSet<Slider>();
+            this.Comments = new HashSet<Comments>();
         }
     
         public int FId { get; set; }
@@ -32,9 +32,9 @@ namespace FilmPortalı.Models
         public Nullable<System.DateTime> FCDate { get; set; }
         public Nullable<System.DateTime> FUDate { get; set; }
         public string FPoster { get; set; }
+        public string FTrailer { get; set; }
+        public string FCountry { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comments> Comments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FilmCategory> FilmCategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -43,5 +43,7 @@ namespace FilmPortalı.Models
         public virtual ICollection<FilmSource> FilmSource { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Slider> Slider { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Comments> Comments { get; set; }
     }
 }

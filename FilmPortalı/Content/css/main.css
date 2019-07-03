@@ -388,7 +388,7 @@ ul.list-container {
 
 .film-summary{
   height: 135px;
-  overflow: hidden;
+  overflow: scroll;
   display: block;
 }
 .mobile-summary{

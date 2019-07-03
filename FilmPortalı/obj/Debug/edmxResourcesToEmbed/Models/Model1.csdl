@@ -9,20 +9,6 @@
     <Property Name="CStatus" Type="Boolean" />
     <NavigationProperty Name="FilmCategory" Relationship="Self.FK_FilmCategory_Categories" FromRole="Categories" ToRole="FilmCategory" />
   </EntityType>
-  <EntityType Name="Comments">
-    <Key>
-      <PropertyRef Name="CId" />
-    </Key>
-    <Property Name="CId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CUser" Type="Int32" />
-    <Property Name="CText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="CFilm" Type="Int32" />
-    <Property Name="CDate" Type="DateTime" Precision="3" />
-    <Property Name="CStatus" Type="Boolean" />
-    <NavigationProperty Name="Films" Relationship="Self.FK_Comments_Films" FromRole="Comments" ToRole="Films" />
-    <NavigationProperty Name="Users" Relationship="Self.FK_Comments_Users" FromRole="Comments" ToRole="Users" />
-    <NavigationProperty Name="SubComments" Relationship="Self.FK_SubComments_Comments" FromRole="Comments" ToRole="SubComments" />
-  </EntityType>
   <EntityType Name="Crews">
     <Key>
       <PropertyRef Name="CId" />
@@ -30,7 +16,7 @@
     <Property Name="CId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="CBirthday" Type="DateTime" Precision="0" />
-    <Property Name="CPicture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CPicture" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="CLife" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="FilmCrew" Relationship="Self.FK_FilmCrew_Crews" FromRole="Crews" ToRole="FilmCrew" />
   </EntityType>
@@ -49,7 +35,7 @@
       <PropertyRef Name="FCId" />
     </Key>
     <Property Name="FCId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="FCMission" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FCMission" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="FId" Type="Int32" />
     <Property Name="CId" Type="Int32" />
     <NavigationProperty Name="Crews" Relationship="Self.FK_FilmCrew_Crews" FromRole="FilmCrew" ToRole="Crews" />
@@ -67,11 +53,13 @@
     <Property Name="FCDate" Type="DateTime" Precision="3" />
     <Property Name="FUDate" Type="DateTime" Precision="3" />
     <Property Name="FPoster" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Films" FromRole="Films" ToRole="Comments" />
     <NavigationProperty Name="FilmCategory" Relationship="Self.FK_FilmCategory_Films" FromRole="Films" ToRole="FilmCategory" />
     <NavigationProperty Name="FilmCrew" Relationship="Self.FK_FilmCrew_Films" FromRole="Films" ToRole="FilmCrew" />
     <NavigationProperty Name="FilmSource" Relationship="Self.FK_FilmSource_Films" FromRole="Films" ToRole="FilmSource" />
     <NavigationProperty Name="Slider" Relationship="FilmPortaliModel.FK_Slider_Films" FromRole="Films" ToRole="Slider" />
+    <Property Name="FTrailer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Comments" Relationship="FilmPortaliModel.FK_Comments_Films1" FromRole="Films" ToRole="Comments" />
+    <Property Name="FCountry" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="FilmSource">
     <Key>
@@ -93,19 +81,6 @@
     <Property Name="SStatus" Type="Boolean" />
     <NavigationProperty Name="FilmSource" Relationship="Self.FK_FilmSource_Sources" FromRole="Sources" ToRole="FilmSource" />
   </EntityType>
-  <EntityType Name="SubComments">
-    <Key>
-      <PropertyRef Name="SCId" />
-    </Key>
-    <Property Name="SCId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="SCUser" Type="Int32" />
-    <Property Name="SCComment" Type="Int32" />
-    <Property Name="SCText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="SCDate" Type="DateTime" Precision="3" />
-    <Property Name="SCStatus" Type="Boolean" />
-    <NavigationProperty Name="Comments" Relationship="Self.FK_SubComments_Comments" FromRole="SubComments" ToRole="Comments" />
-    <NavigationProperty Name="Users" Relationship="Self.FK_SubComments_Users" FromRole="SubComments" ToRole="Users" />
-  </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
@@ -116,25 +91,6 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
-  <EntityType Name="Users">
-    <Key>
-      <PropertyRef Name="UId" />
-    </Key>
-    <Property Name="UId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UNick" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="UMail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="UPasswd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="UStatus" Type="Boolean" />
-    <Property Name="URole" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-    <Property Name="UDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Users" FromRole="Users" ToRole="Comments" />
-    <NavigationProperty Name="SubComments" Relationship="Self.FK_SubComments_Users" FromRole="Users" ToRole="SubComments" />
-    <Property Name="UImage" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="UBirthDate" Type="DateTime" Precision="0" />
-    <Property Name="UGender" Type="Boolean" />
-    <Property Name="UAppear" Type="Boolean" />
-    <Property Name="UInfo" Type="Boolean" />
-  </EntityType>
   <Association Name="FK_FilmCategory_Categories">
     <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
     <End Role="FilmCategory" Type="Self.FilmCategory" Multiplicity="*" />
@@ -144,42 +100,6 @@
       </Principal>
       <Dependent Role="FilmCategory">
         <PropertyRef Name="CId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Comments_Films">
-    <End Role="Films" Type="Self.Films" Multiplicity="0..1" />
-    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Films">
-        <PropertyRef Name="FId" />
-      </Principal>
-      <Dependent Role="Comments">
-        <PropertyRef Name="CFilm" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Comments_Users">
-    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UId" />
-      </Principal>
-      <Dependent Role="Comments">
-        <PropertyRef Name="CUser" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SubComments_Comments">
-    <End Role="Comments" Type="Self.Comments" Multiplicity="0..1" />
-    <End Role="SubComments" Type="Self.SubComments" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Comments">
-        <PropertyRef Name="CId" />
-      </Principal>
-      <Dependent Role="SubComments">
-        <PropertyRef Name="SCComment" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -243,45 +163,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_SubComments_Users">
-    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-    <End Role="SubComments" Type="Self.SubComments" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UId" />
-      </Principal>
-      <Dependent Role="SubComments">
-        <PropertyRef Name="SCUser" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="FilmPortaliEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Categories" EntityType="Self.Categories" />
-    <EntitySet Name="Comments" EntityType="Self.Comments" />
     <EntitySet Name="Crews" EntityType="Self.Crews" />
     <EntitySet Name="FilmCategory" EntityType="Self.FilmCategory" />
     <EntitySet Name="FilmCrew" EntityType="Self.FilmCrew" />
     <EntitySet Name="Films" EntityType="Self.Films" />
     <EntitySet Name="FilmSource" EntityType="Self.FilmSource" />
     <EntitySet Name="Sources" EntityType="Self.Sources" />
-    <EntitySet Name="SubComments" EntityType="Self.SubComments" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-    <EntitySet Name="Users" EntityType="Self.Users" />
     <AssociationSet Name="FK_FilmCategory_Categories" Association="Self.FK_FilmCategory_Categories">
       <End Role="Categories" EntitySet="Categories" />
       <End Role="FilmCategory" EntitySet="FilmCategory" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Comments_Films" Association="Self.FK_Comments_Films">
-      <End Role="Films" EntitySet="Films" />
-      <End Role="Comments" EntitySet="Comments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Comments_Users" Association="Self.FK_Comments_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Comments" EntitySet="Comments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SubComments_Comments" Association="Self.FK_SubComments_Comments">
-      <End Role="Comments" EntitySet="Comments" />
-      <End Role="SubComments" EntitySet="SubComments" />
     </AssociationSet>
     <AssociationSet Name="FK_FilmCrew_Crews" Association="Self.FK_FilmCrew_Crews">
       <End Role="Crews" EntitySet="Crews" />
@@ -303,14 +196,29 @@
       <End Role="Sources" EntitySet="Sources" />
       <End Role="FilmSource" EntitySet="FilmSource" />
     </AssociationSet>
-    <AssociationSet Name="FK_SubComments_Users" Association="Self.FK_SubComments_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="SubComments" EntitySet="SubComments" />
-    </AssociationSet>
     <EntitySet Name="Slider" EntityType="FilmPortaliModel.Slider" />
     <AssociationSet Name="FK_Slider_Films" Association="FilmPortaliModel.FK_Slider_Films">
       <End Role="Films" EntitySet="Films" />
       <End Role="Slider" EntitySet="Slider" />
+    </AssociationSet>
+    <EntitySet Name="Users" EntityType="FilmPortaliModel.Users" />
+    <EntitySet Name="Comments" EntityType="FilmPortaliModel.Comments" />
+    <AssociationSet Name="FK_Comments_Films1" Association="FilmPortaliModel.FK_Comments_Films1">
+      <End Role="Films" EntitySet="Films" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comments_Users1" Association="FilmPortaliModel.FK_Comments_Users1">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <EntitySet Name="SubComments" EntityType="FilmPortaliModel.SubComments" />
+    <AssociationSet Name="FK_SubComments_Comments" Association="FilmPortaliModel.FK_SubComments_Comments">
+      <End Role="Comments" EntitySet="Comments" />
+      <End Role="SubComments" EntitySet="SubComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubComments_Users" Association="FilmPortaliModel.FK_SubComments_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="SubComments" EntitySet="SubComments" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Slider">
@@ -332,6 +240,105 @@
       </Principal>
       <Dependent Role="Slider">
         <PropertyRef Name="SFId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UId" />
+    </Key>
+    <Property Name="UId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UNick" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UMail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UPasswd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="USurname" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="UInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UImage" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="UBirthDate" Type="DateTime" Precision="0" />
+    <Property Name="UGender" Type="Boolean" />
+    <Property Name="UTwitter" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="UInstagram" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="UAppear" Type="Boolean" />
+    <Property Name="UNews" Type="Boolean" />
+    <Property Name="UDate" Type="DateTime" Precision="3" />
+    <Property Name="UStatus" Type="Boolean" />
+    <Property Name="URole" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Comments" Relationship="FilmPortaliModel.FK_Comments_Users1" FromRole="Users" ToRole="Comments" />
+    <NavigationProperty Name="SubComments" Relationship="FilmPortaliModel.FK_SubComments_Users" FromRole="Users" ToRole="SubComments" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="CId" />
+    </Key>
+    <Property Name="CId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CUId" Type="Int32" />
+    <Property Name="CText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CFId" Type="Int32" />
+    <Property Name="CDate" Type="DateTime" Precision="3" />
+    <Property Name="CStatus" Type="Boolean" />
+    <NavigationProperty Name="Films" Relationship="FilmPortaliModel.FK_Comments_Films1" FromRole="Comments" ToRole="Films" />
+    <NavigationProperty Name="Users" Relationship="FilmPortaliModel.FK_Comments_Users1" FromRole="Comments" ToRole="Users" />
+    <NavigationProperty Name="SubComments" Relationship="FilmPortaliModel.FK_SubComments_Comments" FromRole="Comments" ToRole="SubComments" />
+  </EntityType>
+  <Association Name="FK_Comments_Films1">
+    <End Type="FilmPortaliModel.Films" Role="Films" Multiplicity="0..1" />
+    <End Type="FilmPortaliModel.Comments" Role="Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Films">
+        <PropertyRef Name="FId" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="CFId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comments_Users1">
+    <End Type="FilmPortaliModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="FilmPortaliModel.Comments" Role="Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UId" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="CUId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="SubComments">
+    <Key>
+      <PropertyRef Name="SCId" />
+    </Key>
+    <Property Name="SCId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SCUId" Type="Int32" />
+    <Property Name="SCCId" Type="Int32" />
+    <Property Name="SCText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SCDate" Type="DateTime" Precision="3" />
+    <Property Name="SCStatus" Type="Boolean" />
+    <NavigationProperty Name="Comments" Relationship="FilmPortaliModel.FK_SubComments_Comments" FromRole="SubComments" ToRole="Comments" />
+    <NavigationProperty Name="Users" Relationship="FilmPortaliModel.FK_SubComments_Users" FromRole="SubComments" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK_SubComments_Comments">
+    <End Type="FilmPortaliModel.Comments" Role="Comments" Multiplicity="0..1" />
+    <End Type="FilmPortaliModel.SubComments" Role="SubComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comments">
+        <PropertyRef Name="CId" />
+      </Principal>
+      <Dependent Role="SubComments">
+        <PropertyRef Name="SCCId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubComments_Users">
+    <End Type="FilmPortaliModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="FilmPortaliModel.SubComments" Role="SubComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UId" />
+      </Principal>
+      <Dependent Role="SubComments">
+        <PropertyRef Name="SCUId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

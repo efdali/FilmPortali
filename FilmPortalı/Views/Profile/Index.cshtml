@@ -1,16 +1,16 @@
-﻿@model FilmPortalı.Models.Users
+﻿@model FilmPortalı.ViewModel.ProfileViewModel
 @{
     ViewBag.Title = "Profil";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container" style="text-align: right;margin-bottom: 0">
-    <button class="btn btn-save">Kaydet</button>
+    <button class="btn btn-save" id="profile-save">Kaydet</button>
 </div>
 
 <div class="container tabs" style="margin-top: 5px">
     <div class="sidebar">
-        <img src="~/Content/img/bradpitt.jpg" alt="Brad" width="50" height="50">
+        <img src="@Session["kullaniciResim"]" alt="@User.Identity.Name" width="50" height="50">
         <h4 style="margin:0">Arwald</h4>
 
         <ul class="profile-btns">
@@ -22,150 +22,112 @@
     </div>
 
 
+
+
     <div class="profile-wrapper" id="profile" style="display: block">
-
-        <div class="form-group">
-            <label for="ad">Ad</label>
-            <input type="text" class="input-item profile-input" placeholder="ad" id="ad">
-        </div>
-        <div class="form-group">
-            <label for="soyad">Soyad</label>
-            <input type="text" class="input-item profile-input" placeholder="soyad" id="soyad"><br><br>
-        </div>
-        <div class="form-group w25">
-            <label for="date">Doğum Tarihi</label>
-            <input type="date" class="input-item profile-input" id="date"></input:d>
-        </div>
-        <div class="form-group w25">
-            <label for="gender">Cinsiyet</label>
-            <select name="gender" id="gender" class="input-item profile-input select-input" id="gender">
-                <option value="0">Erkek</option>
-                <option value="1">Kız</option>
-            </select>
-        </div>
-        <div class="form-group w25">
-            <label for="twitter">Twitter k. adı</label>
-            <input type="text" class="input-item profile-input" placeholder="twitter" id="twitter">
-        </div>
-        <div class="form-group w25">
-            <label for="instagram">İnstagram k. adı</label>
-            <input type="text" class="input-item profile-input" placeholder="instagram" id="instagram">
-        </div>
-        <div class="form-group w100">
-            <label for="hakkımda">Hakkımda</label>
-            <textarea class="textarea info-input" rows="8" placeholder="hakkımda" id="hakkımda"></textarea>
-        </div>
-
+        @using (Html.BeginForm("UpdateInfo", "Profile", FormMethod.Post, new { id = "profile-form" }))
+        {
+            @Html.HiddenFor(m => m.user.UId)
+            <div class="form-group">
+                <label for="ad">Ad</label>
+                @Html.TextBoxFor(m => m.user.UName, new { @class = "input-item profile-input", placeholder = "ad" })
+            </div>
+            <div class="form-group">
+                <label for="soyad">Soyad</label>
+                @Html.TextBoxFor(m => m.user.USurname, new { @class = "input-item profile-input", placeholder = "soyad" })
+            </div>
+            <div class="form-group w25">
+                <label for="date">Doğum Tarihi</label>
+                @Html.TextBoxFor(m => m.user.UBirthDate, new { @class = "input-item profile-input", type = "date" })
+            </div>
+            <div class="form-group w25">
+                <label for="gender">Cinsiyet</label>
+                @Html.DropDownList("gender", new List<SelectListItem>
+                      { new SelectListItem{Text="Erkek", Value="0"},
+                        new SelectListItem{Text="Kız", Value="1"}}, new { @class = "input-item profile-input select-input" })
+            </div>
+            <div class="form-group w25">
+                <label for="twitter">Twitter k. adı</label>
+                @Html.TextBoxFor(m => m.user.UTwitter, new { @class = "input-item profile-input", placeholder = "twitter", id = "twitter" })
+            </div>
+            <div class="form-group w25">
+                <label for="instagram">İnstagram k. adı</label>
+                @Html.TextBoxFor(m => m.user.UInstagram, new { @class = "input-item profile-input", placeholder = "instagram", id = "instagram" })
+            </div>
+            <div class="form-group w100">
+                <label for="hakkımda">Hakkımda</label>
+                @Html.TextAreaFor(m => m.user.UInfo, new { @class = "textarea info-input", placeholder = "hakkımda", id = "hakkımda", rows = "8" })
+            </div>
+        }
     </div>
 
     <div class="profile-wrapper" id="account">
 
-        <div class="form-group">
-            <label for="img">Profil Resmi</label>
-            <input type="file" class="input-item profile-input" placeholder="ad" id="img">
-        </div>
-        <div class="form-group">
-            <label for="url">Resim URL'si</label>
-            <input type="text" class="input-item profile-input" placeholder="url" id="url"><br><br>
-        </div>
-        <h3>Şifre Değiştir</h3>
-        <div class="form-group">
-            <label for="passwd">Yeni Şifre</label>
-            <input type="password" class="input-item profile-input" placeholder="yeni şifre" id="passwd"></input:d>
-        </div>
-        <div class="form-group">
-            <label for="npasswd">Yeni Şifre Tekrar</label>
-            <input type="password" class="input-item profile-input" placeholder="yeni şifre tekrar" id="npasswd">
-            </input:d>
-        </div>
-        <h3>E-Posta Değiştir</h3>
-        <div class="form-group">
-            <label for="e-posta">Yeni e-posta</label>
-            <input type="text" class="input-item profile-input" placeholder="yeni e-posta" id="e-posta">
-        </div>
-        <div class="form-group">
-            <label for="ne-posta">Yeni e-posta tekrar</label>
-            <input type="text" class="input-item profile-input" placeholder="yeni e-posta tekrar" id="ne-posta">
-        </div>
-        <div class="form-group w100">
-            <input type="checkbox" id="mail">
-            <label for="mail">Yeni eklenen filmlerden haberdar olmak istiyorum.</label>
-            <br>
-            <input type="checkbox" id="status">
-            <label for="status">Kullanıcılar profilimi görüntüleyebilsin.</label>
-        </div>
-
+        @using (Html.BeginForm("UpdateInfo", "Profile", FormMethod.Post, new { id = "account-form", enctype = "multipart/form-data" }))
+        {
+            @Html.HiddenFor(m => m.user.UId)
+            <div class="form-group">
+                <label for="img">Profil Resmi</label>
+                @Html.TextBox("image","", new { @class = "input-item profile-input", id = "image",type="file" })
+            </div>
+            <div class="form-group">
+                <label for="url">Veya Resim URL'si</label>
+                @Html.TextBoxFor(m => m.user.UImage, new { @class = "input-item profile-input", placeholder = "url", id = "url" })
+            </div>
+            <h3>Şifre Değiştir</h3>
+            <div class="form-group">
+                <label for="passwd">Yeni Şifre</label>
+                @Html.TextBoxFor(m => m.user.UPasswd, new { @class = "input-item profile-input", placeholder = "yeni şifre", id = "passwd", type = "password" })
+            </div>
+            <div class="form-group">
+                <label for="npasswd">Yeni Şifre Tekrar</label>
+                @Html.TextBoxFor(m => m.user.UPasswd, new { @class = "input-item profile-input", placeholder = "yeni şifre tekrar", id = "npasswd", type = "password" })
+            </div>
+            <h3>E-Posta Değiştir</h3>
+            <div class="form-group">
+                <label for="e-posta">Yeni e-posta</label>
+                @Html.TextBoxFor(m => m.user.UMail, new { @class = "input-item profile-input", placeholder = "yeni e-posta", id = "e-posta", disabled = "true" })
+            </div>
+            <div class="form-group">
+                <label for="ne-posta">Yeni e-posta tekrar</label>
+                @Html.TextBoxFor(m => m.user.UMail, new { @class = "input-item profile-input", placeholder = "yeni e-posta tekrar", id = "ne-posta", disabled = "true" })
+            </div>
+            <div class="form-group w100">
+                @Html.CheckBoxFor(m => m.user.UNews, new { id = "mail" })
+                <label for="mail">Yeni eklenen filmlerden haberdar olmak istiyorum.</label>
+                <br>
+                @Html.CheckBoxFor(m => m.user.UAppear, new { id = "status" })
+                <label for="status">Kullanıcılar profilimi görüntüleyebilsin.</label>
+            </div>
+        }
     </div>
+
 
     <div class="profile-wrapper" id="comments">
 
-        <div class="container">
-            <div style="display: flex;align-items: center">
-                <b class="active">Kahpe Bizans / yorum:</b>
-                <div class="edit" style="margin-left: auto"><i class="fas fa-edit"></i> Düzenle &nbsp;</div>
-                <div class="edit"> <i class="fas fa-trash "></i> Sil</div>
-            </div>
+        @if (Model.comments.Count > 0)
+        {
+            foreach (var comments in Model.comments)
+            {
+                <div class="container">
+                    <div style="display: flex;align-items: center">
+                        <b class="active">@comments.Films.FName / yorum:</b>
+                        <a class="edit" style="margin-left: auto"><i class="fas fa-edit"></i> Düzenle &nbsp;</a>
+                        <a class="edit"> <i class="fas fa-trash "></i> Sil</a>
+                    </div>
 
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet, nibh quis viverra
-                pellentesque, velit odio viverra dolor, ac posuere arcu leo quis tellus. Sed non imperdiet
-                neque.
-                Cras venenatis diam euismod faucibus venenatis. Integer a fringilla turpis. Cras lacinia
-                quam
-                molestie, vestibulum tortor eu, bibendum ligula. Donec nec turpis pellentesque, fermentum
-                leo id,
-                porta lorem. Curabitur posuere iaculis felis ut pharetra. Interdum et malesuada fames ac
-                ante ipsum
-                primis in faucibus.
-            </p>
+                    <p>
+                        @comments.CText
+                    </p>
 
 
-        </div>
-        <div class="container">
-            <div style="display: flex;align-items: center">
-                <b class="active">Kahpe Bizans / yorum:</b>
-                <div class="edit" style="margin-left: auto"><i class="fas fa-edit"></i> Düzenle &nbsp;</div>
-                <div class="edit"> <i class="fas fa-trash "></i> Sil</div>
-            </div>
-
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet, nibh quis viverra
-                pellentesque, velit odio viverra dolor, ac posuere arcu leo quis tellus. Sed non imperdiet
-                neque.
-                Cras venenatis diam euismod faucibus venenatis. Integer a fringilla turpis. Cras lacinia
-                quam
-                molestie, vestibulum tortor eu, bibendum ligula. Donec nec turpis pellentesque, fermentum
-                leo id,
-                porta lorem. Curabitur posuere iaculis felis ut pharetra. Interdum et malesuada fames ac
-                ante ipsum
-                primis in faucibus.
-            </p>
-
-
-        </div>
-        <div class="container">
-            <div style="display: flex;align-items: center">
-                <b class="active">Kahpe Bizans / yorum:</b>
-                <div class="edit" style="margin-left: auto"><i class="fas fa-edit"></i> Düzenle &nbsp;</div>
-                <div class="edit"> <i class="fas fa-trash "></i> Sil</div>
-            </div>
-
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet, nibh quis viverra
-                pellentesque, velit odio viverra dolor, ac posuere arcu leo quis tellus. Sed non imperdiet
-                neque.
-                Cras venenatis diam euismod faucibus venenatis. Integer a fringilla turpis. Cras lacinia
-                quam
-                molestie, vestibulum tortor eu, bibendum ligula. Donec nec turpis pellentesque, fermentum
-                leo id,
-                porta lorem. Curabitur posuere iaculis felis ut pharetra. Interdum et malesuada fames ac
-                ante ipsum
-                primis in faucibus.
-            </p>
-
-
-        </div>
-
+                </div>
+            }
+        }
+        else
+        {
+            <p>Yorumunuz Bulunmamaktadır.</p>
+        }
 
     </div>
 

@@ -13,9 +13,9 @@
       <PropertyRef Name="CId" />
     </Key>
     <Property Name="CId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CUser" Type="int" />
+    <Property Name="CUId" Type="int" />
     <Property Name="CText" Type="text" />
-    <Property Name="CFilm" Type="int" />
+    <Property Name="CFId" Type="int" />
     <Property Name="CDate" Type="datetime" />
     <Property Name="CStatus" Type="bit" />
   </EntityType>
@@ -26,7 +26,7 @@
     <Property Name="CId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CName" Type="varchar" MaxLength="50" />
     <Property Name="CBirthday" Type="smalldatetime" />
-    <Property Name="CPicture" Type="varchar" MaxLength="50" />
+    <Property Name="CPicture" Type="varchar" MaxLength="250" />
     <Property Name="CLife" Type="text" />
   </EntityType>
   <EntityType Name="FilmCategory">
@@ -42,9 +42,9 @@
       <PropertyRef Name="FCId" />
     </Key>
     <Property Name="FCId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FCMission" Type="varchar" MaxLength="50" />
     <Property Name="FId" Type="int" />
     <Property Name="CId" Type="int" />
+    <Property Name="FCMission" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Films">
     <Key>
@@ -54,10 +54,12 @@
     <Property Name="FName" Type="varchar" MaxLength="50" />
     <Property Name="FSummary" Type="text" />
     <Property Name="FYear" Type="smalldatetime" />
+    <Property Name="FCountry" Type="varchar" MaxLength="250" />
     <Property Name="FImdb" Type="float" />
+    <Property Name="FPoster" Type="varchar" MaxLength="250" />
+    <Property Name="FTrailer" Type="text" />
     <Property Name="FCDate" Type="datetime" />
     <Property Name="FUDate" Type="datetime" />
-    <Property Name="FPoster" Type="varchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="FilmSource">
     <Key>
@@ -90,8 +92,8 @@
       <PropertyRef Name="SCId" />
     </Key>
     <Property Name="SCId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SCUser" Type="int" />
-    <Property Name="SCComment" Type="int" />
+    <Property Name="SCUId" Type="int" />
+    <Property Name="SCCId" Type="int" />
     <Property Name="SCText" Type="text" />
     <Property Name="SCDate" Type="datetime" />
     <Property Name="SCStatus" Type="bit" />
@@ -114,16 +116,21 @@
     <Property Name="UNick" Type="varchar" MaxLength="50" />
     <Property Name="UMail" Type="varchar" MaxLength="50" />
     <Property Name="UPasswd" Type="varchar" MaxLength="50" />
+    <Property Name="UName" Type="nchar" MaxLength="10" />
+    <Property Name="USurname" Type="nchar" MaxLength="10" />
+    <Property Name="UInfo" Type="text" />
     <Property Name="UImage" Type="varchar" MaxLength="250" />
-    <Property Name="UBirthDate" Type="smalldatetime" />
+    <Property Name="UBirthDate" Type="date" />
     <Property Name="UGender" Type="bit" />
+    <Property Name="UTwitter" Type="varchar" MaxLength="250" />
+    <Property Name="UInstagram" Type="varchar" MaxLength="250" />
+    <Property Name="UAppear" Type="bit" />
+    <Property Name="UNews" Type="bit" />
+    <Property Name="UDate" Type="datetime" />
     <Property Name="UStatus" Type="bit" />
     <Property Name="URole" Type="varchar" MaxLength="2" />
-    <Property Name="UAppear" Type="bit" />
-    <Property Name="UInfo" Type="bit" />
-    <Property Name="UDate" Type="datetime" />
   </EntityType>
-  <Association Name="FK_Comments_Films">
+  <Association Name="FK_Comments_Films1">
     <End Role="Films" Type="Self.Films" Multiplicity="0..1" />
     <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
     <ReferentialConstraint>
@@ -131,11 +138,11 @@
         <PropertyRef Name="FId" />
       </Principal>
       <Dependent Role="Comments">
-        <PropertyRef Name="CFilm" />
+        <PropertyRef Name="CFId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Comments_Users">
+  <Association Name="FK_Comments_Users1">
     <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
     <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
     <ReferentialConstraint>
@@ -143,7 +150,7 @@
         <PropertyRef Name="UId" />
       </Principal>
       <Dependent Role="Comments">
-        <PropertyRef Name="CUser" />
+        <PropertyRef Name="CUId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -171,7 +178,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_FilmCrew_Crews">
+  <Association Name="FK_FilmCrew_Crews1">
     <End Role="Crews" Type="Self.Crews" Multiplicity="0..1" />
     <End Role="FilmCrew" Type="Self.FilmCrew" Multiplicity="*" />
     <ReferentialConstraint>
@@ -239,7 +246,7 @@
         <PropertyRef Name="CId" />
       </Principal>
       <Dependent Role="SubComments">
-        <PropertyRef Name="SCComment" />
+        <PropertyRef Name="SCCId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -251,7 +258,7 @@
         <PropertyRef Name="UId" />
       </Principal>
       <Dependent Role="SubComments">
-        <PropertyRef Name="SCUser" />
+        <PropertyRef Name="SCUId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -268,11 +275,11 @@
     <EntitySet Name="SubComments" EntityType="Self.SubComments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Comments_Films" Association="Self.FK_Comments_Films">
+    <AssociationSet Name="FK_Comments_Films1" Association="Self.FK_Comments_Films1">
       <End Role="Films" EntitySet="Films" />
       <End Role="Comments" EntitySet="Comments" />
     </AssociationSet>
-    <AssociationSet Name="FK_Comments_Users" Association="Self.FK_Comments_Users">
+    <AssociationSet Name="FK_Comments_Users1" Association="Self.FK_Comments_Users1">
       <End Role="Users" EntitySet="Users" />
       <End Role="Comments" EntitySet="Comments" />
     </AssociationSet>
@@ -284,7 +291,7 @@
       <End Role="Films" EntitySet="Films" />
       <End Role="FilmCategory" EntitySet="FilmCategory" />
     </AssociationSet>
-    <AssociationSet Name="FK_FilmCrew_Crews" Association="Self.FK_FilmCrew_Crews">
+    <AssociationSet Name="FK_FilmCrew_Crews1" Association="Self.FK_FilmCrew_Crews1">
       <End Role="Crews" EntitySet="Crews" />
       <End Role="FilmCrew" EntitySet="FilmCrew" />
     </AssociationSet>

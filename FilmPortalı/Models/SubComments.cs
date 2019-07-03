@@ -15,8 +15,8 @@ namespace FilmPortalı.Models
     public partial class SubComments
     {
         public int SCId { get; set; }
-        public Nullable<int> SCUser { get; set; }
-        public Nullable<int> SCComment { get; set; }
+        public Nullable<int> SCUId { get; set; }
+        public Nullable<int> SCCId { get; set; }
         public string SCText { get; set; }
         public Nullable<System.DateTime> SCDate { get; set; }
         public Nullable<bool> SCStatus { get; set; }
