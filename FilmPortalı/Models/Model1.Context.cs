@@ -37,5 +37,7 @@ namespace FilmPortalı.Models
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Comments> Comments { get; set; }
         public virtual DbSet<SubComments> SubComments { get; set; }
+        public virtual DbSet<List> List { get; set; }
+        public virtual DbSet<Views> Views { get; set; }
     }
 }

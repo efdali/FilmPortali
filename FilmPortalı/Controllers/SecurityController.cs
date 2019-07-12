@@ -12,11 +12,6 @@ namespace FilmPortalı.Controllers
     {
         FilmPortaliEntities db = new FilmPortaliEntities();
 
-        public ActionResult Index()
-        {
-            return Content("Deneme");
-        }
-
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Login(Users users)
@@ -25,35 +20,36 @@ namespace FilmPortalı.Controllers
             {
                 db.Users.Add(users);
                 db.SaveChanges();
-                return View("Mesaj") ;
+                return RedirectToAction("Index#giris-modal","Home");
             }
 
-            return View("Mesaj");
+            return Content("Kayıt Başarısız");
         }
 
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Sign(Users user)
         {
-            var userIn = db.Users.FirstOrDefault(u=>user.UNick==u.UNick&&user.UPasswd==u.UPasswd);
-
+            var userIn = db.Users.FirstOrDefault(u => user.UNick == u.UNick && user.UPasswd == u.UPasswd);
+            string url = Request.UrlReferrer.ToString();
             if (userIn != null)
             {
                 Session["kullaniciId"] = userIn.UId;
                 Session["kullaniciResim"] = userIn.UImage;
                 FormsAuthentication.SetAuthCookie(user.UNick, false);
-                return RedirectToAction("Index","Home");
+                return Redirect(url);
             }
 
-            return Content("Mesaj");
+            return Content("Giriş Başarısız");
         }
 
         public ActionResult LogOut()
         {
+            string comingUrl = Request.UrlReferrer.ToString();
             FormsAuthentication.SignOut();
             Session.Remove("kullaniciId");
             Session.Remove("kullaniciResim");
-            return RedirectToAction("Index","Home");
+            return Redirect(comingUrl);
         }
     }
 }

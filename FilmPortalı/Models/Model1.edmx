@@ -63,6 +63,7 @@
           <Property Name="FImdb" Type="float" />
           <Property Name="FPoster" Type="varchar" MaxLength="250" />
           <Property Name="FTrailer" Type="text" />
+          <Property Name="FSeo" Type="varchar" MaxLength="50" />
           <Property Name="FCDate" Type="datetime" />
           <Property Name="FUDate" Type="datetime" />
         </EntityType>
@@ -73,6 +74,15 @@
           <Property Name="FSId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FId" Type="int" />
           <Property Name="SId" Type="int" />
+        </EntityType>
+        <EntityType Name="List">
+          <Key>
+            <PropertyRef Name="LId" />
+          </Key>
+          <Property Name="LId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LUId" Type="int" />
+          <Property Name="LFId" Type="int" />
+          <Property Name="LType" Type="int" />
         </EntityType>
         <EntityType Name="Slider">
           <Key>
@@ -134,6 +144,14 @@
           <Property Name="UDate" Type="datetime" />
           <Property Name="UStatus" Type="bit" />
           <Property Name="URole" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Views">
+          <Key>
+            <PropertyRef Name="VId" />
+          </Key>
+          <Property Name="VId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VFId" Type="int" />
+          <Property Name="VUId" Type="int" />
         </EntityType>
         <Association Name="FK_Comments_Films1">
           <End Role="Films" Type="Self.Films" Multiplicity="0..1" />
@@ -231,6 +249,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_List_Films">
+          <End Role="Films" Type="Self.Films" Multiplicity="0..1" />
+          <End Role="List" Type="Self.List" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Films">
+              <PropertyRef Name="FId" />
+            </Principal>
+            <Dependent Role="List">
+              <PropertyRef Name="LFId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_List_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="List" Type="Self.List" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="List">
+              <PropertyRef Name="LUId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Slider_Films">
           <End Role="Films" Type="Self.Films" Multiplicity="0..1" />
           <End Role="Slider" Type="Self.Slider" Multiplicity="*" />
@@ -267,6 +309,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Views_Films">
+          <End Role="Films" Type="Self.Films" Multiplicity="0..1" />
+          <End Role="Views" Type="Self.Views" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Films">
+              <PropertyRef Name="FId" />
+            </Principal>
+            <Dependent Role="Views">
+              <PropertyRef Name="VFId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Views_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Views" Type="Self.Views" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Views">
+              <PropertyRef Name="VUId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="FilmPortaliModelStoreContainer">
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
@@ -275,11 +341,13 @@
           <EntitySet Name="FilmCrew" EntityType="Self.FilmCrew" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Films" EntityType="Self.Films" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FilmSource" EntityType="Self.FilmSource" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="List" EntityType="Self.List" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Slider" EntityType="Self.Slider" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sources" EntityType="Self.Sources" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubComments" EntityType="Self.SubComments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Views" EntityType="Self.Views" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Comments_Films1" Association="Self.FK_Comments_Films1">
             <End Role="Films" EntitySet="Films" />
             <End Role="Comments" EntitySet="Comments" />
@@ -312,6 +380,14 @@
             <End Role="Sources" EntitySet="Sources" />
             <End Role="FilmSource" EntitySet="FilmSource" />
           </AssociationSet>
+          <AssociationSet Name="FK_List_Films" Association="Self.FK_List_Films">
+            <End Role="Films" EntitySet="Films" />
+            <End Role="List" EntitySet="List" />
+          </AssociationSet>
+          <AssociationSet Name="FK_List_Users" Association="Self.FK_List_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="List" EntitySet="List" />
+          </AssociationSet>
           <AssociationSet Name="FK_Slider_Films" Association="Self.FK_Slider_Films">
             <End Role="Films" EntitySet="Films" />
             <End Role="Slider" EntitySet="Slider" />
@@ -323,6 +399,14 @@
           <AssociationSet Name="FK_SubComments_Users" Association="Self.FK_SubComments_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="SubComments" EntitySet="SubComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Views_Films" Association="Self.FK_Views_Films">
+            <End Role="Films" EntitySet="Films" />
+            <End Role="Views" EntitySet="Views" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Views_Users" Association="Self.FK_Views_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Views" EntitySet="Views" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -389,6 +473,9 @@
           <Property Name="FTrailer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Comments" Relationship="FilmPortaliModel.FK_Comments_Films1" FromRole="Films" ToRole="Comments" />
           <Property Name="FCountry" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="List" Relationship="FilmPortaliModel.FK_List_Films" FromRole="Films" ToRole="List" />
+          <Property Name="FSeo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Views" Relationship="FilmPortaliModel.FK_Views_Films" FromRole="Films" ToRole="Views" />
         </EntityType>
         <EntityType Name="FilmSource">
           <Key>
@@ -549,6 +636,24 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="SubComments" EntitySet="SubComments" />
           </AssociationSet>
+          <EntitySet Name="List" EntityType="FilmPortaliModel.List" />
+          <AssociationSet Name="FK_List_Films" Association="FilmPortaliModel.FK_List_Films">
+            <End Role="Films" EntitySet="Films" />
+            <End Role="List" EntitySet="List" />
+          </AssociationSet>
+          <AssociationSet Name="FK_List_Users" Association="FilmPortaliModel.FK_List_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="List" EntitySet="List" />
+          </AssociationSet>
+          <EntitySet Name="Views" EntityType="FilmPortaliModel.Views" />
+          <AssociationSet Name="FK_Views_Films" Association="FilmPortaliModel.FK_Views_Films">
+            <End Role="Films" EntitySet="Films" />
+            <End Role="Views" EntitySet="Views" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Views_Users" Association="FilmPortaliModel.FK_Views_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Views" EntitySet="Views" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Slider">
           <Key>
@@ -595,6 +700,8 @@
           <Property Name="URole" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Comments" Relationship="FilmPortaliModel.FK_Comments_Users1" FromRole="Users" ToRole="Comments" />
           <NavigationProperty Name="SubComments" Relationship="FilmPortaliModel.FK_SubComments_Users" FromRole="Users" ToRole="SubComments" />
+          <NavigationProperty Name="List" Relationship="FilmPortaliModel.FK_List_Users" FromRole="Users" ToRole="List" />
+          <NavigationProperty Name="Views" Relationship="FilmPortaliModel.FK_Views_Users" FromRole="Users" ToRole="Views" />
         </EntityType>
         <EntityType Name="Comments">
           <Key>
@@ -671,6 +778,75 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="List">
+          <Key>
+            <PropertyRef Name="LId" />
+          </Key>
+          <Property Name="LId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LUId" Type="Int32" />
+          <Property Name="LFId" Type="Int32" />
+          <Property Name="LType" Type="Int32" />
+          <NavigationProperty Name="Films" Relationship="FilmPortaliModel.FK_List_Films" FromRole="List" ToRole="Films" />
+          <NavigationProperty Name="Users" Relationship="FilmPortaliModel.FK_List_Users" FromRole="List" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_List_Films">
+          <End Type="FilmPortaliModel.Films" Role="Films" Multiplicity="0..1" />
+          <End Type="FilmPortaliModel.List" Role="List" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Films">
+              <PropertyRef Name="FId" />
+            </Principal>
+            <Dependent Role="List">
+              <PropertyRef Name="LFId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_List_Users">
+          <End Type="FilmPortaliModel.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="FilmPortaliModel.List" Role="List" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="List">
+              <PropertyRef Name="LUId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Views">
+          <Key>
+            <PropertyRef Name="VId" />
+          </Key>
+          <Property Name="VId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VFId" Type="Int32" />
+          <Property Name="VUId" Type="Int32" />
+          <NavigationProperty Name="Films" Relationship="FilmPortaliModel.FK_Views_Films" FromRole="Views" ToRole="Films" />
+          <NavigationProperty Name="Users" Relationship="FilmPortaliModel.FK_Views_Users" FromRole="Views" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_Views_Films">
+          <End Type="FilmPortaliModel.Films" Role="Films" Multiplicity="0..1" />
+          <End Type="FilmPortaliModel.Views" Role="Views" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Films">
+              <PropertyRef Name="FId" />
+            </Principal>
+            <Dependent Role="Views">
+              <PropertyRef Name="VFId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Views_Users">
+          <End Type="FilmPortaliModel.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="FilmPortaliModel.Views" Role="Views" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UId" />
+            </Principal>
+            <Dependent Role="Views">
+              <PropertyRef Name="VUId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -719,6 +895,7 @@
           <EntitySetMapping Name="Films">
             <EntityTypeMapping TypeName="FilmPortaliModel.Films">
               <MappingFragment StoreEntitySet="Films">
+                <ScalarProperty Name="FSeo" ColumnName="FSeo" />
                 <ScalarProperty Name="FCountry" ColumnName="FCountry" />
                 <ScalarProperty Name="FTrailer" ColumnName="FTrailer" />
                 <ScalarProperty Name="FId" ColumnName="FId" />
@@ -816,6 +993,25 @@
                 <ScalarProperty Name="SCCId" ColumnName="SCCId" />
                 <ScalarProperty Name="SCUId" ColumnName="SCUId" />
                 <ScalarProperty Name="SCId" ColumnName="SCId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="List">
+            <EntityTypeMapping TypeName="FilmPortaliModel.List">
+              <MappingFragment StoreEntitySet="List">
+                <ScalarProperty Name="LType" ColumnName="LType" />
+                <ScalarProperty Name="LFId" ColumnName="LFId" />
+                <ScalarProperty Name="LUId" ColumnName="LUId" />
+                <ScalarProperty Name="LId" ColumnName="LId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Views">
+            <EntityTypeMapping TypeName="FilmPortaliModel.Views">
+              <MappingFragment StoreEntitySet="Views">
+                <ScalarProperty Name="VUId" ColumnName="VUId" />
+                <ScalarProperty Name="VFId" ColumnName="VFId" />
+                <ScalarProperty Name="VId" ColumnName="VId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

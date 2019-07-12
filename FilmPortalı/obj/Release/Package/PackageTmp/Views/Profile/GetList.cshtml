@@ -1,0 +1,46 @@
+﻿@model FilmPortalı.ViewModel.ProfileListViewModel
+
+<div>
+    <h1>İzleyeceklerim</h1>
+    <div class="film-wrapper">
+        @foreach (var watch in Model.watch)
+        {
+            <div class="film-box">
+                <a href="#" class="remove-list" data-id="@watch.Films.FId" data-type="0"><i class="fas fa-minus-square"></i></a>
+                <a href="/detay/@watch.Films.FSeo">
+                    <img src="@watch.Films.FPoster" class="film-poster" alt="Film Portali @watch.Films.FName" />
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+<div>
+    <h1>Beğendiklerim</h1>
+    <div class="film-wrapper">
+        @foreach (var likes in Model.likes)
+        {
+            <div class="film-box">
+                <a href="#" class="remove-list" data-id="@likes.Films.FId" data-type="1"><i class="fas fa-minus-square"></i></a>
+                <a href="/detay/@likes.Films.FSeo">
+                    <img src="@likes.Films.FPoster" class="film-poster" alt="Film Portali @likes.Films.FName" />
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+<div>
+    <h1>Beğenmediklerim</h1>
+    <div class="film-wrapper">
+        @foreach (var dislikes in Model.dislikes)
+        {
+            <div class="film-box">
+                <a href="#" class="remove-list" data-id="@dislikes.Films.FId" data-type="-1"><i class="fas fa-minus-square"></i></a>
+                <a href="/detay/@dislikes.Films.FSeo">
+                    <img src="@dislikes.Films.FPoster" class="film-poster" alt="Film Portali @dislikes.Films.FName" />
+                </a>
+            </div>
+        }
+    </div>
+</div>

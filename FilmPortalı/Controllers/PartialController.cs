@@ -25,5 +25,11 @@ namespace FilmPortalı.Controllers
         {
             return PartialView();
         }
+
+        public ActionResult SearchFilm(string val)
+        {
+            List<Films> films = db.Films.Where(f => f.FName.ToLower().Contains(val)).Take(5).ToList();
+            return View(films);
+        }
     }
 }

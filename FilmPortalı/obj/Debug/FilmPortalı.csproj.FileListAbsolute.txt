@@ -1,4 +1,3 @@
-C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\bin\FilmPortalı.dll.config
 C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\bin\FilmPortalı.dll
 C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\bin\FilmPortalı.pdb
 C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\bin\roslyn\csc.exe
@@ -66,7 +65,6 @@ C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\obj\Debug\FilmPortalı.csp
 C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\obj\Debug\FilmPortalı.csproj.CopyComplete
 C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\obj\Debug\FilmPortalı.dll
 C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\obj\Debug\FilmPortalı.pdb
-C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\obj\Debug\FilmPortalı.csprojAssemblyReference.cache
 C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\bin\EntityFramework.dll
 C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\bin\EntityFramework.SqlServer.dll
 C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\bin\EntityFramework.xml
@@ -144,3 +142,5 @@ C:\Users\Oktay\Source\Repos\efdali\FilmPortali\FilmPortalı\obj\Debug\FilmPortal
 C:\Users\Oktay\Source\Repos\efdali\FilmPortali\FilmPortalı\obj\Debug\FilmPortalı.csproj.CopyComplete
 C:\Users\Oktay\Source\Repos\efdali\FilmPortali\FilmPortalı\obj\Debug\FilmPortalı.dll
 C:\Users\Oktay\Source\Repos\efdali\FilmPortali\FilmPortalı\obj\Debug\FilmPortalı.pdb
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\bin\FilmPortalı.dll.config
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\obj\Debug\FilmPortalı.csprojAssemblyReference.cache

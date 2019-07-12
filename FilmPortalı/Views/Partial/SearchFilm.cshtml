@@ -1,0 +1,8 @@
+﻿@model List<FilmPortalı.Models.Films>
+@foreach(var film in Model)
+{
+    <a href="/detay/@film.FSeo">
+        <img src="@film.FPoster" alt="@film.FSeo"  width="20%"/>
+        <span>@film.FName (@film.FYear.Value.Year)</span>
+    </a>
+}

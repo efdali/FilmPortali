@@ -19,6 +19,8 @@ namespace FilmPortalı.Models
         {
             this.Comments = new HashSet<Comments>();
             this.SubComments = new HashSet<SubComments>();
+            this.List = new HashSet<List>();
+            this.Views = new HashSet<Views>();
         }
     
         public int UId { get; set; }
@@ -43,5 +45,9 @@ namespace FilmPortalı.Models
         public virtual ICollection<Comments> Comments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SubComments> SubComments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<List> List { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Views> Views { get; set; }
     }
 }

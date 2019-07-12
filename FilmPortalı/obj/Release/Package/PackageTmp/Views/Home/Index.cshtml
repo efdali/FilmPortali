@@ -1,0 +1,37 @@
+﻿@model FilmPortalı.ViewModel.AnasayfaSliderFilmViewModel
+@{
+    ViewBag.Title = "Anasayfa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Slider Start -->
+<div class="container">
+    <h1>Editörün Seçtikleri</h1>
+    <div class="owl-carousel">
+        @foreach (var slider in Model.slider)
+        {
+            <div>
+                <a href="/detay/@slider.Films.FName">
+                    <img src="@slider.Films.FPoster" class="film-poster" alt="@slider.Films.FName"/>
+                </a>
+            </div>
+        }
+    </div>
+</div>
+<!-- Slider End -->
+<!-- Film Container Start -->
+<div class="container">
+    <h1>Son Eklenen Filmler</h1>
+    <div class="film-wrapper">
+        @foreach (var films in Model.film)
+        {
+            <div class="film-box">
+                <a href="/detay/@films.FName">
+                    <img src="@films.FPoster" class="film-poster" alt="@films.FName"/>
+                </a>
+            </div>
+        }
+    </div>
+    <button class="btn btn-more">Daha Fazla Film</button>
+</div>
+<!-- Film Container End -->

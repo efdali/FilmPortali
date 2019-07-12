@@ -1,0 +1,52 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewBag.Title</title>
+
+    <!-- Normalize Css -->
+    <link rel="stylesheet" href="~/Content/css/normalize.css" />
+
+    <!-- Main Css-->
+    <link rel="stylesheet" href="~/Content/css/main.css" />
+
+    <!-- Carousel -->
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css" />
+
+    <!-- Jquery Modal -->
+    <link rel="stylesheet" href="~/Content/css/jquery.modal.min.css" />
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="~/Fonts/IndieFlower.ttf" />
+    <link rel="stylesheet" href="~/Fonts/HindGuntur-Regular.ttf" />
+    <link rel="stylesheet" href="~/Fonts/SourceSansPro-Light.ttf" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Content/fontawesome/css/all.min.css" />
+
+</head>
+<body>
+
+    @{Html.RenderAction("Header", "Partial");}
+
+
+    @RenderBody()
+
+
+    @{Html.RenderAction("Footer", "Partial");}
+
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.modal.min.js"></script>
+    <script src="~/Scripts/owl.carousel.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/main.js"></script>
+</body>
+</html>
