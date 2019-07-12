@@ -8,18 +8,42 @@
 <div class="container">
     <h1>@ViewBag.Header</h1>
     <div class="sort-panel">
-        <b>Sıralama şekli:</b> <a href="#">Ekleme Tarihi</a>-<a href="#" class="active">IMDB puanı</a>-<a href="#">İzlenme Sayısı</a>
+        <b>Sıralama şekli:</b> <a href='@ViewContext.RouteData.Values["routeName"]?sortBy=eklenme' class='@(ViewBag.active=="eklenme" ? "active" : "")'>Ekleme Tarihi</a>-<a href='@ViewContext.RouteData.Values["routeName"]?sortBy=imdb' class='@(ViewBag.active=="imdb" ? "active" : "")'>IMDB puanı</a>-<a href='@ViewContext.RouteData.Values["routeName"]?sortBy=izlenme' class='@(ViewBag.active=="izlenme" ? "active" : "")'>İzlenme Sayısı</a>
     </div>
     <div class="film-wrapper">
-        @foreach (var films in Model)
-        {
-            <div class="film-box">
-                <a href="/detay/@films.FName">
-                    <img src="@films.FPoster" class="film-poster" alt="@films.FName"/>
-                </a>
-            </div>
-        }
+        @{Html.RenderAction("GetType", "Home");}
     </div>
     <button class="btn btn-more">Daha Fazla Film</button>
 </div>
 <!-- Film Container End -->
+
+@section scripts{
+    <script>
+        var page = 0;
+        var sort = window.location.search.trim() != "" ? window.location.search.split("?")[1] : "";
+        var tur = window.location.pathname.split("/")[2];
+        var count=Math.round(@ViewBag.Count/40);
+        $(".btn-more").click(function () {
+            $(".btn-more").html("Yükleniyor...");
+            page += 1;
+            $.ajax({
+                url: "/Home/GetType",
+                data: {
+                    tur,sort,page
+                },
+                type: "GET",
+                success: function (data) {
+                    $(".film-wrapper").append(data);
+                    $(".btn-more").html("Daha Fazla Film");
+                },
+                error: function () { }
+            });
+            if (page == count - 1) {
+                $(this).hide();
+            }
+        });
+
+
+
+    </script>
+}

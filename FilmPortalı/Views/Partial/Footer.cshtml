@@ -8,7 +8,7 @@
 <!-- Signin Modal -->
 <div id="giris-modal" class="modal">
     <a href="#" class="site-logo">SITEADI.COM</a><br><br>
-    @using (Ajax.BeginForm("Sign", "Security", new AjaxOptions { HttpMethod = "POST" }))
+    @using (Html.BeginForm("Sign", "Security", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
         @Html.TextBoxFor(m => m.UNick, new { @class = "input-item", placeholder = "kullanıcı adı" })<br><br>
@@ -23,7 +23,7 @@
 <!-- Login Modal -->
 <div id="kayit-modal" class="modal">
     <a href="#" class="site-logo">SITEADI.COM</a><br><br>
-    @using (Ajax.BeginForm("Login", "Security", new AjaxOptions { HttpMethod = "POST" }))
+    @using (Html.BeginForm("Login", "Security", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
         @Html.TextBoxFor(m => m.UNick, new { @class = "input-item", placeholder = "kullanıcı adı" })<br><br>

@@ -1,4 +1,4 @@
-﻿@model FilmPortalı.ViewModel.AnasayfaSliderFilmViewModel
+﻿@model List<FilmPortalı.Models.Slider>
 @{
     ViewBag.Title = "Anasayfa";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,11 +8,11 @@
 <div class="container">
     <h1>Editörün Seçtikleri</h1>
     <div class="owl-carousel">
-        @foreach (var slider in Model.slider)
+        @foreach (var slider in Model)
         {
             <div>
-                <a href="/detay/@slider.Films.FName">
-                    <img src="@slider.Films.FPoster" class="film-poster" alt="@slider.Films.FName"/>
+                <a href="/detay/@slider.Films.FSeo">
+                    <img src="@slider.Films.FPoster" class="film-poster" alt="@slider.Films.FName" />
                 </a>
             </div>
         }
@@ -21,17 +21,65 @@
 <!-- Slider End -->
 <!-- Film Container Start -->
 <div class="container">
-    <h1>Son Eklenen Filmler</h1>
+    <h1>Son Eklenen Filmler(@ViewBag.Count)</h1>
     <div class="film-wrapper">
-        @foreach (var films in Model.film)
-        {
-            <div class="film-box">
-                <a href="/detay/@films.FName">
-                    <img src="@films.FPoster" class="film-poster" alt="@films.FName"/>
-                </a>
-            </div>
-        }
+        @{ Html.RenderAction("GetFilms", "Home");}
     </div>
     <button class="btn btn-more">Daha Fazla Film</button>
 </div>
 <!-- Film Container End -->
+
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+            $(".owl-carousel").owlCarousel({
+                items: 6,
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: true,
+                autoPlay: true,
+                autoPlayTimeout: 2000,
+                autoplayHoverPause: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: true
+                    },
+                    600: {
+                        items: 3,
+                        nav: true
+                    },
+                    1000: {
+                        items: 6,
+                        nav: true,
+                        loop: true
+                    }
+                }
+            });
+        });
+        var page = 0;
+        var count=Math.round(@ViewBag.Count/40);
+        $(".btn-more").click(function () {
+            page += 1;
+            $(this).html("Yükleniyor...");
+            $.ajax({
+                url: "/Home/GetFilms/" + page,
+                type: "GET",
+                success: function (data) {
+
+                    $(".film-wrapper").append(data);
+                    $(".btn-more").html("Daha Fazla Film");
+                    if (page == count-1) {
+                        $(".btn-more").hide();
+                    }
+                },
+                error: function () {}
+            });
+        });
+
+    </script>
+
+
+}

@@ -19,7 +19,7 @@ namespace FilmPortalı.Controllers
             FilmDetailsViewModel vm = new FilmDetailsViewModel();
             Films film = db.Films
                 .Where(f => f.FSeo == filmName).FirstOrDefault();
-            List<Comments> cmts = db.Comments.Include("SubComments").Where(c => c.CFId == film.FId && c.CStatus == true).OrderBy(c => c.CDate).ToList();
+            List<Comments> cmts = db.Comments.Include("SubComments").Where(c => c.CFId == film.FId && c.CStatus == true).OrderByDescending(c => c.CDate).ToList();
             List<FilmSource> src = db.FilmSource.Where(s => s.FId == film.FId).ToList();
             List<FilmCrew> crew = db.FilmCrew.Include("Crews").Where(c => c.FId == film.FId && c.FCMission == "Oyuncu").ToList();
             FilmCrew director = db.FilmCrew.Include("Crews").Where(fc => fc.FId == film.FId && fc.FCMission == "Yönetmen").FirstOrDefault();

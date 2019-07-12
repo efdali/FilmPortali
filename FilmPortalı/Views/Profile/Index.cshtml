@@ -1,4 +1,4 @@
-﻿@model FilmPortalı.ViewModel.ProfileViewModel
+﻿@model FilmPortalı.Models.Users
 @{
     ViewBag.Title = "Profil";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -27,18 +27,18 @@
     <div class="profile-wrapper" id="profile" style="display: block">
         @using (Html.BeginForm("UpdateInfo", "Profile", FormMethod.Post, new { id = "profile-form" }))
         {
-            @Html.HiddenFor(m => m.user.UId)
+            @Html.HiddenFor(m => m.UId)
             <div class="form-group">
                 <label for="ad">Ad</label>
-                @Html.TextBoxFor(m => m.user.UName, new { @class = "input-item profile-input", placeholder = "ad" })
+                @Html.TextBoxFor(m => m.UName, new { @class = "input-item profile-input", placeholder = "ad" })
             </div>
             <div class="form-group">
                 <label for="soyad">Soyad</label>
-                @Html.TextBoxFor(m => m.user.USurname, new { @class = "input-item profile-input", placeholder = "soyad" })
+                @Html.TextBoxFor(m => m.USurname, new { @class = "input-item profile-input", placeholder = "soyad" })
             </div>
             <div class="form-group w25">
                 <label for="date">Doğum Tarihi</label>
-                @Html.TextBoxFor(m => m.user.UBirthDate, new { @class = "input-item profile-input", type = "date" })
+                @Html.TextBoxFor(m => m.UBirthDate, new { @class = "input-item profile-input", type = "date" })
             </div>
             <div class="form-group w25">
                 <label for="gender">Cinsiyet</label>
@@ -48,15 +48,15 @@
             </div>
             <div class="form-group w25">
                 <label for="twitter">Twitter k. adı</label>
-                @Html.TextBoxFor(m => m.user.UTwitter, new { @class = "input-item profile-input", placeholder = "twitter", id = "twitter" })
+                @Html.TextBoxFor(m => m.UTwitter, new { @class = "input-item profile-input", placeholder = "twitter", id = "twitter" })
             </div>
             <div class="form-group w25">
                 <label for="instagram">İnstagram k. adı</label>
-                @Html.TextBoxFor(m => m.user.UInstagram, new { @class = "input-item profile-input", placeholder = "instagram", id = "instagram" })
+                @Html.TextBoxFor(m => m.UInstagram, new { @class = "input-item profile-input", placeholder = "instagram", id = "instagram" })
             </div>
             <div class="form-group w100">
                 <label for="hakkımda">Hakkımda</label>
-                @Html.TextAreaFor(m => m.user.UInfo, new { @class = "textarea info-input", placeholder = "hakkımda", id = "hakkımda", rows = "8" })
+                @Html.TextAreaFor(m => m.UInfo, new { @class = "textarea info-input", placeholder = "hakkımda", id = "hakkımda", rows = "8" })
             </div>
         }
     </div>
@@ -65,38 +65,38 @@
 
         @using (Html.BeginForm("UpdateInfo", "Profile", FormMethod.Post, new { id = "account-form", enctype = "multipart/form-data" }))
         {
-            @Html.HiddenFor(m => m.user.UId)
+            @Html.HiddenFor(m => m.UId)
             <div class="form-group">
                 <label for="img">Profil Resmi</label>
                 @Html.TextBox("image","", new { @class = "input-item profile-input", id = "image",type="file" })
             </div>
             <div class="form-group">
                 <label for="url">Veya Resim URL'si</label>
-                @Html.TextBoxFor(m => m.user.UImage, new { @class = "input-item profile-input", placeholder = "url", id = "url" })
+                @Html.TextBoxFor(m => m.UImage, new { @class = "input-item profile-input", placeholder = "url", id = "url" })
             </div>
             <h3>Şifre Değiştir</h3>
             <div class="form-group">
                 <label for="passwd">Yeni Şifre</label>
-                @Html.TextBoxFor(m => m.user.UPasswd, new { @class = "input-item profile-input", placeholder = "yeni şifre", id = "passwd", type = "password" })
+                @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item profile-input", placeholder = "yeni şifre", id = "passwd", type = "password" })
             </div>
             <div class="form-group">
                 <label for="npasswd">Yeni Şifre Tekrar</label>
-                @Html.TextBoxFor(m => m.user.UPasswd, new { @class = "input-item profile-input", placeholder = "yeni şifre tekrar", id = "npasswd", type = "password" })
+                @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item profile-input", placeholder = "yeni şifre tekrar", id = "npasswd", type = "password" })
             </div>
             <h3>E-Posta Değiştir</h3>
             <div class="form-group">
                 <label for="e-posta">Yeni e-posta</label>
-                @Html.TextBoxFor(m => m.user.UMail, new { @class = "input-item profile-input", placeholder = "yeni e-posta", id = "e-posta", disabled = "true" })
+                @Html.TextBoxFor(m => m.UMail, new { @class = "input-item profile-input", placeholder = "yeni e-posta", id = "e-posta", disabled = "true" })
             </div>
             <div class="form-group">
                 <label for="ne-posta">Yeni e-posta tekrar</label>
-                @Html.TextBoxFor(m => m.user.UMail, new { @class = "input-item profile-input", placeholder = "yeni e-posta tekrar", id = "ne-posta", disabled = "true" })
+                @Html.TextBoxFor(m => m.UMail, new { @class = "input-item profile-input", placeholder = "yeni e-posta tekrar", id = "ne-posta", disabled = "true" })
             </div>
             <div class="form-group w100">
-                @Html.CheckBoxFor(m => m.user.UNews, new { id = "mail" })
+                @Html.CheckBoxFor(m => m.UNews, new { id = "mail" })
                 <label for="mail">Yeni eklenen filmlerden haberdar olmak istiyorum.</label>
                 <br>
-                @Html.CheckBoxFor(m => m.user.UAppear, new { id = "status" })
+                @Html.CheckBoxFor(m => m.UAppear, new { id = "status" })
                 <label for="status">Kullanıcılar profilimi görüntüleyebilsin.</label>
             </div>
         }

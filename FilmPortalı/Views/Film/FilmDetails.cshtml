@@ -10,31 +10,31 @@
     <div class="wrapper info-wrapper">
         <img src="@Model.film.FPoster" alt="@Model.film.FName" class="film-poster">
         <div class="film-info">
-            <h4><span>Yönetmen:</span>Mahsun Kırmızıgül</h4>
-            <h4><span>Ülke:</span>@Model.film.FCountry</h4>
+            <h4><span>Yönetmen:</span> @ViewBag.Director.Crews.CName</h4>
+            <h4><span>Ülke:</span> @Model.film.FCountry</h4>
             <h4><span>Yapım Yılı:</span> @Model.film.FYear.Value.Year</h4>
             <h4><span>IMDB Puanı:</span> @Model.film.FImdb</h4>
-            <h4><span>Tür:</span>Aksiyon,Dram</h4>
+            <h4><span>Tür:</span> @ViewBag.Categories</h4>
 
             <p class="film-summary">@Model.film.FSummary</p>
         </div>
         <ul class="list-container">
-            <li><i class="far fa-clock"></i> <a href="@Model.film.FTrailer">Fragman İzle</a></li>
+            <li><i class="far fa-clock"></i> <a class="open-film" data-url="@Model.film.FTrailer">Fragman İzle</a></li>
             <li id="watch">
-                <i class="fas fa-play"></i> <a href="#">Filmi İzle</a>
+                <i class="fas fa-play"></i> <a href="#" id="watch-film">Filmi İzle</a>
                 <ul class="list-container" style="position: relative;display: none;" id="source">
                     @foreach (var source in Model.filmSource)
                     {
-                        <li><a href="#video-modal" rel="modal:open" data-url="@source.Sources.SUrl">@source.Sources.SName</a></li>
+                        <li><a href="#video-modal" rel="modal:open" data-url="@source.Sources.SUrl" class="open-film">@source.Sources.SName</a></li>
                     }
                 </ul>
             </li>
             @if (Session["kullaniciId"] != null)
             {
                 <li><i class="fas fa-check"></i> <a href="#" disabled>İzledim</a></li>
-                <li><i class="far fa-clock"></i> <a href="#">Daha Sonra İzle</a></li>
-                <li><i class="far fa-heart"></i> <a href="#">Beğendim</a></li>
-                <li><i class="far fa-thumbs-down"></i> <a href="#">Beğenmedim</a></li>
+                <li id="watched"><i class="far fa-clock"></i> <a href="#" id="list">Daha Sonra İzle</a></li>
+                <li id="likes"><i class="far fa-heart"></i> <a href="#" class="like" data-type="1">Beğendim</a></li>
+                <li id="dislikes"><i class="far fa-thumbs-down"></i> <a href="#" class="like" data-type="-1">Beğenmedim</a></li>
             }
             else
             {
@@ -61,42 +61,52 @@
 
 <div class="container">
     <h1>Yorumlar</h1>
-    @using (Ajax.BeginForm("AddComment", new AjaxOptions { HttpMethod = "POST" }))
+    @if (Session["kullaniciId"] != null)
     {
-        <div class="yorum-input" style="">
-            @Html.AntiForgeryToken()
-            @Html.Hidden("filmId", Model.film.FId)
-            @Html.TextArea("commentText", new { @class = "textarea", style = "width: 90%;resize: none;", placeholder = "yorum yaz...", rows = "5" })
-            <button type="submit" style="margin: auto;"><i class="fas fa-share" style="font-size: 25px"></i></button>
-        </div>
-    }
-    <div class="yorum-container">
-        @foreach (var m in Model.comment)
+        using (Ajax.BeginForm("AddComment", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "yorums", InsertionMode = InsertionMode.InsertBefore }))
         {
-            <div class="user">
-                <img src='@m.Users.UImage' alt="@m.Users.UName" class="user-image">
-                <span>@m.Users.UImage</span>
-            </div>
-            <div class="yorum">
-                <span class="blur-text"><i class="far fa-clock"></i> @m.CDate</span>
-                <p style="margin: 0">@m.CText</p>
-                @foreach (var sc in m.SubComments)
-                {
-                    <div class="yorum-container">
-                        <div class="user">
-                            <img src="@m.Users.UImage" alt="@m.Users.UName" class="user-image">
-                            <span>@m.Users.UName</span>
-                        </div>
-                        <!-- Alt Yorum -->
-                        <div class="yorum">
-                            <span class="blur-text"><i class="far fa-clock"></i> @sc.SCDate</span>
-                            <p style="margin: 0">@sc.SCText</p>
-                        </div>
-                    </div>
-                }
+            <div class="yorum-input" style="">
+                @Html.AntiForgeryToken()
+                @Html.Hidden("filmId", Model.film.FId)
+                @Html.TextArea("commentText", new { @class = "textarea", style = "width: 90%;resize: none;", placeholder = "yorum yaz...", rows = "5" })
+                <button type="submit" style="margin: auto;"><i class="fas fa-share" style="font-size: 25px"></i></button>
             </div>
         }
-        <a href="#" style="margin: auto;"><i class="fas fa-share" style="font-size: 25px"></i></a>
+    }
+    else
+    {
+        <p>Yorum Yapmak İçin Giriş Yapınız...</p>
+    }
+    <div id="yorums">
+        @foreach (var m in Model.comment)
+        {
+            <div class="yorum-container">
+                <div class="user">
+                    <img src='@m.Users.UImage' alt="@m.Users.UName" class="user-image">
+                    <span>@m.Users.UNick</span>
+                </div>
+                <div class="yorum">
+                    <span class="blur-text"><i class="far fa-clock"></i> @m.CDate</span>
+                    <p style="margin: 0">@m.CText</p>
+                    @foreach (var sc in m.SubComments)
+                    {
+                        <div class="yorum-container">
+                            <div class="user">
+                                <img src="@m.Users.UImage" alt="@m.Users.UName" class="user-image">
+                                <span>@m.Users.UName</span>
+                            </div>
+                            <!-- Alt Yorum -->
+                            <div class="yorum">
+                                <span class="blur-text"><i class="far fa-clock"></i> @sc.SCDate</span>
+                                <p style="margin: 0">@sc.SCText</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <a href="#" style="margin: auto;"><i class="fas fa-share" style="font-size: 25px"></i></a>
+
+            </div>
+        }
     </div>
 </div>
 
@@ -107,10 +117,81 @@
 
 <div class="video-container modal" id="video-modal">
 
-    Video
+    <iframe width="100%" id="film-src" style="height:95vh"></iframe>
 
 
 </div>
 
 
 <!-- Film Video Modal End -->
+
+
+@section scripts{
+
+    <script>
+        $("#watch-film").click(function () {
+            $("#source").toggle();
+        });
+        $(".open-film").click(function () {
+
+            var url = $(this).data("url");
+            $("#film-src").attr("src", url);
+            $("#video-modal").css("max-width", "100%");
+        });
+
+        $("#list").click(function (e) {
+
+            var filmId =@Model.film.FId;
+            $.ajax({
+                url: "/Film/AddList/" + filmId,
+                type: "GET",
+                success: function (data) {
+                    $("#watched").html(data);
+                },
+                error: function () {}
+            });
+            e.preventDefault();
+        });
+        $(".like").click(function (e) {
+
+            var filmId =@Model.film.FId;
+            var type = $(this).data("type");
+            $.ajax({
+                url: "/Film/AddLikes",
+                data: {
+                    filmId,
+                    type
+                },
+                type: "GET",
+                success: function (data) {
+                    $(this).html(data);
+                },
+                error: function () {}
+            });
+            e.preventDefault();
+        });
+
+        $(document).ready(function () {
+            $.ajax({
+                url: "/Film/CheckList",
+                data: {
+                    filmId:@Model.film.FId
+                },
+                type: "GET",
+                success: function (data) {
+                    if (data.InList == 1) {
+                        $("#list").html("<i class='far fa-check-circle'></i> Listenizde");
+                    }
+
+                    if (data.InLike == 1) {
+                        $("#likes").html("<i class='far fa-check-circle'></i > Beğendiniz");
+                    } else if (data.InLike == -1) {
+                        $("#dislikes").html("<i class='far fa-check-circle'></i > Beğenmediniz");
+                    }
+                },
+                error: function (error) { console.log(error) }
+            });
+
+        });
+    </script>
+}
