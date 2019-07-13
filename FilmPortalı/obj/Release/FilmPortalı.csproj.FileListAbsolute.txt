@@ -71,3 +71,10 @@ C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\obj\Release\FilmPortalı.c
 C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\obj\Release\FilmPortalı.csproj.CopyComplete
 C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\obj\Release\FilmPortalı.dll
 C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\obj\Release\FilmPortalı.pdb
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\bin\Antlr3.Runtime.dll
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\bin\Newtonsoft.Json.dll
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\bin\System.Web.Optimization.dll
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\bin\WebGrease.dll
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\bin\Antlr3.Runtime.pdb
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\bin\Newtonsoft.Json.xml
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\bin\System.Web.Optimization.xml

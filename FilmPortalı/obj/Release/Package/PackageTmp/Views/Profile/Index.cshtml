@@ -1,4 +1,4 @@
-﻿@model FilmPortalı.ViewModel.ProfileViewModel
+﻿@model FilmPortalı.Models.Users
 @{
     ViewBag.Title = "Profil";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,8 +16,8 @@
         <ul class="profile-btns">
             <li><a class="active" href="#profile">Profil Bilgileri</a></li>
             <li><a href="#account">Hesap Ayarları</a></li>
-            <li><a href="#comments">Yorumlar</a></li>
-            <li><a href="#list">Listelerim</a></li>
+            <li><a href="#comments" id="comments-btn">Yorumlar</a></li>
+            <li><a href="#list" id="list-btn">Listelerim</a></li>
         </ul>
     </div>
 
@@ -27,18 +27,18 @@
     <div class="profile-wrapper" id="profile" style="display: block">
         @using (Html.BeginForm("UpdateInfo", "Profile", FormMethod.Post, new { id = "profile-form" }))
         {
-            @Html.HiddenFor(m => m.user.UId)
+            @Html.HiddenFor(m => m.UId)
             <div class="form-group">
                 <label for="ad">Ad</label>
-                @Html.TextBoxFor(m => m.user.UName, new { @class = "input-item profile-input", placeholder = "ad" })
+                @Html.TextBoxFor(m => m.UName, new { @class = "input-item profile-input", placeholder = "ad" })
             </div>
             <div class="form-group">
                 <label for="soyad">Soyad</label>
-                @Html.TextBoxFor(m => m.user.USurname, new { @class = "input-item profile-input", placeholder = "soyad" })
+                @Html.TextBoxFor(m => m.USurname, new { @class = "input-item profile-input", placeholder = "soyad" })
             </div>
             <div class="form-group w25">
                 <label for="date">Doğum Tarihi</label>
-                @Html.TextBoxFor(m => m.user.UBirthDate, new { @class = "input-item profile-input", type = "date" })
+                @Html.TextBoxFor(m => m.UBirthDate, new { @class = "input-item profile-input", type = "date" })
             </div>
             <div class="form-group w25">
                 <label for="gender">Cinsiyet</label>
@@ -48,15 +48,15 @@
             </div>
             <div class="form-group w25">
                 <label for="twitter">Twitter k. adı</label>
-                @Html.TextBoxFor(m => m.user.UTwitter, new { @class = "input-item profile-input", placeholder = "twitter", id = "twitter" })
+                @Html.TextBoxFor(m => m.UTwitter, new { @class = "input-item profile-input", placeholder = "twitter", id = "twitter" })
             </div>
             <div class="form-group w25">
                 <label for="instagram">İnstagram k. adı</label>
-                @Html.TextBoxFor(m => m.user.UInstagram, new { @class = "input-item profile-input", placeholder = "instagram", id = "instagram" })
+                @Html.TextBoxFor(m => m.UInstagram, new { @class = "input-item profile-input", placeholder = "instagram", id = "instagram" })
             </div>
             <div class="form-group w100">
                 <label for="hakkımda">Hakkımda</label>
-                @Html.TextAreaFor(m => m.user.UInfo, new { @class = "textarea info-input", placeholder = "hakkımda", id = "hakkımda", rows = "8" })
+                @Html.TextAreaFor(m => m.UInfo, new { @class = "textarea info-input", placeholder = "hakkımda", id = "hakkımda", rows = "8" })
             </div>
         }
     </div>
@@ -65,38 +65,38 @@
 
         @using (Html.BeginForm("UpdateInfo", "Profile", FormMethod.Post, new { id = "account-form", enctype = "multipart/form-data" }))
         {
-            @Html.HiddenFor(m => m.user.UId)
+            @Html.HiddenFor(m => m.UId)
             <div class="form-group">
                 <label for="img">Profil Resmi</label>
-                @Html.TextBox("image","", new { @class = "input-item profile-input", id = "image",type="file" })
+                @Html.TextBox("image", "", new { @class = "input-item profile-input", id = "image", type = "file" })
             </div>
             <div class="form-group">
                 <label for="url">Veya Resim URL'si</label>
-                @Html.TextBoxFor(m => m.user.UImage, new { @class = "input-item profile-input", placeholder = "url", id = "url" })
+                @Html.TextBoxFor(m => m.UImage, new { @class = "input-item profile-input", placeholder = "url", id = "url" })
             </div>
             <h3>Şifre Değiştir</h3>
             <div class="form-group">
                 <label for="passwd">Yeni Şifre</label>
-                @Html.TextBoxFor(m => m.user.UPasswd, new { @class = "input-item profile-input", placeholder = "yeni şifre", id = "passwd", type = "password" })
+                @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item profile-input", placeholder = "yeni şifre", id = "passwd", type = "password" })
             </div>
             <div class="form-group">
                 <label for="npasswd">Yeni Şifre Tekrar</label>
-                @Html.TextBoxFor(m => m.user.UPasswd, new { @class = "input-item profile-input", placeholder = "yeni şifre tekrar", id = "npasswd", type = "password" })
+                @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item profile-input", placeholder = "yeni şifre tekrar", id = "npasswd", type = "password" })
             </div>
             <h3>E-Posta Değiştir</h3>
             <div class="form-group">
                 <label for="e-posta">Yeni e-posta</label>
-                @Html.TextBoxFor(m => m.user.UMail, new { @class = "input-item profile-input", placeholder = "yeni e-posta", id = "e-posta", disabled = "true" })
+                @Html.TextBoxFor(m => m.UMail, new { @class = "input-item profile-input", placeholder = "yeni e-posta", id = "e-posta", disabled = "true" })
             </div>
             <div class="form-group">
                 <label for="ne-posta">Yeni e-posta tekrar</label>
-                @Html.TextBoxFor(m => m.user.UMail, new { @class = "input-item profile-input", placeholder = "yeni e-posta tekrar", id = "ne-posta", disabled = "true" })
+                @Html.TextBoxFor(m => m.UMail, new { @class = "input-item profile-input", placeholder = "yeni e-posta tekrar", id = "ne-posta", disabled = "true" })
             </div>
             <div class="form-group w100">
-                @Html.CheckBoxFor(m => m.user.UNews, new { id = "mail" })
+                @Html.CheckBoxFor(m => m.UNews, new { id = "mail" })
                 <label for="mail">Yeni eklenen filmlerden haberdar olmak istiyorum.</label>
                 <br>
-                @Html.CheckBoxFor(m => m.user.UAppear, new { id = "status" })
+                @Html.CheckBoxFor(m => m.UAppear, new { id = "status" })
                 <label for="status">Kullanıcılar profilimi görüntüleyebilsin.</label>
             </div>
         }
@@ -105,146 +105,15 @@
 
     <div class="profile-wrapper" id="comments">
 
-        @if (Model.comments.Count > 0)
-        {
-            foreach (var comments in Model.comments)
-            {
-                <div class="container">
-                    <div style="display: flex;align-items: center">
-                        <b class="active">@comments.Films.FName / yorum:</b>
-                        <a class="edit" style="margin-left: auto"><i class="fas fa-edit"></i> Düzenle &nbsp;</a>
-                        <a class="edit"> <i class="fas fa-trash "></i> Sil</a>
-                    </div>
-
-                    <p>
-                        @comments.CText
-                    </p>
-
-
-                </div>
-            }
-        }
-        else
-        {
-            <p>Yorumunuz Bulunmamaktadır.</p>
-        }
 
     </div>
 
     <div class="profile-wrapper" id="list">
 
 
-        <div>
-            <h1>Favorilerim</h1>
-            <div class="film-wrapper">
-                <div class="film-box">
-                    <a href="#">
-                        <img src="~/Content/img/yol-arkadasim.jpg" class="film-poster" />
-                    </a>
-                </div>
-                <div class="film-box">
-                    <a href="#">
-                        <img src="~/Content/img/esaretin-bedeli.jpg" class="film-poster" />
-                    </a>
-                </div>
-                <div class="film-box">
-                    <a href="#">
-                        <img src="~/Content/img/fight_club.jpg" class="film-poster" />
-                    </a>
-                </div>
-                <div class="film-box">
-                    <a href="#">
-                        <img src="~/Content/img/life.jpg" class="film-poster" />
-                    </a>
-                </div>
-                <div class="film-box">
-                    <a href="#">
-                        <img src="~/Content/img/fight_club.jpg" class="film-poster" />
-                    </a>
-                </div>
-                <div class="film-box">
-                    <a href="#">
-                        <img src="~/Content/img/life.jpg" class="film-poster" />
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <h1>İzlediklerim</h1>
-            <div class="film-wrapper">
-                <div class="film-box">
-                    <a href="#">
-                        <img src="~/Content/img/yol-arkadasim.jpg" class="film-poster" />
-                    </a>
-                </div>
-                <div class="film-box">
-                    <a href="#">
-                        <img src="~/Content/img/esaretin-bedeli.jpg" class="film-poster" />
-                    </a>
-                </div>
-                <div class="film-box">
-                    <a href="#">
-                        <img src="~/Content/img/fight_club.jpg" class="film-poster" />
-                    </a>
-                </div>
-                <div class="film-box">
-                    <a href="#">
-                        <img src="~/Content/img/life.jpg" class="film-poster" />
-                    </a>
-                </div>
-                <div class="film-box">
-                    <a href="#">
-                        <img src="~/Content/img/fight_club.jpg" class="film-poster" />
-                    </a>
-                </div>
-                <div class="film-box">
-                    <a href="#">
-                        <img src="~/Content/img/life.jpg" class="film-poster" />
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <h1>İzleyeceklerim</h1>
-            <div class="film-wrapper">
-                <div class="film-box">
-                    <a href="#">
-                        <img src="~/Content/img/yol-arkadasim.jpg" class="film-poster" />
-                    </a>
-                </div>
-                <div class="film-box">
-                    <a href="#">
-                        <img src="~/Content/img/esaretin-bedeli.jpg" class="film-poster" />
-                    </a>
-                </div>
-                <div class="film-box">
-                    <a href="#">
-                        <img src="~/Content/img/fight_club.jpg" class="film-poster" />
-                    </a>
-                </div>
-                <div class="film-box">
-                    <a href="#">
-                        <img src="~/Content/img/life.jpg" class="film-poster" />
-                    </a>
-                </div>
-                <div class="film-box">
-                    <a href="#">
-                        <img src="~/Content/img/fight_club.jpg" class="film-poster" />
-                    </a>
-                </div>
-                <div class="film-box">
-                    <a href="#">
-                        <img src="~/Content/img/life.jpg" class="film-poster" />
-                    </a>
-                </div>
-            </div>
-        </div>
-
-
-
     </div>
+
+
 
 
 
@@ -252,3 +121,117 @@
 
 <div class="clearfix"></div>
 
+@section scripts{
+
+    <script>
+
+        $("#profile-save").click(function () {
+
+            var opened = $(".profile-btns a.active").attr("href");
+            if (opened == "#profile" || opened == "#account") {
+                if (opened == "#profile") {
+                    $.ajax({
+                        url: "/Profile/UpdateInfo",
+                        data: $("#profile-form").serialize(),
+                        type: "POST",
+                        success: function (data) {
+                            alert(data);
+                        },
+                        error: function (error) {
+                            alert(error)
+                        }
+                    });
+                } else {
+                    $.ajax({
+                        url: "/Profile/UpdateAccount",
+                        data: $("#account-form").serialize(),
+                        type: "POST",
+                        success: function (data) {
+                            alert(data);
+                        },
+                        error: function (error) {
+                            alert(error)
+                        }
+                    });
+                }
+            }
+        });
+
+        function changeVisible(isShow) {
+            var btn = $("#profile-save");
+            var isVisible = $("#profile-save").is(":visible");
+            if (isShow) {
+                if (!isVisible) {
+                    btn.show("slow");
+                }
+            } else {
+                if (isVisible) {
+                    btn.hide("slow");
+                }
+            }
+        }
+
+        $(".profile-btns").on("click", "a", function (e) {
+
+            var tab = $(this).attr("href");
+            changeVisible(tab == "#profile" || tab == "#account" ? true : false);
+            $(this).addClass("active");
+            $(this).parent().siblings().children().removeClass("active");
+            $(".profile-wrapper").not(tab).css("display", "none");
+            $(tab).fadeIn();
+            e.preventDefault();
+        });
+
+        $("#comments-btn").click(function () {
+
+            $.ajax({
+                url: "/Profile/GetComment",
+                type: "GET",
+                success: function (data) {
+                    $("#comments").html(data);
+                },
+                error: function (error) { console.log(error) }
+            });
+        });
+
+        $("#list-btn").click(function () {
+
+            $.ajax({
+                url: "/Profile/GetList",
+                type: "GET",
+                success: function (data) {
+                    $("#list").html(data);
+                },
+                error: function () { }
+            });
+        });
+
+        $(".container").on("click",".delete-comment",function (e) {
+
+            var id = $(this).data("id");
+            var container = $(this).parent().parent();
+            $.ajax({
+                url: "/Profile/DeleteComment",
+                data: {
+                    id
+                },
+                type: "GET",
+                success: function () {
+                    container.remove();
+                },
+                error: function () {
+                    alert("Bir Hata Oluştu.Daha Sonra Tekrar Deneyiniz.");
+                }
+            });
+            e.preventDefault();
+        });
+        //$(".container").on("click", ".edit-comment", function (e) {
+        //    var p = $(this).parent().parent().find("p");
+        //    var text = p.text().trim();
+        //    p.html("<textarea name='comment'> " + text + "</textarea>");
+
+        //});
+
+    </script>
+
+}

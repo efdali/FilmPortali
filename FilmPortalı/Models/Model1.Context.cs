@@ -30,14 +30,13 @@ namespace FilmPortalı.Models
         public virtual DbSet<FilmCategory> FilmCategory { get; set; }
         public virtual DbSet<FilmCrew> FilmCrew { get; set; }
         public virtual DbSet<Films> Films { get; set; }
-        public virtual DbSet<FilmSource> FilmSource { get; set; }
         public virtual DbSet<Sources> Sources { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Slider> Slider { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Comments> Comments { get; set; }
         public virtual DbSet<SubComments> SubComments { get; set; }
         public virtual DbSet<List> List { get; set; }
         public virtual DbSet<Views> Views { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

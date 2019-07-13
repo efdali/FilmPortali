@@ -5,17 +5,10 @@
     <div class="navbar-right">
         <div class="navbar-top">
             <div class="search-input">
-                <input type="text" placeholder="film ara..." class="search" />
+                <input type="text" placeholder="film ara..." class="search" id="film-search" />
                 <i class="fas fa-search"></i>
                 <div class="search-film-list" style="display: none">
-                    <a href="#">
-                        <img src="~/Content/img/amelia.jpg" width="20%;" />
-                        <span>Amelia(2015)</span>
-                    </a>
-                    <a href="#">
-                        <img src="~/Content/img/fight_club.jpg" width="20%;" />
-                        <span>Fight Club(2014)</span>
-                    </a>
+                    @{ Html.RenderAction("SearchFilm", "Partial");}
                 </div>
             </div>
             <div class="navbar-social">
@@ -39,8 +32,8 @@
             <div class="navbar-categories">
                 <a href="#" class="navbar-link" id="kinds">Türler</a>
                 <a href="#" class="navbar-link">IMDB 250</a>
-                <a href="/en-cok-izlenenler" class="navbar-link">En Çok İzlenen</a>
-                <a href="/2019" class="navbar-link">2019</a>
+                <a href="/tur/en-cok-izlenenler" class="navbar-link">En Çok İzlenen</a>
+                <a href="/tur/2019" class="navbar-link">2019</a>
                 <a href="#" class="navbar-link">Rastgele</a>
                 <a href="#" class="navbar-link">Diğer</a>
             </div>
@@ -79,7 +72,7 @@
 <div class="kind-container" id="kind-container">
     @foreach (var categories in Model)
     {
-        <a href="@categories.CId" class="kind-link">@categories.CAd</a>
+        <a href="/tur/@categories.CId" class="kind-link">@categories.CAd</a>
     }
 </div>
 <!-- Header End-->
@@ -136,7 +129,7 @@
         <div class="kind-container" style="display: flex" id="mobile-kind-container">
             @foreach (var categories in Model)
             {
-                <a href="@categories.CId" class="kind-link active">@categories.CAd</a>
+                <a href="/tur/@categories.CId" class="kind-link active">@categories.CAd</a>
             }
         </div>
         <div class="navbar-categories">

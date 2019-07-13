@@ -10,15 +10,11 @@
         <EntityTypeShape EntityType="FilmPortaliModel.FilmCategory" Width="1.5" PointX="6" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="FilmPortaliModel.FilmCrew" Width="1.5" PointX="6" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="FilmPortaliModel.Films" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="FilmPortaliModel.FilmSource" Width="1.5" PointX="6" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="FilmPortaliModel.Sources" Width="1.5" PointX="3.75" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="FilmPortaliModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="FilmPortaliModel.FK_FilmCategory_Categories" ManuallyRouted="false" />
         <AssociationConnector Association="FilmPortaliModel.FK_FilmCrew_Crews" ManuallyRouted="false" />
         <AssociationConnector Association="FilmPortaliModel.FK_FilmCategory_Films" ManuallyRouted="false" />
         <AssociationConnector Association="FilmPortaliModel.FK_FilmCrew_Films" ManuallyRouted="false" />
-        <AssociationConnector Association="FilmPortaliModel.FK_FilmSource_Films" ManuallyRouted="false" />
-        <AssociationConnector Association="FilmPortaliModel.FK_FilmSource_Sources" ManuallyRouted="false" />
         <EntityTypeShape EntityType="FilmPortaliModel.Slider" Width="1.5" PointX="0.75" PointY="9.75" />
         <AssociationConnector Association="FilmPortaliModel.FK_Slider_Films" />
         <EntityTypeShape EntityType="FilmPortaliModel.Users" Width="1.5" PointX="8.375" PointY="10" />
@@ -34,6 +30,7 @@
         <EntityTypeShape EntityType="FilmPortaliModel.Views" Width="1.5" PointX="10.625" PointY="12.125" />
         <AssociationConnector Association="FilmPortaliModel.FK_Views_Films" />
         <AssociationConnector Association="FilmPortaliModel.FK_Views_Users" />
+        <EntityTypeShape EntityType="FilmPortaliModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -10,7 +10,7 @@ namespace FilmPortalı.ViewModel
     {
         public Films film { get; set; }
         public List<Comments> comment { get; set; }
-        public List<FilmSource> filmSource { get; set; }
+        public List<Sources> filmSource { get; set; }
         public List<FilmCrew> crew { get; set; }
     }
 }

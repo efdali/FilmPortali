@@ -14,18 +14,10 @@ namespace FilmPortalı.Models
     
     public partial class Sources
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Sources()
-        {
-            this.FilmSource = new HashSet<FilmSource>();
-        }
-    
         public int SId { get; set; }
         public string SName { get; set; }
         public string SUrl { get; set; }
         public Nullable<bool> SStatus { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FilmSource> FilmSource { get; set; }
+        public Nullable<int> FId { get; set; }
     }
 }

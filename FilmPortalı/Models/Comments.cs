@@ -24,8 +24,8 @@ namespace FilmPortalı.Models
         public Nullable<int> CUId { get; set; }
         public string CText { get; set; }
         public Nullable<int> CFId { get; set; }
-        public Nullable<System.DateTime> CDate { get; set; }
-        public Nullable<bool> CStatus { get; set; }
+        public System.DateTime CDate { get; set; }
+        public bool CStatus { get; set; }
     
         public virtual Films Films { get; set; }
         public virtual Users Users { get; set; }

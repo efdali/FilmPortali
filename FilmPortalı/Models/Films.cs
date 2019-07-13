@@ -19,7 +19,6 @@ namespace FilmPortalı.Models
         {
             this.FilmCategory = new HashSet<FilmCategory>();
             this.FilmCrew = new HashSet<FilmCrew>();
-            this.FilmSource = new HashSet<FilmSource>();
             this.Slider = new HashSet<Slider>();
             this.Comments = new HashSet<Comments>();
             this.List = new HashSet<List>();
@@ -42,8 +41,6 @@ namespace FilmPortalı.Models
         public virtual ICollection<FilmCategory> FilmCategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FilmCrew> FilmCrew { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FilmSource> FilmSource { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Slider> Slider { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

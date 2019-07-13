@@ -16,10 +16,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/07/2018 11:03:48</publishTime>
     </File>
     <File Include="bin/FilmPortalı.dll">
-      <publishTime>07/12/2019 10:17:12</publishTime>
+      <publishTime>07/12/2019 22:11:01</publishTime>
     </File>
     <File Include="bin/FilmPortalı.pdb">
-      <publishTime>07/12/2019 10:17:12</publishTime>
+      <publishTime>07/12/2019 22:11:01</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>07/03/2019 14:33:10</publishTime>
@@ -5115,8 +5115,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/owl.carousel.min.js">
       <publishTime>06/15/2019 10:19:19</publishTime>
     </File>
+    <File Include="Views/Error/Index.cshtml">
+      <publishTime>07/12/2019 21:08:58</publishTime>
+    </File>
     <File Include="Views/Film/FilmDetails.cshtml">
-      <publishTime>07/12/2019 10:04:52</publishTime>
+      <publishTime>07/12/2019 17:34:08</publishTime>
     </File>
     <File Include="Views/Home/GetFilms.cshtml">
       <publishTime>07/10/2019 14:33:06</publishTime>
@@ -5125,37 +5128,37 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2019 12:17:01</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>07/12/2019 10:04:52</publishTime>
+      <publishTime>07/12/2019 15:19:09</publishTime>
     </File>
     <File Include="Views/Home/Tur.cshtml">
-      <publishTime>07/12/2019 10:04:52</publishTime>
+      <publishTime>07/12/2019 17:59:27</publishTime>
     </File>
     <File Include="Views/Partial/Footer.cshtml">
-      <publishTime>07/12/2019 10:04:52</publishTime>
+      <publishTime>07/12/2019 17:02:28</publishTime>
     </File>
     <File Include="Views/Partial/Header.cshtml">
-      <publishTime>07/12/2019 10:04:52</publishTime>
+      <publishTime>07/12/2019 17:55:04</publishTime>
     </File>
     <File Include="Views/Partial/SearchFilm.cshtml">
       <publishTime>07/10/2019 17:10:05</publishTime>
     </File>
     <File Include="Views/Profile/GetComment.cshtml">
-      <publishTime>07/05/2019 10:35:06</publishTime>
+      <publishTime>07/12/2019 21:57:47</publishTime>
     </File>
     <File Include="Views/Profile/GetList.cshtml">
       <publishTime>07/10/2019 11:26:19</publishTime>
     </File>
     <File Include="Views/Profile/Index.cshtml">
-      <publishTime>07/12/2019 10:04:52</publishTime>
+      <publishTime>07/12/2019 22:08:38</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>07/12/2019 10:04:52</publishTime>
+      <publishTime>07/12/2019 16:58:22</publishTime>
     </File>
     <File Include="Views/web.config">
       <publishTime>07/01/2019 11:33:34</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/12/2019 10:17:14</publishTime>
+      <publishTime>07/12/2019 22:11:03</publishTime>
     </File>
   </ItemGroup>
 </Project>
