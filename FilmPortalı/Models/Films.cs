@@ -23,6 +23,7 @@ namespace FilmPortalı.Models
             this.Comments = new HashSet<Comments>();
             this.List = new HashSet<List>();
             this.Views = new HashSet<Views>();
+            this.Sources = new HashSet<Sources>();
         }
     
         public int FId { get; set; }
@@ -49,5 +50,7 @@ namespace FilmPortalı.Models
         public virtual ICollection<List> List { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Views> Views { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sources> Sources { get; set; }
     }
 }

@@ -204,6 +204,10 @@ header{
  .active{
     color:#21E1FF;
   }
+ .disable{
+     background-color:dimgray !important;
+     cursor:not-allowed !important;
+ }
   .film-wrapper{
     display: flex;
     flex-direction: row;

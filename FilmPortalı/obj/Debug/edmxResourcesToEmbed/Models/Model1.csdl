@@ -50,8 +50,8 @@
     <Property Name="FSummary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="FYear" Type="DateTime" Precision="0" />
     <Property Name="FImdb" Type="Double" />
-    <Property Name="FCDate" Type="DateTime" Precision="0" />
-    <Property Name="FUDate" Type="DateTime" Precision="0" />
+    <Property Name="FCDate" Type="DateTime" Precision="3" />
+    <Property Name="FUDate" Type="DateTime" Precision="3" />
     <Property Name="FPoster" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="FilmCategory" Relationship="Self.FK_FilmCategory_Films" FromRole="Films" ToRole="FilmCategory" />
     <NavigationProperty Name="FilmCrew" Relationship="Self.FK_FilmCrew_Films" FromRole="Films" ToRole="FilmCrew" />
@@ -62,6 +62,7 @@
     <NavigationProperty Name="List" Relationship="FilmPortaliModel.FK_List_Films" FromRole="Films" ToRole="List" />
     <Property Name="FSeo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Views" Relationship="FilmPortaliModel.FK_Views_Films" FromRole="Films" ToRole="Views" />
+    <NavigationProperty Name="Sources" Relationship="FilmPortaliModel.FK_Sources_Films" FromRole="Films" ToRole="Sources" />
   </EntityType>
   <EntityType Name="Sources">
     <Key>
@@ -72,6 +73,7 @@
     <Property Name="SUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="SStatus" Type="Boolean" />
     <Property Name="FId" Type="Int32" />
+    <NavigationProperty Name="Films" Relationship="FilmPortaliModel.FK_Sources_Films" FromRole="Sources" ToRole="Films" />
   </EntityType>
   <Association Name="FK_FilmCategory_Categories">
     <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
@@ -186,7 +188,10 @@
       <End Role="Users" EntitySet="Users" />
       <End Role="Views" EntitySet="Views" />
     </AssociationSet>
-    <EntitySet Name="sysdiagrams" EntityType="FilmPortaliModel.sysdiagrams" />
+    <AssociationSet Name="FK_Sources_Films" Association="FilmPortaliModel.FK_Sources_Films">
+      <End Role="Films" EntitySet="Films" />
+      <End Role="Sources" EntitySet="Sources" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Slider">
     <Key>
@@ -226,11 +231,11 @@
     <Property Name="UGender" Type="Boolean" />
     <Property Name="UTwitter" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="UInstagram" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="UAppear" Type="Boolean" Nullable="false" />
-    <Property Name="UNews" Type="Boolean" Nullable="false" />
-    <Property Name="UDate" Type="DateTime" Precision="0" Nullable="false" />
-    <Property Name="UStatus" Type="Boolean" Nullable="false" />
-    <Property Name="URole" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UAppear" Type="Boolean" />
+    <Property Name="UNews" Type="Boolean" />
+    <Property Name="UDate" Type="DateTime" Precision="3" />
+    <Property Name="UStatus" Type="Boolean" />
+    <Property Name="URole" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Comments" Relationship="FilmPortaliModel.FK_Comments_Users1" FromRole="Users" ToRole="Comments" />
     <NavigationProperty Name="SubComments" Relationship="FilmPortaliModel.FK_SubComments_Users" FromRole="Users" ToRole="SubComments" />
     <NavigationProperty Name="List" Relationship="FilmPortaliModel.FK_List_Users" FromRole="Users" ToRole="List" />
@@ -244,8 +249,8 @@
     <Property Name="CUId" Type="Int32" />
     <Property Name="CText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="CFId" Type="Int32" />
-    <Property Name="CDate" Type="DateTime" Precision="0" Nullable="false" />
-    <Property Name="CStatus" Type="Boolean" Nullable="false" />
+    <Property Name="CDate" Type="DateTime" Precision="3" />
+    <Property Name="CStatus" Type="Boolean" />
     <NavigationProperty Name="Films" Relationship="FilmPortaliModel.FK_Comments_Films1" FromRole="Comments" ToRole="Films" />
     <NavigationProperty Name="Users" Relationship="FilmPortaliModel.FK_Comments_Users1" FromRole="Comments" ToRole="Users" />
     <NavigationProperty Name="SubComments" Relationship="FilmPortaliModel.FK_SubComments_Comments" FromRole="Comments" ToRole="SubComments" />
@@ -282,7 +287,7 @@
     <Property Name="SCUId" Type="Int32" />
     <Property Name="SCCId" Type="Int32" />
     <Property Name="SCText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="SCDate" Type="DateTime" Precision="0" />
+    <Property Name="SCDate" Type="DateTime" Precision="3" />
     <Property Name="SCStatus" Type="Boolean" />
     <NavigationProperty Name="Comments" Relationship="FilmPortaliModel.FK_SubComments_Comments" FromRole="SubComments" ToRole="Comments" />
     <NavigationProperty Name="Users" Relationship="FilmPortaliModel.FK_SubComments_Users" FromRole="SubComments" ToRole="Users" />
@@ -380,16 +385,16 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="name" />
-      <PropertyRef Name="principal_id" />
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
+  <Association Name="FK_Sources_Films">
+    <End Type="FilmPortaliModel.Films" Role="Films" Multiplicity="0..1" />
+    <End Type="FilmPortaliModel.Sources" Role="Sources" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Films">
+        <PropertyRef Name="FId" />
+      </Principal>
+      <Dependent Role="Sources">
+        <PropertyRef Name="FId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -102,3 +102,29 @@ $("#film-search").keyup (function (e) {
     }
 
 });
+
+
+$("#pass").keyup(function () {
+    var npass = $("#npass");
+    var pass1 = $(this).val().trim();
+    var pass2 = npass.val().trim();
+    isCorrect(pass1, pass2);
+});
+
+$("#npass").keyup(function () {
+    var pass = $("#pass");
+    var pass1 = $(this).val().trim();
+    var pass2 = pass.val().trim();
+    isCorrect(pass1, pass2);
+});
+
+function isCorrect(pass1, pass2) {
+    var btn = $("#login-btn");
+    if (pass1 == pass2) {
+        btn.attr("disabled", false);
+        btn.removeClass("disable");
+    } else {
+        btn.attr("disabled", true);
+        btn.addClass("disable");
+    }
+}

@@ -28,13 +28,13 @@
         @Html.AntiForgeryToken()
         @Html.TextBoxFor(m => m.UNick, new { @class = "input-item", placeholder = "kullanıcı adı" })<br><br>
         @Html.ValidationMessageFor(m => m.UNick)
-        @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item", placeholder = "parola", type = "password" })<br><br>
+        @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item", placeholder = "parola", type = "password",id="pass" })<br><br>
         @Html.ValidationMessageFor(m => m.UPasswd)
-        @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item", placeholder = "parola tekrar", type = "password" })<br><br>
+        @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item", placeholder = "parola tekrar", type = "password",id="npass" })<br><br>
         @Html.ValidationMessageFor(m => m.UPasswd)
         @Html.TextBoxFor(m => m.UMail, new { @class = "input-item", placeholder = "e-posta" })<br><br>
         @Html.ValidationMessageFor(m => m.UMail)
-        <button class="btn btn-sign" type="submit">KAYIT OL</button><br>
+        <button class="btn btn-sign disable" id="login-btn" type="submit" disabled>KAYIT OL</button><br>
     }
 </div>
 

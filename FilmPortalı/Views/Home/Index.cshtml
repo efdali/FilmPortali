@@ -21,16 +21,17 @@
 <!-- Slider End -->
 <!-- Film Container Start -->
 <div class="container">
-    <h1>Son Eklenen Filmler(@ViewBag.Count)</h1>
+    <h1>Son Eklenen Filmler</h1>
     <div class="film-wrapper">
         @{ Html.RenderAction("GetFilms", "Home");}
     </div>
     <button class="btn btn-more">Daha Fazla Film</button>
 </div>
 <!-- Film Container End -->
-
+<input type="hidden" value="@ViewBag.Count" id="count" />
 @section scripts{
     <script>
+        var page = 0;
 
         $(document).ready(function () {
             $(".owl-carousel").owlCarousel({
@@ -58,27 +59,27 @@
                     }
                 }
             });
-        });
-        var page = 0;
-        var count=Math.round(@ViewBag.Count/40);
-        $(".btn-more").click(function () {
-            page += 1;
-            $(this).html("Yükleniyor...");
-            $.ajax({
-                url: "/Home/GetFilms/" + page,
-                type: "GET",
-                success: function (data) {
 
-                    $(".film-wrapper").append(data);
-                    $(".btn-more").html("Daha Fazla Film");
-                    if (page == count-1) {
-                        $(".btn-more").hide();
-                    }
-                },
-                error: function () {}
-            });
-        });
+            var input = $("#count").val();
+            var count = Math.round(input/40);
+            $(".btn-more").click(function () {
+                    page += 1;
+                    $(this).html("Yükleniyor...");
+                    $.ajax({
+                        url: "/Home/GetFilms/" + page,
+                        type: "GET",
+                        success: function (data) {
 
+                            $(".film-wrapper").append(data);
+                            $(".btn-more").html("Daha Fazla Film");
+                            if (page >= count - 1) {
+                                $(".btn-more").hide();
+                            }
+                        },
+                        error: function () { }
+                    });
+                });
+        });
     </script>
 
 

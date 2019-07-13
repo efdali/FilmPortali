@@ -18,9 +18,10 @@ namespace FilmPortalı.Controllers
         {
             if (ModelState.IsValid)
             {
+                users.UPasswd = FormsAuthentication.HashPasswordForStoringInConfigFile(users.UPasswd, "MD5");
                 db.Users.Add(users);
                 db.SaveChanges();
-                return RedirectToAction("Index#giris-modal","Home");
+                return RedirectToAction("Index","Home");
             }
 
             return Content("Kayıt Başarısız");
@@ -30,7 +31,8 @@ namespace FilmPortalı.Controllers
         [HttpPost]
         public ActionResult Sign(Users user)
         {
-            var userIn = db.Users.FirstOrDefault(u => user.UNick == u.UNick && user.UPasswd == u.UPasswd);
+            string pass = FormsAuthentication.HashPasswordForStoringInConfigFile(user.UPasswd, "MD5");
+            var userIn = db.Users.FirstOrDefault(u => user.UNick == u.UNick && pass == u.UPasswd);
             string url = Request.UrlReferrer.ToString();
             if (userIn != null)
             {

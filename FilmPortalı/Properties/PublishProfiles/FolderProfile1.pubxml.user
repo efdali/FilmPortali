@@ -22,10 +22,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/07/2018 11:03:48</publishTime>
     </File>
     <File Include="bin/FilmPortalı.dll">
-      <publishTime>07/13/2019 00:39:05</publishTime>
+      <publishTime>07/13/2019 13:59:46</publishTime>
     </File>
     <File Include="bin/FilmPortalı.pdb">
-      <publishTime>07/13/2019 00:39:05</publishTime>
+      <publishTime>07/13/2019 13:59:46</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>07/03/2019 14:33:10</publishTime>
@@ -174,6 +174,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/roslyn/VBCSCompiler.exe.config">
       <publishTime>07/03/2019 14:33:11</publishTime>
     </File>
+    <File Include="bin/System.Security.dll">
+      <publishTime>11/05/2015 20:36:48</publishTime>
+    </File>
+    <File Include="bin/System.Web.dll">
+      <publishTime>11/05/2015 20:36:48</publishTime>
+    </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>07/03/2019 14:33:10</publishTime>
     </File>
@@ -202,7 +208,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/15/2019 12:11:04</publishTime>
     </File>
     <File Include="Content/css/main.css">
-      <publishTime>07/11/2019 18:27:20</publishTime>
+      <publishTime>07/13/2019 10:32:43</publishTime>
     </File>
     <File Include="Content/css/normalize.css">
       <publishTime>06/07/2019 14:13:57</publishTime>
@@ -5095,7 +5101,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/15/2019 14:27:29</publishTime>
     </File>
     <File Include="Models/Model1.edmx.diagram">
-      <publishTime>07/13/2019 00:14:43</publishTime>
+      <publishTime>07/13/2019 10:02:41</publishTime>
     </File>
     <File Include="Scripts/jquery-3.4.1.min.js">
       <publishTime>07/03/2019 14:25:47</publishTime>
@@ -5113,7 +5119,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/17/2019 16:59:32</publishTime>
     </File>
     <File Include="Scripts/main.js">
-      <publishTime>07/11/2019 17:34:36</publishTime>
+      <publishTime>07/13/2019 10:32:16</publishTime>
     </File>
     <File Include="Scripts/owl.carousel.min.js">
       <publishTime>06/15/2019 10:19:19</publishTime>
@@ -5122,7 +5128,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2019 21:08:58</publishTime>
     </File>
     <File Include="Views/Film/FilmDetails.cshtml">
-      <publishTime>07/13/2019 00:16:31</publishTime>
+      <publishTime>07/13/2019 10:49:12</publishTime>
     </File>
     <File Include="Views/Home/GetFilms.cshtml">
       <publishTime>07/10/2019 14:33:06</publishTime>
@@ -5131,13 +5137,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2019 12:17:01</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>07/12/2019 15:19:09</publishTime>
+      <publishTime>07/13/2019 10:46:18</publishTime>
     </File>
     <File Include="Views/Home/Tur.cshtml">
-      <publishTime>07/12/2019 17:59:27</publishTime>
+      <publishTime>07/13/2019 10:46:31</publishTime>
     </File>
     <File Include="Views/Partial/Footer.cshtml">
-      <publishTime>07/12/2019 17:02:28</publishTime>
+      <publishTime>07/13/2019 10:33:14</publishTime>
     </File>
     <File Include="Views/Partial/Header.cshtml">
       <publishTime>07/12/2019 17:55:04</publishTime>
@@ -5155,13 +5161,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2019 22:08:38</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>07/12/2019 23:00:00</publishTime>
+      <publishTime>07/13/2019 13:16:57</publishTime>
     </File>
     <File Include="Views/web.config">
       <publishTime>07/12/2019 22:50:27</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/13/2019 00:39:06</publishTime>
+      <publishTime>07/13/2019 13:59:46</publishTime>
     </File>
   </ItemGroup>
 </Project>

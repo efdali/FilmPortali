@@ -37,8 +37,8 @@ namespace FilmPortalı.Models
         public string UInstagram { get; set; }
         public bool UAppear { get; set; }
         public bool UNews { get; set; }
-        public System.DateTime UDate { get; set; }
-        public bool UStatus { get; set; }
+        public Nullable<System.DateTime> UDate { get; set; }
+        public Nullable<bool> UStatus { get; set; }
         public string URole { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
