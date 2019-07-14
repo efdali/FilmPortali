@@ -113,5 +113,18 @@ namespace FilmPortalı.Controllers
 
             return Content("Başarılı");
         }
+
+        public ActionResult RemoveList(int filmId,int type)
+        {
+            var inList=db.List.Where(l => l.LFId == filmId && l.LType == type).FirstOrDefault();
+
+            if(inList != null)
+            {
+                db.List.Remove(inList);
+                db.SaveChanges();
+            }
+
+            return Content("Listeden Silindi.");
+        }
     }
 }

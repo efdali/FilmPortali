@@ -1,0 +1,128 @@
+﻿@model FilmPortalı.Models.Films
+@{
+    ViewBag.Title = "Film Ekle";
+    Layout = "~/Areas/Amdin/Views/Shared/_Layout.cshtml";
+}
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Form Elements</h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Ara!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Yeni Film <small>Film Ekle</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="#">Settings 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br />
+                        @using (Html.BeginForm("AddFilm", "Film", FormMethod.Post, new { @class = "form-horizontal form-label-left", data_parsley_validate = "true" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-group">
+                                @Html.LabelFor(f => f.FName, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <span class="required">*</span>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(f => f.FName,new { @class= "form-control col-md-7 col-xs-12",required="true" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(f => f.FYear, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <span class="required">*</span>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(f => f.FYear, new { @class = "form-control col-md-7 col-xs-12", required = "true",type="date" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(f => f.FCountry, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <span class="required">*</span>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(f => f.FCountry, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(f => f.FImdb, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <span class="required">*</span>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(f => f.FImdb, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(f => f.FPoster, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <span class="required">*</span>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(f => f.FPoster, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(f => f.FTrailer, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <span class="required">*</span>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(f => f.FTrailer, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(f => f.FSummary, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <span class="required">*</span>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    @Html.TextAreaFor(f => f.FSummary,new { @class="form-control",rows="3"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(f => f.FSeo, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <span class="required">*</span>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(f => f.FSeo, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
+                                </div>
+                            </div>
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                    <button class="btn btn-primary" type="button">İptal</button>
+                                    <button class="btn btn-primary" type="reset">Reset</button>
+                                    <button type="submit" class="btn btn-success">Yayınla</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->

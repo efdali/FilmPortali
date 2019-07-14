@@ -6,7 +6,7 @@
         @foreach (var watch in Model.watch)
         {
             <div class="film-box">
-                <a href="#" class="remove-list" data-id="@watch.Films.FId" data-type="0"><i class="fas fa-minus-square"></i></a>
+                <a href="#" class="remove-list" onclick="removeList(@watch.Films.FId,'0',this); return false;"><i class="fas fa-minus-square"></i></a>
                 <a href="/detay/@watch.Films.FSeo">
                     <img src="@watch.Films.FPoster" class="film-poster" alt="Film Portali @watch.Films.FName" />
                 </a>
@@ -21,7 +21,7 @@
         @foreach (var likes in Model.likes)
         {
             <div class="film-box">
-                <a href="#" class="remove-list" data-id="@likes.Films.FId" data-type="1"><i class="fas fa-minus-square"></i></a>
+                <a href="#" class="remove-list" onclick="removeList(@likes.Films.FId,'1',this); return false;"><i class="fas fa-minus-square"></i></a>
                 <a href="/detay/@likes.Films.FSeo">
                     <img src="@likes.Films.FPoster" class="film-poster" alt="Film Portali @likes.Films.FName" />
                 </a>
@@ -36,7 +36,7 @@
         @foreach (var dislikes in Model.dislikes)
         {
             <div class="film-box">
-                <a href="#" class="remove-list" data-id="@dislikes.Films.FId" data-type="-1"><i class="fas fa-minus-square"></i></a>
+                <a href="#" class="remove-list" onclick="removeList(@dislikes.Films.FId,'-1',this); return false;"><i class="fas fa-minus-square"></i></a>
                 <a href="/detay/@dislikes.Films.FSeo">
                     <img src="@dislikes.Films.FPoster" class="film-poster" alt="Film Portali @dislikes.Films.FName" />
                 </a>

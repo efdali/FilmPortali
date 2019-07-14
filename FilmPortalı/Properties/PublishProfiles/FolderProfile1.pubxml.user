@@ -9,6 +9,51 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <_PublishTargetUrl>C:\Users\efdal\source\eosinema</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="Areas/Amdin/Content/css/bootstrap.min.css">
+      <publishTime>12/22/2016 02:02:28</publishTime>
+    </File>
+    <File Include="Areas/Amdin/Content/css/custom.min.css">
+      <publishTime>12/22/2016 02:02:28</publishTime>
+    </File>
+    <File Include="Areas/Amdin/Content/css/jquery.dataTables.min.css">
+      <publishTime>07/14/2019 11:38:13</publishTime>
+    </File>
+    <File Include="Areas/Amdin/Content/css/nprogress.css">
+      <publishTime>12/22/2016 02:02:28</publishTime>
+    </File>
+    <File Include="Areas/Amdin/Scripts/bootstrap.min.js">
+      <publishTime>12/22/2016 02:02:28</publishTime>
+    </File>
+    <File Include="Areas/Amdin/Scripts/custom.min.js">
+      <publishTime>12/22/2016 02:02:28</publishTime>
+    </File>
+    <File Include="Areas/Amdin/Scripts/fastclick.js">
+      <publishTime>12/22/2016 02:02:28</publishTime>
+    </File>
+    <File Include="Areas/Amdin/Scripts/jquery.dataTables.min.js">
+      <publishTime>07/14/2019 11:39:48</publishTime>
+    </File>
+    <File Include="Areas/Amdin/Scripts/jquery.min.js">
+      <publishTime>06/13/2019 12:09:52</publishTime>
+    </File>
+    <File Include="Areas/Amdin/Scripts/nprogress.js">
+      <publishTime>12/22/2016 02:02:28</publishTime>
+    </File>
+    <File Include="Areas/Amdin/Views/Film/AddFilm.cshtml">
+      <publishTime>07/13/2019 23:38:25</publishTime>
+    </File>
+    <File Include="Areas/Amdin/Views/Film/Index.cshtml">
+      <publishTime>07/14/2019 12:24:17</publishTime>
+    </File>
+    <File Include="Areas/Amdin/Views/Home/Index.cshtml">
+      <publishTime>07/13/2019 22:12:12</publishTime>
+    </File>
+    <File Include="Areas/Amdin/Views/Shared/_Layout.cshtml">
+      <publishTime>07/14/2019 00:05:01</publishTime>
+    </File>
+    <File Include="Areas/Amdin/Views/web.config">
+      <publishTime>07/13/2019 21:51:59</publishTime>
+    </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>02/22/2013 08:43:40</publishTime>
     </File>
@@ -22,10 +67,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/07/2018 11:03:48</publishTime>
     </File>
     <File Include="bin/FilmPortalı.dll">
-      <publishTime>07/13/2019 13:59:46</publishTime>
+      <publishTime>07/14/2019 12:27:43</publishTime>
     </File>
     <File Include="bin/FilmPortalı.pdb">
-      <publishTime>07/13/2019 13:59:46</publishTime>
+      <publishTime>07/14/2019 12:27:43</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>07/03/2019 14:33:10</publishTime>
@@ -5128,7 +5173,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2019 21:08:58</publishTime>
     </File>
     <File Include="Views/Film/FilmDetails.cshtml">
-      <publishTime>07/13/2019 10:49:12</publishTime>
+      <publishTime>07/13/2019 18:19:19</publishTime>
     </File>
     <File Include="Views/Home/GetFilms.cshtml">
       <publishTime>07/10/2019 14:33:06</publishTime>
@@ -5137,16 +5182,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2019 12:17:01</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>07/13/2019 10:46:18</publishTime>
+      <publishTime>07/13/2019 16:30:25</publishTime>
     </File>
     <File Include="Views/Home/Tur.cshtml">
       <publishTime>07/13/2019 10:46:31</publishTime>
     </File>
     <File Include="Views/Partial/Footer.cshtml">
-      <publishTime>07/13/2019 10:33:14</publishTime>
+      <publishTime>07/13/2019 16:29:56</publishTime>
     </File>
     <File Include="Views/Partial/Header.cshtml">
-      <publishTime>07/12/2019 17:55:04</publishTime>
+      <publishTime>07/13/2019 21:50:33</publishTime>
     </File>
     <File Include="Views/Partial/SearchFilm.cshtml">
       <publishTime>07/10/2019 17:10:05</publishTime>
@@ -5155,19 +5200,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2019 21:57:47</publishTime>
     </File>
     <File Include="Views/Profile/GetList.cshtml">
-      <publishTime>07/10/2019 11:26:19</publishTime>
+      <publishTime>07/13/2019 18:44:40</publishTime>
     </File>
     <File Include="Views/Profile/Index.cshtml">
-      <publishTime>07/12/2019 22:08:38</publishTime>
+      <publishTime>07/13/2019 18:51:19</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>07/13/2019 13:16:57</publishTime>
+      <publishTime>07/13/2019 16:29:51</publishTime>
     </File>
     <File Include="Views/web.config">
       <publishTime>07/12/2019 22:50:27</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/13/2019 13:59:46</publishTime>
+      <publishTime>07/14/2019 12:27:44</publishTime>
     </File>
   </ItemGroup>
 </Project>

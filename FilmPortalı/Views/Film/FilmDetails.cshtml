@@ -32,7 +32,7 @@
             @if (Session["kullaniciId"] != null)
             {
                 <li><i class="fas fa-check"></i> <a href="#" disabled>İzledim</a></li>
-                <li id="watched"><i class="far fa-clock"></i> <a href="#" id="list">Daha Sonra İzle</a></li>
+                <li id="watched"><i class="far fa-clock"></i> <a href="#" data-id="@Model.film.FId" id="list">Daha Sonra İzle</a></li>
                 <li id="likes"><i class="far fa-heart"></i> <a href="#" class="like" data-type="1">Beğendim</a></li>
                 <li id="dislikes"><i class="far fa-thumbs-down"></i> <a href="#" class="like" data-type="-1">Beğenmedim</a></li>
             }
@@ -144,16 +144,19 @@
                     filmId:@Model.film.FId
                 },
                 type: "GET",
-                success: function () { },
+                success: function () {},
                 error: function () {}
             });
         });
 
         $("#list").click(function (e) {
 
-            var filmId =@Model.film.FId;
+            var filmId =$(this).data("id");
             $.ajax({
-                url: "/Film/AddList/" + filmId,
+                url: "/Film/AddList",
+                data: {
+                    filmId
+                },
                 type: "GET",
                 success: function (data) {
                     $("#watched").html(data);
@@ -174,7 +177,11 @@
                 },
                 type: "GET",
                 success: function (data) {
-                    $(this).html(data);
+                    if (type == "-1") {
+                        $("#dislikes").html(data);
+                    } else {
+                        $("#likes").html(data);
+                    }
                 },
                 error: function () {}
             });
@@ -190,16 +197,15 @@
                 type: "GET",
                 success: function (data) {
                     if (data.InList == 1) {
-                        $("#list").html("<i class='far fa-check-circle'></i> Listenizde");
+                        $("#watched").html("<i class='far fa-check-circle'></i> Listenizde");
                     }
-
                     if (data.InLike == 1) {
                         $("#likes").html("<i class='far fa-check-circle'></i > Beğendiniz");
                     } else if (data.InLike == -1) {
                         $("#dislikes").html("<i class='far fa-check-circle'></i > Beğenmediniz");
                     }
                 },
-                error: function (error) { console.log(error) }
+                error: function (error) {}
             });
 
         });
