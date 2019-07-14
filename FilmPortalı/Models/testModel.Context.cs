@@ -15,10 +15,10 @@ namespace FilmPortalı.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class FilmPortaliEntities : DbContext
+    public partial class FilmPortaliEntities1 : DbContext
     {
-        public FilmPortaliEntities()
-            : base("name=FilmPortaliEntities")
+        public FilmPortaliEntities1()
+            : base("name=FilmPortaliEntities1")
         {
         }
     
@@ -28,16 +28,17 @@ namespace FilmPortalı.Models
         }
     
         public virtual DbSet<Categories> Categories { get; set; }
+        public virtual DbSet<Comments> Comments { get; set; }
         public virtual DbSet<Crews> Crews { get; set; }
         public virtual DbSet<FilmCategory> FilmCategory { get; set; }
         public virtual DbSet<FilmCrew> FilmCrew { get; set; }
         public virtual DbSet<Films> Films { get; set; }
-        public virtual DbSet<Sources> Sources { get; set; }
-        public virtual DbSet<Slider> Slider { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<Comments> Comments { get; set; }
-        public virtual DbSet<SubComments> SubComments { get; set; }
         public virtual DbSet<List> List { get; set; }
+        public virtual DbSet<Slider> Slider { get; set; }
+        public virtual DbSet<Sources> Sources { get; set; }
+        public virtual DbSet<SubComments> SubComments { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Views> Views { get; set; }
     
         public virtual int spFilmEkle(string ad, string konu, Nullable<System.DateTime> yil, string ulke, Nullable<double> imdb, string poster, string trailer, string seo, string kategori)

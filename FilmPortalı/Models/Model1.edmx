@@ -21,7 +21,7 @@
           <Property Name="CUId" Type="int" />
           <Property Name="CText" Type="text" />
           <Property Name="CFId" Type="int" />
-          <Property Name="CDate" Type="datetime" />
+          <Property Name="CDate" Type="smalldatetime" />
           <Property Name="CStatus" Type="bit" />
         </EntityType>
         <EntityType Name="Crews">
@@ -58,14 +58,14 @@
           <Property Name="FId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FName" Type="varchar" MaxLength="50" />
           <Property Name="FSummary" Type="text" />
-          <Property Name="FYear" Type="smalldatetime" />
+          <Property Name="FYear" Type="date" />
           <Property Name="FCountry" Type="varchar" MaxLength="250" />
           <Property Name="FImdb" Type="float" />
           <Property Name="FPoster" Type="varchar" MaxLength="250" />
           <Property Name="FTrailer" Type="text" />
           <Property Name="FSeo" Type="varchar" MaxLength="50" />
-          <Property Name="FCDate" Type="datetime" />
-          <Property Name="FUDate" Type="datetime" />
+          <Property Name="FCDate" Type="date" />
+          <Property Name="FUDate" Type="date" />
         </EntityType>
         <EntityType Name="List">
           <Key>
@@ -103,7 +103,7 @@
           <Property Name="SCUId" Type="int" />
           <Property Name="SCCId" Type="int" />
           <Property Name="SCText" Type="text" />
-          <Property Name="SCDate" Type="datetime" />
+          <Property Name="SCDate" Type="smalldatetime" />
           <Property Name="SCStatus" Type="bit" />
         </EntityType>
         <EntityType Name="Users">
@@ -124,7 +124,7 @@
           <Property Name="UInstagram" Type="varchar" MaxLength="250" />
           <Property Name="UAppear" Type="bit" />
           <Property Name="UNews" Type="bit" />
-          <Property Name="UDate" Type="datetime" />
+          <Property Name="UDate" Type="smalldatetime" />
           <Property Name="UStatus" Type="bit" />
           <Property Name="URole" Type="varchar" MaxLength="2" />
         </EntityType>
@@ -136,174 +136,17 @@
           <Property Name="VFId" Type="int" />
           <Property Name="VUId" Type="int" />
         </EntityType>
-        <Association Name="FK_Comments_Films1">
-          <End Role="Films" Type="Self.Films" Multiplicity="0..1" />
-          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Films">
-              <PropertyRef Name="FId" />
-            </Principal>
-            <Dependent Role="Comments">
-              <PropertyRef Name="CFId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Comments_Users1">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UId" />
-            </Principal>
-            <Dependent Role="Comments">
-              <PropertyRef Name="CUId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FilmCategory_Categories">
-          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
-          <End Role="FilmCategory" Type="Self.FilmCategory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Categories">
-              <PropertyRef Name="CId" />
-            </Principal>
-            <Dependent Role="FilmCategory">
-              <PropertyRef Name="CId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FilmCategory_Films">
-          <End Role="Films" Type="Self.Films" Multiplicity="0..1" />
-          <End Role="FilmCategory" Type="Self.FilmCategory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Films">
-              <PropertyRef Name="FId" />
-            </Principal>
-            <Dependent Role="FilmCategory">
-              <PropertyRef Name="FId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FilmCrew_Crews1">
-          <End Role="Crews" Type="Self.Crews" Multiplicity="0..1" />
-          <End Role="FilmCrew" Type="Self.FilmCrew" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Crews">
-              <PropertyRef Name="CId" />
-            </Principal>
-            <Dependent Role="FilmCrew">
-              <PropertyRef Name="CId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FilmCrew_Films">
-          <End Role="Films" Type="Self.Films" Multiplicity="0..1" />
-          <End Role="FilmCrew" Type="Self.FilmCrew" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Films">
-              <PropertyRef Name="FId" />
-            </Principal>
-            <Dependent Role="FilmCrew">
-              <PropertyRef Name="FId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_List_Films">
-          <End Role="Films" Type="Self.Films" Multiplicity="0..1" />
-          <End Role="List" Type="Self.List" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Films">
-              <PropertyRef Name="FId" />
-            </Principal>
-            <Dependent Role="List">
-              <PropertyRef Name="LFId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_List_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-          <End Role="List" Type="Self.List" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UId" />
-            </Principal>
-            <Dependent Role="List">
-              <PropertyRef Name="LUId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Slider_Films">
-          <End Role="Films" Type="Self.Films" Multiplicity="0..1" />
-          <End Role="Slider" Type="Self.Slider" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Films">
-              <PropertyRef Name="FId" />
-            </Principal>
-            <Dependent Role="Slider">
-              <PropertyRef Name="SFId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Sources_Films">
-          <End Role="Films" Type="Self.Films" Multiplicity="0..1" />
-          <End Role="Sources" Type="Self.Sources" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Films">
-              <PropertyRef Name="FId" />
-            </Principal>
-            <Dependent Role="Sources">
-              <PropertyRef Name="FId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SubComments_Comments">
-          <End Role="Comments" Type="Self.Comments" Multiplicity="0..1" />
-          <End Role="SubComments" Type="Self.SubComments" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Comments">
-              <PropertyRef Name="CId" />
-            </Principal>
-            <Dependent Role="SubComments">
-              <PropertyRef Name="SCCId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SubComments_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-          <End Role="SubComments" Type="Self.SubComments" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UId" />
-            </Principal>
-            <Dependent Role="SubComments">
-              <PropertyRef Name="SCUId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Views_Films">
-          <End Role="Films" Type="Self.Films" Multiplicity="0..1" />
-          <End Role="Views" Type="Self.Views" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Films">
-              <PropertyRef Name="FId" />
-            </Principal>
-            <Dependent Role="Views">
-              <PropertyRef Name="VFId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Views_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-          <End Role="Views" Type="Self.Views" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UId" />
-            </Principal>
-            <Dependent Role="Views">
-              <PropertyRef Name="VUId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <Function Name="spFilmEkle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="punwald2016">
+          <Parameter Name="ad" Type="varchar" Mode="In" />
+          <Parameter Name="konu" Type="text" Mode="In" />
+          <Parameter Name="yil" Type="smalldatetime" Mode="In" />
+          <Parameter Name="ulke" Type="varchar" Mode="In" />
+          <Parameter Name="imdb" Type="float" Mode="In" />
+          <Parameter Name="poster" Type="varchar" Mode="In" />
+          <Parameter Name="trailer" Type="text" Mode="In" />
+          <Parameter Name="seo" Type="varchar" Mode="In" />
+          <Parameter Name="kategori" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="FilmPortaliModelStoreContainer">
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
@@ -317,62 +160,6 @@
           <EntitySet Name="SubComments" EntityType="Self.SubComments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Views" EntityType="Self.Views" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Comments_Films1" Association="Self.FK_Comments_Films1">
-            <End Role="Films" EntitySet="Films" />
-            <End Role="Comments" EntitySet="Comments" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Comments_Users1" Association="Self.FK_Comments_Users1">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Comments" EntitySet="Comments" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FilmCategory_Categories" Association="Self.FK_FilmCategory_Categories">
-            <End Role="Categories" EntitySet="Categories" />
-            <End Role="FilmCategory" EntitySet="FilmCategory" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FilmCategory_Films" Association="Self.FK_FilmCategory_Films">
-            <End Role="Films" EntitySet="Films" />
-            <End Role="FilmCategory" EntitySet="FilmCategory" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FilmCrew_Crews1" Association="Self.FK_FilmCrew_Crews1">
-            <End Role="Crews" EntitySet="Crews" />
-            <End Role="FilmCrew" EntitySet="FilmCrew" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FilmCrew_Films" Association="Self.FK_FilmCrew_Films">
-            <End Role="Films" EntitySet="Films" />
-            <End Role="FilmCrew" EntitySet="FilmCrew" />
-          </AssociationSet>
-          <AssociationSet Name="FK_List_Films" Association="Self.FK_List_Films">
-            <End Role="Films" EntitySet="Films" />
-            <End Role="List" EntitySet="List" />
-          </AssociationSet>
-          <AssociationSet Name="FK_List_Users" Association="Self.FK_List_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="List" EntitySet="List" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Slider_Films" Association="Self.FK_Slider_Films">
-            <End Role="Films" EntitySet="Films" />
-            <End Role="Slider" EntitySet="Slider" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sources_Films" Association="Self.FK_Sources_Films">
-            <End Role="Films" EntitySet="Films" />
-            <End Role="Sources" EntitySet="Sources" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SubComments_Comments" Association="Self.FK_SubComments_Comments">
-            <End Role="Comments" EntitySet="Comments" />
-            <End Role="SubComments" EntitySet="SubComments" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SubComments_Users" Association="Self.FK_SubComments_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="SubComments" EntitySet="SubComments" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Views_Films" Association="Self.FK_Views_Films">
-            <End Role="Films" EntitySet="Films" />
-            <End Role="Views" EntitySet="Views" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Views_Users" Association="Self.FK_Views_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Views" EntitySet="Views" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -428,8 +215,8 @@
           <Property Name="FSummary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FYear" Type="DateTime" Precision="0" />
           <Property Name="FImdb" Type="Double" />
-          <Property Name="FCDate" Type="DateTime" Precision="3" />
-          <Property Name="FUDate" Type="DateTime" Precision="3" />
+          <Property Name="FCDate" Type="DateTime" Precision="0" />
+          <Property Name="FUDate" Type="DateTime" Precision="0" />
           <Property Name="FPoster" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="FilmCategory" Relationship="Self.FK_FilmCategory_Films" FromRole="Films" ToRole="FilmCategory" />
           <NavigationProperty Name="FilmCrew" Relationship="Self.FK_FilmCrew_Films" FromRole="Films" ToRole="FilmCrew" />
@@ -570,6 +357,17 @@
             <End Role="Films" EntitySet="Films" />
             <End Role="Sources" EntitySet="Sources" />
           </AssociationSet>
+          <FunctionImport Name="spFilmEkle">
+            <Parameter Name="ad" Mode="In" Type="String" />
+            <Parameter Name="konu" Mode="In" Type="String" />
+            <Parameter Name="yil" Mode="In" Type="DateTime" />
+            <Parameter Name="ulke" Mode="In" Type="String" />
+            <Parameter Name="imdb" Mode="In" Type="Double" />
+            <Parameter Name="poster" Mode="In" Type="String" />
+            <Parameter Name="trailer" Mode="In" Type="String" />
+            <Parameter Name="seo" Mode="In" Type="String" />
+            <Parameter Name="kategori" Mode="In" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="Slider">
           <Key>
@@ -611,7 +409,7 @@
           <Property Name="UInstagram" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="UAppear" Type="Boolean" />
           <Property Name="UNews" Type="Boolean" />
-          <Property Name="UDate" Type="DateTime" Precision="3" />
+          <Property Name="UDate" Type="DateTime" Precision="0" />
           <Property Name="UStatus" Type="Boolean" />
           <Property Name="URole" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Comments" Relationship="FilmPortaliModel.FK_Comments_Users1" FromRole="Users" ToRole="Comments" />
@@ -627,7 +425,7 @@
           <Property Name="CUId" Type="Int32" />
           <Property Name="CText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CFId" Type="Int32" />
-          <Property Name="CDate" Type="DateTime" Precision="3" />
+          <Property Name="CDate" Type="DateTime" Precision="0" />
           <Property Name="CStatus" Type="Boolean" />
           <NavigationProperty Name="Films" Relationship="FilmPortaliModel.FK_Comments_Films1" FromRole="Comments" ToRole="Films" />
           <NavigationProperty Name="Users" Relationship="FilmPortaliModel.FK_Comments_Users1" FromRole="Comments" ToRole="Users" />
@@ -665,7 +463,7 @@
           <Property Name="SCUId" Type="Int32" />
           <Property Name="SCCId" Type="Int32" />
           <Property Name="SCText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SCDate" Type="DateTime" Precision="3" />
+          <Property Name="SCDate" Type="DateTime" Precision="0" />
           <Property Name="SCStatus" Type="Boolean" />
           <NavigationProperty Name="Comments" Relationship="FilmPortaliModel.FK_SubComments_Comments" FromRole="SubComments" ToRole="Comments" />
           <NavigationProperty Name="Users" Relationship="FilmPortaliModel.FK_SubComments_Users" FromRole="SubComments" ToRole="Users" />
@@ -924,6 +722,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spFilmEkle" FunctionName="FilmPortaliModel.Store.spFilmEkle" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

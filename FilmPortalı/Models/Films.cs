@@ -11,8 +11,7 @@ namespace FilmPortalı.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Films
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -28,31 +27,15 @@ namespace FilmPortalı.Models
         }
     
         public int FId { get; set; }
-        [Required()]
-        [Display(Name ="Ad")]
         public string FName { get; set; }
-        [Required()]
-        [Display(Name = "Konu")]
         public string FSummary { get; set; }
-        [Required()]
-        [Display(Name = "Yıl")]
         public Nullable<System.DateTime> FYear { get; set; }
-        [Required()]
-        [Display(Name = "Imdb Puanı")]
         public Nullable<double> FImdb { get; set; }
         public Nullable<System.DateTime> FCDate { get; set; }
         public Nullable<System.DateTime> FUDate { get; set; }
-        [Required()]
-        [Display(Name = "Poster")]
         public string FPoster { get; set; }
-        [Required()]
-        [Display(Name = "Fragman")]
         public string FTrailer { get; set; }
-        [Required()]
-        [Display(Name = "Ülke")]
         public string FCountry { get; set; }
-        [Required()]
-        [Display(Name = "Seo")]
         public string FSeo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -144,5 +144,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spFilmEkle" FunctionName="FilmPortaliModel.Store.spFilmEkle" />
   </EntityContainerMapping>
 </Mapping>

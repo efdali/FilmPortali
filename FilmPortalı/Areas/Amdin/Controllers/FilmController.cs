@@ -1,4 +1,5 @@
-﻿using FilmPortalı.Models;
+﻿using FilmPortalı.Areas.Amdin.ViewModel;
+using FilmPortalı.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace FilmPortalı.Areas.Amdin.Controllers
     [Authorize(Roles = "A")]
     public class FilmController : Controller
     {
-        FilmPortaliEntities db = new FilmPortaliEntities();
+        FilmPortaliEntities1 db = new FilmPortaliEntities1();
         // GET: Amdin/Film
         public ActionResult Index()
         {
@@ -20,22 +21,33 @@ namespace FilmPortalı.Areas.Amdin.Controllers
 
         public ActionResult AddFilm()
         {
-            return View();
+                AddFilmViewModel vm = new AddFilmViewModel
+                {
+                    category = db.Categories.ToList()
+                };
+            return View(vm);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddFilm(Films film) {
-
+        public ActionResult AddFilm(AddFilmViewModel vm)
+        {
             if (ModelState.IsValid)
             {
-                film.FCDate = DateTime.Now;
-                db.Films.Add(film);
+                List<string> qwe = new List<string>();
+                for (int i = 0; i < vm.category.Count(); i++)
+                {
+                    if (vm.category[i].CStatus == true)
+                        qwe.Add(vm.category[i].CAd);
+                }
+                for (int i = 0; i < vm.category.Count(x => x.CStatus); i++)
+                    db.spFilmEkle(vm.film.FName, vm.film.FSummary, vm.film.FYear, vm.film.FCountry, vm.film.FImdb,
+                        vm.film.FPoster, vm.film.FTrailer, vm.film.FSeo, qwe[i]);
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
-
-            return View(film);
+            }  
+            return View(vm.film);
         }
 
         public ActionResult DeleteFilm(int filmId)
@@ -43,7 +55,7 @@ namespace FilmPortalı.Areas.Amdin.Controllers
 
             var inFilms = db.Films.FirstOrDefault(f => f.FId == filmId);
 
-            if(inFilms != null)
+            if (inFilms != null)
             {
                 db.Films.Remove(inFilms);
                 db.SaveChanges();
