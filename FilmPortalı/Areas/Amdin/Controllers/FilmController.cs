@@ -40,7 +40,7 @@ namespace FilmPortalı.Areas.Amdin.Controllers
                     if (vm.category[i].CStatus == true)
                         qwe.Add(vm.category[i].CAd);
                 }
-                for (int i = 0; i < vm.category.Count(x => x.CStatus); i++)
+                for (int i = 0; i < qwe.Count(); i++)
                     db.spFilmEkle(vm.film.FName, vm.film.FSummary, vm.film.FYear, vm.film.FCountry, vm.film.FImdb,
                         vm.film.FPoster, vm.film.FTrailer, vm.film.FSeo, qwe[i]);
 
