@@ -12,6 +12,8 @@ namespace FilmPortalı.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class FilmPortaliEntities : DbContext
     {
@@ -37,5 +39,56 @@ namespace FilmPortalı.Models
         public virtual DbSet<SubComments> SubComments { get; set; }
         public virtual DbSet<List> List { get; set; }
         public virtual DbSet<Views> Views { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+    
+        public virtual int spFilmEkle(string ad, string konu, string yil, string ulke, Nullable<double> imdb, string poster, string trailer, string seo, Nullable<int> kategori)
+        {
+            var adParameter = ad != null ?
+                new ObjectParameter("ad", ad) :
+                new ObjectParameter("ad", typeof(string));
+    
+            var konuParameter = konu != null ?
+                new ObjectParameter("konu", konu) :
+                new ObjectParameter("konu", typeof(string));
+    
+            var yilParameter = yil != null ?
+                new ObjectParameter("yil", yil) :
+                new ObjectParameter("yil", typeof(string));
+    
+            var ulkeParameter = ulke != null ?
+                new ObjectParameter("ulke", ulke) :
+                new ObjectParameter("ulke", typeof(string));
+    
+            var imdbParameter = imdb.HasValue ?
+                new ObjectParameter("imdb", imdb) :
+                new ObjectParameter("imdb", typeof(double));
+    
+            var posterParameter = poster != null ?
+                new ObjectParameter("poster", poster) :
+                new ObjectParameter("poster", typeof(string));
+    
+            var trailerParameter = trailer != null ?
+                new ObjectParameter("trailer", trailer) :
+                new ObjectParameter("trailer", typeof(string));
+    
+            var seoParameter = seo != null ?
+                new ObjectParameter("seo", seo) :
+                new ObjectParameter("seo", typeof(string));
+    
+            var kategoriParameter = kategori.HasValue ?
+                new ObjectParameter("kategori", kategori) :
+                new ObjectParameter("kategori", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spFilmEkle", adParameter, konuParameter, yilParameter, ulkeParameter, imdbParameter, posterParameter, trailerParameter, seoParameter, kategoriParameter);
+        }
+    
+        public virtual int spFilmSil(Nullable<int> filmId)
+        {
+            var filmIdParameter = filmId.HasValue ?
+                new ObjectParameter("filmId", filmId) :
+                new ObjectParameter("filmId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spFilmSil", filmIdParameter);
+        }
     }
 }

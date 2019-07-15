@@ -12,7 +12,7 @@
         <div class="film-info">
             <h4><span>Yönetmen:</span> @ViewBag.Director</h4>
             <h4><span>Ülke:</span> @Model.film.FCountry</h4>
-            <h4><span>Yapım Yılı:</span> @Model.film.FYear.Value.Year</h4>
+            <h4><span>Yapım Yılı:</span> @Model.film.FYear</h4>
             <h4><span>IMDB Puanı:</span> @Model.film.FImdb</h4>
             <h4><span>Tür:</span> @ViewBag.Categories</h4>
 
@@ -117,7 +117,7 @@
 
 <div class="video-container modal" id="video-modal">
 
-    <iframe width="100%" id="film-src" style="height:95vh" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+    <iframe id="film-src" style="height:95vh;width:100%" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
 
 
 </div>

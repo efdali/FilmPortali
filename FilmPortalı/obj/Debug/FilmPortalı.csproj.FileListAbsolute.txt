@@ -153,3 +153,12 @@ C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\bin\Newtonsoft.Json.xml
 C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\bin\System.Web.Optimization.xml
 C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\bin\System.Security.dll
 C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\bin\System.Web.dll
+C:\Users\Oktay\Source\Repos\efdali\FilmPortali\FilmPortalı\bin\Antlr3.Runtime.dll
+C:\Users\Oktay\Source\Repos\efdali\FilmPortali\FilmPortalı\bin\Newtonsoft.Json.dll
+C:\Users\Oktay\Source\Repos\efdali\FilmPortali\FilmPortalı\bin\System.Security.dll
+C:\Users\Oktay\Source\Repos\efdali\FilmPortali\FilmPortalı\bin\System.Web.dll
+C:\Users\Oktay\Source\Repos\efdali\FilmPortali\FilmPortalı\bin\System.Web.Optimization.dll
+C:\Users\Oktay\Source\Repos\efdali\FilmPortali\FilmPortalı\bin\WebGrease.dll
+C:\Users\Oktay\Source\Repos\efdali\FilmPortali\FilmPortalı\bin\Antlr3.Runtime.pdb
+C:\Users\Oktay\Source\Repos\efdali\FilmPortali\FilmPortalı\bin\Newtonsoft.Json.xml
+C:\Users\Oktay\Source\Repos\efdali\FilmPortali\FilmPortalı\bin\System.Web.Optimization.xml

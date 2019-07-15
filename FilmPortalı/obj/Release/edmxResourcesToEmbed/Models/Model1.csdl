@@ -6,7 +6,6 @@
     </Key>
     <Property Name="CId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CStatus" Type="Boolean" />
     <NavigationProperty Name="FilmCategory" Relationship="Self.FK_FilmCategory_Categories" FromRole="Categories" ToRole="FilmCategory" />
   </EntityType>
   <EntityType Name="Crews">
@@ -50,8 +49,8 @@
     <Property Name="FSummary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="FYear" Type="DateTime" Precision="0" />
     <Property Name="FImdb" Type="Double" />
-    <Property Name="FCDate" Type="DateTime" Precision="3" />
-    <Property Name="FUDate" Type="DateTime" Precision="3" />
+    <Property Name="FCDate" Type="DateTime" Precision="0" />
+    <Property Name="FUDate" Type="DateTime" Precision="0" />
     <Property Name="FPoster" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="FilmCategory" Relationship="Self.FK_FilmCategory_Films" FromRole="Films" ToRole="FilmCategory" />
     <NavigationProperty Name="FilmCrew" Relationship="Self.FK_FilmCrew_Films" FromRole="Films" ToRole="FilmCrew" />
@@ -192,6 +191,20 @@
       <End Role="Films" EntitySet="Films" />
       <End Role="Sources" EntitySet="Sources" />
     </AssociationSet>
+    <FunctionImport Name="spFilmEkle">
+      <Parameter Name="ad" Mode="In" Type="String" />
+      <Parameter Name="konu" Mode="In" Type="String" />
+      <Parameter Name="yil" Mode="In" Type="DateTime" />
+      <Parameter Name="ulke" Mode="In" Type="String" />
+      <Parameter Name="imdb" Mode="In" Type="Double" />
+      <Parameter Name="poster" Mode="In" Type="String" />
+      <Parameter Name="trailer" Mode="In" Type="String" />
+      <Parameter Name="seo" Mode="In" Type="String" />
+      <Parameter Name="kategori" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spFilmSil">
+      <Parameter Name="filmId" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="Slider">
     <Key>
@@ -233,7 +246,7 @@
     <Property Name="UInstagram" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="UAppear" Type="Boolean" />
     <Property Name="UNews" Type="Boolean" />
-    <Property Name="UDate" Type="DateTime" Precision="3" />
+    <Property Name="UDate" Type="DateTime" Precision="0" />
     <Property Name="UStatus" Type="Boolean" />
     <Property Name="URole" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Comments" Relationship="FilmPortaliModel.FK_Comments_Users1" FromRole="Users" ToRole="Comments" />
@@ -249,7 +262,7 @@
     <Property Name="CUId" Type="Int32" />
     <Property Name="CText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="CFId" Type="Int32" />
-    <Property Name="CDate" Type="DateTime" Precision="3" />
+    <Property Name="CDate" Type="DateTime" Precision="0" />
     <Property Name="CStatus" Type="Boolean" />
     <NavigationProperty Name="Films" Relationship="FilmPortaliModel.FK_Comments_Films1" FromRole="Comments" ToRole="Films" />
     <NavigationProperty Name="Users" Relationship="FilmPortaliModel.FK_Comments_Users1" FromRole="Comments" ToRole="Users" />
@@ -287,7 +300,7 @@
     <Property Name="SCUId" Type="Int32" />
     <Property Name="SCCId" Type="Int32" />
     <Property Name="SCText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="SCDate" Type="DateTime" Precision="3" />
+    <Property Name="SCDate" Type="DateTime" Precision="0" />
     <Property Name="SCStatus" Type="Boolean" />
     <NavigationProperty Name="Comments" Relationship="FilmPortaliModel.FK_SubComments_Comments" FromRole="SubComments" ToRole="Comments" />
     <NavigationProperty Name="Users" Relationship="FilmPortaliModel.FK_SubComments_Users" FromRole="SubComments" ToRole="Users" />

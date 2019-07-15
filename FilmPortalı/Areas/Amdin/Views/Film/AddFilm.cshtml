@@ -1,4 +1,4 @@
-﻿@model FilmPortalı.Models.Films
+﻿@model FilmPortalı.Areas.Amdin.ViewModel.AddFilmViewModel
 @{
     ViewBag.Title = "Film Ekle";
     Layout = "~/Areas/Amdin/Views/Shared/_Layout.cshtml";
@@ -54,60 +54,68 @@
                         @using (Html.BeginForm("AddFilm", "Film", FormMethod.Post, new { @class = "form-horizontal form-label-left", data_parsley_validate = "true" }))
                         {
                             @Html.AntiForgeryToken()
+                            @Html.HiddenFor(f => f.film.FId)
                             <div class="form-group">
-                                @Html.LabelFor(f => f.FName, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                @Html.LabelFor(f => f.film.FName, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @Html.TextBoxFor(f => f.FName,new { @class= "form-control col-md-7 col-xs-12",required="true" })
+                                    @Html.TextBoxFor(f => f.film.FName, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
                                 </div>
                             </div>
                             <div class="form-group">
-                                @Html.LabelFor(f => f.FYear, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                @Html.LabelFor(f => f.film.FYear, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @Html.TextBoxFor(f => f.FYear, new { @class = "form-control col-md-7 col-xs-12", required = "true",type="date" })
+                                    @Html.TextBoxFor(f => f.film.FYear, new { @class = "form-control col-md-7 col-xs-12", required = "true", type = "date" })
                                 </div>
                             </div>
                             <div class="form-group">
-                                @Html.LabelFor(f => f.FCountry, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                @Html.LabelFor(f => f.film.FCountry, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @Html.TextBoxFor(f => f.FCountry, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
+                                    @Html.TextBoxFor(f => f.film.FCountry, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
                                 </div>
                             </div>
                             <div class="form-group">
-                                @Html.LabelFor(f => f.FImdb, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                @Html.LabelFor(f => f.film.FImdb, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @Html.TextBoxFor(f => f.FImdb, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
+                                    @Html.TextBoxFor(f => f.film.FImdb, new { @class = "form-control col-md-7 col-xs-12", required = "true",type="number",step="0.1" })
                                 </div>
                             </div>
                             <div class="form-group">
-                                @Html.LabelFor(f => f.FPoster, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                @Html.LabelFor(f => f.film.FPoster, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @Html.TextBoxFor(f => f.FPoster, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
+                                    @Html.TextBoxFor(f => f.film.FPoster, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
                                 </div>
                             </div>
                             <div class="form-group">
-                                @Html.LabelFor(f => f.FTrailer, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                @Html.LabelFor(f => f.film.FTrailer, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @Html.TextBoxFor(f => f.FTrailer, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
+                                    @Html.TextBoxFor(f => f.film.FTrailer, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
                                 </div>
                             </div>
                             <div class="form-group">
-                                @Html.LabelFor(f => f.FSummary, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                @Html.LabelFor(f => f.film.FSummary, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    @Html.TextAreaFor(f => f.FSummary,new { @class="form-control",rows="3"})
+                                    @Html.TextAreaFor(f => f.film.FSummary, new { @class = "form-control", rows = "3" })
                                 </div>
                             </div>
                             <div class="form-group">
-                                @Html.LabelFor(f => f.FSeo, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                @Html.LabelFor(f => f.film.FSeo, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @Html.TextBoxFor(f => f.FSeo, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
+                                    @Html.TextBoxFor(f => f.film.FSeo, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("Kategoriler", new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    @Html.DropDownListFor(m => m.category,
+         new MultiSelectList(@Model.category,"CId","CAd"),new { @class= "select2_multiple form-control",@multiple="multiple" })
                                 </div>
                             </div>
                             <div class="ln_solid"></div>

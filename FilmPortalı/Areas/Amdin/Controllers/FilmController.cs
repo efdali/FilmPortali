@@ -1,4 +1,5 @@
-﻿using FilmPortalı.Models;
+﻿using FilmPortalı.Areas.Amdin.ViewModel;
+using FilmPortalı.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Web.Mvc;
 
 namespace FilmPortalı.Areas.Amdin.Controllers
 {
-    [Authorize(Roles = "A")]
+    //[Authorize(Roles = "A")]
     public class FilmController : Controller
     {
         FilmPortaliEntities db = new FilmPortaliEntities();
@@ -20,36 +21,56 @@ namespace FilmPortalı.Areas.Amdin.Controllers
 
         public ActionResult AddFilm()
         {
-            return View();
+            AddFilmViewModel vm = new AddFilmViewModel
+            {
+                category = db.Categories.ToList()
+            };
+            return View(vm);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddFilm(Films film) {
-
-            if (ModelState.IsValid)
+        public ActionResult AddFilm(AddFilmViewModel vm)
+        {
+            if (vm.film.FId == 0)
             {
-                film.FCDate = DateTime.Now;
-                db.Films.Add(film);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    List<int> qwe = new List<int>();
+                    foreach (var cat in vm.category)
+                    {
+                        qwe.Add(cat.CId);
+                    }
+                    for (int i = 0; i < qwe.Count(); i++)
+                        db.spFilmEkle(vm.film.FName, vm.film.FSummary, vm.film.FYear, vm.film.FCountry, vm.film.FImdb,
+                            vm.film.FPoster, vm.film.FTrailer, vm.film.FSeo, qwe[i]);
 
-            return View(film);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+            }
+        }
+            return View(vm);
+        }
+
+        public ActionResult UpdateFilm(int filmId)
+        {
+            AddFilmViewModel vm = new AddFilmViewModel
+            {
+                category = db.Categories.ToList()
+            };
+            var film = db.Films.Find(filmId);
+            if (film == null)
+                return HttpNotFound();
+
+            vm.film = film;
+
+            return View("AddFilm", vm);
         }
 
         public ActionResult DeleteFilm(int filmId)
         {
-
-            var inFilms = db.Films.FirstOrDefault(f => f.FId == filmId);
-
-            if(inFilms != null)
-            {
-                db.Films.Remove(inFilms);
-                db.SaveChanges();
-                return Content("Başarılı");
-            }
-            return Content("Film Bulunamadı");
+            db.spFilmSil(filmId);
+            return Content("Film Silindi");
         }
     }
 }

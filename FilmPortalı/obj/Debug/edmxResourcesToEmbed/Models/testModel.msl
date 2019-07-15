@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FilmPortaliModel1StoreContainer" CdmEntityContainer="FilmPortaliEntities1">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="FilmPortaliModel1.Categories">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="CId" ColumnName="CId" />
+          <ScalarProperty Name="CAd" ColumnName="CAd" />
+          <ScalarProperty Name="CStatus" ColumnName="CStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="FilmPortaliModel1.Comments">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="CId" ColumnName="CId" />
+          <ScalarProperty Name="CUId" ColumnName="CUId" />
+          <ScalarProperty Name="CText" ColumnName="CText" />
+          <ScalarProperty Name="CFId" ColumnName="CFId" />
+          <ScalarProperty Name="CDate" ColumnName="CDate" />
+          <ScalarProperty Name="CStatus" ColumnName="CStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Crews">
+      <EntityTypeMapping TypeName="FilmPortaliModel1.Crews">
+        <MappingFragment StoreEntitySet="Crews">
+          <ScalarProperty Name="CId" ColumnName="CId" />
+          <ScalarProperty Name="CName" ColumnName="CName" />
+          <ScalarProperty Name="CBirthday" ColumnName="CBirthday" />
+          <ScalarProperty Name="CPicture" ColumnName="CPicture" />
+          <ScalarProperty Name="CLife" ColumnName="CLife" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FilmCategory">
+      <EntityTypeMapping TypeName="FilmPortaliModel1.FilmCategory">
+        <MappingFragment StoreEntitySet="FilmCategory">
+          <ScalarProperty Name="FCId" ColumnName="FCId" />
+          <ScalarProperty Name="FId" ColumnName="FId" />
+          <ScalarProperty Name="CId" ColumnName="CId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FilmCrew">
+      <EntityTypeMapping TypeName="FilmPortaliModel1.FilmCrew">
+        <MappingFragment StoreEntitySet="FilmCrew">
+          <ScalarProperty Name="FCId" ColumnName="FCId" />
+          <ScalarProperty Name="FId" ColumnName="FId" />
+          <ScalarProperty Name="CId" ColumnName="CId" />
+          <ScalarProperty Name="FCMission" ColumnName="FCMission" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Films">
+      <EntityTypeMapping TypeName="FilmPortaliModel1.Films">
+        <MappingFragment StoreEntitySet="Films">
+          <ScalarProperty Name="FId" ColumnName="FId" />
+          <ScalarProperty Name="FName" ColumnName="FName" />
+          <ScalarProperty Name="FSummary" ColumnName="FSummary" />
+          <ScalarProperty Name="FYear" ColumnName="FYear" />
+          <ScalarProperty Name="FCountry" ColumnName="FCountry" />
+          <ScalarProperty Name="FImdb" ColumnName="FImdb" />
+          <ScalarProperty Name="FPoster" ColumnName="FPoster" />
+          <ScalarProperty Name="FTrailer" ColumnName="FTrailer" />
+          <ScalarProperty Name="FSeo" ColumnName="FSeo" />
+          <ScalarProperty Name="FCDate" ColumnName="FCDate" />
+          <ScalarProperty Name="FUDate" ColumnName="FUDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="List">
+      <EntityTypeMapping TypeName="FilmPortaliModel1.List">
+        <MappingFragment StoreEntitySet="List">
+          <ScalarProperty Name="LId" ColumnName="LId" />
+          <ScalarProperty Name="LUId" ColumnName="LUId" />
+          <ScalarProperty Name="LFId" ColumnName="LFId" />
+          <ScalarProperty Name="LType" ColumnName="LType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Slider">
+      <EntityTypeMapping TypeName="FilmPortaliModel1.Slider">
+        <MappingFragment StoreEntitySet="Slider">
+          <ScalarProperty Name="SId" ColumnName="SId" />
+          <ScalarProperty Name="SFId" ColumnName="SFId" />
+          <ScalarProperty Name="SStatus" ColumnName="SStatus" />
+          <ScalarProperty Name="SDate" ColumnName="SDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sources">
+      <EntityTypeMapping TypeName="FilmPortaliModel1.Sources">
+        <MappingFragment StoreEntitySet="Sources">
+          <ScalarProperty Name="SId" ColumnName="SId" />
+          <ScalarProperty Name="FId" ColumnName="FId" />
+          <ScalarProperty Name="SName" ColumnName="SName" />
+          <ScalarProperty Name="SUrl" ColumnName="SUrl" />
+          <ScalarProperty Name="SStatus" ColumnName="SStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubComments">
+      <EntityTypeMapping TypeName="FilmPortaliModel1.SubComments">
+        <MappingFragment StoreEntitySet="SubComments">
+          <ScalarProperty Name="SCId" ColumnName="SCId" />
+          <ScalarProperty Name="SCUId" ColumnName="SCUId" />
+          <ScalarProperty Name="SCCId" ColumnName="SCCId" />
+          <ScalarProperty Name="SCText" ColumnName="SCText" />
+          <ScalarProperty Name="SCDate" ColumnName="SCDate" />
+          <ScalarProperty Name="SCStatus" ColumnName="SCStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="FilmPortaliModel1.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="FilmPortaliModel1.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UId" ColumnName="UId" />
+          <ScalarProperty Name="UNick" ColumnName="UNick" />
+          <ScalarProperty Name="UMail" ColumnName="UMail" />
+          <ScalarProperty Name="UPasswd" ColumnName="UPasswd" />
+          <ScalarProperty Name="UName" ColumnName="UName" />
+          <ScalarProperty Name="USurname" ColumnName="USurname" />
+          <ScalarProperty Name="UInfo" ColumnName="UInfo" />
+          <ScalarProperty Name="UImage" ColumnName="UImage" />
+          <ScalarProperty Name="UBirthDate" ColumnName="UBirthDate" />
+          <ScalarProperty Name="UGender" ColumnName="UGender" />
+          <ScalarProperty Name="UTwitter" ColumnName="UTwitter" />
+          <ScalarProperty Name="UInstagram" ColumnName="UInstagram" />
+          <ScalarProperty Name="UAppear" ColumnName="UAppear" />
+          <ScalarProperty Name="UNews" ColumnName="UNews" />
+          <ScalarProperty Name="UDate" ColumnName="UDate" />
+          <ScalarProperty Name="UStatus" ColumnName="UStatus" />
+          <ScalarProperty Name="URole" ColumnName="URole" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Views">
+      <EntityTypeMapping TypeName="FilmPortaliModel1.Views">
+        <MappingFragment StoreEntitySet="Views">
+          <ScalarProperty Name="VId" ColumnName="VId" />
+          <ScalarProperty Name="VFId" ColumnName="VFId" />
+          <ScalarProperty Name="VUId" ColumnName="VUId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spFilmEkle" FunctionName="FilmPortaliModel1.Store.spFilmEkle" />
+  </EntityContainerMapping>
+</Mapping>

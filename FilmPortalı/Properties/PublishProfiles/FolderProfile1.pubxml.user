@@ -40,10 +40,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/22/2016 02:02:28</publishTime>
     </File>
     <File Include="Areas/Amdin/Views/Film/AddFilm.cshtml">
-      <publishTime>07/13/2019 23:38:25</publishTime>
+      <publishTime>07/14/2019 22:47:55</publishTime>
     </File>
     <File Include="Areas/Amdin/Views/Film/Index.cshtml">
-      <publishTime>07/14/2019 12:24:17</publishTime>
+      <publishTime>07/14/2019 23:49:25</publishTime>
     </File>
     <File Include="Areas/Amdin/Views/Home/Index.cshtml">
       <publishTime>07/13/2019 22:12:12</publishTime>
@@ -67,10 +67,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/07/2018 11:03:48</publishTime>
     </File>
     <File Include="bin/FilmPortalı.dll">
-      <publishTime>07/14/2019 12:27:43</publishTime>
+      <publishTime>07/14/2019 23:51:24</publishTime>
     </File>
     <File Include="bin/FilmPortalı.pdb">
-      <publishTime>07/14/2019 12:27:43</publishTime>
+      <publishTime>07/14/2019 23:51:24</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>07/03/2019 14:33:10</publishTime>
@@ -5212,7 +5212,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2019 22:50:27</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/14/2019 12:27:44</publishTime>
+      <publishTime>07/14/2019 23:51:25</publishTime>
     </File>
   </ItemGroup>
 </Project>

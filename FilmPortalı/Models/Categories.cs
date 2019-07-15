@@ -22,7 +22,6 @@ namespace FilmPortalı.Models
     
         public int CId { get; set; }
         public string CAd { get; set; }
-        public Nullable<bool> CStatus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FilmCategory> FilmCategory { get; set; }

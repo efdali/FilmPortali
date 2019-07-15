@@ -6,7 +6,6 @@
         <MappingFragment StoreEntitySet="Categories">
           <ScalarProperty Name="CId" ColumnName="CId" />
           <ScalarProperty Name="CAd" ColumnName="CAd" />
-          <ScalarProperty Name="CStatus" ColumnName="CStatus" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -144,5 +143,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spFilmEkle" FunctionName="FilmPortaliModel.Store.spFilmEkle" />
+    <FunctionImportMapping FunctionImportName="spFilmSil" FunctionName="FilmPortaliModel.Store.spFilmSil" />
   </EntityContainerMapping>
 </Mapping>

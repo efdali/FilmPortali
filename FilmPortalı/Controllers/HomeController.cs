@@ -42,7 +42,7 @@ namespace FilmPortalı.Controllers
             {
                 if (sort == "izlenme")
                 {
-                    films = db.Films.Where(f => f.FYear.Value.Year == 2019)
+                    films = db.Films.Where(f => f.FYear == "2019")
                     .OrderBy(f => f.FUDate).Skip(page * 40).Take(40).ToList();
                     //films = (from f in db.Films
                     //         join v in db.Views.GroupBy(v => v.VFId).
@@ -51,12 +51,12 @@ namespace FilmPortalı.Controllers
                 }
                 else if (sort == "eklenme")
                 {
-                    films = db.Films.Where(f => f.FYear.Value.Year == 2019)
+                    films = db.Films.Where(f => f.FYear == "2019")
                     .OrderBy(f => f.FCDate).Skip(page * 40).Take(40).ToList();
                 }
                 else
                 {
-                    films = db.Films.Where(f => f.FYear.Value.Year == 2019)
+                    films = db.Films.Where(f => f.FYear == "2019")
                         .OrderBy(f => f.FImdb).Skip(page * 40).Take(40).ToList();
                 }
                 ViewBag.Header = "2019 Yılı Filmleri";

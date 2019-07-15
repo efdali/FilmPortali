@@ -31,6 +31,7 @@
         <AssociationConnector Association="FilmPortaliModel.FK_Views_Films" />
         <AssociationConnector Association="FilmPortaliModel.FK_Views_Users" />
         <AssociationConnector Association="FilmPortaliModel.FK_Sources_Films" />
+        <EntityTypeShape EntityType="FilmPortaliModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

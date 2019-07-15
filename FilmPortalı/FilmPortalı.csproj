@@ -172,6 +172,7 @@
     <Compile Include="Areas\Amdin\AmdinAreaRegistration.cs" />
     <Compile Include="Areas\Amdin\Controllers\FilmController.cs" />
     <Compile Include="Areas\Amdin\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\Amdin\ViewModel\AddFilmViewModel.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FilmController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

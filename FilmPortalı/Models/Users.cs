@@ -35,8 +35,8 @@ namespace FilmPortalı.Models
         public Nullable<bool> UGender { get; set; }
         public string UTwitter { get; set; }
         public string UInstagram { get; set; }
-        public bool UAppear { get; set; }
-        public bool UNews { get; set; }
+        public Nullable<bool> UAppear { get; set; }
+        public Nullable<bool> UNews { get; set; }
         public Nullable<System.DateTime> UDate { get; set; }
         public Nullable<bool> UStatus { get; set; }
         public string URole { get; set; }
