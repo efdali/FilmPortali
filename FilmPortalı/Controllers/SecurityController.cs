@@ -18,6 +18,8 @@ namespace FilmPortalı.Controllers
         {
             if (ModelState.IsValid)
             {
+                users.URole = "U";
+                users.UDate = DateTime.Now;
                 users.UPasswd = FormsAuthentication.HashPasswordForStoringInConfigFile(users.UPasswd, "MD5");
                 db.Users.Add(users);
                 db.SaveChanges();

@@ -14,43 +14,17 @@ namespace FilmPortalı.Models
     
     public partial class Films
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Films()
-        {
-            this.FilmCategory = new HashSet<FilmCategory>();
-            this.FilmCrew = new HashSet<FilmCrew>();
-            this.Slider = new HashSet<Slider>();
-            this.Comments = new HashSet<Comments>();
-            this.List = new HashSet<List>();
-            this.Views = new HashSet<Views>();
-            this.Sources = new HashSet<Sources>();
-        }
-    
         public int FId { get; set; }
         public string FName { get; set; }
+        public string FTurkishName { get; set; }
         public string FSummary { get; set; }
-        public string FYear { get; set; }
+        public Nullable<int> FYear { get; set; }
+        public string FCountry { get; set; }
         public Nullable<double> FImdb { get; set; }
-        public Nullable<System.DateTime> FCDate { get; set; }
-        public Nullable<System.DateTime> FUDate { get; set; }
         public string FPoster { get; set; }
         public string FTrailer { get; set; }
-        public string FCountry { get; set; }
         public string FSeo { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FilmCategory> FilmCategory { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FilmCrew> FilmCrew { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Slider> Slider { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comments> Comments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<List> List { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Views> Views { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sources> Sources { get; set; }
+        public Nullable<System.DateTime> FCDate { get; set; }
+        public Nullable<System.DateTime> FUDate { get; set; }
     }
 }

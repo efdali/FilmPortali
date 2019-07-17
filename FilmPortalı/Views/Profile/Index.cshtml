@@ -38,7 +38,7 @@
             </div>
             <div class="form-group w25">
                 <label for="date">Doğum Tarihi</label>
-                @Html.TextBoxFor(m => m.UBirthDate, new { @class = "input-item profile-input", type = "date" })
+                @Html.TextBoxFor(m => m.UBirthDate,"{0:dd-MM-yyyy}", new { @class = "input-item profile-input", type = "date" })
             </div>
             <div class="form-group w25">
                 <label for="gender">Cinsiyet</label>

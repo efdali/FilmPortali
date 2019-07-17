@@ -42,6 +42,7 @@
     <EntitySetMapping Name="Films">
       <EntityTypeMapping TypeName="FilmPortaliModel.Films">
         <MappingFragment StoreEntitySet="Films">
+          <ScalarProperty Name="FTurkishName" ColumnName="FTurkishName" />
           <ScalarProperty Name="FSeo" ColumnName="FSeo" />
           <ScalarProperty Name="FCountry" ColumnName="FCountry" />
           <ScalarProperty Name="FTrailer" ColumnName="FTrailer" />
@@ -137,6 +138,7 @@
     <EntitySetMapping Name="Views">
       <EntityTypeMapping TypeName="FilmPortaliModel.Views">
         <MappingFragment StoreEntitySet="Views">
+          <ScalarProperty Name="VDate" ColumnName="VDate" />
           <ScalarProperty Name="VUId" ColumnName="VUId" />
           <ScalarProperty Name="VFId" ColumnName="VFId" />
           <ScalarProperty Name="VId" ColumnName="VId" />

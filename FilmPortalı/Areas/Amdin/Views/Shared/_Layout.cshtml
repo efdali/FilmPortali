@@ -41,11 +41,11 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img src="~/Areas/Amdin/Content/img/img.jpg" alt="..." class="img-circle profile_img">
+                            <img src="@Session["kullaniciResim"]" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
                             <span>Hoşgeldin,</span>
-                            <h2>Amdin</h2>
+                            <h2>Amdin @User.Identity.Name</h2>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -200,7 +200,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="~/Areas/Amdin/Content/img/img.jpg" alt="">John Doe
+                                    <img src="@Session["kullaniciResim"]" alt="">John Doe
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">

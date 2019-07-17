@@ -51,15 +51,16 @@
     </Key>
     <Property Name="FId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FName" Type="varchar" MaxLength="50" />
+    <Property Name="FTurkishName" Type="varchar" MaxLength="50" />
     <Property Name="FSummary" Type="text" />
-    <Property Name="FYear" Type="date" />
+    <Property Name="FYear" Type="varchar" MaxLength="5" />
     <Property Name="FCountry" Type="varchar" MaxLength="250" />
     <Property Name="FImdb" Type="float" />
     <Property Name="FPoster" Type="varchar" MaxLength="250" />
     <Property Name="FTrailer" Type="text" />
     <Property Name="FSeo" Type="varchar" MaxLength="50" />
-    <Property Name="FCDate" Type="smalldatetime" />
-    <Property Name="FUDate" Type="smalldatetime" />
+    <Property Name="FCDate" Type="date" />
+    <Property Name="FUDate" Type="date" />
   </EntityType>
   <EntityType Name="List">
     <Key>
@@ -118,7 +119,7 @@
     <Property Name="UInstagram" Type="varchar" MaxLength="250" />
     <Property Name="UAppear" Type="bit" />
     <Property Name="UNews" Type="bit" />
-    <Property Name="UDate" Type="smalldatetime" />
+    <Property Name="UDate" Type="date" />
     <Property Name="UStatus" Type="bit" />
     <Property Name="URole" Type="varchar" MaxLength="2" />
   </EntityType>
@@ -129,11 +130,12 @@
     <Property Name="VId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="VFId" Type="int" />
     <Property Name="VUId" Type="int" />
+    <Property Name="VDate" Type="date" />
   </EntityType>
   <Function Name="spFilmEkle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="punwald2016">
     <Parameter Name="ad" Type="varchar" Mode="In" />
     <Parameter Name="konu" Type="text" Mode="In" />
-    <Parameter Name="yil" Type="smalldatetime" Mode="In" />
+    <Parameter Name="yil" Type="varchar" Mode="In" />
     <Parameter Name="ulke" Type="varchar" Mode="In" />
     <Parameter Name="imdb" Type="float" Mode="In" />
     <Parameter Name="poster" Type="varchar" Mode="In" />

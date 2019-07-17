@@ -15,11 +15,9 @@ namespace FilmPortalı.Models
     public partial class Sources
     {
         public int SId { get; set; }
+        public Nullable<int> FId { get; set; }
         public string SName { get; set; }
         public string SUrl { get; set; }
         public Nullable<bool> SStatus { get; set; }
-        public Nullable<int> FId { get; set; }
-    
-        public virtual Films Films { get; set; }
     }
 }

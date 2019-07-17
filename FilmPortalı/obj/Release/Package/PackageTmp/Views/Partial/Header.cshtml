@@ -57,6 +57,10 @@
                         <img src='@Session["kullaniciResim"]' alt="@HttpContext.Current.User.Identity.Name" class="profile-img" width="30px" height="30px">
                         <i class="fas fa-caret-down show-profile-list" id=""></i>
                         <ul class="list-container profile-list" id="">
+                            @if (User.IsInRole("A"))
+                            {
+                                <li>@Html.ActionLink("Yönetim","Index","Amdin/Film")</li>
+                            }
                             <li>@Html.ActionLink("Profil","Index", "profil")</li>
                             <li>İzlediklerim</li>
                             <li>İzleyeceklerim</li>

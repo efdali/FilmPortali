@@ -47,7 +47,7 @@
     <Property Name="FId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="FName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="FSummary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="FYear" Type="DateTime" Precision="0" />
+    <Property Name="FYear" Type="String" Nullable="true" MaxLength="5" Unicode="false" FixedLength="false" />
     <Property Name="FImdb" Type="Double" />
     <Property Name="FCDate" Type="DateTime" Precision="0" />
     <Property Name="FUDate" Type="DateTime" Precision="0" />
@@ -62,6 +62,7 @@
     <Property Name="FSeo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Views" Relationship="FilmPortaliModel.FK_Views_Films" FromRole="Films" ToRole="Views" />
     <NavigationProperty Name="Sources" Relationship="FilmPortaliModel.FK_Sources_Films" FromRole="Films" ToRole="Sources" />
+    <Property Name="FTurkishName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Sources">
     <Key>
@@ -194,7 +195,7 @@
     <FunctionImport Name="spFilmEkle">
       <Parameter Name="ad" Mode="In" Type="String" />
       <Parameter Name="konu" Mode="In" Type="String" />
-      <Parameter Name="yil" Mode="In" Type="DateTime" />
+      <Parameter Name="yil" Mode="In" Type="String" />
       <Parameter Name="ulke" Mode="In" Type="String" />
       <Parameter Name="imdb" Mode="In" Type="Double" />
       <Parameter Name="poster" Mode="In" Type="String" />
@@ -373,6 +374,7 @@
     <Property Name="VUId" Type="Int32" />
     <NavigationProperty Name="Films" Relationship="FilmPortaliModel.FK_Views_Films" FromRole="Views" ToRole="Films" />
     <NavigationProperty Name="Users" Relationship="FilmPortaliModel.FK_Views_Users" FromRole="Views" ToRole="Users" />
+    <Property Name="VDate" Type="DateTime" Precision="0" />
   </EntityType>
   <Association Name="FK_Views_Films">
     <End Type="FilmPortaliModel.Films" Role="Films" Multiplicity="0..1" />

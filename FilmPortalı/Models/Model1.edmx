@@ -56,15 +56,16 @@
           </Key>
           <Property Name="FId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FName" Type="varchar" MaxLength="50" />
+          <Property Name="FTurkishName" Type="varchar" MaxLength="50" />
           <Property Name="FSummary" Type="text" />
-          <Property Name="FYear" Type="varchar" MaxLength="50" />
+          <Property Name="FYear" Type="int" />
           <Property Name="FCountry" Type="varchar" MaxLength="250" />
           <Property Name="FImdb" Type="float" />
           <Property Name="FPoster" Type="varchar" MaxLength="250" />
           <Property Name="FTrailer" Type="text" />
           <Property Name="FSeo" Type="varchar" MaxLength="50" />
-          <Property Name="FCDate" Type="smalldatetime" />
-          <Property Name="FUDate" Type="smalldatetime" />
+          <Property Name="FCDate" Type="date" />
+          <Property Name="FUDate" Type="date" />
         </EntityType>
         <EntityType Name="List">
           <Key>
@@ -137,7 +138,7 @@ warning 6002: The table/view 'eosinema.dbo.sysdiagrams' does not have a primary 
           <Property Name="UInstagram" Type="varchar" MaxLength="250" />
           <Property Name="UAppear" Type="bit" />
           <Property Name="UNews" Type="bit" />
-          <Property Name="UDate" Type="smalldatetime" />
+          <Property Name="UDate" Type="date" />
           <Property Name="UStatus" Type="bit" />
           <Property Name="URole" Type="varchar" MaxLength="2" />
         </EntityType>
@@ -148,16 +149,18 @@ warning 6002: The table/view 'eosinema.dbo.sysdiagrams' does not have a primary 
           <Property Name="VId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VFId" Type="int" />
           <Property Name="VUId" Type="int" />
+          <Property Name="VDate" Type="date" />
         </EntityType>
         <Function Name="spFilmEkle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="punwald2016">
           <Parameter Name="ad" Type="varchar" Mode="In" />
           <Parameter Name="konu" Type="text" Mode="In" />
-          <Parameter Name="yil" Type="varchar" Mode="In" />
+          <Parameter Name="yil" Type="int" Mode="In" />
           <Parameter Name="ulke" Type="varchar" Mode="In" />
           <Parameter Name="imdb" Type="float" Mode="In" />
           <Parameter Name="poster" Type="varchar" Mode="In" />
           <Parameter Name="trailer" Type="text" Mode="In" />
           <Parameter Name="seo" Type="varchar" Mode="In" />
+          <Parameter Name="turkAd" Type="varchar" Mode="In" />
           <Parameter Name="kategori" Type="int" Mode="In" />
         </Function>
         <Function Name="spFilmSil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="punwald2016">
@@ -190,13 +193,53 @@ warning 6002: The table/view 'eosinema.dbo.sysdiagrams' does not have a primary 
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FilmPortaliModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="FilmPortaliEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="spFilmEkle">
+            <Parameter Name="ad" Mode="In" Type="String" />
+            <Parameter Name="konu" Mode="In" Type="String" />
+            <Parameter Name="yil" Mode="In" Type="Int32" />
+            <Parameter Name="ulke" Mode="In" Type="String" />
+            <Parameter Name="imdb" Mode="In" Type="Double" />
+            <Parameter Name="poster" Mode="In" Type="String" />
+            <Parameter Name="trailer" Mode="In" Type="String" />
+            <Parameter Name="seo" Mode="In" Type="String" />
+            <Parameter Name="turkAd" Mode="In" Type="String" />
+            <Parameter Name="kategori" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spFilmSil">
+          <Parameter Name="filmId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Categories" EntityType="FilmPortaliModel.Categories" />
+          <EntitySet Name="Comments" EntityType="FilmPortaliModel.Comments" />
+          <EntitySet Name="Crews" EntityType="FilmPortaliModel.Crews" />
+          <EntitySet Name="FilmCategory" EntityType="FilmPortaliModel.FilmCategory" />
+          <EntitySet Name="FilmCrew" EntityType="FilmPortaliModel.FilmCrew" />
+          <EntitySet Name="Films" EntityType="FilmPortaliModel.Films" />
+          <EntitySet Name="List" EntityType="FilmPortaliModel.List" />
+          <EntitySet Name="Slider" EntityType="FilmPortaliModel.Slider" />
+          <EntitySet Name="Sources" EntityType="FilmPortaliModel.Sources" />
+          <EntitySet Name="SubComments" EntityType="FilmPortaliModel.SubComments" />
+          <EntitySet Name="Users" EntityType="FilmPortaliModel.Users" />
+          <EntitySet Name="Views" EntityType="FilmPortaliModel.Views" />
+          <EntitySet Name="sysdiagrams" EntityType="FilmPortaliModel.sysdiagrams" />
+          </EntityContainer>
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="CId" />
           </Key>
           <Property Name="CId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="FilmCategory" Relationship="Self.FK_FilmCategory_Categories" FromRole="Categories" ToRole="FilmCategory" />
+          <Property Name="CAd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="CId" />
+          </Key>
+          <Property Name="CId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CUId" Type="Int32" />
+          <Property Name="CText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CFId" Type="Int32" />
+          <Property Name="CDate" Type="DateTime" Precision="0" />
+          <Property Name="CStatus" Type="Boolean" />
         </EntityType>
         <EntityType Name="Crews">
           <Key>
@@ -207,7 +250,6 @@ warning 6002: The table/view 'eosinema.dbo.sysdiagrams' does not have a primary 
           <Property Name="CBirthday" Type="DateTime" Precision="0" />
           <Property Name="CPicture" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="CLife" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="FilmCrew" Relationship="Self.FK_FilmCrew_Crews" FromRole="Crews" ToRole="FilmCrew" />
         </EntityType>
         <EntityType Name="FilmCategory">
           <Key>
@@ -216,19 +258,15 @@ warning 6002: The table/view 'eosinema.dbo.sysdiagrams' does not have a primary 
           <Property Name="FCId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FId" Type="Int32" />
           <Property Name="CId" Type="Int32" />
-          <NavigationProperty Name="Categories" Relationship="Self.FK_FilmCategory_Categories" FromRole="FilmCategory" ToRole="Categories" />
-          <NavigationProperty Name="Films" Relationship="Self.FK_FilmCategory_Films" FromRole="FilmCategory" ToRole="Films" />
         </EntityType>
         <EntityType Name="FilmCrew">
           <Key>
             <PropertyRef Name="FCId" />
           </Key>
           <Property Name="FCId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FCMission" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="FId" Type="Int32" />
           <Property Name="CId" Type="Int32" />
-          <NavigationProperty Name="Crews" Relationship="Self.FK_FilmCrew_Crews" FromRole="FilmCrew" ToRole="Crews" />
-          <NavigationProperty Name="Films" Relationship="Self.FK_FilmCrew_Films" FromRole="FilmCrew" ToRole="Films" />
+          <Property Name="FCMission" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Films">
           <Key>
@@ -236,167 +274,26 @@ warning 6002: The table/view 'eosinema.dbo.sysdiagrams' does not have a primary 
           </Key>
           <Property Name="FId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FTurkishName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FSummary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FYear" Type="String" Nullable="true" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FYear" Type="Int32" />
+          <Property Name="FCountry" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="FImdb" Type="Double" />
+          <Property Name="FPoster" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FTrailer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FSeo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FCDate" Type="DateTime" Precision="0" />
           <Property Name="FUDate" Type="DateTime" Precision="0" />
-          <Property Name="FPoster" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="FilmCategory" Relationship="Self.FK_FilmCategory_Films" FromRole="Films" ToRole="FilmCategory" />
-          <NavigationProperty Name="FilmCrew" Relationship="Self.FK_FilmCrew_Films" FromRole="Films" ToRole="FilmCrew" />
-          <NavigationProperty Name="Slider" Relationship="FilmPortaliModel.FK_Slider_Films" FromRole="Films" ToRole="Slider" />
-          <Property Name="FTrailer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Comments" Relationship="FilmPortaliModel.FK_Comments_Films1" FromRole="Films" ToRole="Comments" />
-          <Property Name="FCountry" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="List" Relationship="FilmPortaliModel.FK_List_Films" FromRole="Films" ToRole="List" />
-          <Property Name="FSeo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Views" Relationship="FilmPortaliModel.FK_Views_Films" FromRole="Films" ToRole="Views" />
-          <NavigationProperty Name="Sources" Relationship="FilmPortaliModel.FK_Sources_Films" FromRole="Films" ToRole="Sources" />
         </EntityType>
-        <EntityType Name="Sources">
+        <EntityType Name="List">
           <Key>
-            <PropertyRef Name="SId" />
+            <PropertyRef Name="LId" />
           </Key>
-          <Property Name="SId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SStatus" Type="Boolean" />
-          <Property Name="FId" Type="Int32" />
-          <NavigationProperty Name="Films" Relationship="FilmPortaliModel.FK_Sources_Films" FromRole="Sources" ToRole="Films" />
+          <Property Name="LId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LUId" Type="Int32" />
+          <Property Name="LFId" Type="Int32" />
+          <Property Name="LType" Type="Int32" />
         </EntityType>
-        <Association Name="FK_FilmCategory_Categories">
-          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
-          <End Role="FilmCategory" Type="Self.FilmCategory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Categories">
-              <PropertyRef Name="CId" />
-            </Principal>
-            <Dependent Role="FilmCategory">
-              <PropertyRef Name="CId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FilmCrew_Crews">
-          <End Role="Crews" Type="Self.Crews" Multiplicity="0..1" />
-          <End Role="FilmCrew" Type="Self.FilmCrew" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Crews">
-              <PropertyRef Name="CId" />
-            </Principal>
-            <Dependent Role="FilmCrew">
-              <PropertyRef Name="CId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FilmCategory_Films">
-          <End Role="Films" Type="Self.Films" Multiplicity="0..1" />
-          <End Role="FilmCategory" Type="Self.FilmCategory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Films">
-              <PropertyRef Name="FId" />
-            </Principal>
-            <Dependent Role="FilmCategory">
-              <PropertyRef Name="FId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FilmCrew_Films">
-          <End Role="Films" Type="Self.Films" Multiplicity="0..1" />
-          <End Role="FilmCrew" Type="Self.FilmCrew" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Films">
-              <PropertyRef Name="FId" />
-            </Principal>
-            <Dependent Role="FilmCrew">
-              <PropertyRef Name="FId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="FilmPortaliEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Categories" EntityType="Self.Categories" />
-          <EntitySet Name="Crews" EntityType="Self.Crews" />
-          <EntitySet Name="FilmCategory" EntityType="Self.FilmCategory" />
-          <EntitySet Name="FilmCrew" EntityType="Self.FilmCrew" />
-          <EntitySet Name="Films" EntityType="Self.Films" />
-          <EntitySet Name="Sources" EntityType="Self.Sources" />
-          <AssociationSet Name="FK_FilmCategory_Categories" Association="Self.FK_FilmCategory_Categories">
-            <End Role="Categories" EntitySet="Categories" />
-            <End Role="FilmCategory" EntitySet="FilmCategory" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FilmCrew_Crews" Association="Self.FK_FilmCrew_Crews">
-            <End Role="Crews" EntitySet="Crews" />
-            <End Role="FilmCrew" EntitySet="FilmCrew" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FilmCategory_Films" Association="Self.FK_FilmCategory_Films">
-            <End Role="Films" EntitySet="Films" />
-            <End Role="FilmCategory" EntitySet="FilmCategory" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FilmCrew_Films" Association="Self.FK_FilmCrew_Films">
-            <End Role="Films" EntitySet="Films" />
-            <End Role="FilmCrew" EntitySet="FilmCrew" />
-          </AssociationSet>
-          <EntitySet Name="Slider" EntityType="FilmPortaliModel.Slider" />
-          <AssociationSet Name="FK_Slider_Films" Association="FilmPortaliModel.FK_Slider_Films">
-            <End Role="Films" EntitySet="Films" />
-            <End Role="Slider" EntitySet="Slider" />
-          </AssociationSet>
-          <EntitySet Name="Users" EntityType="FilmPortaliModel.Users" />
-          <EntitySet Name="Comments" EntityType="FilmPortaliModel.Comments" />
-          <AssociationSet Name="FK_Comments_Films1" Association="FilmPortaliModel.FK_Comments_Films1">
-            <End Role="Films" EntitySet="Films" />
-            <End Role="Comments" EntitySet="Comments" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Comments_Users1" Association="FilmPortaliModel.FK_Comments_Users1">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Comments" EntitySet="Comments" />
-          </AssociationSet>
-          <EntitySet Name="SubComments" EntityType="FilmPortaliModel.SubComments" />
-          <AssociationSet Name="FK_SubComments_Comments" Association="FilmPortaliModel.FK_SubComments_Comments">
-            <End Role="Comments" EntitySet="Comments" />
-            <End Role="SubComments" EntitySet="SubComments" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SubComments_Users" Association="FilmPortaliModel.FK_SubComments_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="SubComments" EntitySet="SubComments" />
-          </AssociationSet>
-          <EntitySet Name="List" EntityType="FilmPortaliModel.List" />
-          <AssociationSet Name="FK_List_Films" Association="FilmPortaliModel.FK_List_Films">
-            <End Role="Films" EntitySet="Films" />
-            <End Role="List" EntitySet="List" />
-          </AssociationSet>
-          <AssociationSet Name="FK_List_Users" Association="FilmPortaliModel.FK_List_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="List" EntitySet="List" />
-          </AssociationSet>
-          <EntitySet Name="Views" EntityType="FilmPortaliModel.Views" />
-          <AssociationSet Name="FK_Views_Films" Association="FilmPortaliModel.FK_Views_Films">
-            <End Role="Films" EntitySet="Films" />
-            <End Role="Views" EntitySet="Views" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Views_Users" Association="FilmPortaliModel.FK_Views_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Views" EntitySet="Views" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sources_Films" Association="FilmPortaliModel.FK_Sources_Films">
-            <End Role="Films" EntitySet="Films" />
-            <End Role="Sources" EntitySet="Sources" />
-          </AssociationSet>
-          <FunctionImport Name="spFilmEkle">
-            <Parameter Name="ad" Mode="In" Type="String" />
-            <Parameter Name="konu" Mode="In" Type="String" />
-            <Parameter Name="yil" Mode="In" Type="String" />
-            <Parameter Name="ulke" Mode="In" Type="String" />
-            <Parameter Name="imdb" Mode="In" Type="Double" />
-            <Parameter Name="poster" Mode="In" Type="String" />
-            <Parameter Name="trailer" Mode="In" Type="String" />
-            <Parameter Name="seo" Mode="In" Type="String" />
-            <Parameter Name="kategori" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="spFilmSil">
-          <Parameter Name="filmId" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <EntitySet Name="sysdiagrams" EntityType="FilmPortaliModel.sysdiagrams" />
-          </EntityContainer>
         <EntityType Name="Slider">
           <Key>
             <PropertyRef Name="SId" />
@@ -405,20 +302,28 @@ warning 6002: The table/view 'eosinema.dbo.sysdiagrams' does not have a primary 
           <Property Name="SFId" Type="Int32" />
           <Property Name="SStatus" Type="Boolean" />
           <Property Name="SDate" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Films" Relationship="FilmPortaliModel.FK_Slider_Films" FromRole="Slider" ToRole="Films" />
         </EntityType>
-        <Association Name="FK_Slider_Films">
-          <End Type="FilmPortaliModel.Films" Role="Films" Multiplicity="0..1" />
-          <End Type="FilmPortaliModel.Slider" Role="Slider" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Films">
-              <PropertyRef Name="FId" />
-            </Principal>
-            <Dependent Role="Slider">
-              <PropertyRef Name="SFId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="Sources">
+          <Key>
+            <PropertyRef Name="SId" />
+          </Key>
+          <Property Name="SId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FId" Type="Int32" />
+          <Property Name="SName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SStatus" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SubComments">
+          <Key>
+            <PropertyRef Name="SCId" />
+          </Key>
+          <Property Name="SCId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SCUId" Type="Int32" />
+          <Property Name="SCCId" Type="Int32" />
+          <Property Name="SCText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SCDate" Type="DateTime" Precision="0" />
+          <Property Name="SCStatus" Type="Boolean" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="UId" />
@@ -440,121 +345,7 @@ warning 6002: The table/view 'eosinema.dbo.sysdiagrams' does not have a primary 
           <Property Name="UDate" Type="DateTime" Precision="0" />
           <Property Name="UStatus" Type="Boolean" />
           <Property Name="URole" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Comments" Relationship="FilmPortaliModel.FK_Comments_Users1" FromRole="Users" ToRole="Comments" />
-          <NavigationProperty Name="SubComments" Relationship="FilmPortaliModel.FK_SubComments_Users" FromRole="Users" ToRole="SubComments" />
-          <NavigationProperty Name="List" Relationship="FilmPortaliModel.FK_List_Users" FromRole="Users" ToRole="List" />
-          <NavigationProperty Name="Views" Relationship="FilmPortaliModel.FK_Views_Users" FromRole="Users" ToRole="Views" />
         </EntityType>
-        <EntityType Name="Comments">
-          <Key>
-            <PropertyRef Name="CId" />
-          </Key>
-          <Property Name="CId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CUId" Type="Int32" />
-          <Property Name="CText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CFId" Type="Int32" />
-          <Property Name="CDate" Type="DateTime" Precision="0" />
-          <Property Name="CStatus" Type="Boolean" />
-          <NavigationProperty Name="Films" Relationship="FilmPortaliModel.FK_Comments_Films1" FromRole="Comments" ToRole="Films" />
-          <NavigationProperty Name="Users" Relationship="FilmPortaliModel.FK_Comments_Users1" FromRole="Comments" ToRole="Users" />
-          <NavigationProperty Name="SubComments" Relationship="FilmPortaliModel.FK_SubComments_Comments" FromRole="Comments" ToRole="SubComments" />
-          </EntityType>
-        <Association Name="FK_Comments_Films1">
-          <End Type="FilmPortaliModel.Films" Role="Films" Multiplicity="0..1" />
-          <End Type="FilmPortaliModel.Comments" Role="Comments" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Films">
-              <PropertyRef Name="FId" />
-            </Principal>
-            <Dependent Role="Comments">
-              <PropertyRef Name="CFId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Comments_Users1">
-          <End Type="FilmPortaliModel.Users" Role="Users" Multiplicity="0..1" />
-          <End Type="FilmPortaliModel.Comments" Role="Comments" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UId" />
-            </Principal>
-            <Dependent Role="Comments">
-              <PropertyRef Name="CUId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="SubComments">
-          <Key>
-            <PropertyRef Name="SCId" />
-          </Key>
-          <Property Name="SCId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SCUId" Type="Int32" />
-          <Property Name="SCCId" Type="Int32" />
-          <Property Name="SCText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SCDate" Type="DateTime" Precision="0" />
-          <Property Name="SCStatus" Type="Boolean" />
-          <NavigationProperty Name="Comments" Relationship="FilmPortaliModel.FK_SubComments_Comments" FromRole="SubComments" ToRole="Comments" />
-          <NavigationProperty Name="Users" Relationship="FilmPortaliModel.FK_SubComments_Users" FromRole="SubComments" ToRole="Users" />
-        </EntityType>
-        <Association Name="FK_SubComments_Comments">
-          <End Type="FilmPortaliModel.Comments" Role="Comments" Multiplicity="0..1" />
-          <End Type="FilmPortaliModel.SubComments" Role="SubComments" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Comments">
-              <PropertyRef Name="CId" />
-            </Principal>
-            <Dependent Role="SubComments">
-              <PropertyRef Name="SCCId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SubComments_Users">
-          <End Type="FilmPortaliModel.Users" Role="Users" Multiplicity="0..1" />
-          <End Type="FilmPortaliModel.SubComments" Role="SubComments" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UId" />
-            </Principal>
-            <Dependent Role="SubComments">
-              <PropertyRef Name="SCUId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="List">
-          <Key>
-            <PropertyRef Name="LId" />
-          </Key>
-          <Property Name="LId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LUId" Type="Int32" />
-          <Property Name="LFId" Type="Int32" />
-          <Property Name="LType" Type="Int32" />
-          <NavigationProperty Name="Films" Relationship="FilmPortaliModel.FK_List_Films" FromRole="List" ToRole="Films" />
-          <NavigationProperty Name="Users" Relationship="FilmPortaliModel.FK_List_Users" FromRole="List" ToRole="Users" />
-        </EntityType>
-        <Association Name="FK_List_Films">
-          <End Type="FilmPortaliModel.Films" Role="Films" Multiplicity="0..1" />
-          <End Type="FilmPortaliModel.List" Role="List" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Films">
-              <PropertyRef Name="FId" />
-            </Principal>
-            <Dependent Role="List">
-              <PropertyRef Name="LFId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_List_Users">
-          <End Type="FilmPortaliModel.Users" Role="Users" Multiplicity="0..1" />
-          <End Type="FilmPortaliModel.List" Role="List" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UId" />
-            </Principal>
-            <Dependent Role="List">
-              <PropertyRef Name="LUId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Views">
           <Key>
             <PropertyRef Name="VId" />
@@ -562,45 +353,8 @@ warning 6002: The table/view 'eosinema.dbo.sysdiagrams' does not have a primary 
           <Property Name="VId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="VFId" Type="Int32" />
           <Property Name="VUId" Type="Int32" />
-          <NavigationProperty Name="Films" Relationship="FilmPortaliModel.FK_Views_Films" FromRole="Views" ToRole="Films" />
-          <NavigationProperty Name="Users" Relationship="FilmPortaliModel.FK_Views_Users" FromRole="Views" ToRole="Users" />
+          <Property Name="VDate" Type="DateTime" Precision="0" />
         </EntityType>
-        <Association Name="FK_Views_Films">
-          <End Type="FilmPortaliModel.Films" Role="Films" Multiplicity="0..1" />
-          <End Type="FilmPortaliModel.Views" Role="Views" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Films">
-              <PropertyRef Name="FId" />
-            </Principal>
-            <Dependent Role="Views">
-              <PropertyRef Name="VFId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Views_Users">
-          <End Type="FilmPortaliModel.Users" Role="Users" Multiplicity="0..1" />
-          <End Type="FilmPortaliModel.Views" Role="Views" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UId" />
-            </Principal>
-            <Dependent Role="Views">
-              <PropertyRef Name="VUId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Sources_Films">
-          <End Type="FilmPortaliModel.Films" Role="Films" Multiplicity="0..1" />
-          <End Type="FilmPortaliModel.Sources" Role="Sources" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Films">
-              <PropertyRef Name="FId" />
-            </Principal>
-            <Dependent Role="Sources">
-              <PropertyRef Name="FId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="name" />
@@ -619,69 +373,83 @@ warning 6002: The table/view 'eosinema.dbo.sysdiagrams' does not have a primary 
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="FilmPortaliModelStoreContainer" CdmEntityContainer="FilmPortaliEntities">
+          <FunctionImportMapping FunctionImportName="spFilmEkle" FunctionName="FilmPortaliModel.Store.spFilmEkle" />
+          <FunctionImportMapping FunctionImportName="spFilmSil" FunctionName="FilmPortaliModel.Store.spFilmSil" />
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="FilmPortaliModel.Categories">
               <MappingFragment StoreEntitySet="Categories">
-                <ScalarProperty Name="CId" ColumnName="CId" />
                 <ScalarProperty Name="CAd" ColumnName="CAd" />
+                <ScalarProperty Name="CId" ColumnName="CId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="FilmPortaliModel.Comments">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="CStatus" ColumnName="CStatus" />
+                <ScalarProperty Name="CDate" ColumnName="CDate" />
+                <ScalarProperty Name="CFId" ColumnName="CFId" />
+                <ScalarProperty Name="CText" ColumnName="CText" />
+                <ScalarProperty Name="CUId" ColumnName="CUId" />
+                <ScalarProperty Name="CId" ColumnName="CId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Crews">
             <EntityTypeMapping TypeName="FilmPortaliModel.Crews">
               <MappingFragment StoreEntitySet="Crews">
-                <ScalarProperty Name="CId" ColumnName="CId" />
-                <ScalarProperty Name="CName" ColumnName="CName" />
-                <ScalarProperty Name="CBirthday" ColumnName="CBirthday" />
-                <ScalarProperty Name="CPicture" ColumnName="CPicture" />
                 <ScalarProperty Name="CLife" ColumnName="CLife" />
+                <ScalarProperty Name="CPicture" ColumnName="CPicture" />
+                <ScalarProperty Name="CBirthday" ColumnName="CBirthday" />
+                <ScalarProperty Name="CName" ColumnName="CName" />
+                <ScalarProperty Name="CId" ColumnName="CId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FilmCategory">
             <EntityTypeMapping TypeName="FilmPortaliModel.FilmCategory">
               <MappingFragment StoreEntitySet="FilmCategory">
-                <ScalarProperty Name="FCId" ColumnName="FCId" />
-                <ScalarProperty Name="FId" ColumnName="FId" />
                 <ScalarProperty Name="CId" ColumnName="CId" />
+                <ScalarProperty Name="FId" ColumnName="FId" />
+                <ScalarProperty Name="FCId" ColumnName="FCId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FilmCrew">
             <EntityTypeMapping TypeName="FilmPortaliModel.FilmCrew">
               <MappingFragment StoreEntitySet="FilmCrew">
-                <ScalarProperty Name="FCId" ColumnName="FCId" />
                 <ScalarProperty Name="FCMission" ColumnName="FCMission" />
-                <ScalarProperty Name="FId" ColumnName="FId" />
                 <ScalarProperty Name="CId" ColumnName="CId" />
+                <ScalarProperty Name="FId" ColumnName="FId" />
+                <ScalarProperty Name="FCId" ColumnName="FCId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Films">
             <EntityTypeMapping TypeName="FilmPortaliModel.Films">
               <MappingFragment StoreEntitySet="Films">
-                <ScalarProperty Name="FSeo" ColumnName="FSeo" />
-                <ScalarProperty Name="FCountry" ColumnName="FCountry" />
-                <ScalarProperty Name="FTrailer" ColumnName="FTrailer" />
-                <ScalarProperty Name="FId" ColumnName="FId" />
-                <ScalarProperty Name="FName" ColumnName="FName" />
-                <ScalarProperty Name="FSummary" ColumnName="FSummary" />
-                <ScalarProperty Name="FYear" ColumnName="FYear" />
-                <ScalarProperty Name="FImdb" ColumnName="FImdb" />
-                <ScalarProperty Name="FCDate" ColumnName="FCDate" />
                 <ScalarProperty Name="FUDate" ColumnName="FUDate" />
+                <ScalarProperty Name="FCDate" ColumnName="FCDate" />
+                <ScalarProperty Name="FSeo" ColumnName="FSeo" />
+                <ScalarProperty Name="FTrailer" ColumnName="FTrailer" />
                 <ScalarProperty Name="FPoster" ColumnName="FPoster" />
+                <ScalarProperty Name="FImdb" ColumnName="FImdb" />
+                <ScalarProperty Name="FCountry" ColumnName="FCountry" />
+                <ScalarProperty Name="FYear" ColumnName="FYear" />
+                <ScalarProperty Name="FSummary" ColumnName="FSummary" />
+                <ScalarProperty Name="FTurkishName" ColumnName="FTurkishName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="FId" ColumnName="FId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Sources">
-            <EntityTypeMapping TypeName="FilmPortaliModel.Sources">
-              <MappingFragment StoreEntitySet="Sources">
-                <ScalarProperty Name="FId" ColumnName="FId" />
-                <ScalarProperty Name="SId" ColumnName="SId" />
-                <ScalarProperty Name="SName" ColumnName="SName" />
-                <ScalarProperty Name="SUrl" ColumnName="SUrl" />
-                <ScalarProperty Name="SStatus" ColumnName="SStatus" />
+          <EntitySetMapping Name="List">
+            <EntityTypeMapping TypeName="FilmPortaliModel.List">
+              <MappingFragment StoreEntitySet="List">
+                <ScalarProperty Name="LType" ColumnName="LType" />
+                <ScalarProperty Name="LFId" ColumnName="LFId" />
+                <ScalarProperty Name="LUId" ColumnName="LUId" />
+                <ScalarProperty Name="LId" ColumnName="LId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -692,6 +460,29 @@ warning 6002: The table/view 'eosinema.dbo.sysdiagrams' does not have a primary 
                 <ScalarProperty Name="SStatus" ColumnName="SStatus" />
                 <ScalarProperty Name="SFId" ColumnName="SFId" />
                 <ScalarProperty Name="SId" ColumnName="SId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sources">
+            <EntityTypeMapping TypeName="FilmPortaliModel.Sources">
+              <MappingFragment StoreEntitySet="Sources">
+                <ScalarProperty Name="SStatus" ColumnName="SStatus" />
+                <ScalarProperty Name="SUrl" ColumnName="SUrl" />
+                <ScalarProperty Name="SName" ColumnName="SName" />
+                <ScalarProperty Name="FId" ColumnName="FId" />
+                <ScalarProperty Name="SId" ColumnName="SId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubComments">
+            <EntityTypeMapping TypeName="FilmPortaliModel.SubComments">
+              <MappingFragment StoreEntitySet="SubComments">
+                <ScalarProperty Name="SCStatus" ColumnName="SCStatus" />
+                <ScalarProperty Name="SCDate" ColumnName="SCDate" />
+                <ScalarProperty Name="SCText" ColumnName="SCText" />
+                <ScalarProperty Name="SCCId" ColumnName="SCCId" />
+                <ScalarProperty Name="SCUId" ColumnName="SCUId" />
+                <ScalarProperty Name="SCId" ColumnName="SCId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -718,51 +509,16 @@ warning 6002: The table/view 'eosinema.dbo.sysdiagrams' does not have a primary 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Comments">
-            <EntityTypeMapping TypeName="FilmPortaliModel.Comments">
-              <MappingFragment StoreEntitySet="Comments">
-                <ScalarProperty Name="CStatus" ColumnName="CStatus" />
-                <ScalarProperty Name="CDate" ColumnName="CDate" />
-                <ScalarProperty Name="CFId" ColumnName="CFId" />
-                <ScalarProperty Name="CText" ColumnName="CText" />
-                <ScalarProperty Name="CUId" ColumnName="CUId" />
-                <ScalarProperty Name="CId" ColumnName="CId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SubComments">
-            <EntityTypeMapping TypeName="FilmPortaliModel.SubComments">
-              <MappingFragment StoreEntitySet="SubComments">
-                <ScalarProperty Name="SCStatus" ColumnName="SCStatus" />
-                <ScalarProperty Name="SCDate" ColumnName="SCDate" />
-                <ScalarProperty Name="SCText" ColumnName="SCText" />
-                <ScalarProperty Name="SCCId" ColumnName="SCCId" />
-                <ScalarProperty Name="SCUId" ColumnName="SCUId" />
-                <ScalarProperty Name="SCId" ColumnName="SCId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="List">
-            <EntityTypeMapping TypeName="FilmPortaliModel.List">
-              <MappingFragment StoreEntitySet="List">
-                <ScalarProperty Name="LType" ColumnName="LType" />
-                <ScalarProperty Name="LFId" ColumnName="LFId" />
-                <ScalarProperty Name="LUId" ColumnName="LUId" />
-                <ScalarProperty Name="LId" ColumnName="LId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Views">
             <EntityTypeMapping TypeName="FilmPortaliModel.Views">
               <MappingFragment StoreEntitySet="Views">
+                <ScalarProperty Name="VDate" ColumnName="VDate" />
                 <ScalarProperty Name="VUId" ColumnName="VUId" />
                 <ScalarProperty Name="VFId" ColumnName="VFId" />
                 <ScalarProperty Name="VId" ColumnName="VId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="spFilmEkle" FunctionName="FilmPortaliModel.Store.spFilmEkle" />
-          <FunctionImportMapping FunctionImportName="spFilmSil" FunctionName="FilmPortaliModel.Store.spFilmSil" />
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="FilmPortaliModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -774,7 +530,7 @@ warning 6002: The table/view 'eosinema.dbo.sysdiagrams' does not have a primary 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

@@ -28,20 +28,20 @@ namespace FilmPortalı.Models
         }
     
         public virtual DbSet<Categories> Categories { get; set; }
+        public virtual DbSet<Comments> Comments { get; set; }
         public virtual DbSet<Crews> Crews { get; set; }
         public virtual DbSet<FilmCategory> FilmCategory { get; set; }
         public virtual DbSet<FilmCrew> FilmCrew { get; set; }
         public virtual DbSet<Films> Films { get; set; }
-        public virtual DbSet<Sources> Sources { get; set; }
-        public virtual DbSet<Slider> Slider { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<Comments> Comments { get; set; }
-        public virtual DbSet<SubComments> SubComments { get; set; }
         public virtual DbSet<List> List { get; set; }
+        public virtual DbSet<Slider> Slider { get; set; }
+        public virtual DbSet<Sources> Sources { get; set; }
+        public virtual DbSet<SubComments> SubComments { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Views> Views { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     
-        public virtual int spFilmEkle(string ad, string konu, string yil, string ulke, Nullable<double> imdb, string poster, string trailer, string seo, Nullable<int> kategori)
+        public virtual int spFilmEkle(string ad, string konu, Nullable<int> yil, string ulke, Nullable<double> imdb, string poster, string trailer, string seo, string turkAd, Nullable<int> kategori)
         {
             var adParameter = ad != null ?
                 new ObjectParameter("ad", ad) :
@@ -51,9 +51,9 @@ namespace FilmPortalı.Models
                 new ObjectParameter("konu", konu) :
                 new ObjectParameter("konu", typeof(string));
     
-            var yilParameter = yil != null ?
+            var yilParameter = yil.HasValue ?
                 new ObjectParameter("yil", yil) :
-                new ObjectParameter("yil", typeof(string));
+                new ObjectParameter("yil", typeof(int));
     
             var ulkeParameter = ulke != null ?
                 new ObjectParameter("ulke", ulke) :
@@ -75,11 +75,15 @@ namespace FilmPortalı.Models
                 new ObjectParameter("seo", seo) :
                 new ObjectParameter("seo", typeof(string));
     
+            var turkAdParameter = turkAd != null ?
+                new ObjectParameter("turkAd", turkAd) :
+                new ObjectParameter("turkAd", typeof(string));
+    
             var kategoriParameter = kategori.HasValue ?
                 new ObjectParameter("kategori", kategori) :
                 new ObjectParameter("kategori", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spFilmEkle", adParameter, konuParameter, yilParameter, ulkeParameter, imdbParameter, posterParameter, trailerParameter, seoParameter, kategoriParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spFilmEkle", adParameter, konuParameter, yilParameter, ulkeParameter, imdbParameter, posterParameter, trailerParameter, seoParameter, turkAdParameter, kategoriParameter);
         }
     
         public virtual int spFilmSil(Nullable<int> filmId)

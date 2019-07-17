@@ -51,15 +51,16 @@
     </Key>
     <Property Name="FId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FName" Type="varchar" MaxLength="50" />
+    <Property Name="FTurkishName" Type="varchar" MaxLength="50" />
     <Property Name="FSummary" Type="text" />
-    <Property Name="FYear" Type="date" />
+    <Property Name="FYear" Type="int" />
     <Property Name="FCountry" Type="varchar" MaxLength="250" />
     <Property Name="FImdb" Type="float" />
     <Property Name="FPoster" Type="varchar" MaxLength="250" />
     <Property Name="FTrailer" Type="text" />
     <Property Name="FSeo" Type="varchar" MaxLength="50" />
-    <Property Name="FCDate" Type="smalldatetime" />
-    <Property Name="FUDate" Type="smalldatetime" />
+    <Property Name="FCDate" Type="date" />
+    <Property Name="FUDate" Type="date" />
   </EntityType>
   <EntityType Name="List">
     <Key>
@@ -100,6 +101,20 @@
     <Property Name="SCDate" Type="smalldatetime" />
     <Property Name="SCStatus" Type="bit" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'eosinema.dbo.sysdiagrams' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="name" />
+      <PropertyRef Name="principal_id" />
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="date" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <EntityType Name="Users">
     <Key>
       <PropertyRef Name="UId" />
@@ -118,7 +133,7 @@
     <Property Name="UInstagram" Type="varchar" MaxLength="250" />
     <Property Name="UAppear" Type="bit" />
     <Property Name="UNews" Type="bit" />
-    <Property Name="UDate" Type="smalldatetime" />
+    <Property Name="UDate" Type="date" />
     <Property Name="UStatus" Type="bit" />
     <Property Name="URole" Type="varchar" MaxLength="2" />
   </EntityType>
@@ -129,16 +144,18 @@
     <Property Name="VId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="VFId" Type="int" />
     <Property Name="VUId" Type="int" />
+    <Property Name="VDate" Type="date" />
   </EntityType>
   <Function Name="spFilmEkle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="punwald2016">
     <Parameter Name="ad" Type="varchar" Mode="In" />
     <Parameter Name="konu" Type="text" Mode="In" />
-    <Parameter Name="yil" Type="smalldatetime" Mode="In" />
+    <Parameter Name="yil" Type="int" Mode="In" />
     <Parameter Name="ulke" Type="varchar" Mode="In" />
     <Parameter Name="imdb" Type="float" Mode="In" />
     <Parameter Name="poster" Type="varchar" Mode="In" />
     <Parameter Name="trailer" Type="text" Mode="In" />
     <Parameter Name="seo" Type="varchar" Mode="In" />
+    <Parameter Name="turkAd" Type="varchar" Mode="In" />
     <Parameter Name="kategori" Type="int" Mode="In" />
   </Function>
   <Function Name="spFilmSil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="punwald2016">
@@ -157,5 +174,14 @@
     <EntitySet Name="SubComments" EntityType="Self.SubComments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Views" EntityType="Self.Views" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [sysdiagrams].[name] AS [name], 
+    [sysdiagrams].[principal_id] AS [principal_id], 
+    [sysdiagrams].[diagram_id] AS [diagram_id], 
+    [sysdiagrams].[version] AS [version], 
+    [sysdiagrams].[definition] AS [definition]
+    FROM [dbo].[sysdiagrams] AS [sysdiagrams]</DefiningQuery>
+    </EntitySet>
   </EntityContainer>
 </Schema>

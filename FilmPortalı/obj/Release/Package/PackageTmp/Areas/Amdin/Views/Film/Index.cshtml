@@ -56,10 +56,11 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <table id="film-table" class="table table-striped table-bordered">
+                        <table id="film-table" class="table table-striped table-bordered table-responsive">
                             <thead>
                                 <tr>
                                     <th>Ad</th>
+                                    <th>Türkçe Adı</th>
                                     <th>Yıl</th>
                                     <th>Imdb</th>
                                     <th>Ülke</th>
@@ -80,7 +81,8 @@
                                 {
                                     <tr>
                                         <td>@film.FName</td>
-                                        <td>@film.FYear.Value.ToShortDateString()</td>
+                                        <td>@film.FTurkishName</td>
+                                        <td>@film.FYear</td>
                                         <td>@film.FImdb</td>
                                         <td>@film.FCountry</td>
                                         <td><img src="@film.FPoster" alt="@film.FName" class="img-responsive" width="50px" /></td>
@@ -89,7 +91,7 @@
                                         @*<td><small>@film.FSummary</small></td>*@
                                         <td>@film.FCDate</td>
                                         <td>@film.FUDate</td>
-                                        <td>@Ajax.ActionLink("Düzenle","UpdateFilm/",new { filmId=film.FId },new AjaxOptions {HttpMethod="GET" },new {@class="btn btn-warning" })</td>
+                                        <td>@Html.ActionLink("Düzenle","UpdateFilm/",new { filmId=film.FId },new {@class="btn btn-warning" })</td>
                                         <td>@Ajax.ActionLink("Sil", "DeleteFilm/", new { filmId = film.FId }, new AjaxOptions { HttpMethod = "GET",Confirm="Silmek istediğine emin misin?",OnSuccess= "RemoveRow" }, new { @class = "btn btn-danger" })</td>
                                     </tr>
                                 }

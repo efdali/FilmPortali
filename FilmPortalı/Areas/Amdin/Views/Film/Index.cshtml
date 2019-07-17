@@ -35,19 +35,11 @@
                     <div class="x_title">
                         <h2>Filmler</h2>
                         <ul class="nav navbar-right panel_toolbox">
+                            <li class="dropdown">
+                                <a href="/Amdin/Film/AddFilm" class="dropdown-toggle"><i class="fa fa-plus"></i></a>
+                            </li>
                             <li>
                                 <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="#">Settings 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Settings 2</a>
-                                    </li>
-                                </ul>
                             </li>
                             <li>
                                 <a class="close-link"><i class="fa fa-close"></i></a>
@@ -60,6 +52,7 @@
                             <thead>
                                 <tr>
                                     <th>Ad</th>
+                                    <th>Türkçe Adı</th>
                                     <th>Yıl</th>
                                     <th>Imdb</th>
                                     <th>Ülke</th>
@@ -80,7 +73,8 @@
                                 {
                                     <tr>
                                         <td>@film.FName</td>
-                                        <td>@film.FYear.Value.ToShortDateString()</td>
+                                        <td>@film.FTurkishName</td>
+                                        <td>@film.FYear</td>
                                         <td>@film.FImdb</td>
                                         <td>@film.FCountry</td>
                                         <td><img src="@film.FPoster" alt="@film.FName" class="img-responsive" width="50px" /></td>

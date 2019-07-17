@@ -15,11 +15,11 @@ namespace FilmPortalı.Models
     public partial class FilmCrew
     {
         public int FCId { get; set; }
-        public string FCMission { get; set; }
         public Nullable<int> FId { get; set; }
         public Nullable<int> CId { get; set; }
+        public string FCMission { get; set; }
     
-        public virtual Crews Crews { get; set; }
-        public virtual Films Films { get; set; }
+        public virtual Crew Crew { get; set; }
+        public virtual Film Film { get; set; }
     }
 }

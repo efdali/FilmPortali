@@ -1,0 +1,61 @@
+ public int FId { get; set; }
+        [Required()]
+        [Display(Name = "Orjinal Ad")]
+        public string FName { get; set; }
+        [Required()]
+        [Display(Name = "Konu")]
+        public string FSummary { get; set; }
+        [Required()]
+        [Display(Name = "Yapým yýlý")]
+        public string FYear { get; set; }
+        [Required()]
+        [Range(0, 10.0, ErrorMessage = "0 ile 10 arasýnda olmalýdýr.")]
+        public Nullable<double> FImdb { get; set; }
+        public Nullable<System.DateTime> FCDate { get; set; }
+        public Nullable<System.DateTime> FUDate { get; set; }
+        [Required()]
+        [Display(Name = "Poster")]
+        public string FPoster { get; set; }
+        [Required()]
+        [Display(Name = "Fragman")]
+        public string FTrailer { get; set; }
+        [Required()]
+        [Display(Name = "Yapým Ülkesi")]
+        public string FCountry { get; set; }
+        [Required()]
+        [Display(Name = "Url")]
+        public string FSeo { get; set; }
+        [Required()]
+        [Display(Name = "Türkçe Ýsmi")]
+        public string FTurkishName { get; set; }
+
+
+
+
+------------- User --------------
+public int UId { get; set; }
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "3 ile 30 karakter arasýnda olmalýdýr.")]
+        [Required()]
+        public string UNick { get; set; }
+        [Required()]
+        [EmailAddress(ErrorMessage = "Geçerli mail adresi giriniz.")]
+        public string UMail { get; set; }
+        [Required()]
+        [DataType(DataType.Password)]
+        [StringLength(60, MinimumLength = 6, ErrorMessage = "En az 6 karakter")]
+        public string UPasswd { get; set; }
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "3 ile 30 karakter arasýnda olmalýdýr.")]
+        public string UName { get; set; }
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "3 ile 30 karakter arasýnda olmalýdýr.")]
+        public string USurname { get; set; }
+        public string UInfo { get; set; }
+        public string UImage { get; set; }
+        public Nullable<System.DateTime> UBirthDate { get; set; }
+        public Nullable<bool> UGender { get; set; }
+        public string UTwitter { get; set; }
+        public string UInstagram { get; set; }
+        public bool UAppear { get; set; }
+        public bool UNews { get; set; }
+        public Nullable<System.DateTime> UDate { get; set; }
+        public Nullable<bool> UStatus { get; set; }
+        public string URole { get; set; }

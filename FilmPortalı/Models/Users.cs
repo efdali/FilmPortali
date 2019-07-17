@@ -14,15 +14,6 @@ namespace FilmPortalı.Models
     
     public partial class Users
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
-        {
-            this.Comments = new HashSet<Comments>();
-            this.SubComments = new HashSet<SubComments>();
-            this.List = new HashSet<List>();
-            this.Views = new HashSet<Views>();
-        }
-    
         public int UId { get; set; }
         public string UNick { get; set; }
         public string UMail { get; set; }
@@ -40,14 +31,5 @@ namespace FilmPortalı.Models
         public Nullable<System.DateTime> UDate { get; set; }
         public Nullable<bool> UStatus { get; set; }
         public string URole { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comments> Comments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SubComments> SubComments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<List> List { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Views> Views { get; set; }
     }
 }

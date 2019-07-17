@@ -21,43 +21,61 @@ namespace FilmPortalı.Areas.Amdin.Controllers
 
         public ActionResult AddFilm()
         {
-            AddFilmViewModel vm = new AddFilmViewModel
-            {
-                category = db.Categories.ToList()
-            };
+            AddFilmViewModel vm = new AddFilmViewModel();
+            vm.category = db.Categories.ToList();
             return View(vm);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddFilm(AddFilmViewModel vm)
+        public ActionResult AddFilm(Films film, List<int> cats)
         {
-            if (vm.film.FId == 0)
-            {
-                if (ModelState.IsValid)
-                {
-                    List<int> qwe = new List<int>();
-                    foreach (var cat in vm.category)
-                    {
-                        qwe.Add(cat.CId);
-                    }
-                    for (int i = 0; i < qwe.Count(); i++)
-                        db.spFilmEkle(vm.film.FName, vm.film.FSummary, vm.film.FYear, vm.film.FCountry, vm.film.FImdb,
-                            vm.film.FPoster, vm.film.FTrailer, vm.film.FSeo, qwe[i]);
+            if (cats == null) cats = new List<int>();
 
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
+            if (cats.Count != 0)
+            {
+                for (int i = 0; i < cats.Count(); i++)
+                    db.spFilmEkle(film.FName, film.FSummary, film.FYear, film.FCountry, film.FImdb,
+                        film.FPoster, film.FTrailer, film.FSeo, film.FTurkishName, cats[i]);
             }
+            else
+            {
+                db.spFilmEkle(film.FName, film.FSummary, film.FYear, film.FCountry, film.FImdb,
+                        film.FPoster, film.FTrailer, film.FSeo, film.FTurkishName, 0);
+            }
+            
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
-            return View(vm);
+
+        [HttpGet]
+        public JsonResult GetFilmCategories(int filmId)
+        {
+
+            var cats = (from c in db.Categories
+                        join fc in db.FilmCategory.Where(fc => fc.FId == filmId) on c.CId equals fc.CId
+                        select new { c.CId, c.CAd }).ToList();
+
+            return Json(new { list = cats }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public ActionResult DeleteCats(int filmId, int catId)
+        {
+            var cats = db.FilmCategory.FirstOrDefault(fc => fc.FId == filmId && fc.CId == catId);
+            if (cats != null)
+            {
+                db.FilmCategory.Remove(cats);
+                db.SaveChanges();
+                return Content("Başarılı");
+            }
+            return Content("Başarısız");
         }
 
         public ActionResult UpdateFilm(int filmId)
         {
-            AddFilmViewModel vm = new AddFilmViewModel
-            {
-                category = db.Categories.ToList()
-            };
+            AddFilmViewModel vm = new AddFilmViewModel();
+            vm.category = db.Categories.ToList();
             var film = db.Films.Find(filmId);
             if (film == null)
                 return HttpNotFound();

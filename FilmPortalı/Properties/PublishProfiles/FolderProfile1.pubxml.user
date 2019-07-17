@@ -40,16 +40,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/22/2016 02:02:28</publishTime>
     </File>
     <File Include="Areas/Amdin/Views/Film/AddFilm.cshtml">
-      <publishTime>07/14/2019 22:47:55</publishTime>
+      <publishTime>07/15/2019 15:21:18</publishTime>
     </File>
     <File Include="Areas/Amdin/Views/Film/Index.cshtml">
-      <publishTime>07/14/2019 23:49:25</publishTime>
+      <publishTime>07/15/2019 14:41:36</publishTime>
     </File>
     <File Include="Areas/Amdin/Views/Home/Index.cshtml">
       <publishTime>07/13/2019 22:12:12</publishTime>
     </File>
     <File Include="Areas/Amdin/Views/Shared/_Layout.cshtml">
-      <publishTime>07/14/2019 00:05:01</publishTime>
+      <publishTime>07/15/2019 15:10:26</publishTime>
     </File>
     <File Include="Areas/Amdin/Views/web.config">
       <publishTime>07/13/2019 21:51:59</publishTime>
@@ -67,10 +67,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/07/2018 11:03:48</publishTime>
     </File>
     <File Include="bin/FilmPortalı.dll">
-      <publishTime>07/14/2019 23:51:24</publishTime>
+      <publishTime>07/15/2019 15:44:35</publishTime>
     </File>
     <File Include="bin/FilmPortalı.pdb">
-      <publishTime>07/14/2019 23:51:24</publishTime>
+      <publishTime>07/15/2019 15:44:35</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>07/03/2019 14:33:10</publishTime>
@@ -5146,7 +5146,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/15/2019 14:27:29</publishTime>
     </File>
     <File Include="Models/Model1.edmx.diagram">
-      <publishTime>07/13/2019 10:02:41</publishTime>
+      <publishTime>07/15/2019 12:38:01</publishTime>
     </File>
     <File Include="Scripts/jquery-3.4.1.min.js">
       <publishTime>07/03/2019 14:25:47</publishTime>
@@ -5173,7 +5173,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2019 21:08:58</publishTime>
     </File>
     <File Include="Views/Film/FilmDetails.cshtml">
-      <publishTime>07/13/2019 18:19:19</publishTime>
+      <publishTime>07/15/2019 11:25:45</publishTime>
     </File>
     <File Include="Views/Home/GetFilms.cshtml">
       <publishTime>07/10/2019 14:33:06</publishTime>
@@ -5191,10 +5191,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/13/2019 16:29:56</publishTime>
     </File>
     <File Include="Views/Partial/Header.cshtml">
-      <publishTime>07/13/2019 21:50:33</publishTime>
+      <publishTime>07/15/2019 15:43:56</publishTime>
     </File>
     <File Include="Views/Partial/SearchFilm.cshtml">
-      <publishTime>07/10/2019 17:10:05</publishTime>
+      <publishTime>07/15/2019 12:39:55</publishTime>
     </File>
     <File Include="Views/Profile/GetComment.cshtml">
       <publishTime>07/12/2019 21:57:47</publishTime>

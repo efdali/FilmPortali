@@ -54,6 +54,7 @@
                         @using (Html.BeginForm("AddFilm", "Film", FormMethod.Post, new { @class = "form-horizontal form-label-left", data_parsley_validate = "true" }))
                         {
                             @Html.AntiForgeryToken()
+                            @Html.HiddenFor(f => f.film.FId)
                             <div class="form-group">
                                 @Html.LabelFor(f => f.film.FName, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
@@ -62,10 +63,17 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                @Html.LabelFor(f => f.film.FTurkishName, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <span class="required">*</span>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(f => f.film.FTurkishName, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 @Html.LabelFor(f => f.film.FYear, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @Html.TextBoxFor(f => f.film.FYear, new { @class = "form-control col-md-7 col-xs-12", required = "true", type = "date" })
+                                    @Html.TextBoxFor(f => f.film.FYear, new { @class = "form-control col-md-7 col-xs-12", required = "true", type = "number", min = "1700" })
                                 </div>
                             </div>
                             <div class="form-group">
@@ -79,7 +87,7 @@
                                 @Html.LabelFor(f => f.film.FImdb, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @Html.TextBoxFor(f => f.film.FImdb, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
+                                    @Html.TextBoxFor(f => f.film.FImdb, new { @class = "form-control col-md-7 col-xs-12", required = "true", type = "number", step = "0.1" })
                                 </div>
                             </div>
                             <div class="form-group">
@@ -99,7 +107,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(f => f.film.FSummary, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
-                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
                                     @Html.TextAreaFor(f => f.film.FSummary, new { @class = "form-control", rows = "3" })
                                 </div>
                             </div>
@@ -112,9 +120,9 @@
                             </div>
                             <div class="form-group">
                                 @Html.Label("Kategoriler", new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
-                                <div class="col-md-9 col-sm-9 col-xs-12">
-                                    @Html.ListBoxFor(m => m.category[0].CId,
-         new MultiSelectList(@Model.category,"CId","CAd"),new { @class= "select2_multiple form-control" })
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.ListBoxFor(c => c.category,
+         new MultiSelectList(@Model.category,"CId","CAd"),new { @class= "select2_multiple form-control",@multiple="multiple",id="category_CId" })
                                 </div>
                             </div>
                             <div class="ln_solid"></div>

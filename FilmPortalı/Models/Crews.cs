@@ -14,19 +14,10 @@ namespace FilmPortalı.Models
     
     public partial class Crews
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Crews()
-        {
-            this.FilmCrew = new HashSet<FilmCrew>();
-        }
-    
         public int CId { get; set; }
         public string CName { get; set; }
         public Nullable<System.DateTime> CBirthday { get; set; }
         public string CPicture { get; set; }
         public string CLife { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FilmCrew> FilmCrew { get; set; }
     }
 }
