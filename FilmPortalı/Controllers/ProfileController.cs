@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace FilmPortalı.Controllers
 {
@@ -39,7 +40,7 @@ namespace FilmPortalı.Controllers
         public ActionResult GetComment()
         {
             int userId = Convert.ToInt16(Session["kullaniciId"]);
-            List<Comments> comments = db.Comments.Include("Films").Where(c => c.CUId == userId).ToList();
+            List<Comments> comments = db.Comments.Include("Films").Where(c => c.CUId == userId && c.CStatus == true).ToList();
             return View(comments);
         }
 
@@ -64,21 +65,29 @@ namespace FilmPortalı.Controllers
             db.Entry(guncellenecekUser).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
 
-            return Content("Başarılı");
+            return Content("Güncelleme Başarılı");
         }
 
         [HttpPost]
         public ActionResult UpdateAccount(Users user, HttpPostedFileBase image)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Index", user);
+            }
             var guncellenecekUser = db.Users.Find(user.UId);
             if (guncellenecekUser == null)
             {
                 return HttpNotFound();
             }
+            if (user.UPasswd != null)
+            {
+                user.UPasswd = FormsAuthentication.HashPasswordForStoringInConfigFile(user.UPasswd, "MD5");
+                guncellenecekUser.UPasswd = user.UPasswd;
+            }
 
             guncellenecekUser.UNews = user.UNews;
             guncellenecekUser.UAppear = user.UAppear;
-            guncellenecekUser.UPasswd = user.UPasswd;
 
             if (image != null)
             {
@@ -93,32 +102,37 @@ namespace FilmPortalı.Controllers
             }
             else if (user.UImage != null && !user.UImage.Equals(guncellenecekUser.UImage))
             {
+                if (guncellenecekUser.UImage.Contains("/Public/img"))
+                    System.IO.File.Delete(Server.MapPath(guncellenecekUser.UImage));
                 guncellenecekUser.UImage = user.UImage;
                 Session["kullaniciResim"] = user.UImage;
-                System.IO.File.Delete(Server.MapPath(guncellenecekUser.UImage));
             }
 
             db.Entry(guncellenecekUser).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
 
-            return Content("Başarılı");
+            return Content("Güncelleme Başarılı");
         }
 
-        public ActionResult DeleteComment(string id)
+        public ActionResult DeleteComment(int id)
         {
-            int CId = Convert.ToInt16(id);
-            Comments comments = db.Comments.FirstOrDefault(c => c.CId == CId);
-            db.Comments.Remove(comments);
+            Comments comment = db.Comments.Find(id);
+            if (comment == null)
+            {
+                return Content("Yorum Bulunamadı.");
+            }
+            comment.CStatus = false;
+            db.Entry(comment).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
 
             return Content("Başarılı");
         }
 
-        public ActionResult RemoveList(int filmId,int type)
+        public ActionResult RemoveList(int filmId, int type)
         {
-            var inList=db.List.Where(l => l.LFId == filmId && l.LType == type).FirstOrDefault();
+            var inList = db.List.Where(l => l.LFId == filmId && l.LType == type).FirstOrDefault();
 
-            if(inList != null)
+            if (inList != null)
             {
                 db.List.Remove(inList);
                 db.SaveChanges();

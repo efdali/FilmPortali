@@ -103,7 +103,9 @@
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('#film-table').DataTable();
+            $('#film-table').DataTable({
+                responsive: true
+            });
         });
 
         function RemoveRow() {

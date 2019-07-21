@@ -8,7 +8,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Form Elements</h3>
+                <h3>Film Ekle</h3>
             </div>
 
             <div class="title_right">
@@ -27,21 +27,13 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Yeni Film <small>Film Ekle</small></h2>
+                        <h2>Yeni Film</h2>
                         <ul class="nav navbar-right panel_toolbox">
+                            <li class="dropdown">
+                                <a href="/Amdin/Film" class="dropdown-toggle"><i class="fa fa-film"></i></a>
+                            </li>
                             <li>
                                 <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="#">Settings 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Settings 2</a>
-                                    </li>
-                                </ul>
                             </li>
                             <li>
                                 <a class="close-link"><i class="fa fa-close"></i></a>
@@ -54,81 +46,110 @@
                         @using (Html.BeginForm("AddFilm", "Film", FormMethod.Post, new { @class = "form-horizontal form-label-left", data_parsley_validate = "true" }))
                         {
                             @Html.AntiForgeryToken()
-                            @Html.HiddenFor(f => f.film.FId)
+                            @Html.HiddenFor(f => f.film.FId, new { id = "filmId" })
                             <div class="form-group">
                                 @Html.LabelFor(f => f.film.FName, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @Html.TextBoxFor(f => f.film.FName, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
+                                    @Html.TextBoxFor(f => f.film.FName, new { @class = "form-control col-md-7 col-xs-12", required = "true", id = "film-name" })
+                                    <ul id="menu"></ul>
                                 </div>
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(f => f.film.FTurkishName, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @Html.TextBoxFor(f => f.film.FTurkishName, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
+                                    @Html.TextBoxFor(f => f.film.FTurkishName, new { @class = "form-control col-md-7 col-xs-12", required = "true", id = "film-turk" })
                                 </div>
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(f => f.film.FYear, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @Html.TextBoxFor(f => f.film.FYear, new { @class = "form-control col-md-7 col-xs-12", required = "true", type = "number", min = "1700" })
+                                    @Html.TextBoxFor(f => f.film.FYear, new { @class = "form-control col-md-7 col-xs-12", required = "true", type = "number", min = "1700", id = "film-year" })
                                 </div>
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(f => f.film.FCountry, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @Html.TextBoxFor(f => f.film.FCountry, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
+                                    @Html.TextBoxFor(f => f.film.FCountry, new { @class = "form-control col-md-7 col-xs-12", required = "true", id = "film-country" })
                                 </div>
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(f => f.film.FImdb, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @Html.TextBoxFor(f => f.film.FImdb, new { @class = "form-control col-md-7 col-xs-12", required = "true", type = "number", step = "0.1" })
+                                    @Html.TextBoxFor(f => f.film.FImdb, new { @class = "form-control col-md-7 col-xs-12", required = "true", type = "tel", step = "0.1", id = "film-imdb" })
                                 </div>
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(f => f.film.FPoster, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @Html.TextBoxFor(f => f.film.FPoster, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
+                                    @Html.TextBoxFor(f => f.film.FPoster, new { @class = "form-control col-md-7 col-xs-12", required = "true", id = "film-poster" })
                                 </div>
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(f => f.film.FTrailer, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @Html.TextBoxFor(f => f.film.FTrailer, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
+                                    @Html.TextBoxFor(f => f.film.FTrailer, new { @class = "form-control col-md-7 col-xs-12", required = "true", id = "film-trailer" })
                                 </div>
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(f => f.film.FSummary, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @Html.TextAreaFor(f => f.film.FSummary, new { @class = "form-control", rows = "3" })
+                                    @Html.TextAreaFor(f => f.film.FSummary, new { @class = "form-control", rows = "3", id = "film-summary" })
                                 </div>
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(f => f.film.FSeo, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @Html.TextBoxFor(f => f.film.FSeo, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
+                                    @Html.TextBoxFor(f => f.film.FSeo, new { @class = "form-control col-md-7 col-xs-12", required = "true", id = "film-seo" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(f => f.film.FKeywords, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <span class="required">*</span>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(f => f.film.FKeywords, new { @class = "form-control col-md-7 col-xs-12", required = "true", id = "film-seo" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(f => f.film.FDescription, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <span class="required">*</span>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextAreaFor(f => f.film.FDescription, new { @class = "form-control", rows = "3", id = "film-summary" })
+                                </div>
+                            </div>
+                            <div class="form-group" id="cats-wrapper" style="display:none">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Kategorileri</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12" id="cats">
                                 </div>
                             </div>
                             <div class="form-group">
                                 @Html.Label("Kategoriler", new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @Html.ListBoxFor(c => c.category,
-         new MultiSelectList(@Model.category,"CId","CAd"),new { @class= "select2_multiple form-control",@multiple="multiple",id="category_CId" })
+                                    @Html.ListBox("cats", new MultiSelectList(Model.category, "CId", "CAd"), new { @class = "select2_multiple form-control", id = "film-cats" })
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Video</label>
+                                <div class="col-md-3 col-sm-3 col-xs-6">
+                                    @Html.TextBoxFor(f => f.source.SName, new { @class = "form-control col-md-7 col-xs-12", required = "true", id = "source-name", placeholder = "Ad" })
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-6">
+                                    @Html.TextBoxFor(f => f.source.SUrl, new { @class = "form-control col-md-7 col-xs-12", required = "true", id = "source-url", placeholder = "Url" })
+                                </div>
+                            </div>
+
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <button class="btn btn-primary" type="button">İptal</button>
+                                    <a href="/Amdin/Film" class="btn btn-primary">İptal</a>
                                     <button class="btn btn-primary" type="reset">Reset</button>
                                     <button type="submit" class="btn btn-success">Yayınla</button>
                                 </div>
@@ -141,3 +162,162 @@
     </div>
 </div>
 <!-- /page content -->
+@section styles{
+    <style>
+        #menu {
+            position: absolute;
+            z-index: 999;
+            margin-top: 36px;
+            width: 100%;
+            list-style: none;
+            display: none;
+            background-color: ghostwhite;
+        }
+
+            #menu li {
+                border-bottom: 1px solid black;
+            }
+    </style>
+}
+
+@section scripts{
+
+
+    <script>
+
+        var filmName = $("#film-name");
+        var filmTurk = $("#film-turk");
+        var filmYear = $("#film-year");
+        var filmCountry = $("#film-country");
+        var filmImdb = $("#film-imdb");
+        var filmPoster = $("#film-poster");
+        var filmTrailer = $("#film-trailer");
+        var filmSeo = $("#film-seo");
+        var filmSummary = $("#film-summary");
+        function fillInputs(id) {
+
+            $("#menu").hide("slow");
+
+            fetch("https://api.themoviedb.org/3/movie/" + id + "?api_key=55c3f48d0bfdbccb834c9f43f600bbee&language=tr&append_to_response=videos")
+                .then(data => data.json())
+                .then(data => {
+                    filmName.val(data.original_title);
+                    filmTurk.val(data.title);
+                    filmYear.val(data.release_date.split("-")[0]);
+                    filmImdb.val(data.vote_average);
+                    filmPoster.val("https://image.tmdb.org/t/p/w185"+data.poster_path);
+                    filmSummary.val(data.overview);
+                    filmSeo.val(toSeoUrl(data.original_title));
+                    chooseCategory(data.genres);
+                    if (data.videos.results.length != 0) {
+                        filmTrailer.val(data.videos.results[data.videos.results.length-1].key);
+                    }
+                })
+                .catch(error => console.log(error));
+
+
+        }
+
+        function chooseCategory(genres) {
+            var cat;
+            $("#film-cats > option").each(function () {
+                cat = this;
+                $.each(genres, function (index) {
+                    if (genres[index].name == cat.text) {
+                        cat.selected = true;
+                    }
+                });
+
+            });
+        }
+
+        function toSeoUrl(url) {
+            return url.toString()               // Convert to string
+                .normalize('NFD')               // Change diacritics
+                .replace(/[\u0300-\u036f]/g, '') // Remove illegal characters
+                .replace(/\s+/g, '-')            // Change whitespace to dashes
+                .toLowerCase()                  // Change to lowercase
+                .replace(/&/g, '-and-')          // Replace ampersand
+                .replace(/[^a-z0-9\-]/g, '')     // Remove anything that is not a letter, number or dash
+                .replace(/-+/g, '-')             // Remove duplicate dashes
+                .replace(/^-*/, '')              // Remove starting dashes
+                .replace(/-*$/, '');             // Remove trailing dashes
+        }
+
+        $(document).ready(function () {
+
+            var menu = $("#menu");
+            $("#film-name").blur(function () {
+                menu.hide("slow");
+            })
+
+            $("#film-name").keyup(function (e) {
+                var val = $(this).val();
+                if (val.length > 3) {
+                    var html = "";
+                    var api_key = "55c3f48d0bfdbccb834c9f43f600bbee";
+                    fetch("https://api.themoviedb.org/3/search/movie?api_key=55c3f48d0bfdbccb834c9f43f600bbee&language=tr-TR&query=" + val + "&page=1&include_adult=false")
+                        .then(data => data.json())
+                        .then(data => {
+                            menu.show("slow");
+                            var result = data.results;
+                            $.each(result, function (index) {
+                                html += '<li><a href ="#" onclick="fillInputs(' + result[index].id + ')">' +
+                                    '<h5>' + result[index].title + '<small> ' + result[index].release_date + '</small></h5>' +
+                                    '<p>' + result[index].overview + '</p>' +
+                                    '</a>' +
+                                    '</li>';
+
+                            });
+                            menu.html(html);
+
+                        })
+                        .catch(error => console.log(error));
+                } else {
+                    menu.hide("slow");
+                }
+            });
+
+            var filmId = $("#filmId").val();
+            var cats = $("#cats");
+            if (filmId.length != 0) {
+                $("#cats-wrapper").show();
+                $.ajax({
+                    url: "/Amdin/Film/GetFilmCategories",
+                    data: {
+                        filmId
+                    },
+                    type: "GET",
+                    success: function (data) {
+                        $.each(data.list, function (k, v) {
+                            cats.append('<span class= "label label-warning">' + v.CAd + ' <a href="#" id="remove-cat" data-catid="' + v.CId + '"><i class="fa fa-remove"></i></a></span>');
+                        })
+                    },
+                    error: function (error) { console.log(error) }
+
+                });
+            }
+
+
+            $("#cats-wrapper").on("click", "#remove-cat", function (e) {
+                var btn = $(this);
+                var catId = btn.data("catid");
+                $.ajax({
+                    url: "/Amdin/Film/DeleteCats",
+                    data: {
+                        filmId, catId
+                    },
+                    type: "GET",
+                    success: function () {
+                        btn.parent().remove();
+                    },
+                    error: function (error) { console.log(error) }
+                });
+                e.preventDefault();
+            })
+
+        });
+
+    </script>
+
+}

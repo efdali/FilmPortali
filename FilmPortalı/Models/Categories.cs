@@ -14,7 +14,16 @@ namespace FilmPortalı.Models
     
     public partial class Categories
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Categories()
+        {
+            this.FilmCategory = new HashSet<FilmCategory>();
+        }
+    
         public int CId { get; set; }
         public string CAd { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FilmCategory> FilmCategory { get; set; }
     }
 }

@@ -7,7 +7,7 @@
             <div style="display: flex;align-items: center">
                 <b class="active">@comments.Films.FName / yorum:</b>
                 <a href="#" class="edit edit-comment" style="margin-left: auto" data-id="@comments.CId"><i class="fas fa-edit"></i> Düzenle &nbsp;</a>
-                <a href="#" class="edit delete-comment" data-id="@comments.CId"><i class="fas fa-trash "></i> Sil</a>
+                @Ajax.ActionLink(" Sil", "DeleteComment",new { id= comments.CId },new AjaxOptions { HttpMethod="GET",OnFailure="showAjaxError", OnSuccess="removeRow"},new { @class="edit fas fa-trash" })
             </div>
 
             <p>

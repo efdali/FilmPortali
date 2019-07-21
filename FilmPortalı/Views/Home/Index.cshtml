@@ -1,4 +1,5 @@
-﻿@model List<FilmPortalı.Models.Slider>
+﻿
+@model List<FilmPortalı.Models.Slider>
 @{
     ViewBag.Title = "Yerli Yabancı HD Film İzle";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,7 +13,7 @@
         {
             <div>
                 <a href="/detay/@slider.Films.FSeo">
-                    <img src="@slider.Films.FPoster" class="film-poster" alt="@slider.Films.FName" />
+                    <img data-src="@slider.Films.FPoster" class="film-poster owl-lazy" alt="@slider.Films.FName" />
                 </a>
             </div>
         }
@@ -36,6 +37,7 @@
         $(document).ready(function () {
             $(".owl-carousel").owlCarousel({
                 items: 6,
+                lazyLoad: true,
                 loop: true,
                 margin: 10,
                 nav: true,
@@ -45,7 +47,9 @@
                 autoplayHoverPause: true,
                 responsive: {
                     0: {
+                        stagePadding: 50,
                         items: 1,
+                        number:2,
                         nav: true
                     },
                     600: {
@@ -61,24 +65,26 @@
             });
 
             var input = $("#count").val();
-            var count = Math.round(input/40);
+            var count = Math.round(input / 40);
             $(".btn-more").click(function () {
-                    page += 1;
-                    $(this).html("Yükleniyor...");
-                    $.ajax({
-                        url: "/Home/GetFilms/" + page,
-                        type: "GET",
-                        success: function (data) {
+                page += 1;
+                $(this).html("Yükleniyor...");
+                $.ajax({
+                    url: "/Home/GetFilms/" + page,
+                    type: "GET",
+                    success: function (data) {
 
-                            $(".film-wrapper").append(data);
-                            $(".btn-more").html("Daha Fazla Film");
-                            if (page >= count - 1) {
-                                $(".btn-more").hide();
-                            }
-                        },
-                        error: function () { }
-                    });
+                        $(".film-wrapper").append(data);
+                        $(".btn-more").html("Daha Fazla Film");
+                        if (page >= count - 1) {
+                            $(".btn-more").hide();
+                        }
+                    },
+                    error: function () { }
                 });
+            });
+
+            
         });
     </script>
 

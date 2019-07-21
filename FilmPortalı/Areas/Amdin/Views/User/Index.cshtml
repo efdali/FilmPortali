@@ -1,0 +1,139 @@
+﻿@model List<FilmPortalı.Models.Users>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Amdin/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="~/Areas/Amdin/Content/css/jquery.dataTables.min.css" rel="stylesheet">
+}
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Kullanıcılar <small>Kullanıcı Listesi</small></h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Kullanıcılar</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li class="dropdown">
+                                <a href="/Amdin/Film/AddFilm" class="dropdown-toggle"><i class="fa fa-plus"></i></a>
+                            </li>
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <table id="film-table" class="table table-striped table-bordered table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>Resim</th>
+                                    <th>Nick</th>
+                                    <th>Adı-Soyadı</th>
+                                    <th>Doğum Tarihi</th>
+                                    <th>Mail</th>
+                                    <th>Cinsiyet</th>
+                                    <th>Durum</th>
+                                    <th>Hesap Tarihi</th>
+                                    <th>Detay</th>
+                                    <th>Askıya Al</th>
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+                                @foreach (var user in Model)
+                                {
+                                    <tr>
+                                        <td><img src="@user.UImage" alt="@user.UName" class="img-responsive" width="50px" /></td>
+                                        <td>@user.UNick</td>
+                                        <td>@user.UName @user.USurname</td>
+                                        <td>@user.UBirthDate</td>
+                                        <td>@(user.UGender == true ? "Kız" : "Erkek")</td>
+                                        <td>@user.UMail</td>
+                                        <td>@(user.UStatus == true ? "Aktif" : "Pasif")</td>
+                                        <td>@user.UDate</td>
+                                        <td>@Ajax.ActionLink("Admin", "GiveAdminPermission", new { userId = user.UId }, new AjaxOptions { HttpMethod = "GET", Confirm = "Admin yetkisi vermek istediğine emin misin?", OnSuccess = "removeRow" }, new { @class = "btn btn-warning" })</td>
+                                        <td>
+                                            @if (user.UStatus == true)
+                                            {
+                                                @Ajax.ActionLink("Askıya Al", "SuspendUser", new { userId = user.UId }, new AjaxOptions { HttpMethod = "GET", Confirm = "Askıya almak istediğine emin misin?", OnSuccess = "suspendedUser"}, new { @class = "btn btn-danger" })
+                                            }
+                                            else
+                                            {
+                                                @Ajax.ActionLink("Askıyı Kaldır", "RemoveSuspend", new { userId = user.UId }, new AjaxOptions { HttpMethod = "GET", Confirm = "Hesabı aktif etmek istediğine emin misin?", OnSuccess = "suspendedUser" }, new { @class = "btn btn-danger" })
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->
+
+@section scripts{
+
+    <script src="~/Areas/Amdin/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#film-table').DataTable({
+                responsive: true,
+                "order": [[3, "desc"]]
+            });
+        });
+
+        function RemoveRow() {
+            var $tr = $(this).closest('tr');
+            $tr.remove();
+        }
+
+        function suspendedUser() {
+            var href = $(this).attr("href");
+            var confirm = "";
+            var title = "";
+            if (href.indexOf("SuspendUser") != -1) {
+                href = href.replace(/SuspendUser/, "RemoveSuspend");
+                title = "Askıyı Kaldır";
+                confirm = "Askıyı Kaldırmak İstediğinizden Emin misiniz?";
+            } else {
+                href = href.replace(/RemoveSuspend/, "SuspendUser");
+                title = "Askıya Al";
+                confirm = "Askıya Almak İstediğinizden Emin misiniz?";
+            }
+            $(this).attr("data-ajax-confirm", confirm);
+            $(this).html(title);
+            $(this).attr("href", href);
+        }
+    </script>
+
+}
+

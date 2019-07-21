@@ -13,10 +13,10 @@
     </Key>
     <Property Name="CId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CUId" Type="int" />
-    <Property Name="CText" Type="text" />
     <Property Name="CFId" Type="int" />
-    <Property Name="CDate" Type="smalldatetime" />
+    <Property Name="CText" Type="text" />
     <Property Name="CStatus" Type="bit" />
+    <Property Name="CDate" Type="datetime" />
   </EntityType>
   <EntityType Name="Crews">
     <Key>
@@ -24,7 +24,7 @@
     </Key>
     <Property Name="CId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CName" Type="varchar" MaxLength="50" />
-    <Property Name="CBirthday" Type="smalldatetime" />
+    <Property Name="CBirthday" Type="date" />
     <Property Name="CPicture" Type="varchar" MaxLength="250" />
     <Property Name="CLife" Type="text" />
   </EntityType>
@@ -57,8 +57,10 @@
     <Property Name="FCountry" Type="varchar" MaxLength="250" />
     <Property Name="FImdb" Type="float" />
     <Property Name="FPoster" Type="varchar" MaxLength="250" />
-    <Property Name="FTrailer" Type="text" />
+    <Property Name="FTrailer" Type="varchar" MaxLength="250" />
     <Property Name="FSeo" Type="varchar" MaxLength="50" />
+    <Property Name="FKeywords" Type="varchar" MaxLength="100" />
+    <Property Name="FDescription" Type="varchar" MaxLength="200" />
     <Property Name="FCDate" Type="date" />
     <Property Name="FUDate" Type="date" />
   </EntityType>
@@ -78,14 +80,14 @@
     <Property Name="SId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SFId" Type="int" />
     <Property Name="SStatus" Type="bit" />
-    <Property Name="SDate" Type="smalldatetime" Nullable="false" />
+    <Property Name="SDate" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="Sources">
     <Key>
       <PropertyRef Name="SId" />
     </Key>
     <Property Name="SId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FId" Type="int" />
+    <Property Name="SFId" Type="int" />
     <Property Name="SName" Type="varchar" MaxLength="50" />
     <Property Name="SUrl" Type="text" />
     <Property Name="SStatus" Type="bit" />
@@ -98,22 +100,8 @@
     <Property Name="SCUId" Type="int" />
     <Property Name="SCCId" Type="int" />
     <Property Name="SCText" Type="text" />
-    <Property Name="SCDate" Type="smalldatetime" />
     <Property Name="SCStatus" Type="bit" />
-  </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'eosinema.dbo.sysdiagrams' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="name" />
-      <PropertyRef Name="principal_id" />
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="date" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
+    <Property Name="SCDate" Type="datetime" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -122,9 +110,9 @@ warning 6002: The table/view 'eosinema.dbo.sysdiagrams' does not have a primary 
     <Property Name="UId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UNick" Type="varchar" MaxLength="50" />
     <Property Name="UMail" Type="varchar" MaxLength="50" />
-    <Property Name="UPasswd" Type="varchar" MaxLength="50" />
-    <Property Name="UName" Type="nchar" MaxLength="10" />
-    <Property Name="USurname" Type="nchar" MaxLength="10" />
+    <Property Name="UPasswd" Type="varchar" MaxLength="60" />
+    <Property Name="UName" Type="varchar" MaxLength="50" />
+    <Property Name="USurname" Type="varchar" MaxLength="50" />
     <Property Name="UInfo" Type="text" />
     <Property Name="UImage" Type="varchar" MaxLength="250" />
     <Property Name="UBirthDate" Type="date" />
@@ -157,6 +145,10 @@ warning 6002: The table/view 'eosinema.dbo.sysdiagrams' does not have a primary 
     <Parameter Name="seo" Type="varchar" Mode="In" />
     <Parameter Name="turkAd" Type="varchar" Mode="In" />
     <Parameter Name="kategori" Type="int" Mode="In" />
+    <Parameter Name="kaynakAd" Type="varchar" Mode="In" />
+    <Parameter Name="kaynakUrl" Type="text" Mode="In" />
+    <Parameter Name="keywords" Type="varchar" Mode="In" />
+    <Parameter Name="description" Type="varchar" Mode="In" />
   </Function>
   <Function Name="spFilmSil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="punwald2016">
     <Parameter Name="filmId" Type="int" Mode="In" />
@@ -174,14 +166,5 @@ warning 6002: The table/view 'eosinema.dbo.sysdiagrams' does not have a primary 
     <EntitySet Name="SubComments" EntityType="Self.SubComments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Views" EntityType="Self.Views" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [sysdiagrams].[name] AS [name], 
-    [sysdiagrams].[principal_id] AS [principal_id], 
-    [sysdiagrams].[diagram_id] AS [diagram_id], 
-    [sysdiagrams].[version] AS [version], 
-    [sysdiagrams].[definition] AS [definition]
-    FROM [dbo].[sysdiagrams] AS [sysdiagrams]</DefiningQuery>
-    </EntitySet>
   </EntityContainer>
 </Schema>

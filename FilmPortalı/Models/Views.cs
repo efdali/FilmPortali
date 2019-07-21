@@ -18,5 +18,8 @@ namespace FilmPortalı.Models
         public Nullable<int> VFId { get; set; }
         public Nullable<int> VUId { get; set; }
         public Nullable<System.DateTime> VDate { get; set; }
+    
+        public virtual Films Films { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

@@ -38,7 +38,7 @@
             </div>
             <div class="form-group w25">
                 <label for="date">Doğum Tarihi</label>
-                @Html.TextBoxFor(m => m.UBirthDate,"{0:dd-MM-yyyy}", new { @class = "input-item profile-input", type = "date" })
+                @Html.TextBoxFor(m => m.UBirthDate, "{0:dd-MM-yyyy}", new { @class = "input-item profile-input", type = "date" })
             </div>
             <div class="form-group w25">
                 <label for="gender">Cinsiyet</label>
@@ -77,11 +77,11 @@
             <h3>Şifre Değiştir</h3>
             <div class="form-group">
                 <label for="passwd">Yeni Şifre</label>
-                @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item profile-input", placeholder = "yeni şifre", id = "passwd", type = "password" })
+                @Html.TextBox("passwd", null, new { @class = "input-item profile-input", placeholder = "yeni şifre", id = "passwd", type = "password", disabled = "true" })
             </div>
             <div class="form-group">
                 <label for="npasswd">Yeni Şifre Tekrar</label>
-                @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item profile-input", placeholder = "yeni şifre tekrar", id = "npasswd", type = "password" })
+                @Html.TextBox("npasswd", null, new { @class = "input-item profile-input", placeholder = "yeni şifre tekrar", id = "npasswd", type = "password", disabled = "true" })
             </div>
             <h3>E-Posta Değiştir</h3>
             <div class="form-group">
@@ -135,10 +135,12 @@
                         data: $("#profile-form").serialize(),
                         type: "POST",
                         success: function (data) {
-                            alert(data);
+                            PNotify.success({
+                                text: data
+                            });
                         },
-                        error: function (error) {
-                            alert(error)
+                        error: function () {
+                            showAjaxError();
                         }
                     });
                 } else {
@@ -147,10 +149,12 @@
                         data: $("#account-form").serialize(),
                         type: "POST",
                         success: function (data) {
-                            alert(data);
+                            PNotify.success({
+                                text: data
+                            });
                         },
-                        error: function (error) {
-                            alert(error)
+                        error: function () {
+                            showAjaxError();
                         }
                     });
                 }
@@ -206,25 +210,13 @@
             });
         });
 
-        $(".container").on("click", ".delete-comment", function (e) {
+        function removeRow() {
 
-            var id = $(this).data("id");
-            var container = $(this).parent().parent();
-            $.ajax({
-                url: "/Profile/DeleteComment",
-                data: {
-                    id
-                },
-                type: "GET",
-                success: function () {
-                    container.remove();
-                },
-                error: function () {
-                    alert("Bir Hata Oluştu.Daha Sonra Tekrar Deneyiniz.");
-                }
+            $(this).parent().parent().toggle("explode", function () {
+                $(this).remove();
             });
-            e.preventDefault();
-        });
+
+        }
         //$(".container").on("click", ".edit-comment", function (e) {
         //    var p = $(this).parent().parent().find("p");
         //    var text = p.text().trim();

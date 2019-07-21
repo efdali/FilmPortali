@@ -19,10 +19,10 @@ $(".show-profile-list").click(function () {
 
 
 $(".search").focus(function () {
-    $(".search-film-list").css("display", "block");
+    $(".search-film-list").show("slow")
 });
 $(".search").blur(function () {
-    $(".search-film-list").css("display", "none");
+    $(".search-film-list").hide("slow");
 });
 
 /* Mobile Search Start */
@@ -63,6 +63,21 @@ function changeClass(view, c1, c2, status) {
 //    e.preventDefault();
 
 //});
+function successSign(data) {
+    PNotify.alert({
+        text: data.message,
+        type: (data.status == 1 ? "success" : "error")
+    });
+
+    if (data.status == 1)
+        location.reload();
+}
+function successLogin(data) {
+    PNotify.alert({
+        text: data.message,
+        type: (data.status == 1 ? "success" : "error")
+    });
+}
 
 /* Giriþ */
 $("#signin-form").submit(function () {
@@ -79,7 +94,7 @@ $("#login-form").submit(function () {
 });
 
 //Film Search
-$("#film-search").keyup (function (e) {
+$(".search").keyup (function (e) {
 
     var val = $(this).val();
     var list = $(".search-film-list");
@@ -128,3 +143,27 @@ function isCorrect(pass1, pass2) {
         btn.addClass("disable");
     }
 }
+
+
+// Ajax Error
+function showAjaxError() {
+    PNotify.error({
+        text:"Bir Hata Olustu.Lutfen Daha Sonra Tekrar Deneyin."
+    });
+}
+
+window.addEventListener("DOMContentLoaded", function () {
+
+    //lazy load images
+
+    $(document.images).each(function () {
+
+        var _image = $(this);
+        var image = new Image();
+        image.src = $(this).data("src");
+        image.onload = function () {
+            _image.attr("src", $(this).attr("src"));
+        }
+
+    });
+});

@@ -18,7 +18,7 @@ namespace FilmPortalı.Models
         public Nullable<int> FId { get; set; }
         public Nullable<int> CId { get; set; }
     
-        public virtual Category Category { get; set; }
-        public virtual Film Film { get; set; }
+        public virtual Categories Categories { get; set; }
+        public virtual Films Films { get; set; }
     }
 }

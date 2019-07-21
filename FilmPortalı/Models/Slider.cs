@@ -17,8 +17,8 @@ namespace FilmPortalı.Models
         public int SId { get; set; }
         public Nullable<int> SFId { get; set; }
         public Nullable<bool> SStatus { get; set; }
-        public Nullable<System.DateTime> SDate { get; set; }
+        public System.DateTime SDate { get; set; }
     
-        public virtual Film Film { get; set; }
+        public virtual Films Films { get; set; }
     }
 }

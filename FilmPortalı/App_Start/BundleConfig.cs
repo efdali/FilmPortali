@@ -17,14 +17,16 @@ namespace FilmPortalı.App_Start
                 "~/Scripts/jquery.validate.min.js",
                 "~/Scripts/jquery.validate.unobtrusive.min.js",
                 "~/Scripts/jquery.unobtrusive-ajax.min.js",
-                "~/Scripts/main.js"
+                "~/Scripts/main.js",
+                "~/Scripts/PNotify.js"
                 ));
 
             bundle.Add(new StyleBundle("~/bundle/css").Include(
                 "~/Content/css/normalize.css",
                 "~/Content/css/main.css",
                 "~/Content/css/owl.carousel.min.css",
-                "~/Content/css/jquery.modal.min.css"
+                "~/Content/css/jquery.modal.min.css",
+                "~/Content/css/PNotify.css"
                 ));
         }
 

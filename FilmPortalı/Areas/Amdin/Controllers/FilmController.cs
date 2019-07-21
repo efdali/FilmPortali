@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace FilmPortalı.Areas.Amdin.Controllers
 {
-    //[Authorize(Roles = "A")]
+    [Authorize(Roles = "A")]
     public class FilmController : Controller
     {
         FilmPortaliEntities db = new FilmPortaliEntities();
@@ -28,20 +28,20 @@ namespace FilmPortalı.Areas.Amdin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddFilm(Films film, List<int> cats)
+        public ActionResult AddFilm(Films film, List<int> cats,Sources source)
         {
             if (cats == null) cats = new List<int>();
 
             if (cats.Count != 0)
             {
                 for (int i = 0; i < cats.Count(); i++)
-                    db.spFilmEkle(film.FName, film.FSummary, film.FYear, film.FCountry, film.FImdb,
-                        film.FPoster, film.FTrailer, film.FSeo, film.FTurkishName, cats[i]);
+                    db.spFilmEkle1(film.FName, film.FSummary, film.FYear, film.FCountry, film.FImdb,
+                        film.FPoster, film.FTrailer, film.FSeo, film.FTurkishName, cats[i],source.SName,source.SUrl,film.FKeywords,film.FDescription);
             }
             else
             {
-                db.spFilmEkle(film.FName, film.FSummary, film.FYear, film.FCountry, film.FImdb,
-                        film.FPoster, film.FTrailer, film.FSeo, film.FTurkishName, 0);
+                db.spFilmEkle1(film.FName, film.FSummary, film.FYear, film.FCountry, film.FImdb,
+                        film.FPoster, film.FTrailer, film.FSeo, film.FTurkishName, 0,source.SName,source.SUrl,film.FKeywords,film.FDescription);
             }
             
             db.SaveChanges();
@@ -76,6 +76,7 @@ namespace FilmPortalı.Areas.Amdin.Controllers
         {
             AddFilmViewModel vm = new AddFilmViewModel();
             vm.category = db.Categories.ToList();
+            vm.source = db.Sources.FirstOrDefault(s => s.SFId == filmId);
             var film = db.Films.Find(filmId);
             if (film == null)
                 return HttpNotFound();
@@ -87,7 +88,7 @@ namespace FilmPortalı.Areas.Amdin.Controllers
 
         public ActionResult DeleteFilm(int filmId)
         {
-            db.spFilmSil(filmId);
+            db.spFilmSil1(filmId);
             return Content("Film Silindi");
         }
     }

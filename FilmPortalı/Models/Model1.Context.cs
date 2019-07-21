@@ -39,7 +39,6 @@ namespace FilmPortalı.Models
         public virtual DbSet<SubComments> SubComments { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Views> Views { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     
         public virtual int spFilmEkle(string ad, string konu, Nullable<int> yil, string ulke, Nullable<double> imdb, string poster, string trailer, string seo, string turkAd, Nullable<int> kategori)
         {
@@ -93,6 +92,76 @@ namespace FilmPortalı.Models
                 new ObjectParameter("filmId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spFilmSil", filmIdParameter);
+        }
+    
+        public virtual int spFilmEkle1(string ad, string konu, Nullable<int> yil, string ulke, Nullable<double> imdb, string poster, string trailer, string seo, string turkAd, Nullable<int> kategori, string kaynakAd, string kaynakUrl, string keywords, string description)
+        {
+            var adParameter = ad != null ?
+                new ObjectParameter("ad", ad) :
+                new ObjectParameter("ad", typeof(string));
+    
+            var konuParameter = konu != null ?
+                new ObjectParameter("konu", konu) :
+                new ObjectParameter("konu", typeof(string));
+    
+            var yilParameter = yil.HasValue ?
+                new ObjectParameter("yil", yil) :
+                new ObjectParameter("yil", typeof(int));
+    
+            var ulkeParameter = ulke != null ?
+                new ObjectParameter("ulke", ulke) :
+                new ObjectParameter("ulke", typeof(string));
+    
+            var imdbParameter = imdb.HasValue ?
+                new ObjectParameter("imdb", imdb) :
+                new ObjectParameter("imdb", typeof(double));
+    
+            var posterParameter = poster != null ?
+                new ObjectParameter("poster", poster) :
+                new ObjectParameter("poster", typeof(string));
+    
+            var trailerParameter = trailer != null ?
+                new ObjectParameter("trailer", trailer) :
+                new ObjectParameter("trailer", typeof(string));
+    
+            var seoParameter = seo != null ?
+                new ObjectParameter("seo", seo) :
+                new ObjectParameter("seo", typeof(string));
+    
+            var turkAdParameter = turkAd != null ?
+                new ObjectParameter("turkAd", turkAd) :
+                new ObjectParameter("turkAd", typeof(string));
+    
+            var kategoriParameter = kategori.HasValue ?
+                new ObjectParameter("kategori", kategori) :
+                new ObjectParameter("kategori", typeof(int));
+    
+            var kaynakAdParameter = kaynakAd != null ?
+                new ObjectParameter("kaynakAd", kaynakAd) :
+                new ObjectParameter("kaynakAd", typeof(string));
+    
+            var kaynakUrlParameter = kaynakUrl != null ?
+                new ObjectParameter("kaynakUrl", kaynakUrl) :
+                new ObjectParameter("kaynakUrl", typeof(string));
+    
+            var keywordsParameter = keywords != null ?
+                new ObjectParameter("keywords", keywords) :
+                new ObjectParameter("keywords", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("description", description) :
+                new ObjectParameter("description", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spFilmEkle1", adParameter, konuParameter, yilParameter, ulkeParameter, imdbParameter, posterParameter, trailerParameter, seoParameter, turkAdParameter, kategoriParameter, kaynakAdParameter, kaynakUrlParameter, keywordsParameter, descriptionParameter);
+        }
+    
+        public virtual int spFilmSil1(Nullable<int> filmId)
+        {
+            var filmIdParameter = filmId.HasValue ?
+                new ObjectParameter("filmId", filmId) :
+                new ObjectParameter("filmId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spFilmSil1", filmIdParameter);
         }
     }
 }

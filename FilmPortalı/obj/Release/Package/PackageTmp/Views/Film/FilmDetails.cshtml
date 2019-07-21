@@ -1,14 +1,16 @@
 ﻿@model FilmPortalı.ViewModel.FilmDetailsViewModel
 @{
     ViewBag.Title = Model.film.FName;
+    ViewBag.Keywords = Model.film.FKeywords;
+    ViewBag.Description = Model.film.FDescription;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!-- Film Info Start -->
 <div class="container">
-    <h1>Fight Club</h1>
+    <h1>@Model.film.FTurkishName (@Model.film.FName)</h1>
     <div class="wrapper info-wrapper">
-        <img src="@Model.film.FPoster" alt="@Model.film.FName" class="film-poster">
+        <img src="@Model.film.FPoster" alt="@Model.film.FTurkishName" class="film-poster h-auto">
         <div class="film-info">
             <h4><span>Yönetmen:</span> @ViewBag.Director</h4>
             <h4><span>Ülke:</span> @Model.film.FCountry</h4>
@@ -19,7 +21,7 @@
             <p class="film-summary">@Model.film.FSummary</p>
         </div>
         <ul class="list-container">
-            <li><i class="far fa-clock"></i> <a class="open-film" href="@Model.film.FTrailer">Fragman İzle</a></li>
+            <li><i class="far fa-clock"></i> <a href="http://youtube.com/watch?v=@Model.film.FTrailer" target="_blank">Fragman İzle</a></li>
             <li id="watch">
                 <i class="fas fa-play"></i> <a href="#" id="watch-film">Filmi İzle</a>
                 <ul class="list-container" style="position: relative;display: none;" id="source">
@@ -63,12 +65,12 @@
     <h1>Yorumlar</h1>
     @if (Session["kullaniciId"] != null)
     {
-        using (Ajax.BeginForm("AddComment", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "yorums", InsertionMode = InsertionMode.InsertBefore }))
+        using (Ajax.BeginForm("AddComment", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "yorums", InsertionMode = InsertionMode.InsertBefore,OnFailure="showAjaxError",OnSuccess="commentAdded" }))
         {
             <div class="yorum-input" style="">
                 @Html.AntiForgeryToken()
                 @Html.Hidden("filmId", Model.film.FId)
-                @Html.TextArea("commentText", new { @class = "textarea", style = "width: 90%;resize: none;", placeholder = "yorum yaz...", rows = "5" })
+                @Html.TextArea("commentText", new { @class = "textarea",id="commentText", style = "width: 90%;resize: none;", placeholder = "yorum yaz...", rows = "5" })
                 <button type="submit" style="margin: auto;"><i class="fas fa-share" style="font-size: 25px"></i></button>
             </div>
         }
@@ -117,7 +119,7 @@
 
 <div class="video-container modal" id="video-modal">
 
-    <iframe id="film-src" style="height:95vh;width:100%" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+    <iframe id="film-src" style="height:95vh;width:100%" width='626' height='367' frameborder='0' scrolling='no' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 
 </div>
@@ -129,12 +131,16 @@
 @section scripts{
 
     <script>
-        $("#watch-film").click(function () {
+
+        function commentAdded() {
+            $("commentText").val("");
+        }
+        $("#watch-film").click(function (e) {
             $("#source").toggle();
+            e.preventDefault();
         });
         $(".open-film").click(function () {
-
-            var url = $(this).data("url");
+            
             $("#film-src").attr("src", url);
             $("#video-modal").css("max-width", "100%");
 

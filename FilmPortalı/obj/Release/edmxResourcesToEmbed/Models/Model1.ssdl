@@ -13,10 +13,10 @@
     </Key>
     <Property Name="CId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CUId" Type="int" />
-    <Property Name="CText" Type="text" />
     <Property Name="CFId" Type="int" />
-    <Property Name="CDate" Type="smalldatetime" />
+    <Property Name="CText" Type="text" />
     <Property Name="CStatus" Type="bit" />
+    <Property Name="CDate" Type="datetime" />
   </EntityType>
   <EntityType Name="Crews">
     <Key>
@@ -24,7 +24,7 @@
     </Key>
     <Property Name="CId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CName" Type="varchar" MaxLength="50" />
-    <Property Name="CBirthday" Type="smalldatetime" />
+    <Property Name="CBirthday" Type="date" />
     <Property Name="CPicture" Type="varchar" MaxLength="250" />
     <Property Name="CLife" Type="text" />
   </EntityType>
@@ -53,12 +53,14 @@
     <Property Name="FName" Type="varchar" MaxLength="50" />
     <Property Name="FTurkishName" Type="varchar" MaxLength="50" />
     <Property Name="FSummary" Type="text" />
-    <Property Name="FYear" Type="varchar" MaxLength="5" />
+    <Property Name="FYear" Type="int" />
     <Property Name="FCountry" Type="varchar" MaxLength="250" />
     <Property Name="FImdb" Type="float" />
     <Property Name="FPoster" Type="varchar" MaxLength="250" />
-    <Property Name="FTrailer" Type="text" />
+    <Property Name="FTrailer" Type="varchar" MaxLength="250" />
     <Property Name="FSeo" Type="varchar" MaxLength="50" />
+    <Property Name="FKeywords" Type="varchar" MaxLength="100" />
+    <Property Name="FDescription" Type="varchar" MaxLength="200" />
     <Property Name="FCDate" Type="date" />
     <Property Name="FUDate" Type="date" />
   </EntityType>
@@ -78,14 +80,14 @@
     <Property Name="SId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SFId" Type="int" />
     <Property Name="SStatus" Type="bit" />
-    <Property Name="SDate" Type="smalldatetime" Nullable="false" />
+    <Property Name="SDate" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="Sources">
     <Key>
       <PropertyRef Name="SId" />
     </Key>
     <Property Name="SId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FId" Type="int" />
+    <Property Name="SFId" Type="int" />
     <Property Name="SName" Type="varchar" MaxLength="50" />
     <Property Name="SUrl" Type="text" />
     <Property Name="SStatus" Type="bit" />
@@ -98,8 +100,8 @@
     <Property Name="SCUId" Type="int" />
     <Property Name="SCCId" Type="int" />
     <Property Name="SCText" Type="text" />
-    <Property Name="SCDate" Type="smalldatetime" />
     <Property Name="SCStatus" Type="bit" />
+    <Property Name="SCDate" Type="datetime" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -108,9 +110,9 @@
     <Property Name="UId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UNick" Type="varchar" MaxLength="50" />
     <Property Name="UMail" Type="varchar" MaxLength="50" />
-    <Property Name="UPasswd" Type="varchar" MaxLength="50" />
-    <Property Name="UName" Type="nchar" MaxLength="10" />
-    <Property Name="USurname" Type="nchar" MaxLength="10" />
+    <Property Name="UPasswd" Type="varchar" MaxLength="60" />
+    <Property Name="UName" Type="varchar" MaxLength="50" />
+    <Property Name="USurname" Type="varchar" MaxLength="50" />
     <Property Name="UInfo" Type="text" />
     <Property Name="UImage" Type="varchar" MaxLength="250" />
     <Property Name="UBirthDate" Type="date" />
@@ -135,13 +137,18 @@
   <Function Name="spFilmEkle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="punwald2016">
     <Parameter Name="ad" Type="varchar" Mode="In" />
     <Parameter Name="konu" Type="text" Mode="In" />
-    <Parameter Name="yil" Type="varchar" Mode="In" />
+    <Parameter Name="yil" Type="int" Mode="In" />
     <Parameter Name="ulke" Type="varchar" Mode="In" />
     <Parameter Name="imdb" Type="float" Mode="In" />
     <Parameter Name="poster" Type="varchar" Mode="In" />
     <Parameter Name="trailer" Type="text" Mode="In" />
     <Parameter Name="seo" Type="varchar" Mode="In" />
+    <Parameter Name="turkAd" Type="varchar" Mode="In" />
     <Parameter Name="kategori" Type="int" Mode="In" />
+    <Parameter Name="kaynakAd" Type="varchar" Mode="In" />
+    <Parameter Name="kaynakUrl" Type="text" Mode="In" />
+    <Parameter Name="keywords" Type="varchar" Mode="In" />
+    <Parameter Name="description" Type="varchar" Mode="In" />
   </Function>
   <Function Name="spFilmSil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="punwald2016">
     <Parameter Name="filmId" Type="int" Mode="In" />

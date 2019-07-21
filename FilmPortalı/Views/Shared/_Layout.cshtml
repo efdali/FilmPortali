@@ -7,14 +7,23 @@
 <head>
     <meta charset="UTF-8">
     <title>@ViewBag.Title</title>
-    <meta name="description" content="Yerli ve yabancı full hd kesintisiz film izleyin">
-    <meta name="keywords" content="yabancı film izle,yerli film izle,altyazılı film izle,film izle,film,hd izle,720p izle,film indir">
+    <meta name="description" content="@(ViewBag.Description == null ? "Yerli ve yabancı full hd dublaj veya altyazılı kesintisiz film izleyin.Yeni çıkan filmler ilk izlemek için takipde kalın." :ViewBag.Description) ">
+    <meta name="keywords" content="@(ViewBag.Keywords == null ? "yabancı film izle,yerli film izle,altyazılı film izle,film izle,film,hd izle,720p izle,film indir" : ViewBag.Keywords)">
     <meta name="robots" content="index, follow">
     <meta name="language" content="Turkish">
     <meta name="revisit-after" content="1 days">
     <meta name="author" content="Efdal İncesu - Oktay Dönmez">
+    <link rel="canonical" href="http://www.eosinema.com/Home">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content='eosinema'>
+    <meta name="twitter:creator" content="eosinema">
+    <meta name="twitter:title" content="Yerli Yabancı Full Hd Film">
+    <meta name="twitter:description" content="Yerli ve yabancı hd kalitesinde filmlerin adresi eosinema.com">
+    <meta name="twitter:image:src" content="http://eosinema.com/Content/img/eologo.png">
 
 
     @Styles.Render("~/bundle/css")
@@ -24,6 +33,17 @@
     <link rel="stylesheet" href="~/Fonts/HindGuntur-Regular.ttf" />
     <link rel="stylesheet" href="~/Fonts/SourceSansPro-Light.ttf" />
     <link rel="shortcut icon" type="image/x-icon" href="~/Content/img/favicon.ico" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144181286-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-144181286-1');
+    </script>
+
 </head>
 <body>
 

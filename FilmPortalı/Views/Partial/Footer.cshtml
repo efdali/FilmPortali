@@ -2,13 +2,16 @@
 
 <!-- Footer Start -->
 <footer>
-    Tüm Hakları Saklıdır.
+    Tüm Hakları Saklıdır.<br /><br />
+    <span style="font-size:14px">
+        sitemizde bulunan film, videolar, film fragmanları ve diğer tüm videolar çeşitli paylaşım ortamlarında da bulunmaktadır. Sitemiz sadece youtube.com, video.google.com, yahoo.com vb. sitelerde eklenmiş ve paylaşıma açılmış videoları yayınlamaktadır. Server'ımıza kesinlikle yükleme yapılmamaktadır. Bu yüzden eosinema.com sitesi hiç bir yasal hükümlülüğe tabi tutulamaz. İstenildiği takdirde hak sahipleri videoların kaldırılması talebinde bulunabilirler.
+    </span><br />
 </footer>
 <!-- Footer End -->
 <!-- Signin Modal -->
 <div id="giris-modal" class="modal">
     <a href="#" class="site-logo">EOSINEMA.COM</a><br><br>
-    @using (Html.BeginForm("Sign", "Security", FormMethod.Post))
+    @using (Ajax.BeginForm("Sign", "Security", new AjaxOptions { HttpMethod = "POST", OnSuccess = "successSign", OnFailure = "showAjaxError" }))
     {
         @Html.AntiForgeryToken()
         @Html.TextBoxFor(m => m.UNick, new { @class = "input-item", placeholder = "kullanıcı adı" })<br><br>
@@ -23,20 +26,21 @@
 <!-- Login Modal -->
 <div id="kayit-modal" class="modal">
     <a href="#" class="site-logo">EOSINEMA.COM</a><br><br>
-    @using (Html.BeginForm("Login", "Security", FormMethod.Post))
+    @using (Ajax.BeginForm("Login", "Security", new AjaxOptions { HttpMethod = "POST", OnSuccess = "successLogin", OnFailure = "showAjaxError" }))
     {
         @Html.AntiForgeryToken()
         @Html.TextBoxFor(m => m.UNick, new { @class = "input-item", placeholder = "kullanıcı adı" })<br><br>
         @Html.ValidationMessageFor(m => m.UNick)
-        @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item", placeholder = "parola", type = "password",id="pass" })<br><br>
+        @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item", placeholder = "parola", type = "password", id = "pass" })<br><br>
         @Html.ValidationMessageFor(m => m.UPasswd)
-        @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item", placeholder = "parola tekrar", type = "password",id="npass" })<br><br>
+        @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item", placeholder = "parola tekrar", type = "password", id = "npass" })<br><br>
         @Html.ValidationMessageFor(m => m.UPasswd)
         @Html.TextBoxFor(m => m.UMail, new { @class = "input-item", placeholder = "e-posta" })<br><br>
         @Html.ValidationMessageFor(m => m.UMail)
         <button class="btn btn-sign disable" id="login-btn" type="submit" disabled>KAYIT OL</button><br>
     }
 </div>
+
 
 
 

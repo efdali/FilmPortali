@@ -14,37 +14,51 @@ namespace FilmPortalı.Controllers
 
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult Login(Users users)
+        public JsonResult Login(Users users)
         {
             if (ModelState.IsValid)
             {
+
+                var user = db.Users.Where(u => u.UNick == users.UNick || u.UMail == users.UMail);
+                if(user != null)
+                {
+                    return Json(new { status = 0, message = "Nick veya Mail adresi kullanımda." });
+                }
                 users.URole = "U";
                 users.UDate = DateTime.Now;
+                users.UAppear = true;
+                users.UNews = false;
+                users.UImage = "/Public/img/defaultUser.png";
+                users.UStatus = true;
+                users.UGender = false;
                 users.UPasswd = FormsAuthentication.HashPasswordForStoringInConfigFile(users.UPasswd, "MD5");
                 db.Users.Add(users);
                 db.SaveChanges();
-                return RedirectToAction("Index","Home");
+                return Json(new { status = 1, message = "Kayıt Başarılı.Lütfen Giriş Yapınız." });
             }
 
-            return Content("Kayıt Başarısız");
+            return Json(new { status = 0, message = "Hesap Oluşturulurken Hata Oluştu." });
         }
 
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult Sign(Users user)
+        public JsonResult Sign(Users user)
         {
             string pass = FormsAuthentication.HashPasswordForStoringInConfigFile(user.UPasswd, "MD5");
             var userIn = db.Users.FirstOrDefault(u => user.UNick == u.UNick && pass == u.UPasswd);
-            string url = Request.UrlReferrer.ToString();
             if (userIn != null)
             {
+                if (user.UStatus == false)
+                {
+                    return Json(new { status = 0, message = "Kullanıcı Hesabı Askıya Alınmış.Detaylı Bilgi İçin İletişime Geçin." });
+                }
                 Session["kullaniciId"] = userIn.UId;
                 Session["kullaniciResim"] = userIn.UImage;
                 FormsAuthentication.SetAuthCookie(user.UNick, false);
-                return Redirect(url);
+                return Json(new { status = 1, message = "Giriş Başarılı." });
             }
 
-            return Content("Giriş Başarısız");
+            return Json(new { status = 0, message = "Giriş Başarısız.Şifre veya nickinizi kontrol edin." });
         }
 
         public ActionResult LogOut()

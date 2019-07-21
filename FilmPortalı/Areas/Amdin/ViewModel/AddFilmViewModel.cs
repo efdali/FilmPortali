@@ -11,5 +11,6 @@ namespace FilmPortalı.Areas.Amdin.ViewModel
     {
         public Films film { get; set; }
         public List<Categories> category { get; set; }
+        public Sources source { get; set; }
     }
 }

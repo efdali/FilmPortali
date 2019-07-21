@@ -28,7 +28,7 @@ namespace FilmPortalı.Controllers
 
         public ActionResult SearchFilm(string val)
         {
-            List<Films> films = db.Films.Where(f => f.FName.ToLower().Contains(val)).Take(5).ToList();
+            List<Films> films = db.Films.Where(f => f.FName.ToLower().Contains(val) || f.FTurkishName.Contains(val)).Take(5).ToList();
             return View(films);
         }
     }

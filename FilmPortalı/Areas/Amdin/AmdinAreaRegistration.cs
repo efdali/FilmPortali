@@ -17,7 +17,8 @@ namespace FilmPortalı.Areas.Amdin
             context.MapRoute(
                 "Amdin_default",
                 "Amdin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "FilmPortalı.Areas.Amdin.Controllers" }
             );
         }
     }

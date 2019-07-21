@@ -19,7 +19,7 @@ namespace FilmPortalı.Models
         public Nullable<int> LFId { get; set; }
         public Nullable<int> LType { get; set; }
     
-        public virtual Film Film { get; set; }
-        public virtual User User { get; set; }
+        public virtual Films Films { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

@@ -5,7 +5,9 @@ font-family: 'Source Sans Pro', sans-serif;
 
 
 */
-
+.h-auto{
+    height:auto !important;
+}
 
 
 body{
@@ -246,11 +248,9 @@ header{
 
   footer {
     width: 100%;
-    height: 60px;
     margin: auto;
     text-align: center;
     background-color: #484848;
-    line-height: 60px;
 }
 
 /* Modal */
@@ -540,9 +540,11 @@ ul.list-container {
   .film-box{
     width: calc(50% - 10px);
     margin-right: 10px;
+    height:180px;
   }
   .film-poster{
     width: 100%;
+    height:180px;
   }
 
   .film-info{

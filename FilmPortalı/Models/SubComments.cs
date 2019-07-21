@@ -18,7 +18,10 @@ namespace FilmPortalı.Models
         public Nullable<int> SCUId { get; set; }
         public Nullable<int> SCCId { get; set; }
         public string SCText { get; set; }
-        public Nullable<System.DateTime> SCDate { get; set; }
         public Nullable<bool> SCStatus { get; set; }
+        public Nullable<System.DateTime> SCDate { get; set; }
+    
+        public virtual Comments Comments { get; set; }
+        public virtual Users Users { get; set; }
     }
 }
