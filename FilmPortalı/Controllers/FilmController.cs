@@ -55,7 +55,7 @@ namespace FilmPortalı.Controllers
             Comments comments = new Comments();
             comments.CText = commentText;
             comments.CFId = Convert.ToInt16(filmId);
-            comments.CUId = Convert.ToInt16(Session["kullaniciId"]);
+            comments.CUId = Convert.ToInt16(User.Identity.Name);
             comments.CDate = DateTime.Now;
             comments.CStatus = true;
             db.Comments.Add(comments);
@@ -63,8 +63,8 @@ namespace FilmPortalı.Controllers
 
             return Content("<div class='yorum-container'>" +
                 "<div class='user'>" +
-                "<img src=" + Session["kullaniciResim"] + "  alt=" + User.Identity.Name + " class='user-image'>" +
-                "<span>" + User.Identity.Name + "</span>" +
+                "<img src=" + Session["kullaniciResim"] + "  alt=" + Session["kullaniciNick"] + " class='user-image'>" +
+                "<span>" + Session["kullaniciNick"] + "</span>" +
                 "</div><div class='yorum'>" +
                 "<span class='blur-text'><i class='far fa-clock'></i>Az Önce</span>" +
                 "<p style='margin:0'>" + comments.CText + "</p>" +
@@ -81,7 +81,7 @@ namespace FilmPortalı.Controllers
             SubComments comment = new SubComments();
             comment.SCText = commentText;
             comment.SCCId = Convert.ToInt16(commentId);
-            comment.SCUId = Convert.ToInt16(Session["kullaniciId"]);
+            comment.SCUId = Convert.ToInt16(User.Identity.Name);
             comment.SCDate = DateTime.Now;
             comment.SCStatus = true;
             db.SubComments.Add(comment);
@@ -93,7 +93,7 @@ namespace FilmPortalı.Controllers
         public ActionResult AddLikes(int filmId, int type)
         {
 
-            int userId = Convert.ToInt16(Session["kullaniciId"]);
+            int userId = Convert.ToInt16(User.Identity.Name);
             List list = null;
             list = db.List.Where(l => l.LUId == userId && l.LFId == filmId && l.LType != 0).FirstOrDefault();
             if (list != null && list.LType != 0)
@@ -118,7 +118,7 @@ namespace FilmPortalı.Controllers
         public ActionResult AddList(int filmId)
         {
 
-            int userId = Convert.ToInt16(Session["kullaniciId"]);
+            int userId = Convert.ToInt16(User.Identity.Name);
             List list = null;
             list = db.List.Where(l => l.LUId == userId && l.LFId == filmId && l.LType == 0).FirstOrDefault();
             if (list == null)
@@ -135,7 +135,7 @@ namespace FilmPortalı.Controllers
 
         public JsonResult CheckList(int filmId)
         {
-            int userId = Convert.ToInt16(Session["kullaniciId"]);
+            int userId = Convert.ToInt16(User.Identity.Name);
             var like = db.List.Where(l => l.LFId == filmId && l.LUId == userId && l.LType != 0).FirstOrDefault();
             var list = db.List.Where(l => l.LFId == filmId && l.LUId == userId && l.LType == 0).FirstOrDefault();
             return Json(new { InList = list==null ? 0 : 1,InLike = like == null ? 0 : like.LType },JsonRequestBehavior.AllowGet);
@@ -143,7 +143,7 @@ namespace FilmPortalı.Controllers
 
         public ActionResult AddWatched(int filmId) {
 
-            string userId = Session["kullaniciId"] == null ? "1" : Session["kullaniciId"].ToString();
+            string userId = User.Identity.Name == null ? "1" : User.Identity.Name;
             Views v = new Views();
             v.VFId = filmId;
             v.VUId = Convert.ToInt16(userId);

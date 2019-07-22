@@ -40,7 +40,7 @@
             </div>
 
             <div class="sign">
-                @if (HttpContext.Current.User.Identity.Name.IsEmpty())
+                @if (User.Identity.Name.IsEmpty())
                 {
                     <div class="signin">
                         <i class="fas fa-sign-in-alt"></i>
@@ -54,7 +54,7 @@
                 else
                 {
                     <div class="profile">
-                        <img src='@Session["kullaniciResim"]' alt="@User.Identity.Name" class="profile-img" width="30px" height="30px">
+                        <img src='@Session["kullaniciResim"]' alt='@Session["kullaniciNick"]' class="profile-img" width="30px" height="30px">
                         <i class="fas fa-caret-down show-profile-list"></i>
                         <ul class="list-container profile-list">
                             @if (User.IsInRole("A"))
@@ -95,7 +95,7 @@
         <i class="fas fa-bars" id="open-header"></i>
     </div>
     <div class="header-container">
-        @if (HttpContext.Current.User.Identity.Name.IsEmpty())
+        @if (User.Identity.Name.IsEmpty())
         {
             <div class="sign-group">
                 <a href="#giris-modal" rel="modal:open" class="btn btn-sign"><i class="fas fa-sign-in-alt"></i>Giriş</a>
@@ -106,7 +106,7 @@
         {
 
             <div class="profile">
-                <img src='@Session["kullaniciResim"]' alt="@User.Identity.Name" class="profile-img" width="30px" height="30px">
+                <img src='@Session["kullaniciResim"]' alt='@Session["kullaniciNick"]' class="profile-img" width="30px" height="30px">
                 <i class="fas fa-caret-down show-profile-list"></i>
                 <ul class="list-container profile-list">
                     @if (User.IsInRole("A"))

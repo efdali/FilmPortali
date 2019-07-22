@@ -205,7 +205,7 @@
                     filmTurk.val(data.title);
                     filmYear.val(data.release_date.split("-")[0]);
                     filmImdb.val(data.vote_average);
-                    filmPoster.val("https://image.tmdb.org/t/p/w185"+data.poster_path);
+                    filmPoster.val("https://image.tmdb.org/t/p/w300"+data.poster_path);
                     filmSummary.val(data.overview);
                     filmSeo.val(toSeoUrl(data.original_title));
                     chooseCategory(data.genres);

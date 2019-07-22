@@ -17,7 +17,7 @@ namespace FilmPortalı.Controllers
         [Route("profil")]
         public ActionResult Index()
         {
-            int userId = Convert.ToInt16(Session["kullaniciId"]);
+            int userId = Convert.ToInt16(User.Identity.Name);
             Users user = db.Users.Where(u => u.UId == userId).FirstOrDefault();
             return View(user);
         }
@@ -25,7 +25,7 @@ namespace FilmPortalı.Controllers
         [HttpGet]
         public ActionResult GetList()
         {
-            int userId = Convert.ToInt16(Session["kullaniciId"]);
+            int userId = Convert.ToInt16(User.Identity.Name);
             List<List> watch = db.List.Include("Films").Where(l => l.LUId == userId && l.LType == 0).ToList();
             List<List> likes = db.List.Include("Films").Where(l => l.LUId == userId && l.LType == 1).ToList();
             List<List> dislikes = db.List.Include("Films").Where(l => l.LUId == userId && l.LType == -1).ToList();
@@ -39,7 +39,7 @@ namespace FilmPortalı.Controllers
         [HttpGet]
         public ActionResult GetComment()
         {
-            int userId = Convert.ToInt16(Session["kullaniciId"]);
+            int userId = Convert.ToInt16(User.Identity.Name);
             List<Comments> comments = db.Comments.Include("Films").Where(c => c.CUId == userId && c.CStatus == true).ToList();
             return View(comments);
         }

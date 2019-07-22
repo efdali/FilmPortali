@@ -40,7 +40,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/22/2016 02:02:28</publishTime>
     </File>
     <File Include="Areas/Amdin/Views/Film/AddFilm.cshtml">
-      <publishTime>07/20/2019 21:30:53</publishTime>
+      <publishTime>07/21/2019 22:12:20</publishTime>
     </File>
     <File Include="Areas/Amdin/Views/Film/Index.cshtml">
       <publishTime>07/17/2019 21:06:59</publishTime>
@@ -70,10 +70,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/07/2018 11:03:48</publishTime>
     </File>
     <File Include="bin/FilmPortalı.dll">
-      <publishTime>07/21/2019 00:10:40</publishTime>
+      <publishTime>07/21/2019 23:57:54</publishTime>
     </File>
     <File Include="bin/FilmPortalı.pdb">
-      <publishTime>07/21/2019 00:10:40</publishTime>
+      <publishTime>07/21/2019 23:57:54</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>07/03/2019 14:33:10</publishTime>
@@ -5139,6 +5139,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/fontawesome/webfonts/fa-solid-900.woff2">
       <publishTime>06/15/2019 14:35:44</publishTime>
     </File>
+    <File Include="errors.txt">
+      <publishTime>07/21/2019 22:54:37</publishTime>
+    </File>
     <File Include="Fonts/HindGuntur-Regular.ttf">
       <publishTime>06/15/2019 14:34:11</publishTime>
     </File>
@@ -5182,7 +5185,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2019 21:08:58</publishTime>
     </File>
     <File Include="Views/Film/FilmDetails.cshtml">
-      <publishTime>07/21/2019 00:10:00</publishTime>
+      <publishTime>07/21/2019 22:07:22</publishTime>
     </File>
     <File Include="Views/Home/GetFilms.cshtml">
       <publishTime>07/20/2019 23:09:54</publishTime>
@@ -5200,7 +5203,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/20/2019 23:30:57</publishTime>
     </File>
     <File Include="Views/Partial/Header.cshtml">
-      <publishTime>07/20/2019 23:50:46</publishTime>
+      <publishTime>07/21/2019 22:03:29</publishTime>
     </File>
     <File Include="Views/Partial/SearchFilm.cshtml">
       <publishTime>07/19/2019 21:32:49</publishTime>

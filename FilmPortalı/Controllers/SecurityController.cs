@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using System.Web.Security;
 
 namespace FilmPortalı.Controllers
@@ -48,13 +49,19 @@ namespace FilmPortalı.Controllers
             var userIn = db.Users.FirstOrDefault(u => user.UNick == u.UNick && pass == u.UPasswd);
             if (userIn != null)
             {
-                if (user.UStatus == false)
+                if (userIn.UStatus == false)
                 {
                     return Json(new { status = 0, message = "Kullanıcı Hesabı Askıya Alınmış.Detaylı Bilgi İçin İletişime Geçin." });
                 }
-                Session["kullaniciId"] = userIn.UId;
+                Session["kullaniciNick"] = userIn.UNick;
                 Session["kullaniciResim"] = userIn.UImage;
-                FormsAuthentication.SetAuthCookie(user.UNick, false);
+                Users dataUser = new Users();
+                dataUser.UNick = userIn.UNick;
+                dataUser.UImage = userIn.UImage;
+                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1,userIn.UId.ToString(),DateTime.Now,DateTime.Now.AddMonths(1),false,
+                new JavaScriptSerializer().Serialize(dataUser));
+                HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(ticket));
+                Response.Cookies.Add(cookie);
                 return Json(new { status = 1, message = "Giriş Başarılı." });
             }
 
@@ -65,6 +72,9 @@ namespace FilmPortalı.Controllers
         {
             string comingUrl = Request.UrlReferrer.ToString();
             FormsAuthentication.SignOut();
+            Request.Cookies.Clear();
+            Session.Clear();
+            Session.Abandon();
             Session.Remove("kullaniciId");
             Session.Remove("kullaniciResim");
             return Redirect(comingUrl);
