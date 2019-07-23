@@ -1,0 +1,56 @@
+﻿@model FilmPortalı.Models.Categories
+@{
+    ViewBag.Title = "CategoryForm";
+    Layout = "~/Areas/Amdin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Yeni Film</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li class="dropdown">
+                                <a href="/Amdin/Film" class="dropdown-toggle"><i class="fa fa-film"></i></a>
+                            </li>
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br />
+                        @using (Html.BeginForm("Save", "Category", FormMethod.Post, new { @class = "form-horizontal form-label-left", data_parsley_validate = "true" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(f => f.CId, new { id = "categoryId" })
+                            <div class="form-group">
+                                @Html.LabelFor(f => f.CAd, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <span class="required">*</span>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(f => f.CAd, new { @class = "form-control col-md-7 col-xs-12", required = "true", id = "film-name" })
+                                    <ul id="menu"></ul>
+                                </div>
+                            </div>                           
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                    <a href="/Amdin/Category" class="btn btn-primary">İptal</a>
+                                    <button type="submit" class="btn btn-success">Kaydet</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
