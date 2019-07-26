@@ -70,10 +70,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/07/2018 11:03:48</publishTime>
     </File>
     <File Include="bin/FilmPortalı.dll">
-      <publishTime>07/21/2019 23:57:54</publishTime>
+      <publishTime>07/25/2019 21:39:43</publishTime>
     </File>
     <File Include="bin/FilmPortalı.pdb">
-      <publishTime>07/21/2019 23:57:54</publishTime>
+      <publishTime>07/25/2019 21:39:43</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>07/03/2019 14:33:10</publishTime>
@@ -5140,7 +5140,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/15/2019 14:35:44</publishTime>
     </File>
     <File Include="errors.txt">
-      <publishTime>07/21/2019 22:54:37</publishTime>
+      <publishTime>07/25/2019 21:32:33</publishTime>
     </File>
     <File Include="Fonts/HindGuntur-Regular.ttf">
       <publishTime>06/15/2019 14:34:11</publishTime>
@@ -5185,7 +5185,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2019 21:08:58</publishTime>
     </File>
     <File Include="Views/Film/FilmDetails.cshtml">
-      <publishTime>07/21/2019 22:07:22</publishTime>
+      <publishTime>07/25/2019 20:30:37</publishTime>
     </File>
     <File Include="Views/Home/GetFilms.cshtml">
       <publishTime>07/20/2019 23:09:54</publishTime>
@@ -5197,7 +5197,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/20/2019 23:24:17</publishTime>
     </File>
     <File Include="Views/Home/Tur.cshtml">
-      <publishTime>07/13/2019 10:46:31</publishTime>
+      <publishTime>07/25/2019 21:18:49</publishTime>
     </File>
     <File Include="Views/Partial/Footer.cshtml">
       <publishTime>07/20/2019 23:30:57</publishTime>
@@ -5218,13 +5218,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/19/2019 22:20:33</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>07/19/2019 22:17:16</publishTime>
+      <publishTime>07/25/2019 20:38:35</publishTime>
     </File>
     <File Include="Views/web.config">
       <publishTime>07/12/2019 22:50:27</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/21/2019 00:10:41</publishTime>
+      <publishTime>07/25/2019 21:39:44</publishTime>
     </File>
   </ItemGroup>
 </Project>

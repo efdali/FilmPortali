@@ -67,7 +67,7 @@ namespace FilmPortalı
 
         protected void Application_Error()
         {
-            StreamWriter hd = new StreamWriter(Server.MapPath("~/erros.txt"), true);
+            StreamWriter hd = new StreamWriter(Server.MapPath("~/errors.txt"), true);
             //Oluşan hatalar HataDosyasi adlı bir dosyaya kaydediliyor. 
             hd.WriteLine(DateTime.Now.ToString());
             //Server nesnesini GetLastError metodu sunucuda oluşan son hatayı Exception tipinden getirir. Bu da şu an oluşan hata olacaktır. 

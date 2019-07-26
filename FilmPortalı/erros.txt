@@ -112,3 +112,78 @@ The controller for path '/undefined' was not found or does not implement IContro
 7/21/2019 11:57:11 PM
 Invalid JSON primitive: efdali.
 /
+7/25/2019 8:30:56 PM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/25/2019 8:30:56 PM
+Input string was not in a correct format.
+/Film/CheckList?filmId=122
+7/25/2019 8:30:58 PM
+Input string was not in a correct format.
+/Film/AddWatched?filmId=122
+7/25/2019 8:31:14 PM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/25/2019 8:31:14 PM
+Input string was not in a correct format.
+/Film/CheckList?filmId=140
+7/25/2019 8:31:16 PM
+Input string was not in a correct format.
+/Film/AddWatched?filmId=140
+7/25/2019 8:32:36 PM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/25/2019 8:32:37 PM
+Input string was not in a correct format.
+/Film/CheckList?filmId=123
+7/25/2019 8:32:41 PM
+Input string was not in a correct format.
+/Film/AddWatched?filmId=123
+7/25/2019 8:32:57 PM
+Input string was not in a correct format.
+/Film/AddWatched?filmId=123
+7/25/2019 8:33:11 PM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/25/2019 8:33:11 PM
+Input string was not in a correct format.
+/Film/CheckList?filmId=112
+7/25/2019 8:33:21 PM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/25/2019 8:33:21 PM
+Input string was not in a correct format.
+/Film/CheckList?filmId=125
+7/25/2019 8:33:25 PM
+Input string was not in a correct format.
+/Film/AddWatched?filmId=125
+7/25/2019 8:33:51 PM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/25/2019 8:33:51 PM
+Input string was not in a correct format.
+/Film/CheckList?filmId=126
+7/25/2019 8:33:54 PM
+Input string was not in a correct format.
+/Film/AddWatched?filmId=126
+7/25/2019 8:41:22 PM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/25/2019 8:41:24 PM
+Input string was not in a correct format.
+/Film/CheckList?filmId=112
+7/25/2019 9:05:25 PM
+A public action method 'Tur' was not found on controller 'FilmPortalı.Controllers.HomeController'.
+/Home/Tur
+7/25/2019 9:06:21 PM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/25/2019 9:06:21 PM
+Input string was not in a correct format.
+/Film/CheckList?filmId=141
+7/25/2019 9:06:24 PM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/25/2019 9:06:24 PM
+Input string was not in a correct format.
+/Film/CheckList?filmId=138

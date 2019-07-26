@@ -1,6 +1,6 @@
 ﻿@model List<FilmPortalı.Models.Films>
 @{
-    ViewBag.Title = "Tur";
+    ViewBag.Title = ViewBag.Header;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,7 +11,7 @@
         <b>Sıralama şekli:</b> <a href='@ViewContext.RouteData.Values["routeName"]?sortBy=eklenme' class='@(ViewBag.active=="eklenme" ? "active" : "")'>Ekleme Tarihi</a>-<a href='@ViewContext.RouteData.Values["routeName"]?sortBy=imdb' class='@(ViewBag.active=="imdb" ? "active" : "")'>IMDB puanı</a>-<a href='@ViewContext.RouteData.Values["routeName"]?sortBy=izlenme' class='@(ViewBag.active=="izlenme" ? "active" : "")'>İzlenme Sayısı</a>
     </div>
     <div class="film-wrapper">
-        @{Html.RenderAction("GetType", "Home");}
+        @{Html.RenderAction("GetType", "Home",new {tur=ViewBag.Tur,sort=ViewBag.active});}
     </div>
     <button class="btn btn-more">Daha Fazla Film</button>
 </div>

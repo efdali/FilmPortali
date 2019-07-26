@@ -140,7 +140,8 @@
             e.preventDefault();
         });
         $(".open-film").click(function () {
-            
+
+            var url = $(this).data("url");
             $("#film-src").attr("src", url);
             $("#video-modal").css("max-width", "100%");
 

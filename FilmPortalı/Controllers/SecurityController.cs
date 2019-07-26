@@ -20,7 +20,7 @@ namespace FilmPortalı.Controllers
             if (ModelState.IsValid)
             {
 
-                var user = db.Users.Where(u => u.UNick == users.UNick || u.UMail == users.UMail);
+                Users user = db.Users.Where(u => u.UNick == users.UNick || u.UMail == users.UMail).FirstOrDefault();
                 if(user != null)
                 {
                     return Json(new { status = 0, message = "Nick veya Mail adresi kullanımda." });

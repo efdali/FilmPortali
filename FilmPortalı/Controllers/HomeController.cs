@@ -29,6 +29,19 @@ namespace FilmPortalı.Controllers
         {
             string sort = Request.QueryString["sortBy"] == null ? "imdb" : Request.QueryString["sortBy"];
 
+            if (tur == "2019")
+            {
+                ViewBag.Header = "2019 Yılı Filmleri";
+            }
+            else if (tur == "en-cok-izlenenler")
+            {
+               
+                ViewBag.Header = "En Çok İzlenen Filmler";
+            }
+            else
+            {
+                ViewBag.Header = tur + " kategorisindeki filmler";
+            }
             ViewBag.active = sort;
             ViewBag.tur = tur;
             ViewBag.Count = db.Films.Count();
@@ -59,7 +72,6 @@ namespace FilmPortalı.Controllers
                     films = db.Films.Where(f => f.FYear.ToString() == "2019")
                         .OrderByDescending(f => f.FImdb).Skip(page * 40).Take(40).ToList();
                 }
-                ViewBag.Header = "2019 Yılı Filmleri";
             }
             else if (tur == "en-cok-izlenenler")
             {
@@ -75,15 +87,34 @@ namespace FilmPortalı.Controllers
                 {
                     films = db.Films.OrderByDescending(f => f.FImdb).Skip(page * 40).Take(40).ToList();
                 }
-                ViewBag.Header = "En Çok İzlenen Filmler";
             }
             else
             {
-                films = (from f in db.Films
-                         join fc in db.FilmCategory on f.FId equals fc.FId
-                         join c in db.Categories.Where(c => c.CAd.Contains(tur)) on fc.CId equals c.CId
-                         select f).OrderByDescending(f => f.FCDate).Skip(page * 40).Take(40).ToList();
+                if (sort == "izlenme")
+                {
+                    films = (from f in db.Films
+                        join fc in db.FilmCategory on f.FId equals fc.FId
+                        join c in db.Categories.Where(c => c.CAd.Contains(tur)) on fc.CId equals c.CId
+                        select f).OrderByDescending(f => f.FUDate).Skip(page * 40).Take(40).ToList();
 
+                }
+                else if (sort == "eklenme")
+                {
+                    films = (from f in db.Films
+                        join fc in db.FilmCategory on f.FId equals fc.FId
+                        join c in db.Categories.Where(c => c.CAd.Contains(tur)) on fc.CId equals c.CId
+                        select f).OrderByDescending(f => f.FCDate).Skip(page * 40).Take(40).ToList();
+
+                }
+                else
+                {
+                    films = (from f in db.Films
+                        join fc in db.FilmCategory on f.FId equals fc.FId
+                        join c in db.Categories.Where(c => c.CAd.Contains(tur)) on fc.CId equals c.CId
+                        select f).OrderByDescending(f => f.FImdb).Skip(page * 40).Take(40).ToList();
+
+                }
+                
             }
             return View("GetFilms", films);
         }
