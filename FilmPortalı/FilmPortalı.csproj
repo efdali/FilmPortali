@@ -116,13 +116,17 @@
     <Content Include="Areas\Amdin\Content\css\bootstrap.min.css" />
     <Content Include="Areas\Amdin\Content\css\custom.min.css" />
     <Content Include="Areas\Amdin\Content\css\jquery.dataTables.min.css" />
+    <Content Include="Areas\Amdin\Content\css\morris.css" />
     <Content Include="Areas\Amdin\Content\css\nprogress.css" />
     <Content Include="Areas\Amdin\Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Amdin\Scripts\Chart.min.js" />
     <Content Include="Areas\Amdin\Scripts\custom.min.js" />
     <Content Include="Areas\Amdin\Scripts\fastclick.js" />
     <Content Include="Areas\Amdin\Scripts\jquery.dataTables.min.js" />
     <Content Include="Areas\Amdin\Scripts\jquery.min.js" />
+    <Content Include="Areas\Amdin\Scripts\morris.min.js" />
     <Content Include="Areas\Amdin\Scripts\nprogress.js" />
+    <Content Include="Areas\Amdin\Scripts\raphael-min.js" />
     <Content Include="Content\css\jquery.modal.min.css" />
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\normalize.css" />
@@ -132,9 +136,12 @@
     <Content Include="Global.asax" />
     <Content Include="Areas\Amdin\Views\web.config" />
     <Content Include="Areas\Amdin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Amdin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Amdin\Views\Film\AddFilm.cshtml" />
     <Content Include="Areas\Amdin\Views\Film\Index.cshtml" />
+    <Content Include="Areas\Amdin\Views\User\Index.cshtml" />
+    <Content Include="Areas\Amdin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Amdin\Views\Category\CategoryForm.cshtml" />
+    <Content Include="Areas\Amdin\Views\Source\Index.cshtml" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -142,7 +149,14 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Amdin\Views\User\Index.cshtml" />
+    <Content Include="Areas\Amdin\Views\Source\AddSource.cshtml" />
+    <Content Include="Areas\Amdin\Views\Default\Index.cshtml" />
+    <Content Include="Areas\Amdin\Views\Slider\Index.cshtml" />
+    <Content Include="Areas\Amdin\Views\Slider\AddSlider.cshtml" />
+    <Content Include="Areas\Amdin\Views\Crew\Index.cshtml" />
+    <Content Include="Areas\Amdin\Views\Crew\AddCrew.cshtml" />
+    <Content Include="Areas\Amdin\Views\Crew\FilmCrew.cshtml" />
+    <Content Include="Areas\Amdin\Views\Crew\AddCrewToFilm.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
@@ -181,8 +195,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Amdin\AmdinAreaRegistration.cs" />
+    <Compile Include="Areas\Amdin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Amdin\Controllers\CrewController.cs" />
     <Compile Include="Areas\Amdin\Controllers\FilmController.cs" />
     <Compile Include="Areas\Amdin\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\Amdin\Controllers\SliderController.cs" />
+    <Compile Include="Areas\Amdin\Controllers\SourceController.cs" />
     <Compile Include="Areas\Amdin\Controllers\UserController.cs" />
     <Compile Include="Areas\Amdin\ViewModel\AddFilmViewModel.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -267,7 +285,6 @@
     <Content Include="Views\Profile\GetComment.cshtml" />
     <Content Include="Views\Home\GetFilms.cshtml" />
     <Content Include="Views\Partial\SearchFilm.cshtml" />
-    <Content Include="Views\Home\GetType.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

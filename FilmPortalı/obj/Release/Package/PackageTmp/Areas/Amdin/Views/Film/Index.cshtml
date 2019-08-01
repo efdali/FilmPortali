@@ -62,8 +62,7 @@
                                     @*<th>Konu</th>*@
                                     <th>Eklenme Tarihi</th>
                                     <th>Güncellenme Tarihi</th>
-                                    <th>Düzenle</th>
-                                    <th>Sil</th>
+                                    <th>Slider/Düzenle/Sil</th>
                                 </tr>
                             </thead>
 
@@ -83,8 +82,11 @@
                                         @*<td><small>@film.FSummary</small></td>*@
                                         <td>@film.FCDate</td>
                                         <td>@film.FUDate</td>
-                                        <td>@Html.ActionLink("Düzenle","UpdateFilm/",new { filmId=film.FId },new {@class="btn btn-warning" })</td>
-                                        <td>@Ajax.ActionLink("Sil", "DeleteFilm/", new { filmId = film.FId }, new AjaxOptions { HttpMethod = "GET",Confirm="Silmek istediğine emin misin?",OnSuccess= "RemoveRow" }, new { @class = "btn btn-danger" })</td>
+                                        <td>
+                                            @Ajax.ActionLink("Slidera Ekle", "AddToSlider", new { filmId = film.FId }, new AjaxOptions { HttpMethod = "GET", Confirm = "Slidera eklemek istediğinize emin misiniz?" }, new { @class = "btn btn-info" })
+                                            @Html.ActionLink("Düzenle", "UpdateFilm", new { filmId = film.FId }, new { @class = "btn btn-warning" })
+                                            @Ajax.ActionLink("Sil", "DeleteFilm", new { filmId = film.FId }, new AjaxOptions { HttpMethod = "GET", Confirm = "Silmek istediğine emin misin?", OnSuccess = "RemoveRow" }, new { @class = "btn btn-danger" })
+                                        </td>
                                     </tr>
                                 }
                             </tbody>
@@ -112,6 +114,7 @@
             var $tr = $(this).closest('tr');
             $tr.remove();
         }
+
     </script>
 
 }

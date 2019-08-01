@@ -1,0 +1,75 @@
+﻿@model FilmPortalı.Models.Sources
+@{
+    ViewBag.Title = "Video Linki Ekle";
+    Layout = "~/Areas/Amdin/Views/Shared/_Layout.cshtml";
+}
+<div class="right_col" role="main">
+    <div class="">
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Yeni Video Linki</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li class="dropdown">
+                                <a href="/Amdin/Category" class="dropdown-toggle"><i class="fa fa-video-camera"></i></a>
+                            </li>
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br />
+                        @using (Html.BeginForm("AddorEdit", "Source", FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(s => s.SId, new { id = "categoryId" })
+                            <div class="form-group">
+                                @Html.LabelFor(s => s.SFId, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <span class="required">*</span>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.DropDownListFor(s => s.SFId, new SelectList(ViewBag.Films, "FId", "FName"), new { @class = "form-control col-md-7 col-xs-12" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(s => s.SName, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <span class="required">*</span>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(s => s.SName, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(s => s.SUrl, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <span class="required">*</span>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(s => s.SUrl, new { @class = "form-control col-md-7 col-xs-12", required = "true" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(s => s.SStatus, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <span class="required">*</span>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.CheckBoxFor(s => s.SStatus, new { @class = "form-control"})
+                                </div>
+                            </div>
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                    <a href="/Amdin/Source" class="btn btn-primary">İptal</a>
+                                    <button type="submit" class="btn btn-success">Kaydet</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

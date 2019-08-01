@@ -8,6 +8,7 @@ using System.Data.Entity;
 
 namespace FilmPortalı.Areas.Amdin.Controllers
 {
+    [Authorize(Roles = "A")]
     public class UserController : Controller
     {
         FilmPortaliEntities db = new FilmPortaliEntities();

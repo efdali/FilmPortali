@@ -13,7 +13,7 @@ namespace FilmPortalı.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            List<Slider> slider = db.Slider.Include("Films").Where(s => s.SStatus == true).Take(10).ToList();
+            List<Slider> slider = db.Slider.Include("Films").OrderByDescending(s => s.SId).Where(s => s.SStatus == true).Take(10).ToList();
             ViewBag.Count = db.Films.Count();
             return View(slider);
         }
@@ -35,7 +35,7 @@ namespace FilmPortalı.Controllers
             }
             else if (tur == "en-cok-izlenenler")
             {
-               
+
                 ViewBag.Header = "En Çok İzlenen Filmler";
             }
             else
@@ -93,80 +93,101 @@ namespace FilmPortalı.Controllers
                 if (sort == "izlenme")
                 {
                     films = (from f in db.Films
-                        join fc in db.FilmCategory on f.FId equals fc.FId
-                        join c in db.Categories.Where(c => c.CAd.Contains(tur)) on fc.CId equals c.CId
-                        select f).OrderByDescending(f => f.FUDate).Skip(page * 40).Take(40).ToList();
+                             join fc in db.FilmCategory on f.FId equals fc.FId
+                             join c in db.Categories.Where(c => c.CAd.Contains(tur)) on fc.CId equals c.CId
+                             select f).OrderByDescending(f => f.FUDate).Skip(page * 40).Take(40).ToList();
 
                 }
                 else if (sort == "eklenme")
                 {
                     films = (from f in db.Films
-                        join fc in db.FilmCategory on f.FId equals fc.FId
-                        join c in db.Categories.Where(c => c.CAd.Contains(tur)) on fc.CId equals c.CId
-                        select f).OrderByDescending(f => f.FCDate).Skip(page * 40).Take(40).ToList();
+                             join fc in db.FilmCategory on f.FId equals fc.FId
+                             join c in db.Categories.Where(c => c.CAd.Contains(tur)) on fc.CId equals c.CId
+                             select f).OrderByDescending(f => f.FCDate).Skip(page * 40).Take(40).ToList();
 
                 }
                 else
                 {
                     films = (from f in db.Films
-                        join fc in db.FilmCategory on f.FId equals fc.FId
-                        join c in db.Categories.Where(c => c.CAd.Contains(tur)) on fc.CId equals c.CId
-                        select f).OrderByDescending(f => f.FImdb).Skip(page * 40).Take(40).ToList();
+                             join fc in db.FilmCategory on f.FId equals fc.FId
+                             join c in db.Categories.Where(c => c.CAd.Contains(tur)) on fc.CId equals c.CId
+                             select f).OrderByDescending(f => f.FImdb).Skip(page * 40).Take(40).ToList();
 
                 }
-                
+
             }
             return View("GetFilms", films);
         }
 
-        //// GET 2019
-        //[Route("2019")]
-        //public ActionResult Year()
-        //{
-        //    string sort = Request.QueryString["sortBy"] == null ? "imdb" : Request.QueryString["sortBy"];
-        //    List<Films> films = null;
-        //    if (sort == "izlenme")
-        //    {
-        //        films = db.Films.Where(f => f.FYear.Value.Year == 2019)
-        //            .OrderByDescending(f => f.FUDate).Skip(0).Take(40).ToList();
-        //    }
-        //    else if (sort == "eklenme")
-        //    {
-        //        films = db.Films.Where(f => f.FYear.Value.Year == 2019)
-        //        .OrderByDescending(f => f.FCDate).Skip(0).Take(40).ToList();
-        //    }
-        //    else
-        //    {
-        //        films = db.Films.Where(f => f.FYear.Value.Year == 2019)
-        //            .OrderByDescending(f => f.FImdb).Skip(0).Take(40).ToList();
-        //    }
-        //    ViewBag.active = sort;
-        //    ViewBag.Header = "2019 Yılı Filmleri";
-        //    return View("Tur", films);
-        //}
+        [Route("rastgele")]
+        public ActionResult GetRandomFilm()
+        {
+            int minId = db.Films.Min(f => f.FId);
+            int maxId = db.Films.Max(f => f.FId);
+            Random random = new Random();
+            int rast = random.Next(minId, maxId);
 
-        //// GET En çok izlenen filmler
-        //[Route("en-cok-izlenenler")]
-        //public ActionResult MostWatchedFilms()
-        //{
-        //    string sort = Request.QueryString["sortBy"] == null ? "imdb" : Request.QueryString["sortBy"];
-        //    List<Films> films = null;
-        //    if (sort == "izlenme")
-        //    {
-        //        films = db.Films.OrderByDescending(f => f.FUDate).Skip(0).Take(40).ToList();
-        //    }
-        //    else if (sort == "eklenme")
-        //    {
-        //        films = db.Films.OrderByDescending(f => f.FCDate).Skip(0).Take(40).ToList();
-        //    }
-        //    else
-        //    {
-        //        films = db.Films.OrderByDescending(f => f.FImdb).Skip(0).Take(40).ToList();
-        //    }
-        //    ViewBag.active = sort;
-        //    ViewBag.Header = "En Çok İzlenen Filmler";
-        //    return View("Tur", films);
-        //}
+            string filmName = null;
 
+            while (filmName == null)
+            {
+                rast = random.Next(minId, maxId);
+                filmName = (from f in db.Films
+                            where f.FId == rast
+                            select f.FSeo).FirstOrDefault();
+            }
+
+            return Json(new {filmName},JsonRequestBehavior.AllowGet);
+        }
     }
+
+    //// GET 2019
+    //[Route("2019")]
+    //public ActionResult Year()
+    //{
+    //    string sort = Request.QueryString["sortBy"] == null ? "imdb" : Request.QueryString["sortBy"];
+    //    List<Films> films = null;
+    //    if (sort == "izlenme")
+    //    {
+    //        films = db.Films.Where(f => f.FYear.Value.Year == 2019)
+    //            .OrderByDescending(f => f.FUDate).Skip(0).Take(40).ToList();
+    //    }
+    //    else if (sort == "eklenme")
+    //    {
+    //        films = db.Films.Where(f => f.FYear.Value.Year == 2019)
+    //        .OrderByDescending(f => f.FCDate).Skip(0).Take(40).ToList();
+    //    }
+    //    else
+    //    {
+    //        films = db.Films.Where(f => f.FYear.Value.Year == 2019)
+    //            .OrderByDescending(f => f.FImdb).Skip(0).Take(40).ToList();
+    //    }
+    //    ViewBag.active = sort;
+    //    ViewBag.Header = "2019 Yılı Filmleri";
+    //    return View("Tur", films);
+    //}
+
+    //// GET En çok izlenen filmler
+    //[Route("en-cok-izlenenler")]
+    //public ActionResult MostWatchedFilms()
+    //{
+    //    string sort = Request.QueryString["sortBy"] == null ? "imdb" : Request.QueryString["sortBy"];
+    //    List<Films> films = null;
+    //    if (sort == "izlenme")
+    //    {
+    //        films = db.Films.OrderByDescending(f => f.FUDate).Skip(0).Take(40).ToList();
+    //    }
+    //    else if (sort == "eklenme")
+    //    {
+    //        films = db.Films.OrderByDescending(f => f.FCDate).Skip(0).Take(40).ToList();
+    //    }
+    //    else
+    //    {
+    //        films = db.Films.OrderByDescending(f => f.FImdb).Skip(0).Take(40).ToList();
+    //    }
+    //    ViewBag.active = sort;
+    //    ViewBag.Header = "En Çok İzlenen Filmler";
+    //    return View("Tur", films);
+    //}
+
 }

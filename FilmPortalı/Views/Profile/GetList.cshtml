@@ -6,9 +6,9 @@
         @foreach (var watch in Model.watch)
         {
             <div class="film-box">
-                @Ajax.ActionLink(" ", "RemoveList",new { filmId=watch.Films.FId,type=0},new AjaxOptions { HttpMethod="GET",OnFailure="showAjaxError",OnSuccess="removeRow"},new {@class="remove-list fas fa-minus-square" })
+                @Ajax.ActionLink(" ", "RemoveList", new { filmId = watch.Films.FId, type = 0 }, new AjaxOptions { HttpMethod = "GET", OnFailure = "showAjaxError", OnSuccess = "removeRow" }, new { @class = "remove-list fas fa-minus-square" })
                 <a href="/detay/@watch.Films.FSeo">
-                    <img src="@watch.Films.FPoster" class="film-poster" alt="Film Portali @watch.Films.FName" />
+                    <img src="@watch.Films.FPoster" class="film-poster" alt=" @watch.Films.FName" />
                 </a>
             </div>
         }
@@ -20,12 +20,13 @@
     <div class="film-wrapper">
         @foreach (var likes in Model.likes)
         {
-        <div class="film-box">
+            <div class="film-box">
 
-            @Ajax.ActionLink(" ", "RemoveList", new { filmId = likes.Films.FId, type = 1 }, new AjaxOptions { HttpMethod = "GET", OnFailure = "showAjaxError", OnSuccess = "removeRow" }, new { @class = "remove-list fas fa-minus-square" })                <a href="/detay/@likes.Films.FSeo">
-                <img src="@likes.Films.FPoster" class="film-poster" alt="Film Portali @likes.Films.FName" />
-            </a>
-        </div>
+                @Ajax.ActionLink(" ", "RemoveList", new { filmId = likes.Films.FId, type = 1 }, new AjaxOptions { HttpMethod = "GET", OnFailure = "showAjaxError", OnSuccess = "removeRow" }, new { @class = "remove-list fas fa-minus-square" })
+                <a href="/detay/@likes.Films.FSeo">
+                    <img src="@likes.Films.FPoster" class="film-poster" alt="@likes.Films.FName" />
+                </a>
+            </div>
         }
     </div>
 </div>
@@ -37,8 +38,10 @@
         {
         <div class="film-box">
 
-            @Ajax.ActionLink(" ", "RemoveList", new { filmId = dislikes.Films.FId, type = -1 }, new AjaxOptions { HttpMethod = "GET", OnFailure = "showAjaxError", OnSuccess = "removeRow" }, new { @class = "remove-list fas fa-minus-square" }) <a href="/detay/@dislikes.Films.FSeo">
-                <img src="@dislikes.Films.FPoster" class="film-poster" alt="Film Portali @dislikes.Films.FName" />
+            @Ajax.ActionLink(" ", "RemoveList", new { filmId = dislikes.Films.FId, type = -1 }, new AjaxOptions { HttpMethod = "GET", OnFailure = "showAjaxError", OnSuccess = "removeRow" }, new { @class = "remove-list fas fa-minus-square" })
+
+            <a href="/detay/@dislikes.Films.FSeo">
+                <img src="@dislikes.Films.FPoster" class="film-poster" alt="@dislikes.Films.FName" />
             </a>
         </div>
         }

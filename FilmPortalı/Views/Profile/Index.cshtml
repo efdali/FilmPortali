@@ -27,7 +27,6 @@
     <div class="profile-wrapper" id="profile" style="display: block">
         @using (Html.BeginForm("UpdateInfo", "Profile", FormMethod.Post, new { id = "profile-form" }))
         {
-            @Html.HiddenFor(m => m.UId)
             <div class="form-group">
                 <label for="ad">Ad</label>
                 @Html.TextBoxFor(m => m.UName, new { @class = "input-item profile-input", placeholder = "ad" })
@@ -63,9 +62,8 @@
 
     <div class="profile-wrapper" id="account">
 
-        @using (Html.BeginForm("UpdateInfo", "Profile", FormMethod.Post, new { id = "account-form", enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("UpdateAccount", "Profile", FormMethod.Post, new { id = "account-form", enctype = "multipart/form-data" }))
         {
-            @Html.HiddenFor(m => m.UId)
             <div class="form-group">
                 <label for="img">Profil Resmi</label>
                 @Html.TextBox("image", "", new { @class = "input-item profile-input", id = "image", type = "file" })
@@ -120,46 +118,61 @@
 </div>
 
 <div class="clearfix"></div>
+@*$.ajax({
+    url: "/Profile/UpdateInfo",
+    data: $("#profile-form").serialize(),
+    type: "POST",
+    success: function (data) {
+    PNotify.success({
+    text: data.text
+    });
+    },
+    error: function () {
+    showAjaxError();
+    }
+    });
+    } else {
+    $.ajax({
+    url: "/Profile/UpdateAccount",
+    data:$("#account-form").serialize(),
+    type: "POST",
+    cache: false,
+    contentType: false,
+    processData: false,
+    success: function (data) {
+    PNotify.success({
+    text: data.text
+    });
+    },
+    error: function () {
+    showAjaxError();
+    }
+    });
+    }*@
 
 @section scripts{
 
     <script>
 
-        $("#profile-save").click(function () {
+        $(document).ready(function () {
+            var urlInput=$("#url");
+            if (urlInput.val().includes("/Public/img")) {
+                $("#url").val("");
+            }
+        });
+
+        $("#profile-save").click(function() {
 
             var opened = $(".profile-btns a.active").attr("href");
             if (opened == "#profile" || opened == "#account") {
                 if (opened == "#profile") {
-                    $.ajax({
-                        url: "/Profile/UpdateInfo",
-                        data: $("#profile-form").serialize(),
-                        type: "POST",
-                        success: function (data) {
-                            PNotify.success({
-                                text: data
-                            });
-                        },
-                        error: function () {
-                            showAjaxError();
-                        }
-                    });
+                    $("#profile-form").submit();
                 } else {
-                    $.ajax({
-                        url: "/Profile/UpdateAccount",
-                        data: $("#account-form").serialize(),
-                        type: "POST",
-                        success: function (data) {
-                            PNotify.success({
-                                text: data
-                            });
-                        },
-                        error: function () {
-                            showAjaxError();
-                        }
-                    });
+                    $("#account-form").submit();
                 }
             }
         });
+
 
         function changeVisible(isShow) {
             var btn = $("#profile-save");
@@ -175,46 +188,49 @@
             }
         }
 
-        $(".profile-btns").on("click", "a", function (e) {
+        $(".profile-btns").on("click",
+            "a",
+            function(e) {
 
-            var tab = $(this).attr("href");
-            changeVisible(tab == "#profile" || tab == "#account" ? true : false);
-            $(this).addClass("active");
-            $(this).parent().siblings().children().removeClass("active");
-            $(".profile-wrapper").not(tab).css("display", "none");
-            $(tab).fadeIn();
-            e.preventDefault();
-        });
+                var tab = $(this).attr("href");
+                changeVisible(tab == "#profile" || tab == "#account" ? true : false);
+                $(this).addClass("active");
+                $(this).parent().siblings().children().removeClass("active");
+                $(".profile-wrapper").not(tab).css("display", "none");
+                $(tab).fadeIn();
+                e.preventDefault();
+            });
 
-        $("#comments-btn").click(function () {
+        $("#comments-btn").click(function() {
 
             $.ajax({
                 url: "/Profile/GetComment",
                 type: "GET",
-                success: function (data) {
+                success: function(data) {
                     $("#comments").html(data);
                 },
-                error: function (error) { console.log(error) }
+                error: function(error) { console.log(error) }
             });
         });
 
-        $("#list-btn").click(function () {
+        $("#list-btn").click(function() {
 
             $.ajax({
                 url: "/Profile/GetList",
                 type: "GET",
-                success: function (data) {
+                success: function(data) {
                     $("#list").html(data);
                 },
-                error: function () { }
+                error: function() {}
             });
         });
 
         function removeRow() {
 
-            $(this).parent().parent().toggle("explode", function () {
-                $(this).remove();
-            });
+            $(this).parent().parent().toggle("explode",
+                function() {
+                    $(this).remove();
+                });
 
         }
         //$(".container").on("click", ".edit-comment", function (e) {
@@ -228,15 +244,17 @@
             $.ajax({
                 url: "/Profile/RemoveList",
                 data: {
-                    filmId, type
+                    filmId,
+                    type
                 },
                 type: "GET",
-                success: function () {
-                    btn.parent().toggle("explode", function () {
-                        btn.parent().remove();
-                    });
+                success: function() {
+                    btn.parent().toggle("explode",
+                        function() {
+                            btn.parent().remove();
+                        });
                 },
-                error: function (error) { console.log(error) }
+                error: function(error) { console.log(error) }
             });
         }
     </script>

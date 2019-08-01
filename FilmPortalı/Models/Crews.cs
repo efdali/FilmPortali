@@ -25,6 +25,7 @@ namespace FilmPortalı.Models
         public Nullable<System.DateTime> CBirthday { get; set; }
         public string CPicture { get; set; }
         public string CLife { get; set; }
+        public string CSeo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FilmCrew> FilmCrew { get; set; }

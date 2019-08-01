@@ -18,8 +18,8 @@ namespace FilmPortalı.Models
         public Nullable<int> SFId { get; set; }
         public string SName { get; set; }
         public string SUrl { get; set; }
-        public Nullable<bool> SStatus { get; set; }
+        public bool SStatus { get; set; }
     
-        public virtual Users Users { get; set; }
+        public virtual Films Films { get; set; }
     }
 }

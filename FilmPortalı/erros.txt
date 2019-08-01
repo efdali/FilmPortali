@@ -112,6 +112,7 @@ The controller for path '/undefined' was not found or does not implement IContro
 7/21/2019 11:57:11 PM
 Invalid JSON primitive: efdali.
 /
+<<<<<<< HEAD
 7/25/2019 8:30:56 PM
 Object reference not set to an instance of an object.
 /detay/undefined
@@ -187,3 +188,23 @@ Object reference not set to an instance of an object.
 7/25/2019 9:06:24 PM
 Input string was not in a correct format.
 /Film/CheckList?filmId=138
+=======
+7/23/2019 12:02:25 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/23/2019 12:15:47 PM
+The controller for path '/Amdin/Categories' was not found or does not implement IController.
+/Amdin/Categories
+7/23/2019 12:24:49 PM
+The controller for path '/Amdin/Categories' was not found or does not implement IController.
+/Amdin/Categories
+7/23/2019 12:41:34 PM
+The controller for path '/Amdin/Categories' was not found or does not implement IController.
+/Amdin/Categories
+7/23/2019 12:46:39 PM
+A public action method 'AddCategory' was not found on controller 'FilmPortalı.Areas.Amdin.Controllers.FilmController'.
+/Amdin/Film/AddCategory
+7/23/2019 12:56:01 PM
+The controller for path '/Amdin/SuspendedUser' was not found or does not implement IController.
+/Amdin/SuspendedUser
+>>>>>>> 19ad502a6b71f606d4506d388ea92a912368fe97

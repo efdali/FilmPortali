@@ -1,6 +1,7 @@
 ﻿using FilmPortalı.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -53,12 +54,18 @@ namespace FilmPortalı.Controllers
                 {
                     return Json(new { status = 0, message = "Kullanıcı Hesabı Askıya Alınmış.Detaylı Bilgi İçin İletişime Geçin." });
                 }
-                Session["kullaniciNick"] = userIn.UNick;
+
+                //Son Giriş Tarihini Güncelliyoruz 
+                userIn.ULastSession=DateTime.Now;
+                db.Entry(userIn).State = EntityState.Modified;
+                db.SaveChanges();
+                //Session Oluşturuyoruz
+                Session["kullaniciId"] = userIn.UId;
                 Session["kullaniciResim"] = userIn.UImage;
                 Users dataUser = new Users();
-                dataUser.UNick = userIn.UNick;
+                dataUser.UId = userIn.UId;
                 dataUser.UImage = userIn.UImage;
-                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1,userIn.UId.ToString(),DateTime.Now,DateTime.Now.AddMonths(1),false,
+                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1,userIn.UNick.ToString(),DateTime.Now,DateTime.Now.AddMonths(1),false,
                 new JavaScriptSerializer().Serialize(dataUser));
                 HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(ticket));
                 Response.Cookies.Add(cookie);

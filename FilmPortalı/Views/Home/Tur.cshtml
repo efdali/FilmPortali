@@ -35,6 +35,7 @@
                 success: function (data) {
                     $(".film-wrapper").append(data);
                     $(".btn-more").html("Daha Fazla Film");
+                    showImage();
                 },
                 error: function () { }
             });

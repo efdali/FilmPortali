@@ -94,7 +94,7 @@ $("#login-form").submit(function () {
 });
 
 //Film Search
-$(".search").keyup (function (e) {
+$(".search").keyup(function (e) {
 
     var val = $(this).val();
     var list = $(".search-film-list");
@@ -148,17 +148,21 @@ function isCorrect(pass1, pass2) {
 // Ajax Error
 function showAjaxError() {
     PNotify.error({
-        text:"Bir Hata Olustu.Lutfen Daha Sonra Tekrar Deneyin."
+        text: "Bir Hata Olustu.Lutfen Daha Sonra Tekrar Deneyin."
     });
 }
 
 window.addEventListener("DOMContentLoaded", function () {
 
     //lazy load images
+    showImage();
 
-    $(document.images).each(function () {
+});
 
+function showImage() {
+    $(".lazy").each(function () {
         var _image = $(this);
+        _image.removeClass("lazy");
         var image = new Image();
         image.src = $(this).data("src");
         image.onload = function () {
@@ -166,4 +170,32 @@ window.addEventListener("DOMContentLoaded", function () {
         }
 
     });
+}
+
+
+
+// Film Detay
+$(".film-box").hover(function () {
+
+    var index = $(this).index();
+    $(".film-box:eq(" + index + ")").find(".overlay").slideDown("fast");
+}, function () {
+    var index = $(this).index();
+    $(".film-box:eq(" + index + ")").find(".overlay").fadeOut("slow", function () {
+        $(this).hide();
+    });
 });
+
+
+
+// Rastgele Film
+
+$(".random").click(function() {
+    $.ajax({
+        url: "/rastgele",
+        type: "GET",
+        success: function(data) {
+            window.location.href = "/detay/" + data.filmName;
+        }
+    });
+})

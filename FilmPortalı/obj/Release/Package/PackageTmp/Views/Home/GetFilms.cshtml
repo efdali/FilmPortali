@@ -2,8 +2,14 @@
 @foreach (var films in Model)
 {
     <div class="film-box">
-        <a href="/detay/@films.FSeo">
-            <img data-src="@films.FPoster" class="film-poster" alt="@films.FName" />
-        </a>
+        <div class="img-wrapper">
+            <a href="/detay/@films.FSeo">
+                <span><i class="fab fa-imdb"></i> @films.FImdb</span>
+                <img data-src="@films.FPoster" class="film-poster lazy" alt="@films.FName" />
+            </a>
+        </div>
+        <div class="overlay">
+            <h4>@films.FTurkishName <span style="font-size: 15px">(@films.FYear)</span></h4>
+        </div>
     </div>
 }

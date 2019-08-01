@@ -43,7 +43,7 @@ namespace FilmPortalı.Security
         public override string[] GetRolesForUser(string username)
         {
             FilmPortaliEntities db = new FilmPortaliEntities();
-            var user = db.Users.FirstOrDefault(u => u.UId.ToString() == username);
+            var user = db.Users.FirstOrDefault(u => u.UNick.ToString() == username);
             string role = "";
             if (user == null)
                 role = "U";

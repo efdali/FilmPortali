@@ -2,6 +2,7 @@
 using FilmPortalı.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -23,25 +24,26 @@ namespace FilmPortalı.Areas.Amdin.Controllers
         {
             AddFilmViewModel vm = new AddFilmViewModel();
             vm.category = db.Categories.ToList();
+            vm.film=new Films();
             return View(vm);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddFilm(Films film, List<int> cats,Sources source)
+        public ActionResult AddFilm(Films film, List<int> cats,Sources source,bool slider)
         {
             if (cats == null) cats = new List<int>();
 
             if (cats.Count != 0)
             {
                 for (int i = 0; i < cats.Count(); i++)
-                    db.spFilmEkle1(film.FName, film.FSummary, film.FYear, film.FCountry, film.FImdb,
-                        film.FPoster, film.FTrailer, film.FSeo, film.FTurkishName, cats[i],source.SName,source.SUrl,film.FKeywords,film.FDescription);
+                    db.spFilmEkle1(film.FId,film.FName, film.FSummary, film.FYear, film.FCountry, film.FImdb,
+                        film.FPoster, film.FTrailer, film.FSeo, film.FTurkishName, cats[i],source.SName,source.SUrl,film.FKeywords,film.FDescription,slider);
             }
             else
             {
-                db.spFilmEkle1(film.FName, film.FSummary, film.FYear, film.FCountry, film.FImdb,
-                        film.FPoster, film.FTrailer, film.FSeo, film.FTurkishName, 0,source.SName,source.SUrl,film.FKeywords,film.FDescription);
+                db.spFilmEkle1(film.FId,film.FName, film.FSummary, film.FYear, film.FCountry, film.FImdb,
+                        film.FPoster, film.FTrailer, film.FSeo, film.FTurkishName, 0,source.SName,source.SUrl,film.FKeywords,film.FDescription,slider);
             }
             
             db.SaveChanges();
@@ -70,6 +72,30 @@ namespace FilmPortalı.Areas.Amdin.Controllers
                 return Content("Başarılı");
             }
             return Content("Başarısız");
+        }
+
+        public ActionResult AddToSlider(int filmId)
+        {
+            var inSlider = db.Slider.Where(s => s.SFId == filmId).FirstOrDefault();
+            if (inSlider != null)
+            {
+                if (inSlider.SStatus == false)
+                {
+                    inSlider.SStatus = true;
+                    db.Entry(inSlider).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return Json(new {text = "Aktif Edildi"});
+                }
+                return Json(new { text = "Zaten Mevcut"});
+            }
+            Slider slider = new Slider();
+            slider.SStatus = true;
+            slider.SFId = filmId;
+            slider.SDate=DateTime.Now;
+            db.Slider.Add(slider);
+            db.SaveChanges();
+
+            return Json(new {text = "Slidera Eklendi"});
         }
 
         public ActionResult UpdateFilm(int filmId)

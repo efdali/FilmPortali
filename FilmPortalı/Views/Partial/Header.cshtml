@@ -35,7 +35,7 @@
                 <a href="#" class="navbar-link">IMDB 250</a>
                 <a href="/tur/en-cok-izlenenler" class="navbar-link">En Çok İzlenen</a>
                 <a href="/tur/2019" class="navbar-link">2019</a>
-                <a href="#" class="navbar-link">Rastgele</a>
+                <a href="#" class="navbar-link random">Rastgele</a>
                 <a href="#" class="navbar-link">Diğer</a>
             </div>
 
@@ -54,12 +54,12 @@
                 else
                 {
                     <div class="profile">
-                        <img src='@Session["kullaniciResim"]' alt='@Session["kullaniciNick"]' class="profile-img" width="30px" height="30px">
+                        <img src='@Session["kullaniciResim"]' alt='@User.Identity.Name' class="profile-img" width="30px" height="30px">
                         <i class="fas fa-caret-down show-profile-list"></i>
                         <ul class="list-container profile-list">
                             @if (User.IsInRole("A"))
                             {
-                                <li>@Html.ActionLink("Yönetim","Index","Amdin/Film")</li>
+                                <li>@Html.ActionLink("Yönetim","Index","Amdin/Default")</li>
                             }
                             <li>@Html.ActionLink("Profil","Index", "profil")</li>
                             <li>İzlediklerim</li>
@@ -106,12 +106,12 @@
         {
 
             <div class="profile">
-                <img src='@Session["kullaniciResim"]' alt='@Session["kullaniciNick"]' class="profile-img" width="30px" height="30px">
+                <img src='@Session["kullaniciResim"]' alt='@User.Identity.Name' class="profile-img" width="30px" height="30px">
                 <i class="fas fa-caret-down show-profile-list"></i>
                 <ul class="list-container profile-list">
                     @if (User.IsInRole("A"))
                     {
-                        <li>@Html.ActionLink("Yönetim", "Index", "Amdin/Film")</li>
+                        <li>@Html.ActionLink("Yönetim", "Index", "Amdin/Default")</li>
                     }
                     <li>@Html.ActionLink("Profil", "Index", "profil")</li>
                     <li>İzlediklerim</li>
@@ -138,7 +138,7 @@
             <a href="#" class="navbar-link">IMDB 250</a>
             <a href="/tur/en-cok-izlenenler" class="navbar-link">En Çok İzlenen</a>
             <a href="/tur/2019" class="navbar-link">2019</a>
-            <a href="#" class="navbar-link">Rastgele</a>
+            <a href="#" class="navbar-link random">Rastgele</a>
             <a href="#" class="navbar-link">Diğer</a>
         </div>
     </div>

@@ -1,0 +1,194 @@
+﻿@model FilmPortalı.Models.Crews
+@{
+    ViewBag.Title = "Oyuncu/Yönetmen Ekle";
+    Layout = "~/Areas/Amdin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Oyuncu/Yönetmen Ekle</h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Ara!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Yeni Oyuncu/Yönetmen</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li class="dropdown">
+                                <a href="/Amdin/Crew" class="dropdown-toggle"><i class="fa fa-users"></i></a>
+                            </li>
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br />
+                        @using (Html.BeginForm("AddCrew", "Crew", FormMethod.Post, new { @class = "form-horizontal form-label-left", data_parsley_validate = "true" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(c=> c.CId)
+                            <div class="form-group">
+                                @Html.LabelFor(c=> c.CName, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <span class="required">*</span>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(c=> c.CName, new { @class = "form-control col-md-7 col-xs-12", required = "true",id="crew-name" })
+                                    <ul id="menu"></ul>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(c=> c.CBirthday, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <span class="required">*</span>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(c=> c.CBirthday, new { @class = "form-control col-md-7 col-xs-12", required = "true", type = "date",id="crew-birthday" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(c=> c.CPicture, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <span class="required">*</span>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(c=> c.CPicture, new { @class = "form-control col-md-7 col-xs-12", required = "true",id="crew-picture" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(c=> c.CSeo, new { @class = "control-label col-md-3 col-sm-3 col-xs-12"})
+                                <span class="required">*</span>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(c=> c.CSeo, new { @class = "form-control col-md-7 col-xs-12", required = "true",id="crew-seo" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(c=> c.CLife, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <span class="required">*</span>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextAreaFor(c=> c.CLife, new { @class = "form-control", rows = "3",id="crew-life" })
+                                </div>
+                            </div>
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                    <a href="/Amdin/Crew" class="btn btn-primary">İptal</a>
+                                    <button class="btn btn-primary" type="reset">Reset</button>
+                                    <button type="submit" class="btn btn-success">Yayınla</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section styles{
+    <style>
+        #menu {
+            position: absolute;
+            z-index: 999;
+            margin-top: 36px;
+            width: 100%;
+            list-style: none;
+            display: none;
+            background-color: ghostwhite;
+        }
+
+        #menu li {
+            border-bottom: 1px solid black;
+        }
+    </style>
+}
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+
+            var menu = $("#menu");
+            $("#crew-name").blur(function() {
+                menu.hide("slow");
+            });
+
+            $("#crew-name").keyup(function (e) {
+                var val = $(this).val();
+                if (val.length > 3) {
+                    var html = "";
+                    var api_key = "55c3f48d0bfdbccb834c9f43f600bbee";
+                    fetch("https://api.themoviedb.org/3/search/person?api_key=55c3f48d0bfdbccb834c9f43f600bbee&language=tr&page=1&query=" + val +"&include_adult=false")
+                        .then(data => data.json())
+                        .then(data => {
+                            menu.show("slow");
+                            var result = data.results;
+                            $.each(result, function (index) {
+                                html += '<li><a href ="#" onclick="fillInputs(' + result[index].id + ')">' +
+                                    '<h5>' + result[index].name + '</h5>' +
+                                    '</a>' +
+                                    '</li>';
+
+                            });
+                            menu.html(html);
+
+                        })
+                        .catch(error => console.log(error));
+                } else {
+                    menu.hide("slow");
+                }
+            });
+
+        });
+
+        var crewName = $("#crew-name");
+        var crewBirthday = $("#crew-birthday");
+        var crewPicture = $("#crew-picture");
+        var crewSeo = $("#crew-seo");
+        var crewLife = $("#crew-life");
+
+        function fillInputs(id) {
+
+            $("#menu").hide("slow");
+
+            fetch("https://api.themoviedb.org/3/person/"+id+"?api_key=55c3f48d0bfdbccb834c9f43f600bbee&language=tr" + id)
+                .then(data => data.json())
+                .then(data => {
+                    crewName.val(data.name);
+                    crewBirthday.val(data.birthday);
+                    crewPicture.val("https://image.tmdb.org/t/p/w300" + data.profile_path);
+                    crewSeo.val(toSeoUrl(data.name));
+                    if (data.biography.length > 0) {
+                        crewLife.val(data.biography);
+                    }
+                })
+                .catch(error => console.log(error));
+
+
+        }
+        function toSeoUrl(url) {
+            return url.toString()               // Convert to string
+                .normalize('NFD')               // Change diacritics
+                .replace(/[\u0300-\u036f]/g, '') // Remove illegal characters
+                .replace(/\s+/g, '-')            // Change whitespace to dashes
+                .toLowerCase()                  // Change to lowercase
+                .replace(/&/g, '-and-')          // Replace ampersand
+                .replace(/[^a-z0-9\-]/g, '')     // Remove anything that is not a letter, number or dash
+                .replace(/-+/g, '-')             // Remove duplicate dashes
+                .replace(/^-*/, '')              // Remove starting dashes
+                .replace(/-*$/, '');             // Remove trailing dashes
+        }
+    </script>
+}

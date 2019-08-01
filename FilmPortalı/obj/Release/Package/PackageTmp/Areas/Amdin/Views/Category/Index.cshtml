@@ -1,0 +1,85 @@
+﻿@using FilmPortalı.Models
+@model List<Categories>
+@{
+    ViewBag.Title = "Kategoriler";
+    Layout = "~/Areas/Amdin/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="~/Areas/Amdin/Content/css/jquery.dataTables.min.css" rel="stylesheet">
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left"> </div>
+
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Kategoriler</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li class="dropdown">
+                                    <a href="/Amdin/Category/Add" class="dropdown-toggle"><i class="fa fa-plus"></i></a>
+                                </li>
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li>
+                                    <a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <table id="film-table" class="table table-striped table-bordered table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Kategori</th>
+                                        <th>Sil/Düzenle</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var category in Model)
+                                    {
+                                        <tr>
+                                            <td>@category.CId</td>
+                                            <td>@category.CAd</td>
+                                            <td>
+                                                @Html.ActionLink("Düzenle", "Update", new { id = category.CId},
+                                           new { @class = "btn btn-success" })
+                                                @Ajax.ActionLink("Sil", "Delete", new { id = category.CId }, new AjaxOptions { HttpMethod = "GET", Confirm = "Silmek istediğine emin misin?", OnSuccess = "RemoveRow" }, new { @class = "btn btn-danger" })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+
+    <script src="~/Areas/Amdin/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#film-table').DataTable({
+                responsive: true
+            });
+        });
+
+        function RemoveRow() {
+            var tr = $(this).closest('tr');
+            tr.remove();
+        }
+    </script>
+
+}

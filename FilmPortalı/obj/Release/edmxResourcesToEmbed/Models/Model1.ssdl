@@ -27,6 +27,7 @@
     <Property Name="CBirthday" Type="date" />
     <Property Name="CPicture" Type="varchar" MaxLength="250" />
     <Property Name="CLife" Type="text" />
+    <Property Name="CSeo" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="FilmCategory">
     <Key>
@@ -121,6 +122,7 @@
     <Property Name="UInstagram" Type="varchar" MaxLength="250" />
     <Property Name="UAppear" Type="bit" />
     <Property Name="UNews" Type="bit" />
+    <Property Name="ULastSession" Type="datetime" />
     <Property Name="UDate" Type="date" />
     <Property Name="UStatus" Type="bit" />
     <Property Name="URole" Type="varchar" MaxLength="2" />
@@ -132,9 +134,10 @@
     <Property Name="VId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="VFId" Type="int" />
     <Property Name="VUId" Type="int" />
-    <Property Name="VDate" Type="date" />
+    <Property Name="VDate" Type="datetime" />
   </EntityType>
   <Function Name="spFilmEkle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="punwald2016">
+    <Parameter Name="id" Type="int" Mode="In" />
     <Parameter Name="ad" Type="varchar" Mode="In" />
     <Parameter Name="konu" Type="text" Mode="In" />
     <Parameter Name="yil" Type="int" Mode="In" />
@@ -149,6 +152,7 @@
     <Parameter Name="kaynakUrl" Type="text" Mode="In" />
     <Parameter Name="keywords" Type="varchar" Mode="In" />
     <Parameter Name="description" Type="varchar" Mode="In" />
+    <Parameter Name="slider" Type="bit" Mode="In" />
   </Function>
   <Function Name="spFilmSil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="punwald2016">
     <Parameter Name="filmId" Type="int" Mode="In" />

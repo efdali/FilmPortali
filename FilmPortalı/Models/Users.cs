@@ -19,7 +19,6 @@ namespace FilmPortalı.Models
         {
             this.Comments = new HashSet<Comments>();
             this.List = new HashSet<List>();
-            this.Sources = new HashSet<Sources>();
             this.SubComments = new HashSet<SubComments>();
             this.Views = new HashSet<Views>();
         }
@@ -38,6 +37,7 @@ namespace FilmPortalı.Models
         public string UInstagram { get; set; }
         public bool UAppear { get; set; }
         public bool UNews { get; set; }
+        public Nullable<System.DateTime> ULastSession { get; set; }
         public Nullable<System.DateTime> UDate { get; set; }
         public Nullable<bool> UStatus { get; set; }
         public string URole { get; set; }
@@ -46,8 +46,6 @@ namespace FilmPortalı.Models
         public virtual ICollection<Comments> Comments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<List> List { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sources> Sources { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SubComments> SubComments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -94,8 +94,12 @@ namespace FilmPortalı.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spFilmSil", filmIdParameter);
         }
     
-        public virtual int spFilmEkle1(string ad, string konu, Nullable<int> yil, string ulke, Nullable<double> imdb, string poster, string trailer, string seo, string turkAd, Nullable<int> kategori, string kaynakAd, string kaynakUrl, string keywords, string description)
+        public virtual int spFilmEkle1(Nullable<int> id, string ad, string konu, Nullable<int> yil, string ulke, Nullable<double> imdb, string poster, string trailer, string seo, string turkAd, Nullable<int> kategori, string kaynakAd, string kaynakUrl, string keywords, string description, Nullable<bool> slider)
         {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
             var adParameter = ad != null ?
                 new ObjectParameter("ad", ad) :
                 new ObjectParameter("ad", typeof(string));
@@ -152,7 +156,11 @@ namespace FilmPortalı.Models
                 new ObjectParameter("description", description) :
                 new ObjectParameter("description", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spFilmEkle1", adParameter, konuParameter, yilParameter, ulkeParameter, imdbParameter, posterParameter, trailerParameter, seoParameter, turkAdParameter, kategoriParameter, kaynakAdParameter, kaynakUrlParameter, keywordsParameter, descriptionParameter);
+            var sliderParameter = slider.HasValue ?
+                new ObjectParameter("slider", slider) :
+                new ObjectParameter("slider", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spFilmEkle1", idParameter, adParameter, konuParameter, yilParameter, ulkeParameter, imdbParameter, posterParameter, trailerParameter, seoParameter, turkAdParameter, kategoriParameter, kaynakAdParameter, kaynakUrlParameter, keywordsParameter, descriptionParameter, sliderParameter);
         }
     
         public virtual int spFilmSil1(Nullable<int> filmId)

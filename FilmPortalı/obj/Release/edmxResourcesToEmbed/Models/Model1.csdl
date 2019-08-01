@@ -32,6 +32,7 @@
     <Property Name="CPicture" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="CLife" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="FilmCrew" Relationship="Self.FK_FilmCrew_Crews" FromRole="Crews" ToRole="FilmCrew" />
+    <Property Name="CSeo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="FilmCategory">
     <Key>
@@ -68,6 +69,8 @@
     <Property Name="FPoster" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="FTrailer" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="FSeo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FKeywords" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="FUDate" Type="DateTime" Precision="0" />
     <Property Name="FCDate" Type="DateTime" Precision="0" />
     <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Films" FromRole="Films" ToRole="Comments" />
@@ -75,9 +78,8 @@
     <NavigationProperty Name="FilmCrew" Relationship="Self.FK_FilmCrew_Films" FromRole="Films" ToRole="FilmCrew" />
     <NavigationProperty Name="List" Relationship="Self.FK_List_Films" FromRole="Films" ToRole="List" />
     <NavigationProperty Name="Slider" Relationship="Self.FK_Slider_Films" FromRole="Films" ToRole="Slider" />
+    <NavigationProperty Name="Sources" Relationship="Self.FK_Sources_Films" FromRole="Films" ToRole="Sources" />
     <NavigationProperty Name="Views" Relationship="Self.FK_Views_Films" FromRole="Films" ToRole="Views" />
-    <Property Name="FKeywords" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="FDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="List">
     <Key>
@@ -109,7 +111,7 @@
     <Property Name="SName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="SUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="SStatus" Type="Boolean" />
-    <NavigationProperty Name="Users" Relationship="Self.FK_Sources_Users" FromRole="Sources" ToRole="Users" />
+    <NavigationProperty Name="Films" Relationship="Self.FK_Sources_Films" FromRole="Sources" ToRole="Films" />
   </EntityType>
   <EntityType Name="SubComments">
     <Key>
@@ -142,12 +144,12 @@
     <Property Name="UInstagram" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="UAppear" Type="Boolean" />
     <Property Name="UNews" Type="Boolean" />
+    <Property Name="ULastSession" Type="DateTime" Precision="3" />
     <Property Name="UDate" Type="DateTime" Precision="0" />
     <Property Name="UStatus" Type="Boolean" />
     <Property Name="URole" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Users" FromRole="Users" ToRole="Comments" />
     <NavigationProperty Name="List" Relationship="Self.FK_List_Users" FromRole="Users" ToRole="List" />
-    <NavigationProperty Name="Sources" Relationship="Self.FK_Sources_Users" FromRole="Users" ToRole="Sources" />
     <NavigationProperty Name="SubComments" Relationship="Self.FK_SubComments_Users" FromRole="Users" ToRole="SubComments" />
     <NavigationProperty Name="Views" Relationship="Self.FK_Views_Users" FromRole="Users" ToRole="Views" />
   </EntityType>
@@ -158,7 +160,7 @@
     <Property Name="VId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="VFId" Type="Int32" />
     <Property Name="VUId" Type="Int32" />
-    <Property Name="VDate" Type="DateTime" Precision="0" />
+    <Property Name="VDate" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Films" Relationship="Self.FK_Views_Films" FromRole="Views" ToRole="Films" />
     <NavigationProperty Name="Users" Relationship="Self.FK_Views_Users" FromRole="Views" ToRole="Users" />
   </EntityType>
@@ -270,6 +272,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Sources_Films">
+    <End Role="Films" Type="Self.Films" Multiplicity="0..1" />
+    <End Role="Sources" Type="Self.Sources" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Films">
+        <PropertyRef Name="FId" />
+      </Principal>
+      <Dependent Role="Sources">
+        <PropertyRef Name="SFId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Views_Films">
     <End Role="Films" Type="Self.Films" Multiplicity="0..1" />
     <End Role="Views" Type="Self.Views" Multiplicity="*" />
@@ -291,18 +305,6 @@
       </Principal>
       <Dependent Role="List">
         <PropertyRef Name="LUId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Sources_Users">
-    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-    <End Role="Sources" Type="Self.Sources" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UId" />
-      </Principal>
-      <Dependent Role="Sources">
-        <PropertyRef Name="SFId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -379,6 +381,10 @@
       <End Role="Films" EntitySet="Films" />
       <End Role="Slider" EntitySet="Slider" />
     </AssociationSet>
+    <AssociationSet Name="FK_Sources_Films" Association="Self.FK_Sources_Films">
+      <End Role="Films" EntitySet="Films" />
+      <End Role="Sources" EntitySet="Sources" />
+    </AssociationSet>
     <AssociationSet Name="FK_Views_Films" Association="Self.FK_Views_Films">
       <End Role="Films" EntitySet="Films" />
       <End Role="Views" EntitySet="Views" />
@@ -386,10 +392,6 @@
     <AssociationSet Name="FK_List_Users" Association="Self.FK_List_Users">
       <End Role="Users" EntitySet="Users" />
       <End Role="List" EntitySet="List" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Sources_Users" Association="Self.FK_Sources_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Sources" EntitySet="Sources" />
     </AssociationSet>
     <AssociationSet Name="FK_SubComments_Users" Association="Self.FK_SubComments_Users">
       <End Role="Users" EntitySet="Users" />
@@ -415,6 +417,7 @@
       <Parameter Name="filmId" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="spFilmEkle1">
+      <Parameter Name="id" Mode="In" Type="Int32" />
       <Parameter Name="ad" Mode="In" Type="String" />
       <Parameter Name="konu" Mode="In" Type="String" />
       <Parameter Name="yil" Mode="In" Type="Int32" />
@@ -429,6 +432,7 @@
       <Parameter Name="kaynakUrl" Mode="In" Type="String" />
       <Parameter Name="keywords" Mode="In" Type="String" />
       <Parameter Name="description" Mode="In" Type="String" />
+      <Parameter Name="slider" Mode="In" Type="Boolean" />
     </FunctionImport>
     <FunctionImport Name="spFilmSil1">
       <Parameter Name="filmId" Mode="In" Type="Int32" />

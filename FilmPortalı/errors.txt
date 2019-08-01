@@ -1,3 +1,1052 @@
 ﻿7/25/2019 9:32:33 PM
 The controller for path '/undefined' was not found or does not implement IController.
 /undefined
+7/26/2019 12:13:49 PM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/26/2019 12:13:50 PM
+Input string was not in a correct format.
+/Film/CheckList?filmId=142
+7/26/2019 12:13:56 PM
+Input string was not in a correct format.
+/Film/AddWatched?filmId=142
+7/26/2019 12:14:04 PM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/26/2019 12:31:03 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 12:45:03 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 12:45:08 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 12:45:11 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 12:45:14 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 12:45:18 PM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/26/2019 12:45:27 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 12:45:33 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 12:45:53 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 12:46:01 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 6:49:38 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 6:50:25 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 6:54:09 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 6:54:15 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 6:54:20 PM
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\Views\Profile\Index.cshtml(96): error CS0266: Cannot implicitly convert type 'bool?' to 'bool'. An explicit conversion exists (are you missing a cast?)
+/profil
+7/26/2019 6:54:44 PM
+Cannot convert null to a value type.
+/profil
+7/26/2019 6:58:08 PM
+Cannot convert null to a value type.
+/profil
+7/26/2019 6:58:09 PM
+Cannot convert null to a value type.
+/
+7/26/2019 6:58:14 PM
+Cannot convert null to a value type.
+/
+7/26/2019 6:58:29 PM
+Cannot convert null to a value type.
+/
+7/26/2019 6:58:40 PM
+Cannot convert null to a value type.
+/
+7/26/2019 6:58:42 PM
+Cannot convert null to a value type.
+/
+7/26/2019 6:59:41 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 6:59:54 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 7:00:02 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 7:00:09 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 7:00:15 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 7:00:18 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 7:01:49 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 7:02:00 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 8:18:21 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 8:18:47 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:19:09 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:20:38 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 8:23:50 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:23:53 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 8:24:00 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 8:24:46 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:26:16 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 8:26:58 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:27:02 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:27:04 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 8:27:16 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:27:19 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 8:29:57 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:30:19 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:41:40 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:41:52 PM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/26/2019 8:42:06 PM
+Object reference not set to an instance of an object.
+/detay/us
+7/26/2019 8:42:18 PM
+Object reference not set to an instance of an object.
+/detay/us
+7/26/2019 8:44:24 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:44:31 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:44:38 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 8:44:54 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 8:45:08 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:45:10 PM
+Object reference not set to an instance of an object.
+/detay/us
+7/26/2019 8:45:17 PM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/26/2019 8:47:49 PM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/26/2019 8:47:51 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:48:15 PM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/26/2019 8:48:21 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:48:39 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:49:28 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:49:32 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:50:01 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 8:50:42 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:52:12 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:52:20 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:53:02 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:53:23 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:53:30 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:54:10 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:54:23 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:54:26 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 8:55:48 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 8:56:37 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:56:51 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 8:57:38 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:57:59 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:59:26 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 8:59:28 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 8:59:39 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 9:00:06 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 9:00:09 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 9:00:21 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 9:00:27 PM
+Object reference not set to an instance of an object.
+/Profile/GetList
+7/26/2019 9:03:57 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 9:04:10 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 9:06:30 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 9:06:52 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 9:07:00 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 9:07:04 PM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/26/2019 9:07:09 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 9:07:46 PM
+The controller for path '/Amdin/Sources' was not found or does not implement IController.
+/Amdin/Sources
+7/26/2019 9:08:43 PM
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\Areas\Amdin\Views\Source\Index.cshtml(51): error CS1061: 'Sources' does not contain a definition for 'Film' and no extension method 'Film' accepting a first argument of type 'Sources' could be found (are you missing a using directive or an assembly reference?)
+/Amdin/Source
+7/26/2019 9:10:24 PM
+"<" is not valid at the start of a code block.  Only identifiers, keywords, comments, "(" and "{" are valid.
+
+/Amdin/Source
+7/26/2019 9:22:27 PM
+A public action method 'Delete' was not found on controller 'FilmPortalı.Areas.Amdin.Controllers.SourceController'.
+/Amdin/Source/Delete/2?X-Requested-With=XMLHttpRequest&_=1564164872911
+7/26/2019 9:29:19 PM
+Value cannot be null.
+Parameter name: items
+/Amdin/Source/UpdateSource/2
+7/26/2019 9:30:16 PM
+The controller for path '/__browserLink/requestData/a33d62d226604f28a02bfdfab19810e0' was not found or does not implement IController.
+/__browserLink/requestData/a33d62d226604f28a02bfdfab19810e0?version=2
+7/26/2019 9:33:06 PM
+This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+/Amdin/Source/Delete/2?X-Requested-With=XMLHttpRequest&_=1564165958155
+7/26/2019 9:34:01 PM
+A referential integrity constraint violation occurred: The property value(s) of 'Films.FId' on one end of a relationship do not match the property value(s) of 'Sources.SFId' on the other end.
+/Amdin/Source/AddorEdit
+7/26/2019 9:35:24 PM
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+/Amdin/Source/AddorEdit
+7/26/2019 9:37:24 PM
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+/Amdin/Source/AddorEdit
+7/26/2019 9:37:37 PM
+The controller for path '/__browserLink/requestData/2fddd79dda0c4b4b9f15cdaaaea2e1c6' was not found or does not implement IController.
+/__browserLink/requestData/2fddd79dda0c4b4b9f15cdaaaea2e1c6?version=2
+7/26/2019 9:38:41 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 9:46:04 PM
+This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+/Amdin/Source/DeleteSource/37?X-Requested-With=XMLHttpRequest&_=1564166750874
+7/26/2019 9:46:30 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 9:46:55 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 9:49:30 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 9:49:40 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/26/2019 10:31:43 PM
+This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+/Amdin/Source/DeleteSource/45?X-Requested-With=XMLHttpRequest&_=1564169479761
+7/26/2019 10:34:12 PM
+This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+/Amdin/Source/DeleteSource/47?X-Requested-With=XMLHttpRequest&_=1564169638346
+7/26/2019 10:35:23 PM
+This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+/Amdin/Source/DeleteSource/48?X-Requested-With=XMLHttpRequest&_=1564169718210
+7/26/2019 10:36:12 PM
+This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+/Amdin/Source/DeleteSource/49?X-Requested-With=XMLHttpRequest&_=1564169766874
+7/26/2019 10:36:50 PM
+This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+/Amdin/Source/DeleteSource/50?X-Requested-With=XMLHttpRequest&_=1564169807003
+7/26/2019 10:38:02 PM
+This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+/Amdin/Source/DeleteSource/51?X-Requested-With=XMLHttpRequest&_=1564169876884
+7/26/2019 10:40:21 PM
+The view 'Index' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Default/Index.aspx
+~/Views/Default/Index.ascx
+~/Views/Shared/Index.aspx
+~/Views/Shared/Index.ascx
+~/Views/Default/Index.cshtml
+~/Views/Default/Index.vbhtml
+~/Views/Shared/Index.cshtml
+~/Views/Shared/Index.vbhtml
+/Default
+7/27/2019 10:49:59 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 10:50:21 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 10:50:26 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 10:51:21 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 10:51:24 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 10:51:34 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 10:54:16 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 10:55:42 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 10:56:14 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 10:57:12 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 10:57:19 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 10:58:53 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 10:59:05 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:00:55 AM
+A public action method 'Index' was not found on controller 'FilmPortalı.Controllers.ProfileController'.
+/Profile/Index
+7/27/2019 11:01:08 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:01:11 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:02:53 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:02:58 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:03:46 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:03:51 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:03:59 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:04:48 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:04:56 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:05:29 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:07:07 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:09:27 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:09:43 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:10:02 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:10:16 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:10:26 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:11:10 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:13:56 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:14:28 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:14:36 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:15:48 AM
+A public action method 'Index' was not found on controller 'FilmPortalı.Controllers.ProfileController'.
+/Profile/Index
+7/27/2019 11:15:57 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:16:37 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:33:12 AM
+The view 'Index' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Default/Index.aspx
+~/Views/Default/Index.ascx
+~/Views/Shared/Index.aspx
+~/Views/Shared/Index.ascx
+~/Views/Default/Index.cshtml
+~/Views/Default/Index.vbhtml
+~/Views/Shared/Index.cshtml
+~/Views/Shared/Index.vbhtml
+/Default
+7/27/2019 11:33:18 AM
+The view 'Index' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Default/Index.aspx
+~/Views/Default/Index.ascx
+~/Views/Shared/Index.aspx
+~/Views/Shared/Index.ascx
+~/Views/Default/Index.cshtml
+~/Views/Default/Index.vbhtml
+~/Views/Shared/Index.cshtml
+~/Views/Shared/Index.vbhtml
+/Default
+7/27/2019 11:33:32 AM
+The view 'Index' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Default/Index.aspx
+~/Views/Default/Index.ascx
+~/Views/Shared/Index.aspx
+~/Views/Shared/Index.ascx
+~/Views/Default/Index.cshtml
+~/Views/Default/Index.vbhtml
+~/Views/Shared/Index.cshtml
+~/Views/Shared/Index.vbhtml
+/Default
+7/27/2019 11:37:20 AM
+Object reference not set to an instance of an object.
+/Amdin/Default
+7/27/2019 11:44:22 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:44:34 AM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/27/2019 11:44:37 AM
+Input string was not in a correct format.
+/Film/AddWatched?filmId=122
+7/27/2019 11:47:24 AM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/27/2019 11:47:30 AM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/27/2019 11:47:32 AM
+Input string was not in a correct format.
+/Film/AddWatched?filmId=147
+7/27/2019 11:48:24 AM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/27/2019 11:48:28 AM
+Input string was not in a correct format.
+/Film/AddWatched?filmId=147
+7/27/2019 11:48:35 AM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/27/2019 11:48:40 AM
+Input string was not in a correct format.
+/Film/AddWatched?filmId=147
+7/27/2019 11:48:59 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:49:16 AM
+A public action method 'FilmDetails' was not found on controller 'FilmPortalı.Controllers.FilmController'.
+/Film/FilmDetails
+7/27/2019 11:49:22 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:49:35 AM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/27/2019 11:49:36 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:49:51 AM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/27/2019 11:50:39 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:50:43 AM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/27/2019 11:50:45 AM
+Input string was not in a correct format.
+/Film/AddWatched?filmId=151
+7/27/2019 11:51:31 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:52:18 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:52:22 AM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/27/2019 11:52:48 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 12:24:14 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 12:24:17 PM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/27/2019 12:24:40 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 12:25:14 PM
+Object reference not set to an instance of an object.
+/Amdin/Default
+7/27/2019 12:25:18 PM
+Object reference not set to an instance of an object.
+/Amdin/Default
+7/27/2019 12:25:34 PM
+Object reference not set to an instance of an object.
+/Amdin/Default
+7/27/2019 12:25:55 PM
+Object reference not set to an instance of an object.
+/Amdin/Default
+7/27/2019 12:25:59 PM
+Object reference not set to an instance of an object.
+/Amdin/Default
+7/27/2019 12:26:06 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 12:26:13 PM
+Object reference not set to an instance of an object.
+/Amdin/Default
+7/27/2019 2:24:29 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 2:27:21 PM
+The parameters dictionary contains a null entry for parameter 'id' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.ActionResult AddToSlider(Int32)' in 'FilmPortalı.Areas.Amdin.Controllers.FilmController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+/Amdin/Film/AddToSlider?filmId=124&X-Requested-With=XMLHttpRequest&_=1564226831721
+7/27/2019 2:27:28 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 2:27:32 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 2:28:21 PM
+The parameters dictionary contains a null entry for parameter 'id' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.ActionResult AddToSlider(Int32)' in 'FilmPortalı.Areas.Amdin.Controllers.FilmController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+/Amdin/Film/AddToSlider?filmId=124&X-Requested-With=XMLHttpRequest&_=1564226875084
+7/27/2019 2:28:25 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 2:40:04 PM
+This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+/Amdin/Film/AddToSlider?filmId=112&X-Requested-With=XMLHttpRequest&_=1564227004053
+7/27/2019 2:40:11 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 2:41:05 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 2:42:15 PM
+This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+/Amdin/Film/AddToSlider?filmId=124&X-Requested-With=XMLHttpRequest&_=1564227696300
+7/27/2019 2:43:00 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 2:43:15 PM
+This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+/Amdin/Film/AddToSlider?filmId=125&X-Requested-With=XMLHttpRequest&_=1564227696301
+7/27/2019 2:43:18 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 2:43:38 PM
+This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+/Amdin/Film/AddToSlider?filmId=125&X-Requested-With=XMLHttpRequest&_=1564227696302
+7/27/2019 2:43:42 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 2:44:24 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 2:44:35 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 2:45:27 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 2:48:09 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 2:59:29 PM
+Expected a "{" but found a "@".  Block statements must be enclosed in "{" and "}".  You cannot use single-statement control-flow statements in CSHTML pages. For example, the following is not allowed:
+
+@if(isLoggedIn)
+    <p>Hello, @user</p>
+
+Instead, wrap the contents of the block in "{}":
+
+@if(isLoggedIn) {
+    <p>Hello, @user</p>
+}
+
+/Amdin/Slider
+7/27/2019 3:07:19 PM
+This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+/Amdin/Slider/showOrHideSlider/5
+7/27/2019 3:07:49 PM
+The controller for path '/__browserLink/requestData/3ea4ff29358c473db5149fcb1106e404' was not found or does not implement IController.
+/__browserLink/requestData/3ea4ff29358c473db5149fcb1106e404?version=2
+7/27/2019 3:08:13 PM
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\Areas\Amdin\Views\Slider\Index.cshtml(52): error CS1503: Argument 5: cannot convert from '<anonymous type: string class>' to 'System.Web.Mvc.Ajax.AjaxOptions'
+/Amdin/Slider
+7/27/2019 3:09:04 PM
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\Areas\Amdin\Views\Slider\Index.cshtml(51): error CS1503: Argument 5: cannot convert from '<anonymous type: int id>' to 'System.Web.Mvc.Ajax.AjaxOptions'
+/Amdin/Slider
+7/27/2019 3:10:35 PM
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\Areas\Amdin\Views\Slider\Index.cshtml(52): error CS1026: ) expected
+/Amdin/Slider
+7/27/2019 3:10:37 PM
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\Areas\Amdin\Views\Slider\Index.cshtml(52): error CS1026: ) expected
+/Amdin/Slider
+7/27/2019 3:11:38 PM
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\Areas\Amdin\Views\Slider\Index.cshtml(50): error CS1026: ) expected
+/Amdin/Slider
+7/27/2019 3:11:40 PM
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\Areas\Amdin\Views\Slider\Index.cshtml(50): error CS1026: ) expected
+/Amdin/Slider
+7/27/2019 3:12:01 PM
+A space or line break was encountered after the "@" character.  Only valid identifiers, keywords, comments, "(" and "{" are valid at the start of a code block and they must occur immediately following "@" with no space in between.
+
+/Amdin/Slider
+7/27/2019 3:12:02 PM
+A space or line break was encountered after the "@" character.  Only valid identifiers, keywords, comments, "(" and "{" are valid at the start of a code block and they must occur immediately following "@" with no space in between.
+
+/Amdin/Slider
+7/27/2019 3:36:23 PM
+This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+/Amdin/Film/AddToSlider?filmId=112&X-Requested-With=XMLHttpRequest&_=1564230981041
+7/27/2019 3:36:39 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 3:36:46 PM
+This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+/Amdin/Film/AddToSlider?filmId=112&X-Requested-With=XMLHttpRequest&_=1564231003516
+7/27/2019 3:36:48 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 3:51:39 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 4:36:59 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 4:37:12 PM
+Object reference not set to an instance of an object.
+/detay/undefined
+7/27/2019 4:37:14 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 5:49:09 PM
+The model item passed into the dictionary is of type 'System.Collections.Generic.List`1[<>f__AnonymousType6`2[System.Nullable`1[System.DateTime],System.Int32]]', but this dictionary requires a model item of type 'FilmPortalı.Models.Users'.
+/Amdin/Default
+7/27/2019 5:51:57 PM
+A public action method 'getIst' was not found on controller 'FilmPortalı.Areas.Amdin.Controllers.DefaultController'.
+/Amdin/Default/getIst
+7/27/2019 5:53:20 PM
+A public action method 'getIst' was not found on controller 'FilmPortalı.Areas.Amdin.Controllers.DefaultController'.
+/Amdin/Default/getIst
+7/27/2019 5:53:43 PM
+A public action method 'getIst' was not found on controller 'FilmPortalı.Areas.Amdin.Controllers.DefaultController'.
+/Amdin/Default/getIst
+7/27/2019 6:00:46 PM
+LINQ to Entities does not recognize the method 'System.String Format(System.String, System.Object)' method, and this method cannot be translated into a store expression.
+/Amdin/Default/getIst
+7/27/2019 6:01:13 PM
+LINQ to Entities does not recognize the method 'System.String Format(System.String, System.Object)' method, and this method cannot be translated into a store expression.
+/Amdin/Default/getIst
+7/27/2019 8:16:49 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 8:16:57 PM
+The controller for path '/__browserLink/requestData/35969a5aab1448ed927d2682fd2bc0b7' was not found or does not implement IController.
+/__browserLink/requestData/35969a5aab1448ed927d2682fd2bc0b7?version=2
+7/27/2019 8:35:36 PM
+A public action method 'GetUserInfo' was not found on controller 'FilmPortalı.Areas.Amdin.Controllers.DefaultController'.
+/Amdin/Default/GetUserInfo
+7/27/2019 8:36:11 PM
+A public action method 'GetUserInfo' was not found on controller 'FilmPortalı.Areas.Amdin.Controllers.DefaultController'.
+/Amdin/Default/GetUserInfo
+7/27/2019 8:36:16 PM
+A public action method 'GetUserInfo' was not found on controller 'FilmPortalı.Areas.Amdin.Controllers.DefaultController'.
+/Amdin/Default/GetUserInfo
+7/27/2019 8:36:28 PM
+A public action method 'GetUserInfo' was not found on controller 'FilmPortalı.Areas.Amdin.Controllers.DefaultController'.
+/Amdin/Default/GetUserInfo
+7/27/2019 9:07:23 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 9:32:22 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 9:35:18 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 9:39:31 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 10:31:00 PM
+Object reference not set to an instance of an object.
+/Amdin/Crew
+7/27/2019 10:31:24 PM
+Object reference not set to an instance of an object.
+/Amdin/Crew
+7/27/2019 10:31:28 PM
+Object reference not set to an instance of an object.
+/Amdin/Crew
+7/27/2019 10:31:28 PM
+Object reference not set to an instance of an object.
+/Amdin/Crew
+7/27/2019 10:31:29 PM
+Object reference not set to an instance of an object.
+/Amdin/Crew
+7/27/2019 10:31:29 PM
+Object reference not set to an instance of an object.
+/Amdin/Crew
+7/27/2019 10:31:29 PM
+Object reference not set to an instance of an object.
+/Amdin/Crew
+7/27/2019 11:26:42 PM
+A public action method 'AddCrewToFilm' was not found on controller 'FilmPortalı.Areas.Amdin.Controllers.CrewController'.
+/Amdin/Crew/AddCrewToFilm
+7/27/2019 11:28:07 PM
+The controller for path '/Amdin/' was not found or does not implement IController.
+/Amdin/
+7/27/2019 11:28:10 PM
+The controller for path '/Amdin/De' was not found or does not implement IController.
+/Amdin/De
+7/27/2019 11:29:21 PM
+The controller for path '/Amdin/AddCrew' was not found or does not implement IController.
+/Amdin/AddCrew
+7/27/2019 11:31:24 PM
+This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+/Amdin/Crew/DeleteCrew/1?X-Requested-With=XMLHttpRequest&_=1564259479926
+7/27/2019 11:32:12 PM
+This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+/Amdin/Crew/DeleteCrew/2?X-Requested-With=XMLHttpRequest&_=1564259527414
+7/27/2019 11:33:19 PM
+This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+/Amdin/Crew/DeleteCrew/3?X-Requested-With=XMLHttpRequest&_=1564259595378
+7/27/2019 11:34:06 PM
+This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+/Amdin/Crew/DeleteCrew/5?X-Requested-With=XMLHttpRequest&_=1564259635070
+7/27/2019 11:34:49 PM
+This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+/Amdin/Crew/DeleteCrew/6?X-Requested-With=XMLHttpRequest&_=1564259685888
+7/27/2019 11:36:34 PM
+This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+/Amdin/Crew/DeleteCrew/7
+7/27/2019 11:37:34 PM
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+/Amdin/Crew/AddCrew
+7/27/2019 11:40:01 PM
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+/Amdin/Crew/AddCrew
+7/27/2019 11:42:20 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:45:58 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:48:08 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/27/2019 11:52:27 PM
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\Areas\Amdin\Views\Slider\AddSlider.cshtml(16): error CS0266: Cannot implicitly convert type 'bool?' to 'bool'. An explicit conversion exists (are you missing a cast?)
+/Amdin/Slider
+7/27/2019 11:59:26 PM
+The controller for path '/Amdin' was not found or does not implement IController.
+/Amdin
+7/28/2019 12:00:10 AM
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\Areas\Amdin\Views\Slider\AddSlider.cshtml(16): error CS0266: Cannot implicitly convert type 'bool?' to 'bool'. An explicit conversion exists (are you missing a cast?)
+/Amdin/Slider
+7/28/2019 12:00:26 AM
+The controller for path '/Amdin/Crew/FilmCrew' was not found or does not implement IController.
+/Amdin/Crew/FilmCrew
+7/28/2019 12:00:51 AM
+DataBinding: 'System.Data.Entity.DynamicProxies.Crews_29D41CF9F361293831F3436A81F5234D4E0028418BF98C93FC68237B8548BBA7' does not contain a property with the name 'CAd'.
+/Amdin/Crew/FilmCrew
+7/28/2019 12:07:46 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/28/2019 7:45:27 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/28/2019 9:26:26 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/29/2019 9:44:36 AM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/30/2019 6:37:16 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/30/2019 6:37:37 PM
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\Areas\Amdin\Views\Source\AddSource.cshtml(58): error CS0266: Cannot implicitly convert type 'bool?' to 'bool'. An explicit conversion exists (are you missing a cast?)
+/Amdin/Source/UpdateSource/72
+7/30/2019 8:58:48 PM
+Cannot convert null to a value type.
+/
+7/30/2019 9:01:22 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/30/2019 9:08:27 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/30/2019 9:09:16 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/30/2019 9:10:17 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/30/2019 9:10:21 PM
+The controller for path '/undefined' was not found or does not implement IController.
+/undefined
+7/30/2019 9:44:58 PM
+The controller for path '/profil/GetList' was not found or does not implement IController.
+/profil/GetList
+8/1/2019 9:33:02 AM
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\Areas\Amdin\Views\Slider\AddSlider.cshtml(16): error CS0266: Cannot implicitly convert type 'bool?' to 'bool'. An explicit conversion exists (are you missing a cast?)
+/Amdin/Slider
+8/1/2019 4:23:43 PM
+A space or line break was encountered after the "@" character.  Only valid identifiers, keywords, comments, "(" and "{" are valid at the start of a code block and they must occur immediately following "@" with no space in between.
+
+/
+8/1/2019 4:28:03 PM
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+/
+8/1/2019 5:32:23 PM
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+/
+8/1/2019 5:41:07 PM
+A public action method 'detay' was not found on controller 'FilmPortalı.Controllers.HomeController'.
+/Home/detay?filmName=Avengers%3A%20Infinity%20War
+8/1/2019 5:42:01 PM
+A public action method 'detay' was not found on controller 'FilmPortalı.Controllers.HomeController'.
+/Home/detay?filmName=over-the-hedge
+8/1/2019 5:42:41 PM
+A public action method 'detay' was not found on controller 'FilmPortalı.Controllers.HomeController'.
+/Home/detay?filmName=happy-death-day-2u
+8/1/2019 5:43:38 PM
+A public action method 'detay' was not found on controller 'FilmPortalı.Controllers.HomeController'.
+/Home/detay/the-boss-baby
+8/1/2019 5:44:08 PM
+A public action method 'detay' was not found on controller 'FilmPortalı.Controllers.HomeController'.
+/Home/detay/venom
+8/1/2019 5:44:15 PM
+A public action method 'detay' was not found on controller 'FilmPortalı.Controllers.HomeController'.
+/Home/detay/guardians-of-the-galaxy
+8/1/2019 5:45:13 PM
+A public action method 'detay' was not found on controller 'FilmPortalı.Controllers.HomeController'.
+/Home/detay/iron-man-2
+8/1/2019 5:46:34 PM
+A public action method 'detay' was not found on controller 'FilmPortalı.Controllers.FilmController'.
+/Film/detay/guardians-of-the-galaxy-vol-2
+8/1/2019 5:48:30 PM
+A public action method 'detay' was not found on controller 'FilmPortalı.Controllers.FilmController'.
+/Film/detay/the-purge
+8/1/2019 5:48:39 PM
+A public action method 'detay' was not found on controller 'FilmPortalı.Controllers.FilmController'.
+/Film/detay/deadpool-2
+8/1/2019 5:49:06 PM
+A public action method 'detay' was not found on controller 'FilmPortalı.Controllers.HomeController'.
+/Home/detay/wonder-woman
+8/1/2019 5:49:57 PM
+The controller for path '/Films/FilmDetails/betrayed' was not found or does not implement IController.
+/Films/FilmDetails/betrayed
+8/1/2019 5:50:30 PM
+The controller for path '/Films/FilmDetails/the-boss-baby' was not found or does not implement IController.
+/Films/FilmDetails/the-boss-baby
+8/1/2019 5:51:27 PM
+The controller for path '/Films/FilmDetails/betrayed' was not found or does not implement IController.
+/Films/FilmDetails/betrayed
+8/1/2019 5:51:48 PM
+The controller for path '/Films/FilmDetails/spider-man-homecoming' was not found or does not implement IController.
+/Films/FilmDetails/spider-man-homecoming
+8/1/2019 5:52:28 PM
+A public action method 'detay' was not found on controller 'FilmPortalı.Controllers.HomeController'.
+/Home/detay?filmName=the-purge-election-year
+8/1/2019 5:53:08 PM
+A public action method 'detay' was not found on controller 'FilmPortalı.Controllers.HomeController'.
+/Home/detay/over-the-hedge
+8/1/2019 5:54:02 PM
+A route named 'detay/iron-man-3' could not be found in the route collection.
+Parameter name: name
+/rastgele
+8/1/2019 5:54:09 PM
+The controller for path '/__browserLink/requestData/6f8f0870613145eca6041262f0e5c243' was not found or does not implement IController.
+/__browserLink/requestData/6f8f0870613145eca6041262f0e5c243?version=2
+8/1/2019 5:54:22 PM
+A route named 'detay/the-first-purge' could not be found in the route collection.
+Parameter name: name
+/rastgele
+8/1/2019 5:55:09 PM
+A route named 'detay' could not be found in the route collection.
+Parameter name: name
+/rastgele
+8/1/2019 5:57:22 PM
+A route named 'detay' could not be found in the route collection.
+Parameter name: name
+/rastgele
+8/1/2019 5:58:23 PM
+A route named 'detay/the-first-purge' could not be found in the route collection.
+Parameter name: name
+/rastgele
+8/1/2019 5:59:49 PM
+A route named 'detay' could not be found in the route collection.
+Parameter name: name
+/rastgele
+8/1/2019 6:00:42 PM
+A route named 'detay/sen-benim-herseyimsin' could not be found in the route collection.
+Parameter name: name
+/rastgele
+8/1/2019 6:02:05 PM
+A public action method 'detay' was not found on controller 'FilmPortalı.Controllers.HomeController'.
+/Home/detay?filmName=sen-benim-herseyimsin
+8/1/2019 6:02:11 PM
+The controller for path '/__browserLink/requestData/82c7fd69f55040c3a90c4a8b8d6309e0' was not found or does not implement IController.
+/__browserLink/requestData/82c7fd69f55040c3a90c4a8b8d6309e0?version=2
+8/1/2019 6:02:36 PM
+A route named 'detay/shazam' could not be found in the route collection.
+Parameter name: name
+/rastgele
+8/1/2019 6:05:14 PM
+A route named 'detay/thor' could not be found in the route collection.
+Parameter name: name
+/rastgele
+8/1/2019 6:05:20 PM
+The controller for path '/__browserLink/requestData/82c7fd69f55040c3a90c4a8b8d6309e0' was not found or does not implement IController.
+/__browserLink/requestData/82c7fd69f55040c3a90c4a8b8d6309e0?version=2
+8/1/2019 6:05:20 PM
+A route named 'detay/happy-death-day' could not be found in the route collection.
+Parameter name: name
+/rastgele
+8/1/2019 6:09:26 PM
+A public action method 'detay' was not found on controller 'FilmPortalı.Controllers.FilmController'.
+/Film/detay?filmName=alpha
+8/1/2019 6:10:36 PM
+A public action method 'detay' was not found on controller 'FilmPortalı.Controllers.FilmController'.
+/Film/detay/deadpool-2
+8/1/2019 6:11:08 PM
+A public action method 'detay' was not found on controller 'FilmPortalı.Controllers.HomeController'.
+/Home/detay/venom
+8/1/2019 6:15:18 PM
+The controller for path '/__browserLink/requestData/7a9159a6fa3746d898e344ffa7fdaedb' was not found or does not implement IController.
+/__browserLink/requestData/7a9159a6fa3746d898e344ffa7fdaedb?version=2
+8/1/2019 6:16:14 PM
+The controller for path '/detay/detay/alita-battle-angel' was not found or does not implement IController.
+/detay/detay/alita-battle-angel
+8/1/2019 6:16:23 PM
+The controller for path '/detay/detay/alita-battle-angel' was not found or does not implement IController.
+/detay/detay/alita-battle-angel

@@ -17,7 +17,7 @@ namespace FilmPortalı.Controllers
         [Route("profil")]
         public ActionResult Index()
         {
-            int userId = Convert.ToInt16(User.Identity.Name);
+            int userId = Convert.ToInt16(Session["kullaniciId"]);
             Users user = db.Users.Where(u => u.UId == userId).FirstOrDefault();
             return View(user);
         }
@@ -25,7 +25,7 @@ namespace FilmPortalı.Controllers
         [HttpGet]
         public ActionResult GetList()
         {
-            int userId = Convert.ToInt16(User.Identity.Name);
+            int userId = Convert.ToInt16(Session["kullaniciId"]);
             List<List> watch = db.List.Include("Films").Where(l => l.LUId == userId && l.LType == 0).ToList();
             List<List> likes = db.List.Include("Films").Where(l => l.LUId == userId && l.LType == 1).ToList();
             List<List> dislikes = db.List.Include("Films").Where(l => l.LUId == userId && l.LType == -1).ToList();
@@ -39,7 +39,7 @@ namespace FilmPortalı.Controllers
         [HttpGet]
         public ActionResult GetComment()
         {
-            int userId = Convert.ToInt16(User.Identity.Name);
+            int userId = Convert.ToInt16(Session["kullaniciId"]);
             List<Comments> comments = db.Comments.Include("Films").Where(c => c.CUId == userId && c.CStatus == true).ToList();
             return View(comments);
         }
@@ -47,7 +47,8 @@ namespace FilmPortalı.Controllers
         [HttpPost]
         public ActionResult UpdateInfo(Users user, string gender)
         {
-            var guncellenecekUser = db.Users.Find(user.UId);
+            int id = Convert.ToInt16(Session["kullaniciId"]);
+            var guncellenecekUser = db.Users.Find(id);
             if (guncellenecekUser == null)
             {
                 return HttpNotFound();
@@ -65,17 +66,14 @@ namespace FilmPortalı.Controllers
             db.Entry(guncellenecekUser).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
 
-            return Content("Güncelleme Başarılı");
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
         public ActionResult UpdateAccount(Users user, HttpPostedFileBase image)
         {
-            if (!ModelState.IsValid)
-            {
-                return View("Index", user);
-            }
-            var guncellenecekUser = db.Users.Find(user.UId);
+            int id = Convert.ToInt16(Session["kullaniciId"]);
+            var guncellenecekUser = db.Users.Find(id);
             if (guncellenecekUser == null)
             {
                 return HttpNotFound();
@@ -111,7 +109,7 @@ namespace FilmPortalı.Controllers
             db.Entry(guncellenecekUser).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
 
-            return Content("Güncelleme Başarılı");
+            return RedirectToAction("Index");
         }
 
         public ActionResult DeleteComment(int id)

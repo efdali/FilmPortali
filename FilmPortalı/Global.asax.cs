@@ -26,24 +26,23 @@ namespace FilmPortalı
 
         protected void Session_Start()
         {
-            if (User.Identity.IsAuthenticated)
-            {
 
-                HttpCookie cookie = Request.Cookies[FormsAuthentication.FormsCookieName];
-                if (cookie != null)
-                {
+            // Session cookie ayarı
+            //if (User.Identity.IsAuthenticated)
+            //{
 
+            //    HttpCookie cookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+            //    if (cookie != null)
+            //    {
+            //        FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(cookie.Value);
+            //        var user = new JavaScriptSerializer().Deserialize<Users>(ticket.UserData);
+            //        Session["kullaniciId"] = user.UId;
+            //        Session["kullaniciResim"] = user.UImage;
+            //        cookie.Expires=DateTime.Now.AddDays(1);
+            //        Response.Cookies.Add(cookie);
+            //    }
 
-                    FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(cookie.Value);
-                    var user = new JavaScriptSerializer().Deserialize<Users>(ticket.UserData);
-                    Session["kullaniciNick"] = user.UNick;
-                    Session["kullaniciResim"] = user.UImage;
-                    cookie.Expires=DateTime.Now.AddDays(1);
-                    Response.Cookies.Add(cookie);
-
-                }
-
-            }
+            //}
 
             int onlineVisitor = (int) Application["onlineVisitor"];
             int totalVisitor = (int) Application["totalVisitor"];
@@ -63,6 +62,11 @@ namespace FilmPortalı
             Application.Lock();
             Application["onlineVisitor"] = onlineVisitor;
             Application.UnLock();
+        }
+
+        protected void Application_End()
+        {
+            Application.Remove("onlineVisitor");
         }
 
         protected void Application_Error()

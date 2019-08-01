@@ -58,8 +58,7 @@
                                     <th>Cinsiyet</th>
                                     <th>Durum</th>
                                     <th>Hesap Tarihi</th>
-                                    <th>Detay</th>
-                                    <th>Askıya Al</th>
+                                    <th>Admin/Askıya Al</th>
                                 </tr>
                             </thead>
 
@@ -72,15 +71,15 @@
                                         <td>@user.UNick</td>
                                         <td>@user.UName @user.USurname</td>
                                         <td>@user.UBirthDate</td>
-                                        <td>@(user.UGender == true ? "Kız" : "Erkek")</td>
                                         <td>@user.UMail</td>
+                                        <td>@(user.UGender == true ? "Kız" : "Erkek")</td>
                                         <td>@(user.UStatus == true ? "Aktif" : "Pasif")</td>
                                         <td>@user.UDate</td>
-                                        <td>@Ajax.ActionLink("Admin", "GiveAdminPermission", new { userId = user.UId }, new AjaxOptions { HttpMethod = "GET", Confirm = "Admin yetkisi vermek istediğine emin misin?", OnSuccess = "removeRow" }, new { @class = "btn btn-warning" })</td>
                                         <td>
+                                            @Ajax.ActionLink("Admin", "GiveAdminPermission", new { userId = user.UId }, new AjaxOptions { HttpMethod = "GET", Confirm = "Admin yetkisi vermek istediğine emin misin?", OnSuccess = "removeRow" }, new { @class = "btn btn-warning" })
                                             @if (user.UStatus == true)
                                             {
-                                                @Ajax.ActionLink("Askıya Al", "SuspendUser", new { userId = user.UId }, new AjaxOptions { HttpMethod = "GET", Confirm = "Askıya almak istediğine emin misin?", OnSuccess = "suspendedUser"}, new { @class = "btn btn-danger" })
+                                                @Ajax.ActionLink("Askıya Al", "SuspendUser", new { userId = user.UId }, new AjaxOptions { HttpMethod = "GET", Confirm = "Askıya almak istediğine emin misin?", OnSuccess = "suspendedUser" }, new { @class = "btn btn-danger" })
                                             }
                                             else
                                             {

@@ -24,6 +24,7 @@
     <EntitySetMapping Name="Crews">
       <EntityTypeMapping TypeName="FilmPortaliModel.Crews">
         <MappingFragment StoreEntitySet="Crews">
+          <ScalarProperty Name="CSeo" ColumnName="CSeo" />
           <ScalarProperty Name="CId" ColumnName="CId" />
           <ScalarProperty Name="CName" ColumnName="CName" />
           <ScalarProperty Name="CBirthday" ColumnName="CBirthday" />
@@ -54,8 +55,6 @@
     <EntitySetMapping Name="Films">
       <EntityTypeMapping TypeName="FilmPortaliModel.Films">
         <MappingFragment StoreEntitySet="Films">
-          <ScalarProperty Name="FDescription" ColumnName="FDescription" />
-          <ScalarProperty Name="FKeywords" ColumnName="FKeywords" />
           <ScalarProperty Name="FId" ColumnName="FId" />
           <ScalarProperty Name="FName" ColumnName="FName" />
           <ScalarProperty Name="FTurkishName" ColumnName="FTurkishName" />
@@ -66,6 +65,8 @@
           <ScalarProperty Name="FPoster" ColumnName="FPoster" />
           <ScalarProperty Name="FTrailer" ColumnName="FTrailer" />
           <ScalarProperty Name="FSeo" ColumnName="FSeo" />
+          <ScalarProperty Name="FKeywords" ColumnName="FKeywords" />
+          <ScalarProperty Name="FDescription" ColumnName="FDescription" />
           <ScalarProperty Name="FUDate" ColumnName="FUDate" />
           <ScalarProperty Name="FCDate" ColumnName="FCDate" />
         </MappingFragment>
@@ -131,6 +132,7 @@
           <ScalarProperty Name="UInstagram" ColumnName="UInstagram" />
           <ScalarProperty Name="UAppear" ColumnName="UAppear" />
           <ScalarProperty Name="UNews" ColumnName="UNews" />
+          <ScalarProperty Name="ULastSession" ColumnName="ULastSession" />
           <ScalarProperty Name="UDate" ColumnName="UDate" />
           <ScalarProperty Name="UStatus" ColumnName="UStatus" />
           <ScalarProperty Name="URole" ColumnName="URole" />

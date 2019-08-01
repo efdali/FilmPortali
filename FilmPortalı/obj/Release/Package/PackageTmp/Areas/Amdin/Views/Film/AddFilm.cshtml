@@ -122,7 +122,7 @@
                                 @Html.LabelFor(f => f.film.FDescription, new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
                                 <span class="required">*</span>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    @Html.TextAreaFor(f => f.film.FDescription, new { @class = "form-control", rows = "3", id = "film-summary" })
+                                    @Html.TextAreaFor(f => f.film.FDescription, new { @class = "form-control", rows = "3", id = "film-summary", required = "true" })
                                 </div>
                             </div>
                             <div class="form-group" id="cats-wrapper" style="display:none">
@@ -145,7 +145,12 @@
                                     @Html.TextBoxFor(f => f.source.SUrl, new { @class = "form-control col-md-7 col-xs-12", required = "true", id = "source-url", placeholder = "Url" })
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                @Html.Label("Sliderda Gözüksün mü?", new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.CheckBox("slider",new {@class= "form-control" })
+                                </div>
+                            </div>
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
@@ -247,9 +252,9 @@
         $(document).ready(function () {
 
             var menu = $("#menu");
-            $("#film-name").blur(function () {
+            $("#film-name").blur(function() {
                 menu.hide("slow");
-            })
+            });
 
             $("#film-name").keyup(function (e) {
                 var val = $(this).val();

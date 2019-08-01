@@ -1,0 +1,254 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Amdin/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+    <link href="~/Areas/Amdin/Content/css/morris.css" rel="stylesheet" />
+}
+<div class="right_col" role="main">
+
+    <!-- Temel İstatistikler -->
+    <div class="row top_tiles">
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div class="icon"><i class="fa fa-eye"></i></div>
+                <div class="count">@System.Web.HttpContext.Current.Application["totalVisitor"]</div>
+                <h3>Toplam Ziyaretçi</h3>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div class="icon"><i class="fa fa-eye blink" color="red"></i></div>
+                <div class="count">@System.Web.HttpContext.Current.Application["onlineVisitor"]</div>
+                <h3>Online Ziyaretçi</h3>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div class="icon"><i class="fa fa-user"></i></div>
+                <div class="count">@ViewBag.TotalUser</div>
+                <h3>Toplam Kullanıcı</h3>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
+                <div class="count">@ViewBag.TotalFilm</div>
+                <h3>Toplam Film</h3>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="page-title">
+            <div class="title_left"> </div>
+
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>İstatistikler</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li>
+                                    <a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+
+                            <h1>En Son Kayıt Olan Kullanıcı : @ViewBag.LastLogin</h1>
+                            <h1>En Son Giriş Yapan Kullanıcı : @ViewBag.LastSession</h1>
+                            <h1>En Son Yapılan Yorum : @ViewBag.LastComment</h1>
+                            <h1>En Son İzlenilen Film: @ViewBag.LastWatch</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grafikler-->
+        <!-- Kullanıcı Grafiği -->
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12 widget_tally_box">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Kullanıcı Kayıt İstatistikleri</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <div id="graph_bar" style="width:100%; height:200px;"></div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Kullanıcı Grafiği Son -->
+            <!-- Genel Film Grafiği -->
+
+            <div class="col-md-8 col-sm-6 col-xs-12 widget_tally_box">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Total Film İzleme Oranları</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <div id="film_graph_bar" style="width:100%; height:200px;"></div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Genel Film Grafiği Son -->
+
+        </div>
+
+        <!-- Grafikler Son -->
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Areas/Amdin/Scripts/raphael-min.js"></script>
+    <script src="~/Areas/Amdin/Scripts/morris.min.js"></script>
+    <script>
+
+        var eye = $("i.blink");
+        var i = 0;
+        $(document).ready(function () {
+
+            blink();
+            // Kullanıcı Grafiği Ajax
+            $.ajax({
+                url: "/Amdin/Default/GetUserInfo",
+                type: "GET",
+                success: function (data) {
+                    var params = [];
+                    $.each(data,
+                        function (index, value) {
+                            var e = { key: data[index].Date, value: data[index].Count }
+                            params.push(e);
+                        });
+                    initUserChart("graph_bar", params, ["Yeni Kullanıcı"]);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+
+            // Film Grafiği Ajax
+            $.ajax({
+                url: "/Amdin/Default/GetTotalFilmInfo",
+                type: "GET",
+                success: function (data) {
+                    var labels = [];
+                    var params = [];
+                    $.each(data, function (i) {
+                        var e = { key: data[i].Film, value : data[i].Count };
+                        params.push(e);
+                    });
+                    initUserChart("film_graph_bar",params,["İzlenme"]);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
+
+        function blink() {
+            setTimeout(function () {
+                var color = i % 2 == 0 ? 'red' : 'inherit';
+                eye.css("color", color);
+                ++i;
+                blink();
+            },
+                1000);
+        }
+
+        
+
+        // Kullanıcı - Film Grafiği
+        function initUserChart(graph, params, labels) {
+            console.log(labels);
+            Morris.Bar(
+                {
+                    element: graph,
+                    data: params,
+                    xkey: "key",
+                    ykeys: ["value"],
+                    labels: labels,
+                    barRatio: 0.4,
+                    barColors: ["#26B99A", "#34495E", "#ACADAC", "#3498DB"],
+                    xLabelAngle: 35,
+                    hideHover: "auto",
+                    resize: true
+                });
+        }
+
+        // Film Grafiği
+        function initTotalFilmChart(labels, params) {
+            if ($('.canvasDoughnut').length) {
+
+                var chart_doughnut_settings = {
+                    type: 'doughnut',
+                    tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+                    data: {
+                        labels,
+                        datasets: [
+                            {
+                                data: params,
+                                backgroundColor: [
+                                    "#BDC3C7",
+                                    "#9B59B6",
+                                    "#E74C3C",
+                                    "#26B99A",
+                                    "#3498DB"
+                                ],
+                                hoverBackgroundColor: [
+                                    "#CFD4D8",
+                                    "#B370CF",
+                                    "#E95E4F",
+                                    "#36CAAB",
+                                    "#49A9EA"
+                                ]
+                            }
+                        ]
+                    },
+                    options: {
+                        legend: false,
+                        responsive: false
+                    }
+                }
+
+                $('.canvasDoughnut').each(function () {
+
+                    var chart_element = $(this);
+                    var chart_doughnut = new Chart(chart_element, chart_doughnut_settings);
+
+                });
+
+            }
+        }
+
+    </script>
+
+}
