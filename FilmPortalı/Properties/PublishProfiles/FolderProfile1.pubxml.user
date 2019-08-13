@@ -58,7 +58,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/27/2019 22:34:19</publishTime>
     </File>
     <File Include="Areas/Amdin/Views/Crew/AddCrew.cshtml">
-      <publishTime>07/29/2019 10:01:07</publishTime>
+      <publishTime>08/03/2019 15:47:15</publishTime>
     </File>
     <File Include="Areas/Amdin/Views/Crew/AddCrewToFilm.cshtml">
       <publishTime>07/28/2019 00:17:23</publishTime>
@@ -115,10 +115,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/07/2018 11:03:48</publishTime>
     </File>
     <File Include="bin/FilmPortalı.dll">
-      <publishTime>08/01/2019 18:33:10</publishTime>
+      <publishTime>08/03/2019 15:47:28</publishTime>
     </File>
     <File Include="bin/FilmPortalı.pdb">
-      <publishTime>08/01/2019 18:33:10</publishTime>
+      <publishTime>08/03/2019 15:47:28</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>07/03/2019 14:33:10</publishTime>
@@ -301,7 +301,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/15/2019 12:11:04</publishTime>
     </File>
     <File Include="Content/css/main.css">
-      <publishTime>08/01/2019 18:25:02</publishTime>
+      <publishTime>08/03/2019 14:54:02</publishTime>
     </File>
     <File Include="Content/css/normalize.css">
       <publishTime>06/07/2019 14:13:57</publishTime>
@@ -5185,7 +5185,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/15/2019 14:35:44</publishTime>
     </File>
     <File Include="errors.txt">
-      <publishTime>08/01/2019 18:16:23</publishTime>
+      <publishTime>08/03/2019 14:16:03</publishTime>
     </File>
     <File Include="Fonts/HindGuntur-Regular.ttf">
       <publishTime>06/15/2019 14:34:11</publishTime>
@@ -5218,7 +5218,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/17/2019 16:59:32</publishTime>
     </File>
     <File Include="Scripts/main.js">
-      <publishTime>08/01/2019 18:21:13</publishTime>
+      <publishTime>08/03/2019 14:03:41</publishTime>
     </File>
     <File Include="Scripts/owl.carousel.min.js">
       <publishTime>06/15/2019 10:19:19</publishTime>
@@ -5239,13 +5239,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2019 12:17:01</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>07/30/2019 21:13:43</publishTime>
+      <publishTime>08/03/2019 13:59:42</publishTime>
     </File>
     <File Include="Views/Home/Tur.cshtml">
       <publishTime>07/30/2019 21:19:01</publishTime>
     </File>
     <File Include="Views/Partial/Footer.cshtml">
-      <publishTime>07/20/2019 23:30:57</publishTime>
+      <publishTime>08/03/2019 11:09:02</publishTime>
     </File>
     <File Include="Views/Partial/Header.cshtml">
       <publishTime>08/01/2019 18:20:31</publishTime>
@@ -5260,10 +5260,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2019 21:00:15</publishTime>
     </File>
     <File Include="Views/Profile/Index.cshtml">
-      <publishTime>07/30/2019 21:55:39</publishTime>
+      <publishTime>08/03/2019 14:15:44</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>07/25/2019 20:38:35</publishTime>
+      <publishTime>08/03/2019 09:34:22</publishTime>
     </File>
     <File Include="Views/web.config">
       <publishTime>07/12/2019 22:50:27</publishTime>

@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace FilmPortalı.Models
 {
     using System;
@@ -24,10 +26,22 @@ namespace FilmPortalı.Models
         }
     
         public int UId { get; set; }
+        [StringLength(15, MinimumLength = 3, ErrorMessage = "Nick 3 ile 15 karakter arasında olmalıdır.")]
+        [Required(ErrorMessage = "Bu Alan Boş Bırakılamaz")]
         public string UNick { get; set; }
+        [Required(ErrorMessage = "Bu Alan Boş Bırakılamaz")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress(ErrorMessage = "Geçerli mail adresi giriniz.")]
         public string UMail { get; set; }
+        [Required(ErrorMessage = "Bu Alan Boş Bırakılamaz")]
+        [DataType(DataType.Password)]
+        [StringLength(80, MinimumLength = 6, ErrorMessage = "Şifreniz En az 6 karakter olmalıdır")]
         public string UPasswd { get; set; }
+        [Compare(nameof(UPasswd),ErrorMessage = "Şifreler Eşleşmiyor")]
+        public string UNPasswd { get; set; }
+        [StringLength(12, MinimumLength = 3, ErrorMessage = "İsminiz 6 ile 12 karakter arasında olmalıdır.")]
         public string UName { get; set; }
+        [StringLength(12, MinimumLength = 3, ErrorMessage = "Soyisminiz 6 ile 12 karakter arasında olmalıdır.")]
         public string USurname { get; set; }
         public string UInfo { get; set; }
         public string UImage { get; set; }

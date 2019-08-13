@@ -34,6 +34,7 @@ namespace FilmPortalı.Controllers
                 users.UStatus = true;
                 users.UGender = false;
                 users.UPasswd = FormsAuthentication.HashPasswordForStoringInConfigFile(users.UPasswd, "MD5");
+                users.UNPasswd = FormsAuthentication.HashPasswordForStoringInConfigFile(users.UNPasswd, "MD5");
                 db.Users.Add(users);
                 db.SaveChanges();
                 return Json(new { status = 1, message = "Kayıt Başarılı.Lütfen Giriş Yapınız." });
@@ -47,6 +48,7 @@ namespace FilmPortalı.Controllers
         public JsonResult Sign(Users user)
         {
             string pass = FormsAuthentication.HashPasswordForStoringInConfigFile(user.UPasswd, "MD5");
+            
             var userIn = db.Users.FirstOrDefault(u => user.UNick == u.UNick && pass == u.UPasswd);
             if (userIn != null)
             {
@@ -55,6 +57,7 @@ namespace FilmPortalı.Controllers
                     return Json(new { status = 0, message = "Kullanıcı Hesabı Askıya Alınmış.Detaylı Bilgi İçin İletişime Geçin." });
                 }
 
+                userIn.UNPasswd = pass;
                 //Son Giriş Tarihini Güncelliyoruz 
                 userIn.ULastSession=DateTime.Now;
                 db.Entry(userIn).State = EntityState.Modified;

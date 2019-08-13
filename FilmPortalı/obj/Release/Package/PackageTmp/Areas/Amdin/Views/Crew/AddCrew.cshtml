@@ -163,7 +163,7 @@
 
             $("#menu").hide("slow");
 
-            fetch("https://api.themoviedb.org/3/person/"+id+"?api_key=55c3f48d0bfdbccb834c9f43f600bbee&language=tr" + id)
+            fetch("https://api.themoviedb.org/3/person/"+id+"?api_key=55c3f48d0bfdbccb834c9f43f600bbee&language=tr")
                 .then(data => data.json())
                 .then(data => {
                     crewName.val(data.name);

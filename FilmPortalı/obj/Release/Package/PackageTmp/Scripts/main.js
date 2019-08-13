@@ -19,7 +19,7 @@ $(".show-profile-list").click(function () {
 
 
 $(".search").focus(function () {
-    $(".search-film-list").show("slow")
+    $(".search-film-list").show("slow");
 });
 $(".search").blur(function () {
     $(".search-film-list").hide("slow");
@@ -118,7 +118,7 @@ $(".search").keyup(function (e) {
 
 });
 
-
+//kayýt ekraný password eþitleme
 $("#pass").keyup(function () {
     var npass = $("#npass");
     var pass1 = $(this).val().trim();
@@ -135,12 +135,14 @@ $("#npass").keyup(function () {
 
 function isCorrect(pass1, pass2) {
     var btn = $("#login-btn");
-    if (pass1 == pass2) {
-        btn.attr("disabled", false);
-        btn.removeClass("disable");
-    } else {
-        btn.attr("disabled", true);
-        btn.addClass("disable");
+    if (pass1.length >= 6) {
+        if (pass1 == pass2) {
+            btn.attr("disabled", false);
+            btn.removeClass("disable");
+        } else {
+            btn.attr("disabled", true);
+            btn.addClass("disable");
+        }
     }
 }
 
@@ -175,17 +177,18 @@ function showImage() {
 
 
 // Film Detay
-$(".film-box").hover(function () {
+$(".film-wrapper").on("mouseover",".film-box",function () {
 
     var index = $(this).index();
     $(".film-box:eq(" + index + ")").find(".overlay").slideDown("fast");
-}, function () {
+});
+
+$(".film-wrapper").on("mouseleave", ".film-box", function () {
     var index = $(this).index();
     $(".film-box:eq(" + index + ")").find(".overlay").fadeOut("slow", function () {
         $(this).hide();
     });
 });
-
 
 
 // Rastgele Film

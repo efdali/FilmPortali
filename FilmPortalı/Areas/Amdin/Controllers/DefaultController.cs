@@ -19,7 +19,7 @@ namespace FilmPortalı.Areas.Amdin.Controllers
             ViewBag.TotalFilm = db.Films.Count();
             ViewBag.LastLogin = db.Users.OrderByDescending(u => u.UDate).FirstOrDefault().UNick;
             ViewBag.LastSession = db.Users.OrderByDescending(u => u.ULastSession).FirstOrDefault().UNick;
-            ViewBag.LastComment = db.Comments.OrderByDescending(c => c.CDate).FirstOrDefault().CText;
+            ViewBag.LastComment = db.Comments.Count() >0 ? db.Comments.OrderByDescending(c => c.CDate).FirstOrDefault().CText : "";
             ViewBag.LastWatch = db.Views.Include("Films").OrderByDescending(v => v.VDate).FirstOrDefault().Films.FName;
             return View();
         }

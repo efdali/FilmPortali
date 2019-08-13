@@ -1050,3 +1050,45 @@ The controller for path '/detay/detay/alita-battle-angel' was not found or does 
 8/1/2019 6:16:23 PM
 The controller for path '/detay/detay/alita-battle-angel' was not found or does not implement IController.
 /detay/detay/alita-battle-angel
+8/3/2019 11:03:02 AM
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+/Security/Sign
+8/3/2019 11:03:05 AM
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+/Security/Sign
+8/3/2019 11:03:06 AM
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+/Security/Sign
+8/3/2019 11:06:55 AM
+C:\Users\efdal\source\repos\FilmPortalı\FilmPortalı\Views\Partial\Footer.cshtml(37): error CS1525: Invalid expression term '}'
+/
+8/3/2019 11:11:08 AM
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+/Security/Sign
+8/3/2019 11:11:14 AM
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+/Security/Sign
+8/3/2019 11:11:17 AM
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+/Security/Sign
+8/3/2019 11:11:19 AM
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+/Security/Sign
+8/3/2019 11:31:25 AM
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+/Security/Sign
+8/3/2019 11:34:14 AM
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+/Security/Sign
+8/3/2019 11:38:08 AM
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+/Security/Sign
+8/3/2019 11:39:14 AM
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+/Security/Sign
+8/3/2019 11:45:17 AM
+Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+/Security/Login
+8/3/2019 2:16:03 PM
+Object reference not set to an instance of an object.
+/Amdin/Default

@@ -14,10 +14,12 @@
     @using (Ajax.BeginForm("Sign", "Security", new AjaxOptions { HttpMethod = "POST", OnSuccess = "successSign", OnFailure = "showAjaxError" }))
     {
         @Html.AntiForgeryToken()
-        @Html.TextBoxFor(m => m.UNick, new { @class = "input-item", placeholder = "kullanıcı adı" })<br><br>
-        @Html.ValidationMessageFor(m => m.UNick)
-        @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item", placeholder = "parola", type = "password" })<br><br>
-        @Html.ValidationMessageFor(m => m.UPasswd)
+        @Html.TextBoxFor(m => m.UNick, new { @class = "input-item", placeholder = "kullanıcı adı", required = "required", minlength = "3" })<br><br>
+        @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item", placeholder = "parola", type = "password", required = "required" })<br><br>
+        @*<div class="error-panel">
+            @Html.ValidationMessageFor(m => m.UNick)
+            @Html.ValidationMessageFor(m => m.UPasswd)
+        </div>*@
         <button class="btn btn-sign">GİRİŞ YAP</button><br>
     }
     <a href="#" class="forgot-password">şifremi unuttum</a>
@@ -29,14 +31,15 @@
     @using (Ajax.BeginForm("Login", "Security", new AjaxOptions { HttpMethod = "POST", OnSuccess = "successLogin", OnFailure = "showAjaxError" }))
     {
         @Html.AntiForgeryToken()
-        @Html.TextBoxFor(m => m.UNick, new { @class = "input-item", placeholder = "kullanıcı adı" })<br><br>
-        @Html.ValidationMessageFor(m => m.UNick)
-        @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item", placeholder = "parola", type = "password", id = "pass" })<br><br>
-        @Html.ValidationMessageFor(m => m.UPasswd)
-        @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item", placeholder = "parola tekrar", type = "password", id = "npass" })<br><br>
-        @Html.ValidationMessageFor(m => m.UPasswd)
-        @Html.TextBoxFor(m => m.UMail, new { @class = "input-item", placeholder = "e-posta" })<br><br>
-        @Html.ValidationMessageFor(m => m.UMail)
+        @Html.TextBoxFor(m => m.UNick, new { @class = "input-item", placeholder = "kullanıcı adı", required = "required", minlength = "3"})<br><br>
+        @Html.TextBoxFor(m => m.UPasswd, new { @class = "input-item", placeholder = "parola", type = "password", id = "pass", required = "required", minlength = "6" })<br><br>
+        @Html.TextBoxFor(m => m.UNPasswd, new { @class = "input-item", placeholder = "parola tekrar", type = "password", id = "npass", required = "required" })<br><br>
+        @Html.TextBoxFor(m => m.UMail, new { @class = "input-item", placeholder = "e-posta", type = "email", required = "required" })<br><br>
+        @*<div class="error-panel">
+            @Html.ValidationMessageFor(m => m.UNick)
+            @Html.ValidationMessageFor(m => m.UPasswd)
+            @Html.ValidationMessageFor(m => m.UMail)
+        </div>*@
         <button class="btn btn-sign disable" id="login-btn" type="submit" disabled>KAYIT OL</button><br>
     }
 </div>
